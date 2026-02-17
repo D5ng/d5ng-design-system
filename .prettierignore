@@ -1,6 +1,4 @@
-"dist",
-"node_modules",
-"build",
-"coverage",
-"dist-ssr",
-"*.local"
+# Prettier는 src 아래만 포맷 (나머지는 모두 무시)
+*
+!src
+!src/**
