@@ -8,6 +8,7 @@ import importPlugin from "eslint-plugin-import"
 import reactPlugin from "eslint-plugin-react"
 import eslintConfigPrettier from "eslint-config-prettier/flat"
 import jsxA11y from "eslint-plugin-jsx-a11y"
+import unusedImports from "eslint-plugin-unused-imports"
 
 export default defineConfig([
   globalIgnores(["dist"]),
@@ -24,6 +25,9 @@ export default defineConfig([
       eslintConfigPrettier,
       jsxA11y.flatConfigs.recommended,
     ],
+    plugins: {
+      "unused-imports": unusedImports,
+    },
     languageOptions: {
       ...reactPlugin.configs.flat.recommended.languageOptions,
       ecmaVersion: 2020,
@@ -76,6 +80,16 @@ export default defineConfig([
       ],
       "import/no-duplicates": "error",
       "import/no-default-export": "error",
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+          "warn",
+          {
+              "vars": "all",
+              "varsIgnorePattern": "^_",
+              "args": "after-used",
+              "argsIgnorePattern": "^_",
+          },
+      ],
       "react/function-component-definition": [
         "error",
         {
