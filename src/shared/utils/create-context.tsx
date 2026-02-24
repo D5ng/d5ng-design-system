@@ -1,13 +1,10 @@
 import React from "react"
 
-export function createContext<ContextValuesType extends object>({
-  contextName,
-  defaultContextValues,
-}: {
-  contextName: string
-  defaultContextValues?: ContextValuesType
-}) {
-  const Context = React.createContext<ContextValuesType | undefined>(defaultContextValues ?? undefined)
+export function createContext<ContextValuesType extends object | null>(
+  contextName: string,
+  defaultContextValues?: ContextValuesType,
+) {
+  const Context = React.createContext<ContextValuesType | undefined>(defaultContextValues)
 
   function Provider({ children, ...contextValues }: ContextValuesType & { children: React.ReactNode }) {
     const value = React.useMemo(
@@ -22,8 +19,9 @@ export function createContext<ContextValuesType extends object>({
   function useContext() {
     const context = React.useContext(Context)
 
-    if (context) return context
-    if (defaultContextValues !== undefined) return defaultContextValues
+    if (context !== undefined) {
+      return context
+    }
 
     throw new Error(`${contextName}Context는 ${contextName}Provider 내부에서만 사용할 수 있어요.`)
   }
