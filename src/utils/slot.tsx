@@ -1,14 +1,16 @@
-import type { HTMLAttributes, ReactElement, ReactNode } from "react"
+import type { HTMLAttributes, ReactElement, ReactNode, Ref } from "react"
 
-import { Children, cloneElement, isValidElement } from "react"
+import { Children, cloneElement, forwardRef, isValidElement } from "react"
 
 import { Slottable } from "./slottable"
+
+type MergePropsWithRef<P> = P & { ref?: Ref<HTMLElement> }
 
 interface SlotProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode
 }
 
-export function Slot({ children, ...restProps }: SlotProps) {
+export const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...restProps }, forwardedRef) => {
   const childrenArray = Children.toArray(children)
   const slottable = childrenArray.find((child) => isValidElement(child) && child.type === Slottable) as ReactElement<{
     children: ReactNode
@@ -29,7 +31,9 @@ export function Slot({ children, ...restProps }: SlotProps) {
       return isValidElement(newElement) ? (newElement.props as { children: ReactNode }).children : null
     })
 
-    return isValidElement(newElement) ? cloneElement(newElement, restProps, newChildren) : null
+    return isValidElement(newElement)
+      ? cloneElement(newElement, { ...restProps, ref: forwardedRef } as MergePropsWithRef<SlotProps>, newChildren)
+      : null
   }
 
   if (Children.count(children) > 1) {
@@ -37,5 +41,24 @@ export function Slot({ children, ...restProps }: SlotProps) {
     return Children.only(null)
   }
 
-  return isValidElement(children) ? cloneElement(children, restProps) : null
+  return isValidElement(children)
+    ? cloneElement(children, { ...restProps, ref: forwardedRef } as MergePropsWithRef<SlotProps>)
+    : null
+})
+
+Slot.displayName = "Slot"
+
+export function Icon() {
+  return <p>🚀 Icon</p>
+}
+
+export function Button({ asChild, icon, children }: { asChild: boolean; icon: ReactElement; children: ReactNode }) {
+  const Component = asChild ? Slot : "button"
+
+  return (
+    <Component>
+      {icon}
+      {children}
+    </Component>
+  )
 }
