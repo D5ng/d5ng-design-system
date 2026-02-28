@@ -73,6 +73,25 @@ describe("Slot 컴포넌트 상세 검증", () => {
       expect(ref.current).toBeInstanceOf(HTMLButtonElement)
       expect(ref.current?.textContent).toBe("ref 확인")
     })
+
+    it("상위의 forwardRef와 하위의 ref가 모두 동일한 DOM 요소를 가리켜야 한다.", () => {
+      const parentRef = createRef<HTMLButtonElement>()
+      const childRef = createRef<HTMLButtonElement>()
+
+      render(
+        <Slot ref={parentRef}>
+          <button ref={childRef} data-testid="target-button">
+            ref 병합
+          </button>
+        </Slot>,
+      )
+
+      const renderedButton = screen.getByTestId("target-button")
+
+      expect(parentRef.current).toBe(renderedButton)
+      expect(childRef.current).toBe(renderedButton)
+      expect(parentRef.current).toBe(childRef.current)
+    })
   })
 
   describe("Slottable 컴포넌트 렌더링 테스트", () => {
