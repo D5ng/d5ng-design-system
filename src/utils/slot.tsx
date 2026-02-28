@@ -59,6 +59,15 @@ export const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...restProps
 
 Slot.displayName = "Slot"
 
+/**
+ * ReactElement의 ref를 추출하는 유틸리티 함수
+ * @param element - ReactElement
+ * @returns Ref<unknown>
+ *
+ * @see {@link https://github.com/radix-ui/primitives/blob/main/packages/react/slot/src/slot.tsx#L203 Radix UI의 getElementRef 참조}
+ *
+ * React 19에서는 element.props.ref를 사용해야하지만, 그 미만 버전에서는 element.ref로 접근합니다. 따라서 버전 차이로 인한 console.error를 방지하기 위해 두 가지를 모두 확인합니다.
+ */
 function getElementRef(element: ReactElement) {
   return (element.props as { ref?: Ref<unknown> }).ref || (element as unknown as { ref?: Ref<unknown> }).ref
 }
