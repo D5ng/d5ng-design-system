@@ -47,18 +47,3 @@ export const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...restProps
 })
 
 Slot.displayName = "Slot"
-
-export function Icon() {
-  return <p>🚀 Icon</p>
-}
-
-export function Button({ asChild, icon, children }: { asChild: boolean; icon: ReactElement; children: ReactNode }) {
-  const Component = asChild ? Slot : "button"
-
-  return (
-    <Component>
-      {icon}
-      {children}
-    </Component>
-  )
-}
