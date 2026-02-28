@@ -11,6 +11,15 @@ interface SlotProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode
 }
 
+/**
+ * 상위 컴포넌트가 하위 컴포넌트에게 렌더링을 위임하는 유틸리티 컴포넌트
+ * @param children - 하위 컴포넌트
+ * @param restProps - 나머지 속성
+ * @param forwardedRef - 상위 컴포넌트에서 전달된 ref
+ * @returns ReactElement
+ *
+ * @see {@link https://github.com/radix-ui/primitives/blob/main/packages/react/slot/src/slot.tsx Radix UI의 Slot 참조}
+ */
 export const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...restProps }, forwardedRef) => {
   const childrenArray = Children.toArray(children)
   const slottable = childrenArray.find((child) => isValidElement(child) && child.type === Slottable) as ReactElement<{
