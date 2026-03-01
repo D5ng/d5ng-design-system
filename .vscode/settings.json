@@ -6,4 +6,5 @@
     "source.fixAll.prettier": "always"
   },
   "editor.tabSize": 2,
+  "tailwindCSS.classFunctions": ["cva", "cx"]
 }

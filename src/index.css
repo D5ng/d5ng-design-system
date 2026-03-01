@@ -1,1 +1,99 @@
 @import "tailwindcss";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+@theme {
+  /* highlight colors */
+  --color-highlight-darkest: #006ffd;
+  --color-highlight-dark: #2897ff;
+  --color-hightlight-medium: #6fbaff;
+  --color-highlight-light: #b4dbff;
+  --color-highlight-lightest: #eaf2ff;
+
+  /* neutral light colors */
+  --color-neutral-light-darkest: #c5c6cc;
+  --color-neutral-light-dark: #d4d6dd;
+  --color-neutral-light-medium: #e8e9f1;
+  --color-neutral-light-light: #f8f9fe;
+  --color-neutral-light-lightest: #ffffff;
+
+  /* neutral dark colors */
+  --color-neutral-dark-darkest: #1f2024;
+  --color-neutral-dark-dark: #2f3036;
+  --color-neutral-dark-medium: #494a50;
+  --color-neutral-dark-light: #71727a;
+  --color-neutral-dark-lightest: #8f9098;
+
+  /* support success colors */
+  --color-support-success-dark: #298267;
+  --color-support-success-medium: #3ac0a0;
+  --color-support-success-light: #e7f4e8;
+
+  /* support warning colors */
+  --color-support-warning-dark: #e86339;
+  --color-support-warning-medium: #ffb37c;
+  --color-support-warning-light: #fff4e4;
+
+  /* support error colors */
+  --color-support-error-dark: #ed3241;
+  --color-support-error-medium: #ff616d;
+  --color-support-error-light: #ffe2e5;
+
+  /* font sizes (Heading) */
+  --text-heading-1: 1.5rem; /* 24px */
+  --text-heading-1--font-weight: 600;
+
+  --text-heading-2: 1.25rem; /* 20px */
+  --text-heading-2--font-weight: 600;
+
+  --text-heading-3: 1rem; /* 16px */
+  --text-heading-3--font-weight: 600;
+
+  --text-heading-4: 0.875rem; /* 14px */
+  --text-heading-4--font-weight: 700;
+
+  --text-heading-5: 0.75rem; /* 12px */
+  --text-heading-5--font-weight: 700;
+
+  /* font sizes (Body) */
+  --text-body-xl: 1.125rem; /* 18px */
+  --text-body-xl--font-weight: 400;
+
+  --text-body-lg: 1rem; /* 16px */
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 0.875rem; /* 14px */
+  --text-body-md--font-weight: 400;
+
+  --text-body-sm: 0.75rem; /* 12px */
+  --text-body-sm--font-weight: 400;
+
+  --text-body-xs: 0.625rem; /* 10px */
+  --text-body-xs--font-weight: 500;
+
+  /* font sizes (Action) */
+  --text-action-lg: 0.875rem; /* 14px */
+  --text-action-lg--font-weight: 600;
+
+  --text-action-md: 0.75rem; /* 12px */
+  --text-action-md--font-weight: 600;
+
+  --text-action-sm: 0.625rem; /* 10px */
+  --text-action-sm--font-weight: 600;
+
+  /* font sizes (Caption) */
+  --text-caption-md: 0.625rem; /* 10px */
+  --text-caption-md--font-weight: 600;
+}
+
+@layer base {
+  html,
+  body {
+    color: var(--color-neutral-dark-darkest);
+  }
+  * {
+    font-family: "Pretendard Variable";
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
