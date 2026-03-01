@@ -3,6 +3,7 @@ import type { HTMLAttributes, ReactElement, ReactNode, Ref } from "react"
 import { Children, cloneElement, forwardRef, isValidElement } from "react"
 
 import { composeRefs } from "./compose-refs"
+import { mergeProps } from "./merge-props"
 import { Slottable } from "./slottable"
 
 type MergePropsWithRef<P> = P & { ref?: Ref<HTMLElement> }
@@ -45,7 +46,7 @@ export const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...restProps
       ? cloneElement(
           newElement,
           {
-            ...restProps,
+            ...mergeProps(restProps, newElement.props as { children: ReactNode }),
             ref: composeRefs(forwardedRef, getElementRef(newElement)),
           } as MergePropsWithRef<SlotProps>,
           newChildren,
@@ -60,7 +61,7 @@ export const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...restProps
 
   return isValidElement(children)
     ? cloneElement(children, {
-        ...restProps,
+        ...mergeProps(restProps, children.props as { children: ReactNode }),
         ref: composeRefs(forwardedRef, getElementRef(children)),
       } as MergePropsWithRef<SlotProps>)
     : null
