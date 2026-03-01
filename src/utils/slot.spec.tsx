@@ -92,6 +92,36 @@ describe("Slot 컴포넌트 상세 검증", () => {
       expect(childRef.current).toBe(renderedButton)
       expect(parentRef.current).toBe(childRef.current)
     })
+
+    it("상위의 event와 하위의 event prop이 같을 때", () => {
+      const handleClick = vi.fn()
+      const handleClick2 = vi.fn()
+
+      render(
+        <Button asChild onClick={handleClick}>
+          <button onClick={handleClick2}>버튼</button>
+        </Button>,
+      )
+
+      const button = screen.getByRole("button")
+      fireEvent.click(button)
+      expect(handleClick).toHaveBeenCalledTimes(1)
+      expect(handleClick2).toHaveBeenCalledTimes(1)
+    })
+
+    it("style과 className이 올바르게 병합되어야 한다", () => {
+      render(
+        <Button asChild style={{ color: "red" }} className="parent-class">
+          <button style={{ color: "blue" }} className="child-class">
+            버튼
+          </button>
+        </Button>,
+      )
+
+      const button = screen.getByRole("button")
+      expect(button.style.color).toBe("blue")
+      expect(button).toHaveClass("parent-class child-class")
+    })
   })
 
   describe("Slottable 컴포넌트 렌더링 테스트", () => {
