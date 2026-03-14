@@ -30,5 +30,5 @@
       "@/*": ["./src/*"],
     }
   },
-  "include": ["src", "test/**/*", "**/*.spec.{ts,tsx}", "vitest.setup.ts", "vitest.shims.d.ts"]
+  "include": ["src", "test/**/*", "**/*.spec.{ts,tsx}", "vitest.setup.ts"]
 }
