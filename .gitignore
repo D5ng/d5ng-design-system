@@ -21,3 +21,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.agents
+.skills-lock.json
+*storybook.log
+storybook-static
