@@ -1,6 +1,7 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react"
+import type { ButtonHTMLAttributes, ReactNode, Ref } from "react"
 
 import { cva } from "class-variance-authority"
+import { forwardRef } from "react"
 
 import { cn } from "@/lib/cn"
 import { Slot } from "@/utils/slot"
@@ -9,7 +10,7 @@ import { Slottable } from "@/utils/slottable"
 import type { VariantProps } from "class-variance-authority"
 
 const buttonVariants = cva(
-  "flex items-center justify-center gap-2 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-highlight-darkest focus:ring-offset-2",
+  "relative flex items-center justify-center gap-2 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-highlight-darkest focus:ring-offset-2",
   {
     variants: {
       variant: {
@@ -54,30 +55,37 @@ const buttonVariants = cva(
 
 type ButtonVariant = VariantProps<typeof buttonVariants>
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariant {
+interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "ref">, ButtonVariant {
   asChild?: boolean
   leftIcon?: ReactNode
   rightIcon?: ReactNode
   disabled?: boolean
 }
 
-export function Button({
-  asChild,
-  leftIcon,
-  rightIcon,
-  children,
-  className,
-  variant,
-  disabled,
-  size,
-  ...restProps
-}: Props) {
-  const Component = asChild ? Slot : "button"
-  return (
-    <Component className={cn(buttonVariants({ variant, disabled, size }), className)} {...restProps}>
-      {Boolean(leftIcon) && <div className="flex h-3 w-3 items-center justify-center">{leftIcon}</div>}
-      <Slottable>{children}</Slottable>
-      {Boolean(rightIcon) && <div className="flex h-3 w-3 items-center justify-center">{rightIcon}</div>}
-    </Component>
-  )
-}
+export const Button = forwardRef<HTMLElement, Props>(
+  ({ asChild, leftIcon, rightIcon, children, className, variant, disabled, size, ...restProps }, forwardedRef) => {
+    const Component = asChild ? Slot : "button"
+
+    return (
+      <Component
+        className={cn(buttonVariants({ variant, disabled, size }), className)}
+        ref={forwardedRef as Ref<HTMLButtonElement>}
+        disabled={disabled}
+        {...restProps}
+      >
+        {Boolean(leftIcon) && (
+          <div className="flex h-3 w-3 items-center justify-center" aria-hidden="true">
+            {leftIcon}
+          </div>
+        )}
+        <Slottable>{children}</Slottable>
+        {Boolean(rightIcon) && (
+          <div className="flex h-3 w-3 items-center justify-center" aria-hidden="true">
+            {rightIcon}
+          </div>
+        )}
+      </Component>
+    )
+  },
+)
+Button.displayName = "Button"
