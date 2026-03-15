@@ -96,4 +96,49 @@
   button {
     cursor: pointer;
   }
+
+  /* loading animation */
+  .loading-circular {
+    animation: loading-rotate 1.4s linear infinite;
+    height: 100%;
+    transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .loading-path {
+    animation: loading-dash 1.4s ease-in-out infinite;
+    stroke-linecap: round;
+  }
+
+  /* 1. 전체 회전 메커니즘: 단순 360도 회전 */
+  @keyframes loading-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* 2. 선의 움직임 메커니즘: 길이를 늘렸다 줄였다 하며 오프셋을 밀어냄 */
+  @keyframes loading-dash {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 100, 200;
+      stroke-dashoffset: -15;
+    }
+    100% {
+      stroke-dasharray: 100, 200;
+      stroke-dashoffset: -70;
+    }
+  }
 }
