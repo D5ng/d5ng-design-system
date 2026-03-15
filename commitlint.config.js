@@ -16,6 +16,8 @@ export default {
         "perf",
         "ci",
         "revert",
+        "merge",
+        "hotfix",
       ],
     ],
 
