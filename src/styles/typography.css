@@ -1,0 +1,47 @@
+:root {
+  /* heading */
+  --heading-1-size: 1.5rem;   /* 24px */
+  --heading-1-weight: 600;
+
+  --heading-2-size: 1.25rem;  /* 20px */
+  --heading-2-weight: 600;
+
+  --heading-3-size: 1rem;     /* 16px */
+  --heading-3-weight: 600;
+
+  --heading-4-size: 0.875rem; /* 14px */
+  --heading-4-weight: 700;
+
+  --heading-5-size: 0.75rem;  /* 12px */
+  --heading-5-weight: 700;
+
+  /* body */
+  --body-xl-size: 1.125rem; /* 18px */
+  --body-xl-weight: 400;
+
+  --body-lg-size: 1rem;     /* 16px */
+  --body-lg-weight: 400;
+
+  --body-md-size: 0.875rem; /* 14px */
+  --body-md-weight: 400;
+
+  --body-sm-size: 0.75rem;  /* 12px */
+  --body-sm-weight: 400;
+
+  --body-xs-size: 0.625rem; /* 10px */
+  --body-xs-weight: 500;
+
+  /* action */
+  --action-lg-size: 0.875rem; /* 14px */
+  --action-lg-weight: 600;
+
+  --action-md-size: 0.75rem;  /* 12px */
+  --action-md-weight: 600;
+
+  --action-sm-size: 0.625rem; /* 10px */
+  --action-sm-weight: 600;
+
+  /* caption */
+  --caption-md-size: 0.625rem; /* 10px */
+  --caption-md-weight: 600;
+}
