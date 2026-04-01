@@ -9,7 +9,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      ui: ${{ steps.filter.outputs.ui }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            ui:
+              - 'src/ui/**'
+              - 'src/utils/**'
+              - 'src/lib/**'
+              - 'src/index.css'
+              - '.storybook/**'
+              - '**/*.stories.tsx'
+
   chromatic:
+    needs: check-changes
+    if: needs.check-changes.outputs.ui == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
