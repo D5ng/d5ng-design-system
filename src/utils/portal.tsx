@@ -1,7 +1,9 @@
 import type { ComponentPropsWithoutRef, ComponentRef } from "react"
 
-import { forwardRef, useLayoutEffect, useState } from "react"
+import { forwardRef } from "react"
 import { createPortal } from "react-dom"
+
+import { useIsHydrated as useIsClient } from "@/hooks/use-is-hydrated"
 
 type PortalElement = ComponentRef<"div">
 interface PortalProps extends ComponentPropsWithoutRef<"div"> {
@@ -9,12 +11,9 @@ interface PortalProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 const Portal = forwardRef<PortalElement, PortalProps>(({ children, container: containerProp, ...restProps }, ref) => {
-  const [mounted, setMounted] = useState(false)
-  // NOTE: Next.js의 하이드레이션 불일치로 인한 에러 방지
-  // eslint-disable-next-line react-hooks/set-state-in-effect
-  useLayoutEffect(() => setMounted(true), [])
+  const isClient = useIsClient()
 
-  const container = containerProp ?? (mounted && globalThis?.document?.body)
+  const container = containerProp ?? (isClient && globalThis?.document?.body)
   return container
     ? createPortal(
         <div {...restProps} ref={ref}>
