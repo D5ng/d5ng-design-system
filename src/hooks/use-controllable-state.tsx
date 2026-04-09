@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Dispatch, RefObject, SetStateAction } from "react"
+import type { Dispatch, SetStateAction } from "react"
 
 import { useCallback, useEffect, useRef, useState } from "react"
+
+import { useCallbackRef } from "./use-callback-ref"
 
 interface UseControllableState<T> {
   prop?: T | undefined
@@ -14,7 +16,7 @@ export function useControllableState<T>({
   defaultProp,
   onChange = () => {},
 }: UseControllableState<T>): [T, Dispatch<SetStateAction<T>>] {
-  const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrollableState<T>({ defaultProp, onChange })
+  const [uncontrolledProp, setUncontrolledProp, onChangeCallback] = useUncontrollableState<T>({ defaultProp, onChange })
 
   const isControlled = prop !== undefined
   const value = isControlled ? prop : uncontrolledProp
@@ -24,13 +26,13 @@ export function useControllableState<T>({
       if (isControlled) {
         const value = isFunction(nextValue) ? nextValue(prop) : nextValue
         if (value !== prop) {
-          onChangeRef.current?.(value)
+          onChangeCallback?.(value)
         }
       } else {
         setUncontrolledProp(nextValue)
       }
     },
-    [isControlled, prop, onChangeRef, setUncontrolledProp],
+    [isControlled, onChangeCallback, prop, setUncontrolledProp],
   )
 
   return [value, setValue] as const
@@ -39,28 +41,20 @@ export function useControllableState<T>({
 function useUncontrollableState<T>({
   defaultProp,
   onChange,
-}: Omit<UseControllableState<T>, "prop">): [
-  T,
-  Dispatch<SetStateAction<T>>,
-  RefObject<((...args: any[]) => void) | undefined>,
-] {
+}: Omit<UseControllableState<T>, "prop">): [T, Dispatch<SetStateAction<T>>, ((...args: any[]) => void) | undefined] {
   const [value, setValue] = useState(defaultProp)
 
   const prevValueRef = useRef(value)
-
-  const onChangeRef = useRef(onChange)
-  useEffect(() => {
-    onChangeRef.current = onChange
-  }, [onChange])
+  const onChangeCallback = useCallbackRef(onChange)
 
   useEffect(() => {
     if (prevValueRef.current !== value) {
-      onChangeRef.current?.(value)
+      onChangeCallback?.(value)
       prevValueRef.current = value
     }
-  }, [value])
+  }, [onChangeCallback, value])
 
-  return [value, setValue, onChangeRef] as const
+  return [value, setValue, onChangeCallback] as const
 }
 
 function isFunction(value: unknown): value is (...args: any[]) => any {
