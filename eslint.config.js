@@ -19,7 +19,8 @@ const reactHooksDuplicates = Object.fromEntries(
 );
 
 export default defineConfig(
-  globalIgnores(["**/dist"]),
+  // export.figma.js는 Figma Plugin API에서 실행하는 스크립트라 최상위 return을 쓴다.
+  globalIgnores(["**/dist", "packages/tokens/figma/export.figma.js"]),
   {
     linterOptions: { reportUnusedDisableDirectives: "error" },
   },
