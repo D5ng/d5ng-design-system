@@ -21,6 +21,8 @@ fix(tokens): 다크 모드 테두리 색 수정
 chore: 이슈 폼 추가
 ```
 
+규칙의 기준은 `commitlint.config.js`이고, `commit-msg` 훅이 커밋마다 검사한다. type은 `feat`, `fix`, `refactor`, `docs`, `chore`, `test`만 쓴다. 훅을 `--no-verify`로 건너뛰지 않는다.
+
 ## 글쓰기
 
 이슈, PR, 커밋 본문은 모두 **한글 ~요체로 최대한 간결하게**, 처음 보는 사람도 이해할 수 있게 쓴다. "왜", "어떻게" 같은 형식적인 헤딩은 쓰지 않는다.
