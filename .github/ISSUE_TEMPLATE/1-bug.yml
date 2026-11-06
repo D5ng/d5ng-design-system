@@ -1,0 +1,43 @@
+name: 🐛 버그
+description: 의도대로 동작하지 않거나 디자인(Figma)과 다를 때
+title: "[컴포넌트명] "
+labels: ["type: bug"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 어떤 문제인가요?
+      description: 종류에 따라 고치는 방향이 달라서 먼저 묻습니다. 접근성 문제라면 `a11y` 라벨도 붙여 주세요.
+      options:
+        - 동작이 고장남
+        - 디자인(Figma)과 다름
+        - 접근성 문제
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 어떻게 하면 생기나요?
+      description: 순서대로 따라 하면 다시 볼 수 있게, 실제로 일어난 일까지 적어 주세요.
+      placeholder: |
+        1. Dialog를 연다
+        2. Esc를 누른다
+        → 닫히지 않는다
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 어떻게 되어야 하나요?
+      description: 고쳐졌는지 판단하는 기준이 됩니다. Figma와 다르다면 해당 노드 링크를 붙여 주세요.
+      placeholder: Esc를 누르면 Dialog가 닫히고, 포커스가 열기 버튼으로 돌아간다
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 참고
+      description: 스크린샷, 패키지 버전, 브라우저 등. 없으면 비워 두세요.
