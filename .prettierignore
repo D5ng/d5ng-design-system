@@ -1,0 +1,3 @@
+pnpm-lock.yaml
+# 라벨 하나를 한 줄로 보려고 일부러 맞춰 둔 형식이라 Prettier가 바꾸지 않게 한다.
+.github/labels.json
