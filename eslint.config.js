@@ -19,7 +19,8 @@ const reactHooksDuplicates = Object.fromEntries(
 );
 
 export default defineConfig(
-  globalIgnores(["**/dist"]),
+  // .claude/worktrees에는 Claude Code가 만든 다른 브랜치의 worktree가 있다.
+  globalIgnores(["**/dist", ".claude/worktrees"]),
   {
     linterOptions: { reportUnusedDisableDirectives: "error" },
   },
