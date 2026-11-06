@@ -7,8 +7,8 @@ body:
     id: need
     attributes:
       label: 어떤 상황에서 필요한가요?
-      description: API보다 쓰는 상황을 먼저 적어 주세요. 상황이 분명해야 API를 제대로 정할 수 있습니다.
-      placeholder: 설정 화면에서 켜고 끄는 항목이 많은데, 체크박스는 '즉시 반영'이라는 느낌이 약하다
+      description: API보다 쓰는 상황을 먼저 적어 주세요. 상황이 분명해야 API를 정할 수 있어요.
+      placeholder: 설정 화면에서 켜고 끄는 항목이 많은데, 체크박스는 '즉시 반영'이라는 느낌이 약해요
     validations:
       required: true
 
@@ -23,7 +23,7 @@ body:
     id: usage
     attributes:
       label: 이렇게 쓰고 싶어요
-      description: 상상한 사용 코드. 정답이 아니어도 됩니다.
+      description: 상상한 사용 코드예요. 정답이 아니어도 돼요.
       render: tsx
       placeholder: <Switch checked={on} onCheckedChange={setOn}>알림 받기</Switch>
 
@@ -31,4 +31,4 @@ body:
     id: reference
     attributes:
       label: 참고
-      description: 비슷한 라이브러리 사례(Radix, MUI 등)나 아직 고민 중인 점. 없으면 비워 두세요.
+      description: 비슷한 라이브러리 사례(Radix, MUI 등)나 고민 중인 점이요. 없으면 비워 두세요.

@@ -13,18 +13,21 @@ Radix UI 위에 만든 React 디자인 시스템. npm 패키지(`@d5ng/tokens`, 
 
 ## 커밋과 PR 제목
 
-Conventional Commits 형식으로, 영어로 쓴다. scope는 패키지 이름이고, 저장소 전체에 걸친 변경이면 생략한다.
+Conventional Commits 형식에 요약은 한글로, 짧은 명사형으로 쓴다. scope는 패키지 이름이고, 저장소 전체에 걸친 변경이면 생략한다. 본문이 필요하면 ~요체로 한두 줄만 쓴다.
 
 ```
-feat(react): add loading state to Button
-fix(tokens): correct dark mode border color
-chore: add issue forms
+feat(react): Button 로딩 상태 추가
+fix(tokens): 다크 모드 테두리 색 수정
+chore: 이슈 폼 추가
 ```
+
+## 글쓰기
+
+이슈, PR, 커밋 본문은 모두 **한글 ~요체로 최대한 간결하게** 쓴다. "왜", "어떻게" 같은 섹션 헤딩은 쓰지 않는다.
 
 ## 이슈
 
 - 제목: `[컴포넌트명] 한 줄 요약`. 특정 컴포넌트와 상관없으면 요약만 쓴다
-- 본문은 한국어로 쓴다
 - 웹에서는 폼(`.github/ISSUE_TEMPLATE/`)이 구조를 잡아 준다. **`gh issue create`에는 폼이 적용되지 않으므로**, 같은 제목의 섹션으로 본문을 직접 쓰고 `--label`로 라벨을 붙인다
 
 | 종류 | 라벨 | 본문 섹션 |
@@ -38,8 +41,8 @@ chore: add issue forms
 
 - 대상 브랜치는 develop이다 (release/hotfix만 main)
 - PR 하나에는 한 가지 일만 담는다. 제목을 한 줄로 못 쓰겠으면 나눌 때다
-- 본문은 한국어로, `.github/pull_request_template.md`의 섹션을 따른다. 섹션마다 작성 요령이 주석으로 달려 있다. 필요 없는 섹션은 지운다
-- **`gh pr create --body`에는 템플릿이 적용되지 않으므로**, 같은 섹션 제목으로 본문을 직접 쓰고 주석은 넣지 않는다
+- 본문은 무엇을 왜 바꿨는지 한두 문장, 필요하면 핵심 결정이나 하지 않은 선택을 짧은 목록으로 덧붙인다. 이슈가 있으면 `Closes #번호`
+- 시각적 변화가 있으면 스크린샷, 쓰는 쪽 코드가 깨지면 고치는 방법을 덧붙인다
 
 ## 라벨
 
