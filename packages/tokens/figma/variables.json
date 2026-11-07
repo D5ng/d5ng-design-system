@@ -2133,6 +2133,9 @@
           "name": "spacing/0",
           "type": "FLOAT",
           "css": "spacing-0",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 0
           }
@@ -2141,6 +2144,9 @@
           "name": "spacing/2",
           "type": "FLOAT",
           "css": "spacing-2",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 2
           }
@@ -2149,6 +2155,9 @@
           "name": "spacing/4",
           "type": "FLOAT",
           "css": "spacing-4",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 4
           }
@@ -2157,6 +2166,9 @@
           "name": "spacing/8",
           "type": "FLOAT",
           "css": "spacing-8",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 8
           }
@@ -2165,6 +2177,9 @@
           "name": "spacing/12",
           "type": "FLOAT",
           "css": "spacing-12",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 12
           }
@@ -2173,6 +2188,9 @@
           "name": "spacing/16",
           "type": "FLOAT",
           "css": "spacing-16",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 16
           }
@@ -2181,6 +2199,9 @@
           "name": "spacing/20",
           "type": "FLOAT",
           "css": "spacing-20",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 20
           }
@@ -2189,6 +2210,9 @@
           "name": "spacing/24",
           "type": "FLOAT",
           "css": "spacing-24",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 24
           }
@@ -2197,6 +2221,9 @@
           "name": "spacing/32",
           "type": "FLOAT",
           "css": "spacing-32",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 32
           }
@@ -2205,6 +2232,9 @@
           "name": "spacing/40",
           "type": "FLOAT",
           "css": "spacing-40",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 40
           }
@@ -2213,6 +2243,9 @@
           "name": "spacing/48",
           "type": "FLOAT",
           "css": "spacing-48",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 48
           }
@@ -2221,6 +2254,9 @@
           "name": "spacing/64",
           "type": "FLOAT",
           "css": "spacing-64",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 64
           }
@@ -2229,6 +2265,9 @@
           "name": "spacing/80",
           "type": "FLOAT",
           "css": "spacing-80",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 80
           }
@@ -2237,6 +2276,9 @@
           "name": "layout/page-max",
           "type": "FLOAT",
           "css": "layout-page-max",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Value": 1080
           }
@@ -2245,6 +2287,9 @@
           "name": "layout/gutter",
           "type": "FLOAT",
           "css": "layout-gutter",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Value": 24
           }
@@ -2253,6 +2298,9 @@
           "name": "spacing/6",
           "type": "FLOAT",
           "css": "spacing-6",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 6
           }
@@ -2261,6 +2309,9 @@
           "name": "spacing/10",
           "type": "FLOAT",
           "css": "spacing-10",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 10
           }
@@ -2277,6 +2328,9 @@
           "name": "radius/none",
           "type": "FLOAT",
           "css": "radius-none",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
           "values": {
             "Value": 0
           }
@@ -2285,6 +2339,9 @@
           "name": "radius/sm",
           "type": "FLOAT",
           "css": "radius-sm",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
           "values": {
             "Value": 4
           }
@@ -2293,6 +2350,9 @@
           "name": "radius/md",
           "type": "FLOAT",
           "css": "radius-md",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
           "values": {
             "Value": 8
           }
@@ -2301,6 +2361,9 @@
           "name": "radius/lg",
           "type": "FLOAT",
           "css": "radius-lg",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
           "values": {
             "Value": 12
           }
@@ -2309,6 +2372,9 @@
           "name": "radius/full",
           "type": "FLOAT",
           "css": "radius-full",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
           "values": {
             "Value": 9999
           }
@@ -2317,6 +2383,9 @@
           "name": "radius/xl",
           "type": "FLOAT",
           "css": "radius-xl",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
           "values": {
             "Value": 16
           }
@@ -2349,6 +2418,9 @@
           "name": "font/size/t13",
           "type": "FLOAT",
           "css": "font-size-t13",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 40
           }
@@ -2357,6 +2429,9 @@
           "name": "font/line-height/t13",
           "type": "FLOAT",
           "css": "font-line-height-t13",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 52
           }
@@ -2365,6 +2440,9 @@
           "name": "font/size/t12",
           "type": "FLOAT",
           "css": "font-size-t12",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 32
           }
@@ -2373,6 +2451,9 @@
           "name": "font/line-height/t12",
           "type": "FLOAT",
           "css": "font-line-height-t12",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 42
           }
@@ -2381,6 +2462,9 @@
           "name": "font/size/t10",
           "type": "FLOAT",
           "css": "font-size-t10",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 26
           }
@@ -2389,6 +2473,9 @@
           "name": "font/line-height/t10",
           "type": "FLOAT",
           "css": "font-line-height-t10",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 35
           }
@@ -2397,6 +2484,9 @@
           "name": "font/size/t7",
           "type": "FLOAT",
           "css": "font-size-t7",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 20
           }
@@ -2405,6 +2495,9 @@
           "name": "font/line-height/t7",
           "type": "FLOAT",
           "css": "font-line-height-t7",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 27
           }
@@ -2413,6 +2506,9 @@
           "name": "font/size/t6",
           "type": "FLOAT",
           "css": "font-size-t6",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 18
           }
@@ -2421,6 +2517,9 @@
           "name": "font/line-height/t6",
           "type": "FLOAT",
           "css": "font-line-height-t6",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 24
           }
@@ -2429,6 +2528,9 @@
           "name": "font/size/t5",
           "type": "FLOAT",
           "css": "font-size-t5",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 16
           }
@@ -2437,6 +2539,9 @@
           "name": "font/line-height/t5",
           "type": "FLOAT",
           "css": "font-line-height-t5",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 22
           }
@@ -2445,6 +2550,9 @@
           "name": "font/size/t4",
           "type": "FLOAT",
           "css": "font-size-t4",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 14
           }
@@ -2453,6 +2561,9 @@
           "name": "font/line-height/t4",
           "type": "FLOAT",
           "css": "font-line-height-t4",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 19
           }
@@ -2461,6 +2572,9 @@
           "name": "font/size/t3",
           "type": "FLOAT",
           "css": "font-size-t3",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 13
           }
@@ -2469,6 +2583,9 @@
           "name": "font/line-height/t3",
           "type": "FLOAT",
           "css": "font-line-height-t3",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 18
           }
@@ -2477,6 +2594,9 @@
           "name": "font/size/code",
           "type": "FLOAT",
           "css": "font-size-code",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 15
           }
@@ -2485,6 +2605,9 @@
           "name": "font/line-height/code",
           "type": "FLOAT",
           "css": "font-line-height-code",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 24
           }
@@ -2493,6 +2616,9 @@
           "name": "font/size/t1",
           "type": "FLOAT",
           "css": "font-size-t1",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 11
           }
@@ -2501,6 +2627,9 @@
           "name": "font/line-height/t1",
           "type": "FLOAT",
           "css": "font-line-height-t1",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 15
           }
@@ -2509,6 +2638,9 @@
           "name": "font/size/t2",
           "type": "FLOAT",
           "css": "font-size-t2",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 12
           }
@@ -2517,6 +2649,9 @@
           "name": "font/line-height/t2",
           "type": "FLOAT",
           "css": "font-line-height-t2",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 16
           }
@@ -2525,6 +2660,9 @@
           "name": "font/size/t8",
           "type": "FLOAT",
           "css": "font-size-t8",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 22
           }
@@ -2533,6 +2671,9 @@
           "name": "font/line-height/t8",
           "type": "FLOAT",
           "css": "font-line-height-t8",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 30
           }
@@ -2541,6 +2682,9 @@
           "name": "font/size/t9",
           "type": "FLOAT",
           "css": "font-size-t9",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 24
           }
@@ -2549,6 +2693,9 @@
           "name": "font/line-height/t9",
           "type": "FLOAT",
           "css": "font-line-height-t9",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 32
           }
@@ -2557,6 +2704,9 @@
           "name": "font/size/t11",
           "type": "FLOAT",
           "css": "font-size-t11",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 28
           }
@@ -2565,6 +2715,9 @@
           "name": "font/line-height/t11",
           "type": "FLOAT",
           "css": "font-line-height-t11",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 38
           }
@@ -2573,6 +2726,9 @@
           "name": "font/size/t14",
           "type": "FLOAT",
           "css": "font-size-t14",
+          "scopes": [
+            "FONT_SIZE"
+          ],
           "values": {
             "Value": 48
           }
@@ -2581,6 +2737,9 @@
           "name": "font/line-height/t14",
           "type": "FLOAT",
           "css": "font-line-height-t14",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
           "values": {
             "Value": 60
           }
@@ -2589,6 +2748,9 @@
           "name": "font/weight/regular",
           "type": "FLOAT",
           "css": "font-weight-regular",
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
           "values": {
             "Value": 400
           }
@@ -2597,6 +2759,9 @@
           "name": "font/weight/medium",
           "type": "FLOAT",
           "css": "font-weight-medium",
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
           "values": {
             "Value": 500
           }
@@ -2605,6 +2770,9 @@
           "name": "font/weight/bold",
           "type": "FLOAT",
           "css": "font-weight-bold",
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
           "values": {
             "Value": 700
           }
@@ -2621,6 +2789,7 @@
           "name": "duration/fast",
           "type": "FLOAT",
           "css": "duration-fast",
+          "scopes": [],
           "values": {
             "Value": 100
           }
@@ -2629,6 +2798,7 @@
           "name": "duration/normal",
           "type": "FLOAT",
           "css": "duration-normal",
+          "scopes": [],
           "values": {
             "Value": 150
           }
@@ -2637,6 +2807,7 @@
           "name": "duration/slow",
           "type": "FLOAT",
           "css": "duration-slow",
+          "scopes": [],
           "values": {
             "Value": 250
           }
@@ -2677,6 +2848,7 @@
           "name": "press/max-reduction",
           "type": "FLOAT",
           "css": "press-max-reduction",
+          "scopes": [],
           "values": {
             "Value": 0.02
           }
@@ -2685,6 +2857,7 @@
           "name": "press/max-width-reduction",
           "type": "FLOAT",
           "css": "press-max-width-reduction",
+          "scopes": [],
           "values": {
             "Value": 6
           }
@@ -2693,6 +2866,7 @@
           "name": "duration/shimmer",
           "type": "FLOAT",
           "css": "duration-shimmer",
+          "scopes": [],
           "values": {
             "Value": 1500
           }
@@ -2709,6 +2883,9 @@
           "name": "button/min-height/sm",
           "type": "FLOAT",
           "css": "button-min-height-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 44
           }
@@ -2717,6 +2894,9 @@
           "name": "button/min-height/md",
           "type": "FLOAT",
           "css": "button-min-height-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 48
           }
@@ -2725,6 +2905,9 @@
           "name": "button/min-height/lg",
           "type": "FLOAT",
           "css": "button-min-height-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 56
           }
@@ -2733,6 +2916,9 @@
           "name": "button/focus-width",
           "type": "FLOAT",
           "css": "button-focus-width",
+          "scopes": [
+            "STROKE_FLOAT"
+          ],
           "values": {
             "Mode 1": {
               "alias": "Spacing:spacing/2"
@@ -2743,6 +2929,9 @@
           "name": "text-field/min-height/sm",
           "type": "FLOAT",
           "css": "text-field-min-height-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 44
           }
@@ -2751,6 +2940,9 @@
           "name": "text-field/min-height/md",
           "type": "FLOAT",
           "css": "text-field-min-height-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 48
           }
@@ -2759,6 +2951,9 @@
           "name": "text-field/min-height/lg",
           "type": "FLOAT",
           "css": "text-field-min-height-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 56
           }
@@ -2767,6 +2962,9 @@
           "name": "text-field/border-width",
           "type": "FLOAT",
           "css": "text-field-border-width",
+          "scopes": [
+            "STROKE_FLOAT"
+          ],
           "values": {
             "Mode 1": 1
           }
@@ -2775,6 +2973,9 @@
           "name": "text-field/focus-width",
           "type": "FLOAT",
           "css": "text-field-focus-width",
+          "scopes": [
+            "STROKE_FLOAT"
+          ],
           "values": {
             "Mode 1": {
               "alias": "Spacing:spacing/2"
@@ -2785,6 +2986,9 @@
           "name": "button/min-height/xs",
           "type": "FLOAT",
           "css": "button-min-height-xs",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 32
           }
@@ -2793,6 +2997,9 @@
           "name": "text-field/icon-size/sm",
           "type": "FLOAT",
           "css": "text-field-icon-size-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 16
           }
@@ -2801,6 +3008,9 @@
           "name": "text-field/icon-size/md",
           "type": "FLOAT",
           "css": "text-field-icon-size-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 20
           }
@@ -2809,6 +3019,9 @@
           "name": "text-field/icon-size/lg",
           "type": "FLOAT",
           "css": "text-field-icon-size-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 24
           }
@@ -2817,6 +3030,9 @@
           "name": "text-field/clear-slot-width/sm",
           "type": "FLOAT",
           "css": "text-field-clear-slot-width-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 30
           }
@@ -2825,6 +3041,9 @@
           "name": "text-field/clear-slot-width/md",
           "type": "FLOAT",
           "css": "text-field-clear-slot-width-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 32
           }
@@ -2833,6 +3052,9 @@
           "name": "text-field/clear-slot-width/lg",
           "type": "FLOAT",
           "css": "text-field-clear-slot-width-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 34
           }
@@ -2841,6 +3063,9 @@
           "name": "textarea/min-height",
           "type": "FLOAT",
           "css": "textarea-min-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 100
           }
@@ -2849,6 +3074,9 @@
           "name": "textarea/content-min-height",
           "type": "FLOAT",
           "css": "textarea-content-min-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 68
           }
@@ -2857,6 +3085,9 @@
           "name": "checkbox/mark-size-medium",
           "type": "FLOAT",
           "css": "checkbox-mark-size-medium",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 20
           }
@@ -2865,6 +3096,9 @@
           "name": "checkbox/mark-size-large",
           "type": "FLOAT",
           "css": "checkbox-mark-size-large",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 24
           }
@@ -2873,6 +3107,9 @@
           "name": "checkbox/min-target-height",
           "type": "FLOAT",
           "css": "checkbox-min-target-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 44
           }
@@ -2881,6 +3118,9 @@
           "name": "radio/mark-size-medium",
           "type": "FLOAT",
           "css": "radio-mark-size-medium",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 20
           }
@@ -2889,6 +3129,9 @@
           "name": "radio/mark-size-large",
           "type": "FLOAT",
           "css": "radio-mark-size-large",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 24
           }
@@ -2897,6 +3140,9 @@
           "name": "radio/dot-size-medium",
           "type": "FLOAT",
           "css": "radio-dot-size-medium",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 8
           }
@@ -2905,6 +3151,9 @@
           "name": "radio/dot-size-large",
           "type": "FLOAT",
           "css": "radio-dot-size-large",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 10
           }
@@ -2913,6 +3162,9 @@
           "name": "radio/dot-size-disabled-medium",
           "type": "FLOAT",
           "css": "radio-dot-size-disabled-medium",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 10
           }
@@ -2921,6 +3173,9 @@
           "name": "radio/dot-size-disabled-large",
           "type": "FLOAT",
           "css": "radio-dot-size-disabled-large",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 12
           }
@@ -2929,6 +3184,9 @@
           "name": "radio/min-target-height",
           "type": "FLOAT",
           "css": "radio-min-target-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 44
           }
@@ -2937,6 +3195,9 @@
           "name": "switch/width-16",
           "type": "FLOAT",
           "css": "switch-width-16",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 26
           }
@@ -2945,6 +3206,9 @@
           "name": "switch/height-16",
           "type": "FLOAT",
           "css": "switch-height-16",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 16
           }
@@ -2953,6 +3217,9 @@
           "name": "switch/thumb-on-16",
           "type": "FLOAT",
           "css": "switch-thumb-on-16",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 12
           }
@@ -2961,6 +3228,9 @@
           "name": "switch/thumb-off-16",
           "type": "FLOAT",
           "css": "switch-thumb-off-16",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 9.6
           }
@@ -2969,6 +3239,9 @@
           "name": "switch/width-24",
           "type": "FLOAT",
           "css": "switch-width-24",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 38
           }
@@ -2977,6 +3250,9 @@
           "name": "switch/height-24",
           "type": "FLOAT",
           "css": "switch-height-24",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 24
           }
@@ -2985,6 +3261,9 @@
           "name": "switch/thumb-on-24",
           "type": "FLOAT",
           "css": "switch-thumb-on-24",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 20
           }
@@ -2993,6 +3272,9 @@
           "name": "switch/thumb-off-24",
           "type": "FLOAT",
           "css": "switch-thumb-off-24",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 16
           }
@@ -3001,6 +3283,9 @@
           "name": "switch/width-32",
           "type": "FLOAT",
           "css": "switch-width-32",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 52
           }
@@ -3009,6 +3294,9 @@
           "name": "switch/height-32",
           "type": "FLOAT",
           "css": "switch-height-32",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 32
           }
@@ -3017,6 +3305,9 @@
           "name": "switch/thumb-on-32",
           "type": "FLOAT",
           "css": "switch-thumb-on-32",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 26
           }
@@ -3025,6 +3316,9 @@
           "name": "switch/thumb-off-32",
           "type": "FLOAT",
           "css": "switch-thumb-off-32",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 20.8
           }
@@ -3033,6 +3327,9 @@
           "name": "switch/inset-32",
           "type": "FLOAT",
           "css": "switch-inset-32",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Mode 1": 3
           }
@@ -3041,6 +3338,9 @@
           "name": "switch/min-target-height",
           "type": "FLOAT",
           "css": "switch-min-target-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 44
           }
@@ -3049,6 +3349,9 @@
           "name": "select/min-height/md",
           "type": "FLOAT",
           "css": "select-min-height-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": {
               "alias": "Component:text-field/min-height/md"
@@ -3059,6 +3362,9 @@
           "name": "select/min-height/lg",
           "type": "FLOAT",
           "css": "select-min-height-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": {
               "alias": "Component:text-field/min-height/lg"
@@ -3069,6 +3375,9 @@
           "name": "select/content-max-height",
           "type": "FLOAT",
           "css": "select-content-max-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Mode 1": 480
           }
@@ -3143,6 +3452,9 @@
           "name": "button/ghost-weight",
           "type": "FLOAT",
           "css": "button-ghost-weight",
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
           "values": {
             "Default": {
               "alias": "Typography:font/weight/bold"
@@ -3156,6 +3468,9 @@
           "name": "button/ghost-padding-x/small",
           "type": "FLOAT",
           "css": "button-ghost-padding-x-small",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Default": 12,
             "Inverse": 8
@@ -3165,6 +3480,9 @@
           "name": "button/ghost-padding-x/medium",
           "type": "FLOAT",
           "css": "button-ghost-padding-x-medium",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Default": 16,
             "Inverse": 8
@@ -3174,6 +3492,9 @@
           "name": "button/ghost-padding-x/large",
           "type": "FLOAT",
           "css": "button-ghost-padding-x-large",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Default": 20,
             "Inverse": 8
@@ -3183,6 +3504,9 @@
           "name": "button/ghost-padding-x/xsmall",
           "type": "FLOAT",
           "css": "button-ghost-padding-x-xsmall",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Default": 14,
             "Inverse": 8
@@ -3192,6 +3516,9 @@
           "name": "button/ghost-pressed-opacity",
           "type": "FLOAT",
           "css": "button-ghost-pressed-opacity",
+          "scopes": [
+            "OPACITY"
+          ],
           "values": {
             "Default": 100,
             "Inverse": 75
@@ -3209,6 +3536,9 @@
           "name": "menu/width/sm",
           "type": "FLOAT",
           "css": "menu-width-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Value": 200
           }
@@ -3217,6 +3547,9 @@
           "name": "menu/width/md",
           "type": "FLOAT",
           "css": "menu-width-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Value": 240
           }
@@ -3225,6 +3558,9 @@
           "name": "menu/item-min-height/sm",
           "type": "FLOAT",
           "css": "menu-item-min-height-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Value": 44
           }
@@ -3233,6 +3569,9 @@
           "name": "menu/item-min-height/md",
           "type": "FLOAT",
           "css": "menu-item-min-height-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Value": 48
           }
@@ -3241,6 +3580,9 @@
           "name": "menu/max-height",
           "type": "FLOAT",
           "css": "menu-max-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Value": 480
           }
@@ -3257,6 +3599,9 @@
           "name": "help-bubble/max-width",
           "type": "FLOAT",
           "css": "help-bubble-max-width",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
           "values": {
             "Value": 280
           }
@@ -3265,6 +3610,9 @@
           "name": "help-bubble/arrow-inset",
           "type": "FLOAT",
           "css": "help-bubble-arrow-inset",
+          "scopes": [
+            "GAP"
+          ],
           "values": {
             "Value": 14
           }
