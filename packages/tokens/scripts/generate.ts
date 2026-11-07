@@ -4,49 +4,11 @@
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
-type Alias = { alias: string };
-type Value = string | number | boolean | Alias;
+import type { Alias, Export, Value, Variable } from "./types";
 
-type Variable = {
-  name: string;
-  type: "COLOR" | "FLOAT" | "STRING" | "BOOLEAN";
-  css: string | null;
-  values: Record<string, Value>;
-};
-
-type Collection = { name: string; modes: string[]; variables: Variable[] };
-
-type TextStyle = {
-  name: string;
-  bound: Partial<
-    Record<"fontFamily" | "fontSize" | "lineHeight" | "fontWeight", string>
-  >;
-};
-
-type Effect = {
-  type: string;
-  x?: number;
-  y?: number;
-  blur: number;
-  spread?: number;
-  colorVariable?: string;
-};
-
-type Export = {
-  collections: Collection[];
-  textStyles: TextStyle[];
-  effectStyles: { name: string; effects: Effect[] }[];
-};
-
-// Foundation만 담는다. 컴포넌트 전용 컬렉션은 그 컴포넌트를 만들 때 추가한다.
-const COLLECTIONS = [
-  "Palette",
-  "Color",
-  "Spacing",
-  "Radius",
-  "Typography",
-  "Motion",
-];
+// Figma의 컬렉션은 모두 담고, 담지 않을 것만 적는다. 새 컬렉션은 저절로 들어온다.
+// Button surface는 모드가 Default·Inverse라 Light·Dark 블록에 넣을 수 없다. Button을 만들 때 담는 방법을 정한다.
+const EXCLUDED_COLLECTIONS = new Set(["Button surface"]);
 // Figma 설명에 레거시로 적혀 있고 현재 Layout 가이드(1040/640)와 값이 다르다.
 const EXCLUDED = new Set(["Spacing:layout/page-max", "Spacing:layout/gutter"]);
 // 쓰는 쪽이 고르는 용도별 스타일만 담는다. Scale/* 같은 조합은 쓰는 컴포넌트가 생기면 넣는다.
@@ -71,6 +33,22 @@ const THEME_SELECTOR: Record<string, string> = {
   Dark: '[data-theme="dark"]',
 };
 const ROOT_FONT_SIZE = 16;
+// 숫자의 단위는 Figma에서 그 변수를 쓸 수 있게 한 곳(scope)으로 정한다.
+const SCOPE_UNITS: Record<string, string> = {
+  GAP: "px",
+  WIDTH_HEIGHT: "px",
+  CORNER_RADIUS: "px",
+  STROKE_FLOAT: "px",
+  FONT_SIZE: "rem",
+  LINE_HEIGHT: "rem",
+  FONT_WEIGHT: "",
+};
+// 시간·비율처럼 scope로 나타낼 수 없는 숫자는 scope를 비워 두고 이름으로 정한다.
+const NAME_UNITS: [RegExp, string][] = [
+  [/^duration\//, "ms"],
+  [/^press\/max-width-reduction$/, "px"],
+  [/^press\/max-reduction$/, ""],
+];
 
 const root = new URL("../", import.meta.url);
 const data = JSON.parse(
@@ -88,7 +66,7 @@ const isAlias = (value: Value): value is Alias =>
 // "컬렉션:이름" → 변수. 가리키는 변수가 담는 범위 밖에 있으면 실패한다.
 const included = new Map<string, Variable>();
 for (const collection of data.collections) {
-  if (!COLLECTIONS.includes(collection.name)) {
+  if (EXCLUDED_COLLECTIONS.has(collection.name)) {
     continue;
   }
   for (const variable of collection.variables) {
@@ -105,29 +83,29 @@ const cssName = (key: string): string => {
   return variable.css ?? fail(`코드 이름이 없어요: ${key}`);
 };
 
-const unitOf = (collection: string, name: string): string => {
-  if (collection === "Spacing" || collection === "Radius") {
-    return "px";
+const unitOf = (key: string, variable: Variable): string => {
+  const scopes = variable.scopes ?? [];
+  const byName = NAME_UNITS.find(([pattern]) => pattern.test(variable.name));
+  if (scopes.length === 0 && byName) {
+    return byName[1];
   }
-  if (collection === "Typography" && /^font\/(size|line-height)\//.test(name)) {
-    return "rem";
+  const units = new Set(
+    scopes.map(
+      (scope) =>
+        SCOPE_UNITS[scope] ??
+        fail(`단위를 모르는 scope예요: ${key} (${scope})`),
+    ),
+  );
+  const [unit] = units;
+  if (unit === undefined || units.size > 1) {
+    return fail(
+      `단위를 하나로 정할 수 없어요: ${key} (scope: ${scopes.join(", ") || "없음"})`,
+    );
   }
-  if (collection === "Typography" && name.startsWith("font/weight/")) {
-    return "";
-  }
-  if (collection === "Motion" && name.startsWith("duration/")) {
-    return "ms";
-  }
-  if (collection === "Motion" && name === "press/max-width-reduction") {
-    return "px";
-  }
-  if (collection === "Motion" && name === "press/max-reduction") {
-    return "";
-  }
-  return fail(`단위를 모르는 숫자예요: ${collection}:${name}`);
+  return unit;
 };
 
-const cssValue = (collection: string, variable: Variable, value: Value) => {
+const cssValue = (key: string, variable: Variable, value: Value) => {
   if (isAlias(value)) {
     return `var(--${cssName(value.alias)})`;
   }
@@ -135,7 +113,7 @@ const cssValue = (collection: string, variable: Variable, value: Value) => {
     return value;
   }
   if (variable.type === "FLOAT" && typeof value === "number") {
-    const unit = unitOf(collection, variable.name);
+    const unit = unitOf(key, variable);
     const n = unit === "rem" ? round(value / ROOT_FONT_SIZE) : round(value);
     return `${String(n)}${unit}`;
   }
@@ -143,7 +121,7 @@ const cssValue = (collection: string, variable: Variable, value: Value) => {
     const fallback = FONT_FALLBACK[variable.name];
     return fallback ? `"${value}", ${fallback}` : value;
   }
-  return fail(`처리할 수 없는 값이에요: ${collection}:${variable.name}`);
+  return fail(`처리할 수 없는 값이에요: ${key}`);
 };
 
 // 그림자는 테마마다 색이 달라서 Color와 같은 블록에 둔다.
@@ -175,7 +153,7 @@ const themeLines: Record<string, string[]> = { Light: [], Dark: [] };
 let declarationCount = 0;
 
 for (const collection of data.collections) {
-  if (!COLLECTIONS.includes(collection.name)) {
+  if (EXCLUDED_COLLECTIONS.has(collection.name)) {
     continue;
   }
   const themed = collection.modes.length > 1;
@@ -183,14 +161,15 @@ for (const collection of data.collections) {
     fail(`모드가 Light·Dark가 아니에요: ${collection.name}`);
   }
   for (const variable of collection.variables) {
-    if (EXCLUDED.has(`${collection.name}:${variable.name}`)) {
+    const key = `${collection.name}:${variable.name}`;
+    if (EXCLUDED.has(key)) {
       continue;
     }
-    const name = cssName(`${collection.name}:${variable.name}`);
+    const name = cssName(key);
     for (const mode of collection.modes) {
       const value =
         variable.values[mode] ?? fail(`${mode} 값이 없어요: ${name}`);
-      const line = `  --${name}: ${cssValue(collection.name, variable, value)};`;
+      const line = `  --${name}: ${cssValue(key, variable, value)};`;
       const target = themed ? themeLines[mode] : rootLines;
       (target ?? fail(`모르는 모드예요: ${mode}`)).push(line);
     }

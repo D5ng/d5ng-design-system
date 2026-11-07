@@ -191,6 +191,90 @@ export const vars = {
     "maxReduction": "var(--press-max-reduction)",
     "maxWidthReduction": "var(--press-max-width-reduction)"
   },
+  "button": {
+    "minHeight": {
+      "sm": "var(--button-min-height-sm)",
+      "md": "var(--button-min-height-md)",
+      "lg": "var(--button-min-height-lg)",
+      "xs": "var(--button-min-height-xs)"
+    },
+    "focusWidth": "var(--button-focus-width)"
+  },
+  "textField": {
+    "minHeight": {
+      "sm": "var(--text-field-min-height-sm)",
+      "md": "var(--text-field-min-height-md)",
+      "lg": "var(--text-field-min-height-lg)"
+    },
+    "borderWidth": "var(--text-field-border-width)",
+    "focusWidth": "var(--text-field-focus-width)",
+    "iconSize": {
+      "sm": "var(--text-field-icon-size-sm)",
+      "md": "var(--text-field-icon-size-md)",
+      "lg": "var(--text-field-icon-size-lg)"
+    },
+    "clearSlotWidth": {
+      "sm": "var(--text-field-clear-slot-width-sm)",
+      "md": "var(--text-field-clear-slot-width-md)",
+      "lg": "var(--text-field-clear-slot-width-lg)"
+    }
+  },
+  "textarea": {
+    "minHeight": "var(--textarea-min-height)",
+    "contentMinHeight": "var(--textarea-content-min-height)"
+  },
+  "checkbox": {
+    "markSizeMedium": "var(--checkbox-mark-size-medium)",
+    "markSizeLarge": "var(--checkbox-mark-size-large)",
+    "minTargetHeight": "var(--checkbox-min-target-height)"
+  },
+  "radio": {
+    "markSizeMedium": "var(--radio-mark-size-medium)",
+    "markSizeLarge": "var(--radio-mark-size-large)",
+    "dotSizeMedium": "var(--radio-dot-size-medium)",
+    "dotSizeLarge": "var(--radio-dot-size-large)",
+    "dotSizeDisabledMedium": "var(--radio-dot-size-disabled-medium)",
+    "dotSizeDisabledLarge": "var(--radio-dot-size-disabled-large)",
+    "minTargetHeight": "var(--radio-min-target-height)"
+  },
+  "switch": {
+    "width16": "var(--switch-width-16)",
+    "height16": "var(--switch-height-16)",
+    "thumbOn16": "var(--switch-thumb-on-16)",
+    "thumbOff16": "var(--switch-thumb-off-16)",
+    "width24": "var(--switch-width-24)",
+    "height24": "var(--switch-height-24)",
+    "thumbOn24": "var(--switch-thumb-on-24)",
+    "thumbOff24": "var(--switch-thumb-off-24)",
+    "width32": "var(--switch-width-32)",
+    "height32": "var(--switch-height-32)",
+    "thumbOn32": "var(--switch-thumb-on-32)",
+    "thumbOff32": "var(--switch-thumb-off-32)",
+    "inset32": "var(--switch-inset-32)",
+    "minTargetHeight": "var(--switch-min-target-height)"
+  },
+  "select": {
+    "minHeight": {
+      "md": "var(--select-min-height-md)",
+      "lg": "var(--select-min-height-lg)"
+    },
+    "contentMaxHeight": "var(--select-content-max-height)"
+  },
+  "menu": {
+    "width": {
+      "sm": "var(--menu-width-sm)",
+      "md": "var(--menu-width-md)"
+    },
+    "itemMinHeight": {
+      "sm": "var(--menu-item-min-height-sm)",
+      "md": "var(--menu-item-min-height-md)"
+    },
+    "maxHeight": "var(--menu-max-height)"
+  },
+  "helpBubble": {
+    "maxWidth": "var(--help-bubble-max-width)",
+    "arrowInset": "var(--help-bubble-arrow-inset)"
+  },
   "shadow": {
     "sm": "var(--shadow-sm)",
     "md": "var(--shadow-md)",
