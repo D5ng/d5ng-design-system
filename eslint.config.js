@@ -51,8 +51,9 @@ export default defineConfig(
   {
     files: ["**/*.{ts,tsx}"],
     extends: [eslintReact.configs["recommended-type-checked"]],
-    // peer 범위가 React 18부터라서, forwardRef 대신 ref prop을 쓰라는 식의 19 전용 제안을 막는다.
-    settings: { "react-x": { version: "18.0.0" } },
+    // React 19만 지원하므로 forwardRef 대신 ref prop을 쓰라는 식의 19 규칙을 켠다.
+    // 설치된 react 버전이 아니라 peer 범위의 최솟값에 맞춘다.
+    settings: { "react-x": { version: "19.0.0" } },
     rules: reactHooksDuplicates,
   },
   comments.recommended,
@@ -94,7 +95,8 @@ export default defineConfig(
   },
   {
     // 설정 파일은 배포되지 않으므로 devDependencies를 써도 된다.
-    files: ["*.{js,ts}", "**/*.config.{js,ts}"],
+    // .css.ts도 빌드할 때 CSS와 클래스 이름으로 바뀌어 배포물에 import가 남지 않는다.
+    files: ["*.{js,ts}", "**/*.config.{js,ts}", "**/*.css.ts"],
     rules: {
       "import-x/no-extraneous-dependencies": [
         "error",
