@@ -73,3 +73,10 @@ chore: 이슈 폼 추가
 - `pkg:`는 건드린 패키지마다 붙인다
 - `breaking`: props·토큰의 이름이나 타입이 바뀌거나 사라질 때, 또는 기본 동작이 바뀔 때. 메이저 버전이 올라간다
 - `a11y`: 키보드, 스크린리더, 색 대비와 관련된 일
+
+## Storybook MCP
+
+UI 컴포넌트를 만들거나 쓸 때는 `pnpm storybook`을 띄우고 `.mcp.json`의 `d5ng-storybook` 서버(`http://localhost:6006/mcp`)를 쓴다. 작업 순서는 서버가 연결될 때 보내는 지침을 따른다.
+
+- 문서에 없는 props는 만들어 쓰지 않고 나에게 묻는다
+- 스토리는 `test-run`으로, 컴포넌트 테스트는 `pnpm test`로 확인한다
