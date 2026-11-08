@@ -16,7 +16,7 @@
     "**/*.css"
   ],
   "scripts": {
-    "generate": "node scripts/generate.ts",
+    "generate": "node scripts/generate.ts && pnpm build",
     "build": "vite build && cp src/generated/tokens.css dist/tokens.css",
     "typecheck": "tsc"
   },

@@ -10,7 +10,7 @@
     "lint:fix": "eslint . --cache --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky && pnpm --filter @d5ng/tokens build"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
