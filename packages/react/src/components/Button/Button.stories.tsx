@@ -40,6 +40,7 @@ const meta = {
   tags: ["autodocs"],
   args: { children: "변경 사항 저장" },
   argTypes: {
+    children: { control: "text" },
     variant: { control: "inline-radio", options: variants },
     size: { control: "inline-radio", options: sizes },
     fullWidth: { control: "boolean" },
@@ -49,11 +50,9 @@ const meta = {
     suffixIcon: { control: false },
   },
   parameters: {
-    docs: {
-      description: {
-        component:
-          "Figma의 `state`는 prop 하나가 아니에요. `disabled`·`loading`은 prop으로 넘기고, `hover`·`pressed`·`focusVisible`은 브라우저 상태라 CSS가 맡아요.",
-      },
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/5e7PW74E0sWvXqhHC1fpqz/d5ng?node-id=136-3734",
     },
   },
 } satisfies Meta<typeof Button>;
@@ -62,8 +61,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/** 가장 흔한 쓰임이에요. 기본은 primary · medium이에요. */
 export const Default: Story = {};
 
+/** 주요 동작 하나는 primary, 함께 놓는 보조 동작은 secondary·ghost로 해요. */
 export const Variants: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
@@ -74,6 +75,7 @@ export const Variants: Story = {
   ),
 };
 
+/** 주변 요소의 높이에 맞춰 골라요. */
 export const Sizes: Story = {
   render: (args) => (
     <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -84,6 +86,7 @@ export const Sizes: Story = {
   ),
 };
 
+/** 아이콘은 문구를 돕기만 해요. 버튼 이름은 문구로만 읽혀요. */
 export const WithIcon: Story = {
   render: (args) => (
     <div style={{ display: "flex", gap: 12 }}>
@@ -94,15 +97,17 @@ export const WithIcon: Story = {
   ),
 };
 
+/** 화면 아래 주요 동작처럼 너비를 꽉 채울 때 써요. */
 export const FullWidth: Story = {
   args: { fullWidth: true },
   parameters: { layout: "padded" },
 };
 
-// 비활성 색은 대비 기준(WCAG 1.4.3)에서 빠지는 게 맞아서 대비 검사를 꺼요.
+/** 지금은 할 수 없는 동작이에요. */
 export const Disabled: Story = {
   args: { disabled: true },
   parameters: {
+    // 비활성 색은 대비 기준(WCAG 1.4.3)에서 빠지는 게 맞아서 대비 검사를 꺼요.
     a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   render: (args) => (
@@ -114,6 +119,7 @@ export const Disabled: Story = {
   ),
 };
 
+/** 요청을 처리하는 동안 다시 누르지 못하게 해요. 너비는 그대로예요. */
 export const Loading: Story = {
   args: { loading: true },
   render: (args) => (
@@ -125,6 +131,7 @@ export const Loading: Story = {
   ),
 };
 
+/** 다른 화면으로 옮기기만 할 때 써요. 링크로 읽히고 모양만 버튼이에요. */
 export const AsLink: Story = {
   render: (args) => (
     <Button {...args} asChild>
