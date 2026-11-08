@@ -1454,7 +1454,7 @@
               "alias": "Palette:red/700"
             },
             "Dark": {
-              "alias": "Palette:red/300"
+              "alias": "Palette:red/700"
             }
           }
         },
@@ -1467,7 +1467,7 @@
               "alias": "Palette:red/800"
             },
             "Dark": {
-              "alias": "Palette:red/400"
+              "alias": "Palette:red/800"
             }
           }
         },
@@ -1480,7 +1480,7 @@
               "alias": "Palette:red/900"
             },
             "Dark": {
-              "alias": "Palette:red/500"
+              "alias": "Palette:red/900"
             }
           }
         },
@@ -1493,7 +1493,7 @@
               "alias": "Palette:gray/0"
             },
             "Dark": {
-              "alias": "Palette:gray/950"
+              "alias": "Palette:gray/0"
             }
           }
         },
@@ -3380,6 +3380,94 @@
           ],
           "values": {
             "Mode 1": 480
+          }
+        },
+        {
+          "name": "button/icon-size/xs",
+          "type": "FLOAT",
+          "css": "button-icon-size-xs",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 16
+          }
+        },
+        {
+          "name": "button/loading-size/xs",
+          "type": "FLOAT",
+          "css": "button-loading-size-xs",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 14
+          }
+        },
+        {
+          "name": "button/icon-size/sm",
+          "type": "FLOAT",
+          "css": "button-icon-size-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 16
+          }
+        },
+        {
+          "name": "button/loading-size/sm",
+          "type": "FLOAT",
+          "css": "button-loading-size-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 14
+          }
+        },
+        {
+          "name": "button/icon-size/md",
+          "type": "FLOAT",
+          "css": "button-icon-size-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 20
+          }
+        },
+        {
+          "name": "button/loading-size/md",
+          "type": "FLOAT",
+          "css": "button-loading-size-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 16
+          }
+        },
+        {
+          "name": "button/icon-size/lg",
+          "type": "FLOAT",
+          "css": "button-icon-size-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 24
+          }
+        },
+        {
+          "name": "button/loading-size/lg",
+          "type": "FLOAT",
+          "css": "button-loading-size-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 18
           }
         }
       ]
