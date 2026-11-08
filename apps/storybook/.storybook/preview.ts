@@ -6,8 +6,7 @@ import type { Preview } from "@storybook/react-vite";
 
 const preview: Preview = {
   decorators: [
-    // 토큰의 다크 값은 [data-theme="dark"]에 걸려 있다.
-    // Radix 포털 콘텐츠도 같은 값을 받도록 html에 붙인다.
+    // 다크 토큰은 [data-theme="dark"]에 걸려 있어요. Radix 포털도 받도록 html에 붙여요.
     withThemeByDataAttribute({
       themes: { light: "light", dark: "dark" },
       defaultTheme: "light",

@@ -4,15 +4,15 @@ import type { CSSProperties } from "react";
 
 import * as styles from "./Colors.css";
 
-// 시멘틱 색을 견본으로 보여 준다. 툴바에서 테마를 바꾸면 값이 같이 바뀌는지 확인하는 용도다.
+// 시멘틱 색 견본이에요. 툴바로 테마를 바꿔 값이 바뀌는지 봐요.
 const meta = {
   title: "Foundations/Colors",
   parameters: {
     layout: "padded",
     a11y: {
       config: {
-        // 글자색 견본 "Aa"는 색을 보여 주는 용도다. disabled나 반전 바탕용 글자색은
-        // 일반 바탕에서 대비가 낮은 게 맞으므로 이 요소만 대비 검사에서 뺀다.
+        // 글자색 견본 "Aa"는 대비 검사에서 빼요.
+        // disabled·반전 바탕용 색은 일반 바탕에서 대비가 낮은 게 맞아요.
         rules: [
           { id: "color-contrast", selector: `*:not(.${styles.fgSampleText})` },
         ],
@@ -26,12 +26,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 type Kind = "bg" | "fg" | "stroke";
 
-// vars의 값은 "var(--color-bg-layer-default)" 꼴이라 Figma와 비교하기 쉽게 변수 이름만 꺼낸다.
+// "var(--color-bg-layer-default)"에서 변수 이름만 꺼내요. Figma와 비교하기 쉬워요.
 function cssVariableName(value: string) {
   return value.slice("var(".length, -")".length);
 }
 
-// 견본에서 항목마다 달라지는 색만 인라인으로 넣는다.
+// 항목마다 달라지는 색만 인라인으로 넣어요.
 function colorStyle(kind: Kind, value: string): CSSProperties {
   if (kind === "bg") {
     return { background: value };

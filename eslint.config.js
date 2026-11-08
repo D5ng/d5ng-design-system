@@ -97,9 +97,8 @@ export default defineConfig(
   },
   storybook.configs["flat/recommended"],
   {
-    // 설정 파일은 배포되지 않으므로 devDependencies를 써도 된다.
-    // .css.ts도 빌드할 때 CSS와 클래스 이름으로 바뀌어 배포물에 import가 남지 않는다.
-    // 스토리와 apps/는 빌드 결과에 들어가지 않는다.
+    // 배포물에 import가 남지 않는 파일은 devDependencies를 써도 돼요.
+    // 설정 파일, .css.ts(빌드하면 CSS와 클래스 이름이 돼요), 스토리, apps/가 그래요.
     files: [
       "*.{js,ts}",
       "**/*.config.{js,ts}",

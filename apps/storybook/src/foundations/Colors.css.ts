@@ -32,14 +32,14 @@ const sampleBase = style({
   flexShrink: 0,
 });
 
-// 글자색 견본 "Aa". 스토리의 접근성 검사에서 이 클래스 하나로 가리키므로 따로 둔다.
+// 글자색 견본 "Aa"예요. 접근성 검사에서 이 클래스 하나로 가리키려고 따로 둬요.
 export const fgSampleText = style({
   ...textStyles.headingSection,
   display: "grid",
   placeItems: "center",
 });
 
-// 색 값은 항목마다 달라서 스토리에서 인라인으로 넣는다. 여기는 종류별 모양만 정한다.
+// 종류별 모양만 정해요. 색은 항목마다 달라서 스토리에서 넣어요.
 export const sample = styleVariants({
   bg: [sampleBase, { border: `1px solid ${vars.color.stroke.neutralWeak}` }],
   fg: [sampleBase, fgSampleText],

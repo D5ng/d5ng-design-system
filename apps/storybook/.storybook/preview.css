@@ -1,4 +1,4 @@
-/* 쓰는 쪽 앱처럼 바탕과 글자에 토큰을 입혀서, 다크 모드로 바꾸면 화면 전체가 같이 바뀌게 한다. */
+/* 쓰는 쪽 앱처럼 바탕과 글자에 토큰을 입혀서 다크 모드에서 화면 전체가 바뀌게 해요. */
 body {
   background: var(--color-bg-layer-default);
   color: var(--color-fg-neutral);
