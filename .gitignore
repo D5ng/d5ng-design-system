@@ -10,5 +10,5 @@ coverage
 .env.*
 .eslintcache
 
-# Claude Code가 만든 다른 브랜치의 worktree. Prettier가 이 파일을 읽어 검사에서 뺀다.
+# Claude Code가 만든 다른 브랜치의 worktree예요. Prettier가 이 파일을 읽어 검사에서 빼요.
 .claude/worktrees/
