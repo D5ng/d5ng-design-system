@@ -35,7 +35,12 @@ export default defineConfig({
   plugins: [
     react(),
     vanillaExtractPlugin(),
-    dts({ include: ["src"] }),
+    // 테스트·스토리 타입은 배포물에 넣지 않아요.
+    // 테스트 파일의 타입 검사는 tsc(tsconfig)가 맡아요.
+    dts({
+      include: ["src"],
+      exclude: ["src/**/*.test.tsx", "src/**/*.stories.tsx"],
+    }),
     cssLayer(),
   ],
   build: {

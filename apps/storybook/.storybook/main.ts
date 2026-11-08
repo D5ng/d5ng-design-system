@@ -23,6 +23,8 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@storybook/addon-themes",
     "@storybook/addon-vitest",
+    // AI 에이전트가 컴포넌트 문서를 읽고 스토리 테스트를 돌리는 MCP 서버를 /mcp에 열어요.
+    "@storybook/addon-mcp",
   ],
   typescript: {
     // 기본 react-docgen은 recipe 타입을 못 따라가서 variant·size가 문서 표에서 빠져요.
@@ -37,6 +39,8 @@ const config: StorybookConfig = {
       propFilter: (prop) => !prop.parent?.fileName.includes("node_modules"),
     },
   },
+  // MCP의 docs 도구가 읽는 컴포넌트 props 목록을 만들어요.
+  features: { componentsManifest: true },
   core: { disableTelemetry: true },
   // 컴포넌트를 소스에서 읽어서 .css.ts를 처리할 플러그인이 필요해요.
   viteFinal: (viteConfig) =>

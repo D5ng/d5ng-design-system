@@ -19,13 +19,13 @@ export const textStyles = {
     fontFamily: vars.font.family.base,
     fontSize: vars.font.size.t7,
     lineHeight: vars.font.lineHeight.t7,
-    fontWeight: vars.font.weight.bold,
+    fontWeight: vars.font.weight.semibold,
   },
   headingGroup: {
     fontFamily: vars.font.family.base,
     fontSize: vars.font.size.t6,
     lineHeight: vars.font.lineHeight.t6,
-    fontWeight: vars.font.weight.bold,
+    fontWeight: vars.font.weight.semibold,
   },
   bodyDefault: {
     fontFamily: vars.font.family.base,

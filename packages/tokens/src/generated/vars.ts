@@ -172,7 +172,8 @@ export const vars = {
     "weight": {
       "regular": "var(--d5ng-font-weight-regular)",
       "medium": "var(--d5ng-font-weight-medium)",
-      "bold": "var(--d5ng-font-weight-bold)"
+      "bold": "var(--d5ng-font-weight-bold)",
+      "semibold": "var(--d5ng-font-weight-semibold)"
     }
   },
   "duration": {
@@ -188,8 +189,7 @@ export const vars = {
     "linear": "var(--d5ng-easing-linear)"
   },
   "press": {
-    "maxReduction": "var(--d5ng-press-max-reduction)",
-    "maxWidthReduction": "var(--d5ng-press-max-width-reduction)"
+    "maxReduction": "var(--d5ng-press-max-reduction)"
   },
   "button": {
     "minHeight": {
