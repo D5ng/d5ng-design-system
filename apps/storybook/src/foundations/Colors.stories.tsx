@@ -1,80 +1,64 @@
-import { vars } from "@d5ng/tokens";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { CSSProperties } from "react";
+import { expect } from "storybook/test";
 
+import { type ColorSection, componentSection, sections } from "./colorGroups";
 import * as styles from "./Colors.css";
+import { ColorSwatch } from "./ColorSwatch";
 
-// 시멘틱 색 견본이에요. 툴바로 테마를 바꿔 값이 바뀌는지 봐요.
+// 역할별로 묶은 색 띠예요. 색을 누르면 지금 테마의 값과 팔레트 참조를 보여 줘요.
 const meta = {
   title: "Foundations/Colors",
-  parameters: {
-    layout: "padded",
-    a11y: {
-      config: {
-        // 글자색 견본 "Aa"는 대비 검사에서 빼요.
-        // disabled·반전 바탕용 색은 일반 바탕에서 대비가 낮은 게 맞아요.
-        rules: [
-          { id: "color-contrast", selector: `*:not(.${styles.fgSampleText})` },
-        ],
-      },
-    },
-  },
+  parameters: { layout: "fullscreen" },
 } satisfies Meta;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-type Kind = "bg" | "fg" | "stroke";
 
-// "var(--d5ng-color-bg-layer-default)"에서 쓰는 쪽이 쓸 변수 이름만 꺼내요.
-function cssVariableName(value: string) {
-  return value.slice("var(".length, -")".length);
-}
-
-// 항목마다 달라지는 색만 인라인으로 넣어요.
-function colorStyle(kind: Kind, value: string): CSSProperties {
-  if (kind === "bg") {
-    return { background: value };
-  }
-  if (kind === "fg") {
-    return { color: value };
-  }
-  return { borderColor: value };
-}
-
-function Swatches({ kind }: { kind: Kind }) {
+function Section({ section }: { section: ColorSection }) {
   return (
     <section className={styles.section}>
-      <h2 className={styles.heading}>{kind}</h2>
-      <ul className={styles.list}>
-        {Object.entries(vars.color[kind]).map(([name, value]) => (
-          <li key={name} className={styles.item}>
-            <span
-              className={styles.sample[kind]}
-              style={colorStyle(kind, value)}
-            >
-              {kind === "fg" ? "Aa" : null}
-            </span>
-            <span className={styles.label}>
-              <strong>{name}</strong>
-              <br />
-              <code className={styles.variableName}>
-                {cssVariableName(value)}
-              </code>
-            </span>
-          </li>
-        ))}
-      </ul>
+      <h2 className={styles.sectionTitle}>{section.title}</h2>
+      <p className={styles.sectionLead}>{section.description}</p>
+      {section.families.map((family) => (
+        <div key={family.title} className={styles.family}>
+          <h3 className={styles.familyTitle}>{family.title}</h3>
+          {family.description ? (
+            <p className={styles.familyLead}>{family.description}</p>
+          ) : null}
+          <ul className={styles.bar}>
+            {family.tokens.map((token) => (
+              <ColorSwatch key={token.name} token={token} />
+            ))}
+          </ul>
+        </div>
+      ))}
     </section>
   );
 }
 
 export const Semantic: Story = {
   render: () => (
-    <>
-      <Swatches kind="bg" />
-      <Swatches kind="fg" />
-      <Swatches kind="stroke" />
-    </>
+    <main className={styles.page}>
+      <p className={styles.eyebrow}>Foundations</p>
+      <h1 className={styles.title}>Colors</h1>
+      <p className={styles.lead}>
+        역할에 맞는 색을 고르면 Light와 Dark에서 같은 의미를 유지합니다.
+        앱에서는 역할 색을 쓰고 팔레트 색은 직접 쓰지 않습니다. 툴바에서 테마를
+        바꿀 수 있고, 색을 누르면 값을 볼 수 있습니다.
+      </p>
+      {sections.map((section) => (
+        <Section key={section.title} section={section} />
+      ))}
+      <Section section={componentSection} />
+    </main>
   ),
+  play: async ({ canvas, userEvent }) => {
+    await userEvent.click(
+      canvas.getByRole("button", { name: "fg/neutral-muted" }),
+    );
+    const popover = canvas.getByRole("dialog", { name: "fg/neutral-muted" });
+    await expect(popover).toBeVisible();
+    await expect(popover).toHaveTextContent(/#[0-9A-F]{6}/);
+  },
 };
