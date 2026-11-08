@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "generate": "node scripts/generate.ts && pnpm build",
-    "build": "vite build && cp src/generated/tokens.css dist/tokens.css",
+    "build": "vite build",
     "typecheck": "tsc"
   },
   "devDependencies": {
