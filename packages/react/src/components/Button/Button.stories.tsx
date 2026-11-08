@@ -30,15 +30,7 @@ function ArrowIcon() {
   );
 }
 
-const variants = [
-  "brand-solid",
-  "neutral-weak",
-  "neutral-solid",
-  "neutral-outline",
-  "brand-outline",
-  "ghost",
-  "critical-solid",
-] as const;
+const variants = ["primary", "secondary", "ghost", "critical"] as const;
 
 const sizes = ["xsmall", "small", "medium", "large"] as const;
 
@@ -48,11 +40,21 @@ const meta = {
   tags: ["autodocs"],
   args: { children: "변경 사항 저장" },
   argTypes: {
-    variant: { control: "select", options: variants },
+    variant: { control: "inline-radio", options: variants },
     size: { control: "inline-radio", options: sizes },
-    width: { control: "inline-radio", options: ["hug", "fill"] },
-    leadingIcon: { control: false },
-    trailingIcon: { control: false },
+    fullWidth: { control: "boolean" },
+    disabled: { control: "boolean" },
+    loading: { control: "boolean" },
+    prefixIcon: { control: false },
+    suffixIcon: { control: false },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Figma의 `state`는 prop 하나가 아니에요. `disabled`·`loading`은 prop으로 넘기고, `hover`·`pressed`·`focusVisible`은 브라우저 상태라 CSS가 맡아요.",
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -83,21 +85,17 @@ export const Sizes: Story = {
 };
 
 export const WithIcon: Story = {
-  // 아이콘은 한쪽에만 둘 수 있어서 args를 통째로 넘기지 않아요.
-  render: ({ variant, size, width, children }) => (
+  render: (args) => (
     <div style={{ display: "flex", gap: 12 }}>
-      <Button {...{ variant, size, width }} leadingIcon={<PlusIcon />}>
-        {children}
-      </Button>
-      <Button {...{ variant, size, width }} trailingIcon={<ArrowIcon />}>
-        {children}
-      </Button>
+      <Button {...args} prefixIcon={<PlusIcon />} />
+      <Button {...args} suffixIcon={<ArrowIcon />} />
+      <Button {...args} prefixIcon={<PlusIcon />} suffixIcon={<ArrowIcon />} />
     </div>
   ),
 };
 
-export const Fill: Story = {
-  args: { width: "fill" },
+export const FullWidth: Story = {
+  args: { fullWidth: true },
   parameters: { layout: "padded" },
 };
 

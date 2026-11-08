@@ -1,39 +1,35 @@
 import { vars } from "@d5ng/tokens";
-import { createVar, keyframes, style } from "@vanilla-extract/css";
+import { createVar, globalStyle, keyframes, style } from "@vanilla-extract/css";
 import { recipe, type RecipeVariants } from "@vanilla-extract/recipes";
 
 // variant마다 색만 바꾸고 상태 규칙은 base에서 한 번만 써요.
 const bg = createVar();
 const bgHover = createVar();
 const bgPressed = createVar();
-// Solid는 pressed 색, Outline·Ghost는 투명이에요.
-const bgLoading = createVar();
 const bgDisabled = createVar();
 const fg = createVar();
-const border = createVar();
 
 const iconSize = createVar();
 const loadingSize = createVar();
 
+// 상태 선택자는 한 곳에서만 정해요. 접근성 속성이 곧 스타일 조건이에요.
 const disabledSelector = ':disabled, [aria-disabled="true"]';
+const loadingSelector = '[aria-busy="true"]';
 
 function colors(values: {
-  bg?: string;
+  bg: string;
   hover: string;
   pressed: string;
+  disabled: string;
   fg: string;
-  border?: string;
 }) {
-  const solid = values.bg !== undefined;
   return {
     vars: {
-      [bg]: values.bg ?? "transparent",
+      [bg]: values.bg,
       [bgHover]: values.hover,
       [bgPressed]: values.pressed,
-      [bgLoading]: solid ? values.pressed : "transparent",
-      [bgDisabled]: solid ? vars.color.bg.disabled : "transparent",
+      [bgDisabled]: values.disabled,
       [fg]: values.fg,
-      [border]: values.border ?? "transparent",
     },
   };
 }
@@ -70,8 +66,6 @@ export const button = recipe({
     boxSizing: "border-box",
     margin: 0,
     border: "none",
-    // Outline은 Figma처럼 안쪽 1px 테두리라 패딩이 바뀌지 않아요.
-    boxShadow: `inset 0 0 0 1px ${border}`,
     background: bg,
     color: fg,
     fontFamily: vars.font.family.base,
@@ -90,19 +84,20 @@ export const button = recipe({
         outline: `${vars.button.focusWidth} solid ${vars.color.stroke.focusRing}`,
         outlineOffset: vars.button.focusWidth,
       },
-      "&:active:not(:disabled, [aria-disabled='true'])": {
+      [`&:active:not(${disabledSelector})`]: {
         background: bgPressed,
         transitionDuration: vars.duration.fast,
       },
       [`&:is(${disabledSelector})`]: {
         cursor: "not-allowed",
       },
-      "&:is(:disabled, [aria-disabled='true']):not([data-loading])": {
+      [`&:is(${disabledSelector}):not(${loadingSelector})`]: {
         background: bgDisabled,
         color: vars.color.fg.disabled,
       },
-      "&[data-loading]": {
-        background: bgLoading,
+      // Figma처럼 모든 variant가 로딩 중에는 눌린 배경을 유지해요.
+      [`&${loadingSelector}`]: {
+        background: bgPressed,
         cursor: "progress",
       },
     },
@@ -110,7 +105,7 @@ export const button = recipe({
     "@media": {
       "(hover: hover)": {
         selectors: {
-          "&:hover:not(:active, :disabled, [aria-disabled='true'])": {
+          [`&:hover:not(:active, ${disabledSelector})`]: {
             background: bgHover,
           },
         },
@@ -120,46 +115,33 @@ export const button = recipe({
 
   variants: {
     variant: {
-      "brand-solid": colors({
+      primary: colors({
         bg: vars.color.bg.actionPrimary,
         hover: vars.color.bg.actionPrimaryHover,
         pressed: vars.color.bg.actionPrimaryPressed,
+        disabled: vars.color.bg.disabled,
         fg: vars.color.fg.onActionPrimary,
       }),
-      "neutral-weak": colors({
+      secondary: colors({
         bg: vars.color.bg.neutralWeak,
         hover: vars.color.bg.neutralWeakHover,
         pressed: vars.color.bg.neutralWeakPressed,
+        disabled: vars.color.bg.disabled,
         fg: vars.color.fg.neutral,
       }),
-      "neutral-solid": colors({
-        bg: vars.color.bg.actionNeutral,
-        hover: vars.color.bg.actionNeutralHover,
-        pressed: vars.color.bg.actionNeutralPressed,
-        fg: vars.color.fg.onActionNeutral,
-      }),
-      "neutral-outline": colors({
-        hover: vars.color.bg.neutralWeak,
-        pressed: vars.color.bg.neutralWeakPressed,
-        fg: vars.color.fg.neutral,
-        border: vars.color.stroke.neutralMuted,
-      }),
-      // Figma에서 의도한 차이예요. pressed가 Neutral Outline보다 한 단계 옅어요.
-      "brand-outline": colors({
-        hover: vars.color.bg.neutralWeak,
-        pressed: vars.color.bg.neutralWeakHover,
-        fg: vars.color.fg.brand,
-        border: vars.color.stroke.neutralMuted,
-      }),
+      // 배경 없이 글자만 보이다가 hover·pressed에서만 배경이 생겨요.
       ghost: colors({
+        bg: "transparent",
         hover: vars.color.bg.neutralWeak,
         pressed: vars.color.bg.neutralWeakPressed,
+        disabled: "transparent",
         fg: vars.color.fg.neutral,
       }),
-      "critical-solid": colors({
+      critical: colors({
         bg: vars.color.bg.actionCritical,
         hover: vars.color.bg.actionCriticalHover,
         pressed: vars.color.bg.actionCriticalPressed,
+        disabled: vars.color.bg.disabled,
         fg: vars.color.fg.onActionSolid,
       }),
     },
@@ -210,32 +192,32 @@ export const button = recipe({
         loading: vars.button.loadingSize.lg,
       }),
     },
-    width: {
-      // 눌림 축소는 Hug만 해요. Fill은 넓어서 같은 배율이면 너무 많이 줄어요.
-      hug: {
+    fullWidth: {
+      // 눌림 축소는 콘텐츠 너비일 때만 해요. 꽉 찬 너비는 같은 배율이면 너무 많이 줄어요.
+      false: {
         selectors: {
-          "&:active:not(:disabled, [aria-disabled='true'])": {
+          [`&:active:not(${disabledSelector})`]: {
             transform: `scale(calc(1 - ${vars.press.maxReduction}))`,
           },
         },
         "@media": {
           "(prefers-reduced-motion: reduce)": {
             selectors: {
-              "&:active:not(:disabled, [aria-disabled='true'])": {
+              [`&:active:not(${disabledSelector})`]: {
                 transform: "none",
               },
             },
           },
         },
       },
-      fill: { display: "flex", width: "100%" },
+      true: { display: "flex", width: "100%" },
     },
   },
 
   defaultVariants: {
-    variant: "brand-solid",
-    size: "small",
-    width: "hug",
+    variant: "primary",
+    size: "medium",
+    fullWidth: false,
   },
 });
 
@@ -247,7 +229,7 @@ export const content = style({
   alignItems: "center",
   gap: "inherit",
   selectors: {
-    "[data-loading] > &": { opacity: 0 },
+    [`${loadingSelector} > &`]: { opacity: 0 },
   },
 });
 
@@ -257,6 +239,9 @@ export const icon = style({
   width: iconSize,
   height: iconSize,
 });
+
+// 아이콘 라이브러리마다 기본 크기가 달라서 자리에 맞춰 늘이거나 줄여요.
+globalStyle(`${icon} > svg`, { width: "100%", height: "100%" });
 
 const spin = keyframes({ to: { transform: "rotate(360deg)" } });
 

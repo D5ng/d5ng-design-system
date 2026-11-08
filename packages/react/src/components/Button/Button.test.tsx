@@ -14,6 +14,22 @@ describe("Button", () => {
       .toBeInTheDocument();
   });
 
+  it("앞뒤 아이콘은 이름에 섞이지 않아요", async () => {
+    // 이름이 붙은 아이콘을 넣어도 버튼 이름은 문구만 남아야 해요.
+    await render(
+      <Button
+        prefixIcon={<svg role="img" aria-label="더하기" />}
+        suffixIcon={<svg role="img" aria-label="화살표" />}
+      >
+        저장
+      </Button>,
+    );
+
+    await expect
+      .element(page.getByRole("button", { name: "저장", exact: true }))
+      .toBeInTheDocument();
+  });
+
   it("폼 안에서 기본으로 제출하지 않아요", async () => {
     await render(<Button>저장</Button>);
 
