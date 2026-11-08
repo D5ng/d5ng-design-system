@@ -167,6 +167,7 @@
   --d5ng-font-weight-regular: 400;
   --d5ng-font-weight-medium: 500;
   --d5ng-font-weight-bold: 700;
+  --d5ng-font-weight-semibold: 600;
   --d5ng-duration-fast: 100ms;
   --d5ng-duration-normal: 150ms;
   --d5ng-duration-slow: 250ms;
@@ -174,8 +175,7 @@
   --d5ng-easing-enter: cubic-bezier(0, 0, 0.2, 1);
   --d5ng-easing-exit: cubic-bezier(0.4, 0, 1, 1);
   --d5ng-easing-linear: cubic-bezier(0, 0, 1, 1);
-  --d5ng-press-max-reduction: 0.02;
-  --d5ng-press-max-width-reduction: 6px;
+  --d5ng-press-max-reduction: 0.04;
   --d5ng-duration-shimmer: 1500ms;
   --d5ng-button-min-height-sm: 44px;
   --d5ng-button-min-height-md: 48px;
