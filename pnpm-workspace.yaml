@@ -4,11 +4,11 @@ packages:
 
 peerDependencyRules:
   allowedVersions:
-    # 6.10.2의 peer 범위는 ESLint 9까지지만 ESLint 10에서 규칙이 정상 동작하는 것을 확인했다.
-    # jsx-a11y가 ESLint 10을 공식 지원하면 이 항목을 지운다.
+    # 6.10.2의 peer 범위는 ESLint 9까지지만 ESLint 10에서 규칙이 정상 동작하는 걸 확인했어요.
+    # jsx-a11y가 ESLint 10을 공식 지원하면 이 항목을 지워요.
     eslint-plugin-jsx-a11y>eslint: "10"
 
 allowBuilds:
-  # vanilla-extract가 쓰는 esbuild다. 실행 파일은 @esbuild/<플랫폼> 패키지로 받으므로
-  # 설치 확인용 postinstall은 돌리지 않는다.
+  # vanilla-extract가 쓰는 esbuild예요.
+  # 실행 파일은 @esbuild/<플랫폼> 패키지로 받아서 설치 확인용 postinstall은 돌리지 않아요.
   esbuild: false

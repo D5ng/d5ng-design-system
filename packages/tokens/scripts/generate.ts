@@ -1,17 +1,17 @@
-// figma/variables.json으로 src/generated/의 CSS·TS 파일을 만든다.
-// 이름은 Figma 코드 이름(code syntax)을 그대로 쓰고, 이 스크립트는 값과 단위만 붙인다.
-// 모르는 값이 나오면 추측하지 않고 실패한다. Figma가 바뀌면 여기서 먼저 알 수 있게 하려는 것이다.
+// figma/variables.json으로 src/generated/의 CSS·TS 파일을 만들어요.
+// 이름은 Figma 코드 이름(code syntax)을 그대로 쓰고, 이 스크립트는 값과 단위만 붙여요.
+// 모르는 값이 나오면 추측하지 않고 실패해요. Figma가 바뀌면 여기서 먼저 알 수 있어요.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 import type { Alias, Export, Value, Variable } from "./types";
 
-// Figma의 컬렉션은 모두 담고, 담지 않을 것만 적는다. 새 컬렉션은 저절로 들어온다.
-// Button surface는 모드가 Default·Inverse라 Light·Dark 블록에 넣을 수 없다. Button을 만들 때 담는 방법을 정한다.
+// Figma의 컬렉션은 모두 담고, 담지 않을 것만 적어요. 새 컬렉션은 저절로 들어와요.
+// Button surface는 모드가 Default·Inverse라 Light·Dark 블록에 넣을 수 없어요. Button을 만들 때 담는 방법을 정해요.
 const EXCLUDED_COLLECTIONS = new Set(["Button surface"]);
-// Figma 설명에 레거시로 적혀 있고 현재 Layout 가이드(1040/640)와 값이 다르다.
+// Figma 설명에 레거시로 적혀 있고 현재 Layout 가이드(1040/640)와 값이 달라요.
 const EXCLUDED = new Set(["Spacing:layout/page-max", "Spacing:layout/gutter"]);
-// 쓰는 쪽이 고르는 용도별 스타일만 담는다. Scale/* 같은 조합은 쓰는 컴포넌트가 생기면 넣는다.
+// 쓰는 쪽이 고르는 용도별 스타일만 담아요. Scale/* 같은 조합은 쓰는 컴포넌트가 생기면 넣어요.
 const TEXT_STYLES = [
   "Display",
   "Heading/Page",
@@ -23,7 +23,7 @@ const TEXT_STYLES = [
   "Label/Default",
   "Code/Block",
 ];
-// Figma에는 글꼴 이름만 있어서, 글꼴을 불러오지 못했을 때 쓸 대체 글꼴을 붙인다.
+// Figma에는 글꼴 이름만 있어서, 글꼴을 불러오지 못했을 때 쓸 대체 글꼴을 붙여요.
 const FONT_FALLBACK: Record<string, string> = {
   "font/family/base": "system-ui, sans-serif",
   "font/family/code": "ui-monospace, monospace",
@@ -33,7 +33,7 @@ const THEME_SELECTOR: Record<string, string> = {
   Dark: '[data-theme="dark"]',
 };
 const ROOT_FONT_SIZE = 16;
-// 숫자의 단위는 Figma에서 그 변수를 쓸 수 있게 한 곳(scope)으로 정한다.
+// 숫자의 단위는 Figma에서 그 변수를 쓸 수 있게 한 곳(scope)으로 정해요.
 const SCOPE_UNITS: Record<string, string> = {
   GAP: "px",
   WIDTH_HEIGHT: "px",
@@ -43,7 +43,7 @@ const SCOPE_UNITS: Record<string, string> = {
   LINE_HEIGHT: "rem",
   FONT_WEIGHT: "",
 };
-// 시간·비율처럼 scope로 나타낼 수 없는 숫자는 scope를 비워 두고 이름으로 정한다.
+// 시간·비율처럼 scope로 나타낼 수 없는 숫자는 scope를 비워 두고 이름으로 정해요.
 const NAME_UNITS: [RegExp, string][] = [
   [/^duration\//, "ms"],
   [/^press\/max-width-reduction$/, "px"],
@@ -63,7 +63,7 @@ const round = (n: number) => Number(n.toFixed(4));
 const isAlias = (value: Value): value is Alias =>
   typeof value === "object" && "alias" in value;
 
-// "컬렉션:이름" → 변수. 가리키는 변수가 담는 범위 밖에 있으면 실패한다.
+// "컬렉션:이름" → 변수. 가리키는 변수가 담는 범위 밖에 있으면 실패해요.
 const included = new Map<string, Variable>();
 for (const collection of data.collections) {
   if (EXCLUDED_COLLECTIONS.has(collection.name)) {
@@ -124,8 +124,8 @@ const cssValue = (key: string, variable: Variable, value: Value) => {
   return fail(`처리할 수 없는 값이에요: ${key}`);
 };
 
-// 그림자는 테마마다 색이 달라서 Color와 같은 블록에 둔다.
-// :root에만 두면 var()가 :root에서 라이트 색으로 계산된 채 상속돼서 다크 영역에서도 라이트 그림자가 나온다.
+// 그림자는 테마마다 색이 달라서 Color와 같은 블록에 둬요.
+// :root에만 두면 var()가 :root에서 라이트 색으로 계산된 채 상속돼서 다크 영역에서도 라이트 그림자가 나와요.
 const shadows = data.effectStyles.map((style) => {
   const layers = style.effects.map((e) => {
     if (e.type !== "DROP_SHADOW" || e.colorVariable === undefined) {
@@ -217,7 +217,7 @@ const setPath = (tree: Tree, path: string[], value: string, key: string) => {
   }
 };
 
-// Palette는 내보내지 않는다. 컴포넌트가 원본값 대신 용도별 이름을 쓰게 하려는 것이다.
+// Palette는 내보내지 않아요. 컴포넌트가 원본값 대신 용도별 이름을 쓰게 해요.
 const vars: Tree = {};
 for (const key of included.keys()) {
   const [collection = "", name = ""] = key.split(":");

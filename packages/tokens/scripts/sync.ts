@@ -1,10 +1,10 @@
-// `/sync-tokens`에서 쓰는 도구다. 실행 순서는 .claude/skills/sync-tokens/SKILL.md에 있다.
+// `/sync-tokens`에서 쓰는 도구예요. 실행 순서는 .claude/skills/sync-tokens/SKILL.md에 있어요.
 //
-//   changed <지문 파일>             Figma 지문과 variables.json을 비교해 다시 받을 것을 알려 준다
-//   merge <지문 파일> <받은 파일>…  받은 컬렉션·스타일을 variables.json에 합친다
-//   diff                            커밋된 variables.json과 비교해 바뀐 토큰을 보여 준다
+//   changed <지문 파일>             Figma 지문과 variables.json을 비교해 다시 받을 것을 알려 줘요
+//   merge <지문 파일> <받은 파일>…  받은 컬렉션·스타일을 variables.json에 합쳐요
+//   diff                            커밋된 variables.json과 비교해 바뀐 토큰을 보여 줘요
 //
-// 지문은 따로 저장하지 않고 variables.json에서 매번 계산한다.
+// 지문은 따로 저장하지 않고 variables.json에서 매번 계산해요.
 
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
@@ -20,7 +20,7 @@ const fail = (message: string): never => {
   throw new Error(`[tokens] ${message}`);
 };
 
-// figma/export.figma.js의 fingerprint와 같은 계산이다. 한쪽을 바꾸면 다른 쪽도 바꾼다.
+// figma/export.figma.js의 fingerprint와 같은 계산이에요. 한쪽을 바꾸면 다른 쪽도 바꿔요.
 const fingerprint = (value: unknown) => {
   const text = JSON.stringify(value);
   let hash = 0x811c9dc5;
@@ -93,7 +93,7 @@ const merge = (printsPath: string, partPaths: string[]) => {
     }
   }
 
-  // 받은 것은 Figma 지문과 같아야 하고, 받지 않은 것은 지금 파일이 Figma와 같아야 한다.
+  // 받은 것은 Figma 지문과 같아야 하고, 받지 않은 것은 지금 파일이 Figma와 같아야 해요.
   const pick = (name: string, local: unknown) => {
     const value = received.get(name) ?? local;
     if (fingerprint(value) !== figma[name]) {

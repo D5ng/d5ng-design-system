@@ -10,7 +10,7 @@ type Dependencies = Partial<
 >;
 const { dependencies, peerDependencies }: Dependencies = pkg;
 
-// 쓰는 쪽이 설치하는 패키지는 번들에 넣지 않는다 (react/jsx-runtime 같은 하위 경로 포함).
+// 쓰는 쪽이 설치하는 패키지는 번들에 넣지 않아요 (react/jsx-runtime 같은 하위 경로 포함).
 const external = Object.keys({ ...dependencies, ...peerDependencies }).map(
   (name) => new RegExp(`^${name}($|/)`),
 );

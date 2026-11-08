@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# GitHub 저장소의 라벨을 .github/labels.json과 맞춘다.
+# GitHub 저장소의 라벨을 .github/labels.json과 맞춰요.
 #
-#   scripts/sync-labels.sh           만들고 갱신만 한다. 파일에 없는 라벨은 목록만 보여준다
-#   scripts/sync-labels.sh --prune   파일에 없는 라벨을 지운다 (붙어 있던 이슈·PR에서도 사라진다)
+#   scripts/sync-labels.sh           만들고 갱신만 해요. 파일에 없는 라벨은 목록만 보여 줘요
+#   scripts/sync-labels.sh --prune   파일에 없는 라벨을 지워요 (붙어 있던 이슈·PR에서도 사라져요)
 #
 # 필요한 것: gh(로그인된 상태), jq
 set -euo pipefail
@@ -16,7 +16,7 @@ if [[ "${1:-}" == "--prune" ]]; then
   prune=true
 fi
 
-# 1. 파일에 있는 라벨: 없으면 만들고, 있으면 색과 설명을 덮어쓴다
+# 1. 파일에 있는 라벨: 없으면 만들고, 있으면 색과 설명을 덮어써요
 while IFS=$'\t' read -r name color description; do
   gh label create "$name" --color "$color" --description "$description" --force </dev/null
   echo "✓ $name"

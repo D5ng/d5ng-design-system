@@ -1,6 +1,6 @@
 pnpm-lock.yaml
-# 라벨 하나를 한 줄로 보려고 일부러 맞춰 둔 형식이라 Prettier가 바꾸지 않게 한다.
+# 라벨 하나를 한 줄로 보려고 일부러 맞춘 형식이라 Prettier가 바꾸지 않게 해요.
 .github/labels.json
-# 스크립트가 만드는 파일이라 그 출력 형식을 그대로 둔다.
+# 스크립트가 만드는 파일이라 출력 형식을 그대로 둬요.
 packages/tokens/figma/variables.json
 packages/tokens/src/generated
