@@ -226,6 +226,9 @@ importers:
 
   apps/storybook:
     devDependencies:
+      '@d5ng/react':
+        specifier: workspace:*
+        version: link:../../packages/react
       '@d5ng/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
