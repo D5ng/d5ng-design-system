@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "build": "vite build",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "test": "vitest run --passWithNoTests"
   },
   "devDependencies": {
     "@d5ng/tokens": "workspace:*",
@@ -26,10 +27,14 @@
     "@vanilla-extract/css": "^1.21.3",
     "@vanilla-extract/vite-plugin": "^5.2.6",
     "@vitejs/plugin-react": "^6.2.1",
+    "@vitest/browser-playwright": "^5.1.0",
+    "playwright": "^1.65.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "vite": "^8.3.6",
-    "vite-plugin-dts": "^5.1.2"
+    "vite-plugin-dts": "^5.1.2",
+    "vitest": "^5.1.0",
+    "vitest-browser-react": "^2.3.0"
   },
   "peerDependencies": {
     "react": "^19",

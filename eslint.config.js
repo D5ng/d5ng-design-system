@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import comments from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintReact from "@eslint-react/eslint-plugin";
+import vitest from "@vitest/eslint-plugin";
 import { defineConfig, globalIgnores } from "eslint/config";
 import prettier from "eslint-config-prettier";
 import importX from "eslint-plugin-import-x";
@@ -97,13 +98,18 @@ export default defineConfig(
   },
   storybook.configs["flat/recommended"],
   {
+    files: ["**/*.test.{ts,tsx}"],
+    ...vitest.configs.recommended,
+  },
+  {
     // 배포물에 import가 남지 않는 파일은 devDependencies를 써도 돼요.
-    // 설정 파일, .css.ts(빌드하면 CSS와 클래스 이름이 돼요), 스토리, apps/가 그래요.
+    // 설정 파일, .css.ts(빌드하면 CSS와 클래스 이름이 돼요), 스토리, 테스트, apps/가 그래요.
     files: [
       "*.{js,ts}",
       "**/*.config.{js,ts}",
       "**/*.css.ts",
       "**/*.stories.{ts,tsx}",
+      "**/*.test.{ts,tsx}",
       "apps/**",
     ],
     rules: {

@@ -5,6 +5,8 @@ storybook-static
 *.tsbuildinfo
 *.tgz
 coverage
+# Vitest 브라우저 모드가 실패한 테스트의 스크린샷을 남겨요
+.vitest
 .DS_Store
 .env
 .env.*
