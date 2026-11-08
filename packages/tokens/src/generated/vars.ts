@@ -198,7 +198,19 @@ export const vars = {
       "lg": "var(--d5ng-button-min-height-lg)",
       "xs": "var(--d5ng-button-min-height-xs)"
     },
-    "focusWidth": "var(--d5ng-button-focus-width)"
+    "focusWidth": "var(--d5ng-button-focus-width)",
+    "iconSize": {
+      "xs": "var(--d5ng-button-icon-size-xs)",
+      "sm": "var(--d5ng-button-icon-size-sm)",
+      "md": "var(--d5ng-button-icon-size-md)",
+      "lg": "var(--d5ng-button-icon-size-lg)"
+    },
+    "loadingSize": {
+      "xs": "var(--d5ng-button-loading-size-xs)",
+      "sm": "var(--d5ng-button-loading-size-sm)",
+      "md": "var(--d5ng-button-loading-size-md)",
+      "lg": "var(--d5ng-button-loading-size-lg)"
+    }
   },
   "textField": {
     "minHeight": {
