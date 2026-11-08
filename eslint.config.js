@@ -7,6 +7,7 @@ import importX from "eslint-plugin-import-x";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import storybook from "eslint-plugin-storybook";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
@@ -21,6 +22,7 @@ const reactHooksDuplicates = Object.fromEntries(
 export default defineConfig(
   globalIgnores([
     "**/dist",
+    "**/storybook-static",
     // .claude/worktrees에는 Claude Code가 만든 다른 브랜치의 worktree가 있다.
     ".claude/worktrees",
     // export.figma.js는 Figma Plugin API에서 실행하는 스크립트라 최상위 return을 써요.
@@ -93,10 +95,17 @@ export default defineConfig(
       "simple-import-sort/exports": "error",
     },
   },
+  storybook.configs["flat/recommended"],
   {
-    // 설정 파일은 배포되지 않으므로 devDependencies를 써도 된다.
-    // .css.ts도 빌드할 때 CSS와 클래스 이름으로 바뀌어 배포물에 import가 남지 않는다.
-    files: ["*.{js,ts}", "**/*.config.{js,ts}", "**/*.css.ts"],
+    // 배포물에 import가 남지 않는 파일은 devDependencies를 써도 돼요.
+    // 설정 파일, .css.ts(빌드하면 CSS와 클래스 이름이 돼요), 스토리, apps/가 그래요.
+    files: [
+      "*.{js,ts}",
+      "**/*.config.{js,ts}",
+      "**/*.css.ts",
+      "**/*.stories.{ts,tsx}",
+      "apps/**",
+    ],
     rules: {
       "import-x/no-extraneous-dependencies": [
         "error",
