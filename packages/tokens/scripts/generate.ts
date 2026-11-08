@@ -1,5 +1,5 @@
 // figma/variables.json으로 src/generated/의 CSS·TS 파일을 만들어요.
-// 이름은 Figma 코드 이름(code syntax)을 그대로 쓰고, 이 스크립트는 값과 단위만 붙여요.
+// 이름은 Figma 코드 이름(code syntax)에 접두사만 붙여 쓰고, 이 스크립트는 값과 단위만 붙여요.
 // 모르는 값이 나오면 추측하지 않고 실패해요. Figma가 바뀌면 여기서 먼저 알 수 있어요.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -32,6 +32,8 @@ const THEME_SELECTOR: Record<string, string> = {
   Light: ':root,\n[data-theme="light"]',
   Dark: '[data-theme="dark"]',
 };
+// 쓰는 쪽 CSS 변수(예: Tailwind의 --radius-md)와 겹치지 않게 모든 이름 앞에 붙여요.
+const PREFIX = "d5ng-";
 const ROOT_FONT_SIZE = 16;
 // 숫자의 단위는 Figma에서 그 변수를 쓸 수 있게 한 곳(scope)으로 정해요.
 const SCOPE_UNITS: Record<string, string> = {
@@ -80,7 +82,7 @@ for (const collection of data.collections) {
 const cssName = (key: string): string => {
   const variable =
     included.get(key) ?? fail(`담지 않은 변수를 가리켜요: ${key}`);
-  return variable.css ?? fail(`코드 이름이 없어요: ${key}`);
+  return PREFIX + (variable.css ?? fail(`코드 이름이 없어요: ${key}`));
 };
 
 const unitOf = (key: string, variable: Variable): string => {
@@ -138,7 +140,7 @@ const shadows = data.effectStyles.map((style) => {
   });
   return {
     name: style.name,
-    css: style.name.replaceAll("/", "-"),
+    css: PREFIX + style.name.replaceAll("/", "-"),
     value: layers.join(", "),
   };
 });

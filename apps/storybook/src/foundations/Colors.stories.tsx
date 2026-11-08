@@ -26,7 +26,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 type Kind = "bg" | "fg" | "stroke";
 
-// "var(--color-bg-layer-default)"에서 변수 이름만 꺼내요. Figma와 비교하기 쉬워요.
+// "var(--d5ng-color-bg-layer-default)"에서 쓰는 쪽이 쓸 변수 이름만 꺼내요.
 function cssVariableName(value: string) {
   return value.slice("var(".length, -")".length);
 }
