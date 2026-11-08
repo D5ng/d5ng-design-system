@@ -8,6 +8,8 @@ import viteConfig from "./vite.config";
 export default mergeConfig(
   viteConfig,
   defineConfig({
+    // recipe 런타임을 미리 최적화해요. 안 그러면 첫 실행 중에 Vite가 페이지를 다시 불러와 테스트가 실패할 수 있어요.
+    optimizeDeps: { include: ["@vanilla-extract/recipes/createRuntimeFn"] },
     test: {
       setupFiles: ["./vitest.setup.ts"],
       browser: {
