@@ -69,7 +69,7 @@ export const button = recipe({
     background: bg,
     color: fg,
     fontFamily: vars.font.family.base,
-    fontWeight: vars.font.weight.bold,
+    fontWeight: vars.font.weight.semibold,
     textDecoration: "none",
     whiteSpace: "nowrap",
     cursor: "pointer",
