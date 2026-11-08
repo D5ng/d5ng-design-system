@@ -10,7 +10,11 @@ const config: StorybookConfig = {
     // 토큰처럼 컴포넌트가 아닌 것의 스토리예요.
     "../src/**/*.stories.@(ts|tsx)",
   ],
-  addons: ["@storybook/addon-a11y", "@storybook/addon-themes"],
+  addons: [
+    "@storybook/addon-a11y",
+    "@storybook/addon-themes",
+    "@storybook/addon-vitest",
+  ],
   core: { disableTelemetry: true },
   // 컴포넌트를 소스에서 읽어서 .css.ts를 처리할 플러그인이 필요해요.
   viteFinal: (viteConfig) =>
