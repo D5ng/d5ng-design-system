@@ -32,7 +32,9 @@ Conventional Commits 형식에 요약은 한글 짧은 명사형으로 쓴다(`f
 
 | 무엇                   | 위치                                     | 읽히는 때                                       |
 | ---------------------- | ---------------------------------------- | ----------------------------------------------- |
+| 컴포넌트 구현 순서     | `/component` 스킬                        | 컴포넌트를 새로 만들거나 크게 고칠 때           |
 | 컴포넌트 코드 규칙     | `.claude/rules/components.md`            | `packages/react/src`의 파일을 열 때             |
+| 스타일 규칙            | `.claude/rules/styles.md`                | `.css.ts` 파일을 열 때                          |
 | 코드 주석 규칙         | `.claude/rules/comments.md`              | `.ts`·`.tsx`·`.js` 파일을 열 때                 |
 | Storybook 규칙         | `.claude/rules/storybook.md`             | 스토리, `apps/storybook`, 컴포넌트 파일을 열 때 |
 | 이슈·커밋·PR·라벨 규칙 | `/pr` 스킬(`.claude/skills/pr/rules.md`) | 이슈나 PR을 올릴 때                             |
