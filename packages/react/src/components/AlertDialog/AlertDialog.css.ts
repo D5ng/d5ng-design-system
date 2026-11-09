@@ -24,6 +24,11 @@ const fadeSelectors = {
 // 화면 가장자리에서 띄우는 최소 여백이에요.
 const viewportMargin = vars.spacing[24];
 
+// Figma Specification의 간격이에요. 메시지 안(제목–설명–오류), 메시지와 버튼 사이, 버튼 사이예요.
+const messageGap = vars.spacing[8];
+const messageToActions = vars.spacing[16];
+const actionsGap = vars.spacing[8];
+
 export const overlay = style({
   position: "fixed",
   inset: 0,
@@ -50,7 +55,7 @@ export const content = style({
 
   display: "flex",
   flexDirection: "column",
-  gap: vars.spacing[8],
+  gap: messageGap,
   padding: vars.spacing[20],
   borderRadius: vars.radius.xl,
   background: vars.color.bg.layerFloating,
@@ -81,14 +86,14 @@ export const errorMessage = style({
 export const actions = style({
   display: "flex",
   flexWrap: "wrap",
-  gap: vars.spacing[8],
-  // Figma의 메시지–버튼 간격 16을 content gap 8에 더해 맞춰요.
-  marginTop: vars.spacing[8],
+  gap: actionsGap,
+  // content의 gap이 이미 메시지 간격만큼 띄우니, 나머지만 더해요.
+  marginTop: `calc(${messageToActions} - ${messageGap})`,
 });
 
 export const actionButton = style({
   // 두 버튼이 반씩 나눠 가져요. 라벨이 반 폭에 안 들어가면 줄이 넘어가 세로로 쌓이고, 각자 한 줄을 다 채워요.
-  flex: `1 1 calc((100% - ${vars.spacing[8]}) / 2)`,
+  flex: `1 1 calc((100% - ${actionsGap}) / 2)`,
   // Button의 최소 너비(높이와 같음)를 풀어 라벨 너비가 최소가 되게 해요. 줄 넘김은 이 값으로 정해져요.
   minWidth: "auto",
   // 라벨이 한 줄보다 길어도 버튼이 영역을 넘지 않게 해요.

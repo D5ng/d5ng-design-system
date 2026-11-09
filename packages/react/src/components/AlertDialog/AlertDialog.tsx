@@ -10,10 +10,13 @@ import * as styles from "./AlertDialog.css";
 const cancelSelector = "[data-alert-dialog-cancel]";
 const actionSelector = "[data-alert-dialog-action]";
 
-// Figma처럼 버튼 크기와 너비는 고정이라 쓰는 쪽이 바꾸지 못하게 해요.
+// Figma 규격("기존 Small Button")이에요. Cancel과 Action이 같이 써요.
+const fixedButtonProps = { size: "small", fullWidth: true } as const;
+
+// 고정한 값은 쓰는 쪽이 바꾸지 못하게 해요.
 type FixedButtonProps = Omit<
   ButtonProps,
-  "variant" | "size" | "fullWidth" | "asChild"
+  "variant" | "asChild" | keyof typeof fixedButtonProps
 >;
 
 // ---- Root
@@ -193,8 +196,7 @@ function AlertDialogCancel({
       <Button
         {...cancelProps}
         variant="secondary"
-        size="small"
-        fullWidth
+        {...fixedButtonProps}
         className={clsx(styles.actionButton, className)}
         data-alert-dialog-cancel=""
       />
@@ -227,8 +229,7 @@ function AlertDialogAction({
       <Button
         {...actionProps}
         variant={variant}
-        size="small"
-        fullWidth
+        {...fixedButtonProps}
         className={clsx(styles.actionButton, className)}
         data-alert-dialog-action=""
       />
