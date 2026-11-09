@@ -41,6 +41,7 @@ Conventional Commits 형식에 요약은 한글 짧은 명사형으로 쓴다(`f
 | Figma 토큰 동기화      | `/sync-tokens` 스킬                      | Figma 변수가 바뀌었을 때                        |
 | SEED·Montage 비교      | `/design-refs` 스킬                      | 컴포넌트를 계획하거나 비교할 때                 |
 | FF 항목별 문서         | `docs/ff/`                               | 코드·API를 판단할 때                            |
+| FF 리뷰 순서           | `/ff-review` 스킬                        | 변경을 FF 기준으로 리뷰할 때                    |
 | 컴포넌트 결정과 이유   | `docs/components/<이름>.md`              | 그 컴포넌트를 고칠 때                           |
 
 이름 규칙, 주석 머리말, 커밋 제목처럼 lint와 훅이 지키는 규칙은 어기면 에러 메시지가 알려 준다.
