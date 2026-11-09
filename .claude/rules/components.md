@@ -21,8 +21,9 @@ paths:
 - 상태는 `data-*`로 드러내고(`data-disabled=""`, `data-state="open"`) 스타일은 그 속성을 본다. 크기나 variant 같은 정적 값만 recipe 클래스로 둔다
 - asChild는 `Primitive.*`로 렌더한다
 - 쓰는 쪽 핸들러와 합칠 때는 `composeEventHandlers(onClick, …)`를 쓴다. 쓰는 쪽보다 먼저 막아야 하면 손으로 쓰고 이유를 주석으로 남긴다
+- 클래스는 `clsx(styles.button(…), className)`로 합친다
 
-## Radix를 먼저 찾는다
+## 직접 만들기 전에 찾는다
 
 필요한 동작은 이 순서로 찾고, 동작이 맞을 때만 쓴다.
 
@@ -30,7 +31,8 @@ paths:
 2. `radix-ui/internal`(`useControllableState`, `composeEventHandlers`, `useComposedRefs`, `Primitive`, `Presence`, `FocusScope`, `DismissableLayer`, `RovingFocus`, `Context` 등). Radix Themes도 이 경로를 쓴다
 3. 통합 패키지에 없을 때만 개별 `@radix-ui/*`를 `radix-ui`가 쓰는 버전으로 설치한다(`react-use-previous`, `number`, `react-use-rect`). `@radix-ui/react-*`는 `no-restricted-imports`가 막으니 그 패키지만 예외로 추가한다
 4. React 기본 기능(`useId` 등)
-5. 직접 만든다
+5. 널리 쓰이는 작은 라이브러리(예: 클래스 합치기는 `clsx`). 손으로 짠 코드가 읽기 불편하면 먼저 라이브러리가 있는지 찾아보고, 크기·관리 상태·다른 디자인 시스템의 사용 여부를 비교해 `dependencies`에 넣는다
+6. 직접 만든다
 
 ## 정책을 둘 곳
 
