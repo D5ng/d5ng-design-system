@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import { Slot } from "radix-ui";
 import { Primitive } from "radix-ui/internal";
 import type { ComponentProps, MouseEvent, ReactNode } from "react";
@@ -87,9 +88,7 @@ export function Button({
       data-loading={loading ? "" : undefined}
       {...buttonProps}
       asChild={asChild}
-      className={[styles.button({ variant, size, fullWidth }), className]
-        .filter(Boolean)
-        .join(" ")}
+      className={clsx(styles.button({ variant, size, fullWidth }), className)}
       disabled={nativeDisabled || undefined}
       aria-disabled={ariaDisabled || undefined}
       aria-busy={loading || undefined}
