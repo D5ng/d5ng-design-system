@@ -1,7 +1,7 @@
 import { readdirSync } from "node:fs";
 
 // 커밋 메시지 규칙의 기준이에요. CLAUDE.md "커밋과 PR 제목"을 기계로 검사해요.
-// feature는 squash 머지라 develop에는 PR 제목이 남아요. 나중에 CI에서 PR 제목도 이 설정으로 검사해요.
+// feature는 squash 머지라 develop에는 PR 제목이 남아요. PR 제목은 아직 검사하지 않고 #65에서 다뤄요.
 
 // scope는 패키지 폴더 이름이에요. 패키지가 늘어도 여기는 고치지 않아요.
 const packages = readdirSync(new URL("./packages", import.meta.url), {

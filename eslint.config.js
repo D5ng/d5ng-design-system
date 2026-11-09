@@ -64,6 +64,14 @@ export default defineConfig(
     plugins: { "import-x": importX, "simple-import-sort": simpleImportSort },
     rules: {
       "@eslint-community/eslint-comments/require-description": "error",
+      // 할 일은 이슈로 보내요. 머리말 뒤에 정하지 못한 일이 숨기 쉬워요.
+      "no-warning-comments": [
+        "error",
+        {
+          terms: ["todo", "fixme", "xxx", "hack", "note", "warning"],
+          location: "start",
+        },
+      ],
 
       // 각 파일에서 가장 가까운 package.json을 기준으로 봐요.
       // 배포되는 코드가 devDependencies나 선언하지 않은 패키지를 import하면 쓰는 쪽에서 깨져요.
