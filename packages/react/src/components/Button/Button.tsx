@@ -3,11 +3,13 @@ import type { ComponentProps, MouseEvent, ReactNode } from "react";
 
 import * as styles from "./Button.css";
 
+const SPINNER_RADIUS = 9;
+const SPINNER_CIRCUMFERENCE = 2 * Math.PI * SPINNER_RADIUS;
+// 원의 3/4만 그려서 도는 게 보이게 해요.
+const SPINNER_ARC = SPINNER_CIRCUMFERENCE * 0.75;
+
 // 문서에 보일 props는 여기서 직접 선언해요. recipe 기본값과 HTML 속성은 문서 표에 안 잡혀요.
-export type ButtonProps = Omit<
-  ComponentProps<"button">,
-  "children" | "disabled"
-> & {
+export type Props = Omit<ComponentProps<"button">, "children" | "disabled"> & {
   /** 버튼 문구예요. 버튼 이름으로 읽혀요. */
   children: ReactNode;
   /**
@@ -37,11 +39,6 @@ export type ButtonProps = Omit<
   asChild?: boolean;
 };
 
-const SPINNER_RADIUS = 9;
-const SPINNER_CIRCUMFERENCE = 2 * Math.PI * SPINNER_RADIUS;
-// 원의 3/4만 그려서 도는 게 보이게 해요.
-const SPINNER_ARC = SPINNER_CIRCUMFERENCE * 0.75;
-
 /**
  * 누르면 바로 실행되는 동작이에요. 화면만 옮길 때는 `asChild`로 `<a>`를 감싸요.
  *
@@ -62,27 +59,27 @@ export function Button({
   type,
   onClickCapture,
   children,
-  ...props
-}: ButtonProps) {
+  ...buttonProps
+}: Props) {
   // disabled 속성은 <button>에만 있고 포커스까지 빼요. 그 밖에는 aria-disabled로 알려요.
   const nativeDisabled = !asChild && disabled && !loading;
   const ariaDisabled = (disabled || loading) && !nativeDisabled;
 
   // 막아야 할 때만 멈추고, 아니면 쓰는 쪽의 onClickCapture를 이어서 불러요.
-  function handleClickCapture(event: MouseEvent<HTMLButtonElement>) {
+  const handleClickCapture = (event: MouseEvent<HTMLButtonElement>) => {
     if (ariaDisabled) {
       event.preventDefault();
       event.stopPropagation();
       return;
     }
     onClickCapture?.(event);
-  }
+  };
 
   const Root = asChild ? Slot.Root : "button";
 
   return (
     <Root
-      {...props}
+      {...buttonProps}
       className={[styles.button({ variant, size, fullWidth }), className]
         .filter(Boolean)
         .join(" ")}

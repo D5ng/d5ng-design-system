@@ -90,6 +90,18 @@ export default defineConfig(
             "VariableDeclarator[id.name=/^[A-Z]/] > :matches(ArrowFunctionExpression, FunctionExpression)",
           message: "컴포넌트는 function 선언으로 작성해요.",
         },
+        {
+          // 객체 메서드(vite 플러그인 훅 등)는 빼고 봐요.
+          selector:
+            "FunctionDeclaration[id.name=/^([A-Z]|use[A-Z])/] :matches(FunctionDeclaration, FunctionExpression):not(Property[method=true] > FunctionExpression, MethodDefinition > FunctionExpression)",
+          message: "컴포넌트와 hook 안의 함수는 const 화살표 함수로 써요.",
+        },
+        {
+          selector:
+            "FunctionDeclaration[id.name=/^[A-Z]/] > ObjectPattern > RestElement > Identifier[name!=/^(?!(rest|other)Props$)[a-z][a-zA-Z]*Props$/]",
+          message:
+            "props의 나머지는 렌더하는 부분 이름으로 받아요(예: ...buttonProps, ...triggerProps).",
+        },
       ],
 
       "simple-import-sort/imports": "error",
