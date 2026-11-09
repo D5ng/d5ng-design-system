@@ -75,8 +75,9 @@ export const button = recipe({
     cursor: "pointer",
     userSelect: "none",
     WebkitTapHighlightColor: "transparent",
+    // 누를 때는 spring-rapid, 뗄 때는 spring-quick으로 TDS 스프링과 같게 움직여요.
     transitionProperty: "background-color, transform",
-    transitionDuration: vars.duration.normal,
+    transitionDuration: vars.duration.springQuick,
     transitionTimingFunction: vars.easing.standard,
 
     selectors: {
@@ -86,7 +87,7 @@ export const button = recipe({
       },
       [`&:active:not(${disabledSelector})`]: {
         background: bgPressed,
-        transitionDuration: vars.duration.fast,
+        transitionDuration: vars.duration.springRapid,
       },
       [`&:is(${disabledSelector})`]: {
         cursor: "not-allowed",
@@ -107,6 +108,18 @@ export const button = recipe({
         selectors: {
           [`&:hover:not(:active, ${disabledSelector})`]: {
             background: bgHover,
+          },
+        },
+      },
+    },
+
+    // 곡선이 var()라 배열 대체값은 동작하지 않아요. linear()를 모르면 standard 곡선을 그대로 써요.
+    "@supports": {
+      "(transition-timing-function: linear(0, 1))": {
+        transitionTimingFunction: vars.easing.springQuick,
+        selectors: {
+          [`&:active:not(${disabledSelector})`]: {
+            transitionTimingFunction: vars.easing.springRapid,
           },
         },
       },

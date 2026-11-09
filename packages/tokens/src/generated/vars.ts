@@ -180,13 +180,17 @@ export const vars = {
     "fast": "var(--d5ng-duration-fast)",
     "normal": "var(--d5ng-duration-normal)",
     "slow": "var(--d5ng-duration-slow)",
-    "shimmer": "var(--d5ng-duration-shimmer)"
+    "shimmer": "var(--d5ng-duration-shimmer)",
+    "springRapid": "var(--d5ng-duration-spring-rapid)",
+    "springQuick": "var(--d5ng-duration-spring-quick)"
   },
   "easing": {
     "standard": "var(--d5ng-easing-standard)",
     "enter": "var(--d5ng-easing-enter)",
     "exit": "var(--d5ng-easing-exit)",
-    "linear": "var(--d5ng-easing-linear)"
+    "linear": "var(--d5ng-easing-linear)",
+    "springRapid": "var(--d5ng-easing-spring-rapid)",
+    "springQuick": "var(--d5ng-easing-spring-quick)"
   },
   "press": {
     "maxReduction": "var(--d5ng-press-max-reduction)"
