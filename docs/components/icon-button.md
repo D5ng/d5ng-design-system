@@ -18,6 +18,7 @@
 - **`loading`, `asChild`**: Figma에 loading 상태가 있고, 상태 규칙을 Button과 같이 써서 더하는 비용이 없어요. Montage에는 loading이 없어요
 - **공통 코드는 `components/_internal/`에 둬요**: 상태 규칙(`buttonState.ts`), 스피너, 색·상태·눌림 스타일(`buttonBase.css.ts`)을 Button과 같이 써요. Figma가 이 부분을 "Button과 같다"고 정했어요. 크기와 내용 배치는 각자 가져요(FF K2)
 - **공통 렌더 컴포넌트(`ButtonBase`)는 두지 않아요**: Radix Themes 방식이에요. 컴포넌트 파일만 읽어서는 로딩 때 무엇이 그려지는지 안 보이고(FF R6), 스피너가 `<a>` 안에 들어가는 게 Slot의 형제 합치기에 기대게 돼요
+- **아이콘은 Lucide(`lucide-react`)예요**: Figma 아이콘이 모두 Lucide라 이름과 모양이 그대로 맞아요. 스피너도 Figma loading 상태와 같은 `LoaderCircle`이고, 스토리 아이콘도 여기서 가져와요
 
 ## 뺀 것
 
@@ -27,4 +28,3 @@
 ## 열린 질문
 
 - **반전 표면 위의 Ghost**: #66에서 Button과 같이 다뤄요
-- **아이콘 패키지**: Figma는 Lucide를 써요. 코드에서 정하기 전까지 스토리는 견본 SVG를 그려요

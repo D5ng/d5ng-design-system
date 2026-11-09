@@ -1,34 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { House, Search } from "lucide-react";
 
 import { IconButton } from "./IconButton";
-
-// 아이콘 패키지를 정하기 전이라 견본 아이콘만 그려요.
-function SearchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
-      <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="m20 20-3.5-3.5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function HomeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
-      <path
-        d="M4 10.5 12 4l8 6.5V20h-5v-6h-6v6H4z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 const variants = ["primary", "secondary", "ghost", "critical"] as const;
 
@@ -38,7 +11,7 @@ const meta = {
   title: "Components/IconButton",
   component: IconButton,
   tags: ["autodocs"],
-  args: { "aria-label": "검색", children: <SearchIcon /> },
+  args: { "aria-label": "검색", children: <Search /> },
   argTypes: {
     "aria-label": { control: "text" },
     children: { control: false },
@@ -118,7 +91,7 @@ export const AsLink: Story = {
   render: (args) => (
     <IconButton {...args} asChild>
       <a href="#home">
-        <HomeIcon />
+        <House />
       </a>
     </IconButton>
   ),
