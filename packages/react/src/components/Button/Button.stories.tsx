@@ -1,34 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ArrowRight, Plus } from "lucide-react";
 
 import { Button } from "./Button";
-
-// 아이콘 패키지를 정하기 전이라 견본 아이콘만 그려요.
-function PlusIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
-      <path
-        d="M12 5v14M5 12h14"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
-      <path
-        d="M5 12h14m-6-6 6 6-6 6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 const variants = ["primary", "secondary", "ghost", "critical"] as const;
 
@@ -90,9 +63,9 @@ export const Sizes: Story = {
 export const WithIcon: Story = {
   render: (args) => (
     <div style={{ display: "flex", gap: 12 }}>
-      <Button {...args} prefixIcon={<PlusIcon />} />
-      <Button {...args} suffixIcon={<ArrowIcon />} />
-      <Button {...args} prefixIcon={<PlusIcon />} suffixIcon={<ArrowIcon />} />
+      <Button {...args} prefixIcon={<Plus />} />
+      <Button {...args} suffixIcon={<ArrowRight />} />
+      <Button {...args} prefixIcon={<Plus />} suffixIcon={<ArrowRight />} />
     </div>
   ),
 };
