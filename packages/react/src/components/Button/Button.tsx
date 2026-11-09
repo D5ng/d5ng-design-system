@@ -1,14 +1,12 @@
 import { clsx } from "clsx";
 import { Slot } from "radix-ui";
 import { Primitive } from "radix-ui/internal";
-import type { ComponentProps, MouseEvent, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
+import * as buttonBase from "../_internal/buttonBase.css";
+import { buttonStateProps } from "../_internal/buttonState";
+import { Spinner } from "../_internal/Spinner";
 import * as styles from "./Button.css";
-
-const SPINNER_RADIUS = 9;
-const SPINNER_CIRCUMFERENCE = 2 * Math.PI * SPINNER_RADIUS;
-// 원의 3/4만 그려서 도는 게 보이게 해요.
-const SPINNER_ARC = SPINNER_CIRCUMFERENCE * 0.75;
 
 // 문서에 보일 props는 여기서 직접 선언해요. recipe 기본값과 HTML 속성은 문서 표에 안 잡혀요.
 export type ButtonProps = Omit<
@@ -65,47 +63,33 @@ export function Button({
   children,
   ...buttonProps
 }: ButtonProps) {
-  // disabled 속성은 <button>에만 있고 포커스까지 빼요. 그 밖에는 aria-disabled로 알려요.
-  const nativeDisabled = !asChild && disabled && !loading;
-  const ariaDisabled = (disabled || loading) && !nativeDisabled;
-
-  // 쓰는 쪽 핸들러보다 먼저 막아야 해서 composeEventHandlers를 쓰지 않아요. 그건 쓰는 쪽을 먼저 불러요.
-  const handleClickCapture = (event: MouseEvent<HTMLButtonElement>) => {
-    if (ariaDisabled) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-    onClickCapture?.(event);
-  };
+  const { overridableProps, enforcedProps } = buttonStateProps({
+    disabled,
+    loading,
+    asChild,
+    onClickCapture,
+  });
 
   return (
     <Primitive.button
-      // asChild면 자식 요소의 type을 건드리지 않아요. 폼 안에서 실수로 제출되지 않게 기본은 "button"이에요.
-      type={asChild ? undefined : "button"}
-      // 스타일은 이 속성을 봐요. 누를 수 없으면(disabled나 loading) data-disabled가 붙어요.
-      data-disabled={disabled || loading ? "" : undefined}
-      data-loading={loading ? "" : undefined}
+      {...overridableProps}
       {...buttonProps}
       asChild={asChild}
       className={clsx(styles.button({ variant, size, fullWidth }), className)}
-      disabled={nativeDisabled || undefined}
-      aria-disabled={ariaDisabled || undefined}
-      aria-busy={loading || undefined}
-      onClickCapture={handleClickCapture}
+      {...enforcedProps}
     >
       <Slot.Slottable child={children}>
         {(child) => (
           <>
-            <span className={styles.content}>
+            <span className={buttonBase.content}>
               {prefixIcon ? (
-                <span className={styles.icon} aria-hidden>
+                <span className={buttonBase.icon} aria-hidden>
                   {prefixIcon}
                 </span>
               ) : null}
               {child}
               {suffixIcon ? (
-                <span className={styles.icon} aria-hidden>
+                <span className={buttonBase.icon} aria-hidden>
                   {suffixIcon}
                 </span>
               ) : null}
@@ -115,21 +99,5 @@ export function Button({
         )}
       </Slot.Slottable>
     </Primitive.button>
-  );
-}
-
-function Spinner() {
-  return (
-    <svg className={styles.spinner} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle
-        cx="12"
-        cy="12"
-        r={SPINNER_RADIUS}
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeDasharray={[SPINNER_ARC, SPINNER_CIRCUMFERENCE].join(" ")}
-      />
-    </svg>
   );
 }

@@ -27,7 +27,7 @@
 - **Brand Outline, Neutral Outline, Neutral Solid**: 역할이 `primary`·`secondary`와 겹쳐요. 필요한 화면이 생기면 더해요
 - **`color`, `fontWeight`**(SEED Ghost 전용)
 - **`bleed`, `bleedX`, `bleedY`, `flexGrow`**(SEED): 레이아웃 유틸 체계가 있어야 쓸모 있어요
-- **`layout="iconOnly"`(SEED), `iconOnly`(Montage)**: IconButton을 따로 둬요. aria-label을 타입으로 강제하기 쉬워요
+- **`layout="iconOnly"`(SEED), `iconOnly`(Montage)**: [IconButton](icon-button.md)을 따로 둬요. aria-label을 타입으로 강제하기 쉬워요
 - **`disableLoadingPreventEvents`, `disableInteraction`**(Montage)
 - **반응형 size**(Montage의 `xl`/`lg`/… prop)
 
