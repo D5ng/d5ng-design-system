@@ -13,6 +13,8 @@ concurrency:
 
 permissions:
   contents: read
+  # PR에 Storybook 링크 댓글을 달아요.
+  pull-requests: write
 
 jobs:
   chromatic:
@@ -30,6 +32,23 @@ jobs:
       - run: pnpm install --frozen-lockfile
       # 시각 변경이 있어도 성공으로 끝나요. 승인은 Chromatic의 UI Review 체크가 맡아요.
       - uses: chromaui/action@v18
+        id: chromatic
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/storybook
+      # Chromatic은 링크를 체크 목록에만 붙여서 눈에 잘 안 띄어요.
+      # push 이벤트에는 PR 번호가 없어서 브랜치로 열린 PR을 찾고, 없으면 건너뛰어요.
+      # 댓글은 하나만 두고 push마다 고쳐 써요(--edit-last).
+      - name: PR에 Storybook 링크 댓글
+        if: github.ref != 'refs/heads/develop'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STORYBOOK_URL: ${{ steps.chromatic.outputs.storybookUrl }}
+          BUILD_URL: ${{ steps.chromatic.outputs.buildUrl }}
+          CHANGE_COUNT: ${{ steps.chromatic.outputs.changeCount }}
+        run: |
+          pr=$(gh pr list --head "$GITHUB_REF_NAME" --state open --json number --jq '.[0].number // empty')
+          [ -z "$pr" ] && exit 0
+          body=$(printf '**Storybook 미리보기** (%s)\n\n- [Storybook 열기](%s)\n- [Chromatic 빌드](%s): 시각 변경 %s개\n' \
+            "${GITHUB_SHA::7}" "$STORYBOOK_URL" "$BUILD_URL" "${CHANGE_COUNT:-0}")
+          gh pr comment "$pr" --body "$body" --edit-last --create-if-none
