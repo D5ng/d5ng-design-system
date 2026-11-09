@@ -1,0 +1,35 @@
+name: Chromatic
+
+# Chromatic은 pull_request로 돌리면 기준 스냅샷을 잃거나 엉뚱한 기준과 비교할 수 있다고 해서 push로 돌려요.
+# develop 빌드가 있어야 squash 머지 뒤에도 PR에서 승인한 스냅샷이 새 기준이 돼요.
+# https://www.chromatic.com/docs/github-actions/
+on:
+  push:
+
+# develop 빌드는 기준이 되니 취소하지 않아요.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/develop' }}
+
+permissions:
+  contents: read
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # 비교할 기준 빌드를 git 기록으로 찾아요.
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # 시각 변경이 있어도 성공으로 끝나요. 승인은 Chromatic의 UI Review 체크가 맡아요.
+      - uses: chromaui/action@v18
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: apps/storybook
