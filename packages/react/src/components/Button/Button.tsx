@@ -1,4 +1,5 @@
 import { Slot } from "radix-ui";
+import { Primitive } from "radix-ui/internal";
 import type { ComponentProps, MouseEvent, ReactNode } from "react";
 
 import * as styles from "./Button.css";
@@ -59,7 +60,6 @@ export function Button({
   disabled = false,
   asChild = false,
   className,
-  type,
   onClickCapture,
   children,
   ...buttonProps
@@ -68,7 +68,7 @@ export function Button({
   const nativeDisabled = !asChild && disabled && !loading;
   const ariaDisabled = (disabled || loading) && !nativeDisabled;
 
-  // 막아야 할 때만 멈추고, 아니면 쓰는 쪽의 onClickCapture를 이어서 불러요.
+  // 쓰는 쪽 핸들러보다 먼저 막아야 해서 composeEventHandlers를 쓰지 않아요. 그건 쓰는 쪽을 먼저 불러요.
   const handleClickCapture = (event: MouseEvent<HTMLButtonElement>) => {
     if (ariaDisabled) {
       event.preventDefault();
@@ -78,16 +78,18 @@ export function Button({
     onClickCapture?.(event);
   };
 
-  const Root = asChild ? Slot.Root : "button";
-
   return (
-    <Root
+    <Primitive.button
+      // asChild면 자식 요소의 type을 건드리지 않아요. 폼 안에서 실수로 제출되지 않게 기본은 "button"이에요.
+      type={asChild ? undefined : "button"}
+      // 스타일은 이 속성을 봐요. 누를 수 없으면(disabled나 loading) data-disabled가 붙어요.
+      data-disabled={disabled || loading ? "" : undefined}
+      data-loading={loading ? "" : undefined}
       {...buttonProps}
+      asChild={asChild}
       className={[styles.button({ variant, size, fullWidth }), className]
         .filter(Boolean)
         .join(" ")}
-      // asChild면 자식 요소의 type을 건드리지 않아요. 폼 안에서 실수로 제출되지 않게 기본은 "button"이에요.
-      type={asChild ? type : (type ?? "button")}
       disabled={nativeDisabled || undefined}
       aria-disabled={ariaDisabled || undefined}
       aria-busy={loading || undefined}
@@ -113,7 +115,7 @@ export function Button({
           </>
         )}
       </Slot.Slottable>
-    </Root>
+    </Primitive.button>
   );
 }
 

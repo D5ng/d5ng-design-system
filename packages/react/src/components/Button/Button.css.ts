@@ -12,9 +12,9 @@ const fg = createVar();
 const iconSize = createVar();
 const loadingSize = createVar();
 
-// 상태 선택자는 한 곳에서만 정해요. 접근성 속성이 곧 스타일 조건이에요.
-const disabledSelector = ':disabled, [aria-disabled="true"]';
-const loadingSelector = '[aria-busy="true"]';
+// 상태 선택자는 한 곳에서만 정해요. Button.tsx가 붙이는 data 속성을 봐요.
+const disabledSelector = "[data-disabled]";
+const loadingSelector = "[data-loading]";
 
 function colors(values: {
   bg: string;
