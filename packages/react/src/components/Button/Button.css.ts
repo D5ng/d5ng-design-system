@@ -129,11 +129,11 @@ export const button = recipe({
   variants: {
     variant: {
       primary: colors({
-        bg: vars.color.bg.actionPrimary,
-        hover: vars.color.bg.actionPrimaryHover,
-        pressed: vars.color.bg.actionPrimaryPressed,
+        bg: vars.color.bg.brandSolid,
+        hover: vars.color.bg.brandSolidHover,
+        pressed: vars.color.bg.brandSolidPressed,
         disabled: vars.color.bg.disabled,
-        fg: vars.color.fg.onActionPrimary,
+        fg: vars.color.fg.onBrandSolid,
       }),
       secondary: colors({
         bg: vars.color.bg.neutralWeak,
@@ -151,11 +151,11 @@ export const button = recipe({
         fg: vars.color.fg.neutral,
       }),
       critical: colors({
-        bg: vars.color.bg.actionCritical,
-        hover: vars.color.bg.actionCriticalHover,
-        pressed: vars.color.bg.actionCriticalPressed,
+        bg: vars.color.bg.criticalSolid,
+        hover: vars.color.bg.criticalSolidHover,
+        pressed: vars.color.bg.criticalSolidPressed,
         disabled: vars.color.bg.disabled,
-        fg: vars.color.fg.onActionSolid,
+        fg: vars.color.fg.onCriticalSolid,
       }),
     },
     size: {

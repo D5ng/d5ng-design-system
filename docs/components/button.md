@@ -11,7 +11,7 @@
 
 ## 정한 것
 
-- **variant 4개(`primary`, `secondary`, `ghost`, `critical`)**: 따로 브랜드 색이 없어서 색이 아니라 역할로 지어요. 주 색은 `bg/action-primary` 토큰 값만 바꾸면 돼요
+- **variant 4개(`primary`, `secondary`, `ghost`, `critical`)**: 색(SEED `brandSolid`)이 아니라 중요도로 지어요. 색은 `Button.css.ts`에서 이어요(`primary` → `bg/brand-solid`, `critical` → `bg/critical-solid`). 버튼 전용 색 토큰(`action-*`)은 brand와 값이 같고 Checkbox·Radio·Switch도 써서 brand로 합쳤어요
 - **variant 하나로 표현**: Montage처럼 `variant`와 `color`로 나누면 `critical`+outline 같은 없는 조합이 생겨요(SEED와 같아요)
 - **기본값 `variant="primary"`, `size="medium"`**: SEED의 `defaultVariants`와 같아요
 - **size 4개(`xsmall`~`large`)**: Figma 값(32/44/48/56) 그대로예요
@@ -34,4 +34,4 @@
 ## 열린 질문
 
 - **반전 표면 위의 Ghost**: Snackbar 같은 반전 표면용 값을 코드에 담는 방법은 #66에서 다뤄요
-- **Alert Dialog의 `Tone`**(Brand/Neutral/Critical): 브랜드 색이 없다는 같은 이유로 정리할지 Alert Dialog를 만들 때 정해요. Figma에서 `Tone=Neutral`이 Archive로 뺀 Neutral Solid 버튼을 써요
+- **Alert Dialog의 `Tone`**(Brand/Neutral/Critical): variant를 색이 아니라 중요도로 짓는 같은 이유로 정리할지 Alert Dialog를 만들 때 정해요. Figma에서 `Tone=Neutral`이 Archive로 뺀 Neutral Solid 버튼을 써요
