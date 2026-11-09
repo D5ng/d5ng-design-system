@@ -116,6 +116,13 @@ export const variantColors = styleVariants({
     disabled: vars.color.bg.disabled,
     fg: vars.color.fg.onBrandSolid,
   }),
+  neutral: colors({
+    bg: vars.color.bg.neutralSolid,
+    hover: vars.color.bg.neutralSolidHover,
+    pressed: vars.color.bg.neutralSolidPressed,
+    disabled: vars.color.bg.disabled,
+    fg: vars.color.fg.onNeutralSolid,
+  }),
   secondary: colors({
     bg: vars.color.bg.neutralWeak,
     hover: vars.color.bg.neutralWeakHover,

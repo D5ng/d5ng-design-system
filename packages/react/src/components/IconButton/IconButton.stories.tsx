@@ -3,7 +3,13 @@ import { House, Search } from "lucide-react";
 
 import { IconButton } from "./IconButton";
 
-const variants = ["primary", "secondary", "ghost", "critical"] as const;
+const variants = [
+  "primary",
+  "neutral",
+  "secondary",
+  "ghost",
+  "critical",
+] as const;
 
 const sizes = ["xsmall", "small", "medium", "large"] as const;
 
