@@ -5,10 +5,10 @@ import * as styles from "./Colors.css";
 
 type Detail = { mode: string; hex: string; rgba: string };
 
-type Props = { token: ColorToken };
+type ColorSwatchProps = { token: ColorToken };
 type AliasProps = { mode: string; alias: string };
 
-export function ColorSwatch({ token }: Props) {
+export function ColorSwatch({ token }: ColorSwatchProps) {
   const popoverId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const fillRef = useRef<HTMLSpanElement>(null);

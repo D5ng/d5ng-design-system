@@ -42,7 +42,7 @@ chore: 이슈 폼 추가
 ### 이름과 형태
 
 - 컴포넌트는 `function` 선언으로, 그 안에서 만드는 함수는 `const` 화살표 함수로 쓴다 (lint)
-- props 타입은 파일 안에서 `Props`라고 짓는다. 한 파일에 컴포넌트가 둘 이상이면 `TriggerProps`처럼 나눈다. 패키지 밖으로는 `export type { Props as ButtonProps }`처럼 컴포넌트 이름을 붙여 내보낸다
+- props 타입은 컴포넌트 이름 뒤에 `Props`를 붙여 `ButtonProps`처럼 짓고, 패키지 밖으로도 그 이름 그대로 내보낸다. 파일 안에서만 쓰는 보조 컴포넌트도 `AliasProps`처럼 같은 규칙을 따른다
 - props는 매개변수에서 구조 분해하고, 나머지는 렌더하는 부분 이름으로 받는다: `...buttonProps`, `...triggerProps`, `...contentProps` (lint는 `restProps`, `props`, `rest`를 막는다. 이름이 부분과 맞는지는 리뷰에서 본다)
 - 제어 상태는 `open`, `defaultOpen`, `onOpenChange` 세 이름으로 받고 안에서는 `openProp`이라 부른다. 셋은 `useControllableState({ caller: NAME })`로 묶는다
 - 파일 순서: 상수(`NAME`) → 타입 → 컴포넌트 → 보조 함수 → export

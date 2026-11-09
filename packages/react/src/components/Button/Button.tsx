@@ -9,7 +9,10 @@ const SPINNER_CIRCUMFERENCE = 2 * Math.PI * SPINNER_RADIUS;
 const SPINNER_ARC = SPINNER_CIRCUMFERENCE * 0.75;
 
 // 문서에 보일 props는 여기서 직접 선언해요. recipe 기본값과 HTML 속성은 문서 표에 안 잡혀요.
-export type Props = Omit<ComponentProps<"button">, "children" | "disabled"> & {
+export type ButtonProps = Omit<
+  ComponentProps<"button">,
+  "children" | "disabled"
+> & {
   /** 버튼 문구예요. 버튼 이름으로 읽혀요. */
   children: ReactNode;
   /**
@@ -60,7 +63,7 @@ export function Button({
   onClickCapture,
   children,
   ...buttonProps
-}: Props) {
+}: ButtonProps) {
   // disabled 속성은 <button>에만 있고 포커스까지 빼요. 그 밖에는 aria-disabled로 알려요.
   const nativeDisabled = !asChild && disabled && !loading;
   const ariaDisabled = (disabled || loading) && !nativeDisabled;
