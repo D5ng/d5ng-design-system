@@ -48,4 +48,4 @@ Figma 변수 REST API는 Enterprise 전용이라, Figma MCP의 `use_figma`로 `p
    node packages/tokens/scripts/sync.ts diff
    ```
 
-   diff 결과와 generate 출력을 보여 주고 멈춘다. 이슈와 PR은 사용자가 확인한 뒤 CLAUDE.md 규칙대로 만든다. PR 본문에는 diff 결과를 그대로 붙인다.
+   diff 결과와 generate 출력을 보여 주고 멈춘다. 이슈와 PR은 사용자가 확인한 뒤 `/pr` 스킬 규칙대로 만든다. PR 본문에는 diff 결과를 그대로 붙인다.
