@@ -23,6 +23,10 @@ const TEXT_STYLES = [
   "Label/Default",
   "Code/Block",
 ];
+// 한글을 어절 단위로 줄바꿈해요. Figma에는 이 옵션이 없어서 웹 전용 값으로 덧붙여요.
+// keep-all만 쓰면 띄어쓰기 없는 긴 URL이 넘쳐서, 넘칠 때만 끊는 break-word를 함께 둬요.
+// anywhere는 flex·grid의 최소 폭까지 줄여 짧은 라벨이 한 글자씩 쌓일 수 있어서 쓰지 않아요.
+const LINE_BREAK = { wordBreak: "keep-all", overflowWrap: "break-word" };
 // Figma에는 글꼴 이름만 있어서, 글꼴을 불러오지 못했을 때 쓸 대체 글꼴을 붙여요.
 const FONT_FALLBACK: Record<string, string> = {
   "font/family/base": "system-ui, sans-serif",
@@ -262,6 +266,9 @@ const textStyleLines = TEXT_STYLES.map((styleName) => {
       fail(`${styleName}의 ${prop}이 변수에 묶여 있지 않아요`);
     return `    ${prop}: ${varPath(key)},`;
   });
+  for (const [prop, value] of Object.entries(LINE_BREAK)) {
+    props.push(`    ${prop}: "${value}",`);
+  }
   const key = camel(styleName.toLowerCase().replaceAll("/", "-"));
   return `  ${key}: {\n${props.join("\n")}\n  },`;
 });
