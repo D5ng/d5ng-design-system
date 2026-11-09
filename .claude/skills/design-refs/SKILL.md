@@ -24,7 +24,7 @@ description: SEED(당근)와 Montage(원티드) 디자인 시스템에서 컴포
 
 - **추가는 안 깨지고 빼기는 깨진다.** 지금 쓸 화면이 있는 것만 넣고, 나머지는 필요해질 때 추가한다.
 - **비용은 개수보다 조합이다.** variant 하나는 색 매핑 몇 줄이지만 prop 하나는 다른 prop과의 조합을 늘린다. 줄일 때는 prop과 동작부터 본다.
-- **이름은 개발 prop 이름이 기준이다.** Figma 속성도 같은 이름으로 맞춘다. 색이 아니라 역할로 짓는다. 우리에게는 따로 브랜드 색이 없다.
+- **이름은 개발 prop 이름이 기준이다.** Figma 속성도 같은 이름으로 맞춘다. prop은 색이 아니라 중요도로 짓는다(SEED `brandSolid` 대신 `primary`). 색 이름(`brand`, `critical`)은 토큰이 맡는다.
 - **두 곳이 갈리면 이유를 본다.** SEED는 당근 앱(모바일 웹뷰, 큰 팀), Montage는 원티드(웹·iOS·Android 공통)를 위한 것이다. 한쪽만 하는 것은 그 이유가 우리에게도 있는지 따진다.
 - **우리 Foundation이 우선이다.** Figma Foundation 페이지의 규칙(WCAG 2.2 AA, 클릭 영역, 로딩·포커스 규칙)과 어긋나면 두 곳을 따르지 않는다.
 - **우리 스택에서 되는지 본다.** React 19, Radix(`asChild`), vanilla-extract recipe, `@d5ng/tokens` CSS 변수.

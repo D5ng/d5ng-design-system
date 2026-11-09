@@ -51,8 +51,9 @@ const roleSections: SectionSpec[] = [
       },
       {
         title: "Brand",
-        description: "링크와 브랜드를 강조하는 글자입니다.",
-        tokens: ["fg/brand"],
+        description:
+          "링크와 브랜드를 강조하는 글자와 그 호버, 눌림 상태입니다.",
+        tokens: ["fg/brand", "fg/brand-hover", "fg/brand-pressed"],
       },
       {
         title: "Status",
@@ -63,11 +64,23 @@ const roleSections: SectionSpec[] = [
       {
         title: "On solid",
         description:
-          "진한 면 위의 흰 글자와 아이콘입니다. Primary 버튼에는 on-action-primary, Danger처럼 다른 강조 버튼에는 on-action-solid를 씁니다.",
+          "진한 면 위의 글자와 아이콘입니다. 바탕과 같은 역할의 on-*-solid를 씁니다.",
         tokens: [
           "fg/on-brand-solid",
-          "fg/on-action-primary",
-          "fg/on-action-solid",
+          "fg/on-neutral-solid",
+          "fg/on-critical-solid",
+          "fg/on-informative-solid",
+          "fg/on-positive-solid",
+          "fg/on-warning-solid",
+        ],
+      },
+      {
+        title: "Inverse",
+        description: "neutral-solid 면 위에 놓이는 색 글자입니다.",
+        tokens: [
+          "fg/brand-inverse",
+          "fg/positive-inverse",
+          "fg/critical-inverse",
         ],
       },
       {
@@ -95,44 +108,52 @@ const roleSections: SectionSpec[] = [
       },
       {
         title: "Neutral",
-        description: "약한 중립 면과 그 위의 호버, 눌림 상태입니다.",
+        description:
+          "중립 면과 그 위의 호버, 눌림 상태입니다. weak는 옅은 면, solid는 스낵바나 말풍선처럼 진한 면입니다.",
         tokens: [
           "bg/neutral-weak",
           "bg/neutral-weak-hover",
           "bg/neutral-weak-pressed",
+          "bg/neutral-solid",
+          "bg/neutral-solid-hover",
+          "bg/neutral-solid-pressed",
         ],
       },
       {
         title: "Brand",
-        description: "브랜드를 강조하는 면입니다.",
-        tokens: ["bg/brand-solid", "bg/brand-solid-pressed", "bg/brand-weak"],
+        description:
+          "브랜드를 강조하는 면입니다. solid는 Primary 버튼과 선택된 컨트롤, weak는 옅은 강조에 씁니다.",
+        tokens: [
+          "bg/brand-solid",
+          "bg/brand-solid-hover",
+          "bg/brand-solid-pressed",
+          "bg/brand-weak",
+          "bg/brand-weak-hover",
+          "bg/brand-weak-pressed",
+        ],
+      },
+      {
+        title: "Critical",
+        description:
+          "되돌리기 어려운 동작의 진한 면과 그 호버, 눌림 상태입니다.",
+        tokens: [
+          "bg/critical-solid",
+          "bg/critical-solid-hover",
+          "bg/critical-solid-pressed",
+        ],
       },
       {
         title: "Status",
-        description: "상태를 알리는 영역의 옅은 바탕입니다.",
+        description:
+          "상태를 알리는 면입니다. weak는 영역의 옅은 바탕, solid는 배지처럼 작은 진한 면입니다.",
         tokens: [
           "bg/informative-weak",
           "bg/positive-weak",
           "bg/warning-weak",
           "bg/critical-weak",
-        ],
-      },
-      {
-        title: "Action · Primary",
-        description: "Primary 버튼의 기본, 호버, 눌림 상태입니다.",
-        tokens: [
-          "bg/action-primary",
-          "bg/action-primary-hover",
-          "bg/action-primary-pressed",
-        ],
-      },
-      {
-        title: "Action · Critical",
-        description: "되돌리기 어려운 동작 버튼의 기본, 호버, 눌림 상태입니다.",
-        tokens: [
-          "bg/action-critical",
-          "bg/action-critical-hover",
-          "bg/action-critical-pressed",
+          "bg/informative-solid",
+          "bg/positive-solid",
+          "bg/warning-solid",
         ],
       },
       {
@@ -159,18 +180,24 @@ const roleSections: SectionSpec[] = [
       {
         title: "Neutral",
         description:
-          "구분선과 테두리입니다. subtle에서 strong으로 갈수록 진하고, 입력 경계처럼 알아봐야 하는 곳에는 strong을 씁니다.",
+          "구분선과 테두리입니다. subtle에서 contrast로 갈수록 진하고, 입력 경계처럼 알아봐야 하는 곳에는 strong, 선택된 항목에는 contrast를 씁니다.",
         tokens: [
           "stroke/neutral-subtle",
           "stroke/neutral-muted",
           "stroke/neutral-weak",
           "stroke/neutral-strong",
+          "stroke/neutral-contrast",
         ],
       },
       {
         title: "Brand · Focus",
-        description: "브랜드 테두리와 키보드 포커스 링입니다.",
-        tokens: ["stroke/brand-solid", "stroke/focus-ring"],
+        description:
+          "브랜드 테두리와 키보드 포커스 링입니다. neutral-solid 면 위에서는 focus-ring-inverse를 씁니다.",
+        tokens: [
+          "stroke/brand-solid",
+          "stroke/focus-ring",
+          "stroke/focus-ring-inverse",
+        ],
       },
       {
         title: "Critical",
@@ -194,17 +221,13 @@ const roleSections: SectionSpec[] = [
 
 // 특정 컴포넌트만 쓰는 색이에요. 이름으로 묶고, 어디에도 안 맞으면 "기타"로 보내요.
 const componentGroups: { title: string; match: RegExp }[] = [
-  { title: "Action · Neutral", match: /action-neutral/ },
   { title: "Inverse", match: /on-inverse/ },
-  { title: "Snackbar", match: /snackbar/ },
   { title: "Badge", match: /badge|notification/ },
-  { title: "Switch", match: /switch/ },
-  { title: "Select", match: /select/ },
-  { title: "Dialog", match: /dialog/ },
+  { title: "Switch", match: /^switch\// },
+  { title: "Select", match: /^select\// },
+  { title: "Dialog", match: /^dialog\// },
   { title: "Chip", match: /chip/ },
-  { title: "Link", match: /link/ },
-  { title: "Skeleton", match: /skeleton/ },
-  { title: "Help Bubble", match: /help-bubble/ },
+  { title: "Skeleton", match: /^skeleton\// },
 ];
 
 type Alias = { alias: string };

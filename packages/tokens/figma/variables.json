@@ -1030,19 +1030,6 @@
           }
         },
         {
-          "name": "fg/on-brand-solid",
-          "type": "COLOR",
-          "css": "color-fg-on-brand-solid",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/0"
-            },
-            "Dark": {
-              "alias": "Palette:gray/0"
-            }
-          }
-        },
-        {
           "name": "stroke/neutral-muted",
           "type": "COLOR",
           "css": "color-stroke-neutral-muted",
@@ -1065,19 +1052,6 @@
             },
             "Dark": {
               "alias": "Palette:gray/700"
-            }
-          }
-        },
-        {
-          "name": "bg/brand-solid",
-          "type": "COLOR",
-          "css": "color-bg-brand-solid",
-          "values": {
-            "Light": {
-              "alias": "Palette:blue/500"
-            },
-            "Dark": {
-              "alias": "Palette:blue-dark/500"
             }
           }
         },
@@ -1208,19 +1182,6 @@
             },
             "Dark": {
               "alias": "Palette:gray/900"
-            }
-          }
-        },
-        {
-          "name": "bg/brand-solid-pressed",
-          "type": "COLOR",
-          "css": "color-bg-brand-solid-pressed",
-          "values": {
-            "Light": {
-              "alias": "Palette:blue/700"
-            },
-            "Dark": {
-              "alias": "Palette:blue-dark/700"
             }
           }
         },
@@ -1407,9 +1368,9 @@
           }
         },
         {
-          "name": "bg/action-primary",
+          "name": "bg/brand-solid",
           "type": "COLOR",
-          "css": "color-bg-action-primary",
+          "css": "color-bg-brand-solid",
           "values": {
             "Light": {
               "alias": "Palette:blue/500"
@@ -1420,9 +1381,9 @@
           }
         },
         {
-          "name": "bg/action-primary-hover",
+          "name": "bg/brand-solid-hover",
           "type": "COLOR",
-          "css": "color-bg-action-primary-hover",
+          "css": "color-bg-brand-solid-hover",
           "values": {
             "Light": {
               "alias": "Palette:blue/600"
@@ -1433,9 +1394,9 @@
           }
         },
         {
-          "name": "bg/action-primary-pressed",
+          "name": "bg/brand-solid-pressed",
           "type": "COLOR",
-          "css": "color-bg-action-primary-pressed",
+          "css": "color-bg-brand-solid-pressed",
           "values": {
             "Light": {
               "alias": "Palette:blue/700"
@@ -1446,9 +1407,9 @@
           }
         },
         {
-          "name": "bg/action-critical",
+          "name": "bg/critical-solid",
           "type": "COLOR",
-          "css": "color-bg-action-critical",
+          "css": "color-bg-critical-solid",
           "values": {
             "Light": {
               "alias": "Palette:red/700"
@@ -1459,9 +1420,9 @@
           }
         },
         {
-          "name": "bg/action-critical-hover",
+          "name": "bg/critical-solid-hover",
           "type": "COLOR",
-          "css": "color-bg-action-critical-hover",
+          "css": "color-bg-critical-solid-hover",
           "values": {
             "Light": {
               "alias": "Palette:red/800"
@@ -1472,9 +1433,9 @@
           }
         },
         {
-          "name": "bg/action-critical-pressed",
+          "name": "bg/critical-solid-pressed",
           "type": "COLOR",
-          "css": "color-bg-action-critical-pressed",
+          "css": "color-bg-critical-solid-pressed",
           "values": {
             "Light": {
               "alias": "Palette:red/900"
@@ -1485,9 +1446,9 @@
           }
         },
         {
-          "name": "fg/on-action-solid",
+          "name": "fg/on-critical-solid",
           "type": "COLOR",
-          "css": "color-fg-on-action-solid",
+          "css": "color-fg-on-critical-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1498,9 +1459,9 @@
           }
         },
         {
-          "name": "fg/on-action-primary",
+          "name": "fg/on-brand-solid",
           "type": "COLOR",
-          "css": "color-fg-on-action-primary",
+          "css": "color-fg-on-brand-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1511,9 +1472,9 @@
           }
         },
         {
-          "name": "bg/action-neutral",
+          "name": "bg/neutral-solid",
           "type": "COLOR",
-          "css": "color-bg-action-neutral",
+          "css": "color-bg-neutral-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/900"
@@ -1524,9 +1485,9 @@
           }
         },
         {
-          "name": "bg/action-neutral-hover",
+          "name": "bg/neutral-solid-hover",
           "type": "COLOR",
-          "css": "color-bg-action-neutral-hover",
+          "css": "color-bg-neutral-solid-hover",
           "values": {
             "Light": {
               "alias": "Palette:gray/800"
@@ -1537,9 +1498,9 @@
           }
         },
         {
-          "name": "bg/action-neutral-pressed",
+          "name": "bg/neutral-solid-pressed",
           "type": "COLOR",
-          "css": "color-bg-action-neutral-pressed",
+          "css": "color-bg-neutral-solid-pressed",
           "values": {
             "Light": {
               "alias": "Palette:gray/700"
@@ -1550,9 +1511,9 @@
           }
         },
         {
-          "name": "fg/on-action-neutral",
+          "name": "fg/on-neutral-solid",
           "type": "COLOR",
-          "css": "color-fg-on-action-neutral",
+          "css": "color-fg-on-neutral-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1563,9 +1524,9 @@
           }
         },
         {
-          "name": "bg/switch-off",
+          "name": "switch/track-off",
           "type": "COLOR",
-          "css": "color-bg-switch-off",
+          "css": "color-switch-track-off",
           "values": {
             "Light": {
               "alias": "Palette:gray/600"
@@ -1576,9 +1537,9 @@
           }
         },
         {
-          "name": "bg/switch-off-hover",
+          "name": "switch/track-off-hover",
           "type": "COLOR",
-          "css": "color-bg-switch-off-hover",
+          "css": "color-switch-track-off-hover",
           "values": {
             "Light": {
               "alias": "Palette:gray/700"
@@ -1589,9 +1550,9 @@
           }
         },
         {
-          "name": "bg/switch-off-pressed",
+          "name": "switch/track-off-pressed",
           "type": "COLOR",
-          "css": "color-bg-switch-off-pressed",
+          "css": "color-switch-track-off-pressed",
           "values": {
             "Light": {
               "alias": "Palette:gray/800"
@@ -1602,9 +1563,9 @@
           }
         },
         {
-          "name": "bg/select-pressed",
+          "name": "select/bg-pressed",
           "type": "COLOR",
-          "css": "color-bg-select-pressed",
+          "css": "color-select-bg-pressed",
           "values": {
             "Light": {
               "alias": "Palette:gray/300"
@@ -1615,9 +1576,9 @@
           }
         },
         {
-          "name": "stroke/select-box-selected",
+          "name": "stroke/neutral-contrast",
           "type": "COLOR",
-          "css": "color-stroke-select-box-selected",
+          "css": "color-stroke-neutral-contrast",
           "values": {
             "Light": {
               "alias": "Palette:gray/900"
@@ -1628,9 +1589,9 @@
           }
         },
         {
-          "name": "bg/dialog-fog-clear",
+          "name": "dialog/fog-clear",
           "type": "COLOR",
-          "css": "color-bg-dialog-fog-clear",
+          "css": "color-dialog-fog-clear",
           "values": {
             "Light": {
               "alias": "Palette:palette/dialog-fog-clear-light"
@@ -1641,48 +1602,9 @@
           }
         },
         {
-          "name": "bg/snackbar",
+          "name": "fg/positive-inverse",
           "type": "COLOR",
-          "css": "color-bg-snackbar",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/900"
-            },
-            "Dark": {
-              "alias": "Palette:gray/50"
-            }
-          }
-        },
-        {
-          "name": "fg/snackbar",
-          "type": "COLOR",
-          "css": "color-fg-snackbar",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/0"
-            },
-            "Dark": {
-              "alias": "Palette:gray/950"
-            }
-          }
-        },
-        {
-          "name": "fg/snackbar-action",
-          "type": "COLOR",
-          "css": "color-fg-snackbar-action",
-          "values": {
-            "Light": {
-              "alias": "Palette:blue-dark/300"
-            },
-            "Dark": {
-              "alias": "Palette:blue/700"
-            }
-          }
-        },
-        {
-          "name": "fg/snackbar-positive",
-          "type": "COLOR",
-          "css": "color-fg-snackbar-positive",
+          "css": "color-fg-positive-inverse",
           "values": {
             "Light": {
               "alias": "Palette:green/300"
@@ -1693,9 +1615,9 @@
           }
         },
         {
-          "name": "fg/snackbar-critical",
+          "name": "fg/critical-inverse",
           "type": "COLOR",
-          "css": "color-fg-snackbar-critical",
+          "css": "color-fg-critical-inverse",
           "values": {
             "Light": {
               "alias": "Palette:red/300"
@@ -1706,9 +1628,9 @@
           }
         },
         {
-          "name": "stroke/snackbar-focus",
+          "name": "fg/brand-inverse",
           "type": "COLOR",
-          "css": "color-stroke-snackbar-focus",
+          "css": "color-fg-brand-inverse",
           "values": {
             "Light": {
               "alias": "Palette:blue-dark/300"
@@ -1719,80 +1641,15 @@
           }
         },
         {
-          "name": "bg/snackbar-control-hover",
+          "name": "stroke/focus-ring-inverse",
           "type": "COLOR",
-          "css": "color-bg-snackbar-control-hover",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/800"
-            },
-            "Dark": {
-              "alias": "Palette:gray/100"
-            }
-          }
-        },
-        {
-          "name": "bg/snackbar-control-pressed",
-          "type": "COLOR",
-          "css": "color-bg-snackbar-control-pressed",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/800"
-            },
-            "Dark": {
-              "alias": "Palette:gray/100"
-            }
-          }
-        },
-        {
-          "name": "fg/action-on-inverse",
-          "type": "COLOR",
-          "css": "color-fg-action-on-inverse",
+          "css": "color-stroke-focus-ring-inverse",
           "values": {
             "Light": {
               "alias": "Palette:blue-dark/300"
             },
             "Dark": {
               "alias": "Palette:blue/700"
-            }
-          }
-        },
-        {
-          "name": "fg/neutral-on-inverse",
-          "type": "COLOR",
-          "css": "color-fg-neutral-on-inverse",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/0"
-            },
-            "Dark": {
-              "alias": "Palette:gray/950"
-            }
-          }
-        },
-        {
-          "name": "stroke/focus-on-inverse",
-          "type": "COLOR",
-          "css": "color-stroke-focus-on-inverse",
-          "values": {
-            "Light": {
-              "alias": "Palette:blue-dark/300"
-            },
-            "Dark": {
-              "alias": "Palette:blue/700"
-            }
-          }
-        },
-        {
-          "name": "bg/interaction-on-inverse-hover",
-          "type": "COLOR",
-          "css": "color-bg-interaction-on-inverse-hover",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/800"
-            },
-            "Dark": {
-              "alias": "Palette:gray/100"
             }
           }
         },
@@ -1810,61 +1667,9 @@
           }
         },
         {
-          "name": "bg/badge-neutral-solid",
+          "name": "bg/informative-solid",
           "type": "COLOR",
-          "css": "color-bg-badge-neutral-solid",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/900"
-            },
-            "Dark": {
-              "alias": "Palette:gray/50"
-            }
-          }
-        },
-        {
-          "name": "fg/on-badge-neutral-solid",
-          "type": "COLOR",
-          "css": "color-fg-on-badge-neutral-solid",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/0"
-            },
-            "Dark": {
-              "alias": "Palette:gray/950"
-            }
-          }
-        },
-        {
-          "name": "bg/badge-brand-solid",
-          "type": "COLOR",
-          "css": "color-bg-badge-brand-solid",
-          "values": {
-            "Light": {
-              "alias": "Palette:blue/500"
-            },
-            "Dark": {
-              "alias": "Palette:blue-dark/500"
-            }
-          }
-        },
-        {
-          "name": "fg/on-badge-brand-solid",
-          "type": "COLOR",
-          "css": "color-fg-on-badge-brand-solid",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/0"
-            },
-            "Dark": {
-              "alias": "Palette:gray/0"
-            }
-          }
-        },
-        {
-          "name": "bg/badge-informative-solid",
-          "type": "COLOR",
-          "css": "color-bg-badge-informative-solid",
+          "css": "color-bg-informative-solid",
           "values": {
             "Light": {
               "alias": "Palette:blue/700"
@@ -1875,9 +1680,9 @@
           }
         },
         {
-          "name": "fg/on-badge-informative-solid",
+          "name": "fg/on-informative-solid",
           "type": "COLOR",
-          "css": "color-fg-on-badge-informative-solid",
+          "css": "color-fg-on-informative-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1888,9 +1693,9 @@
           }
         },
         {
-          "name": "bg/badge-positive-solid",
+          "name": "bg/positive-solid",
           "type": "COLOR",
-          "css": "color-bg-badge-positive-solid",
+          "css": "color-bg-positive-solid",
           "values": {
             "Light": {
               "alias": "Palette:green/900"
@@ -1901,9 +1706,9 @@
           }
         },
         {
-          "name": "fg/on-badge-positive-solid",
+          "name": "fg/on-positive-solid",
           "type": "COLOR",
-          "css": "color-fg-on-badge-positive-solid",
+          "css": "color-fg-on-positive-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1914,9 +1719,9 @@
           }
         },
         {
-          "name": "bg/badge-warning-solid",
+          "name": "bg/warning-solid",
           "type": "COLOR",
-          "css": "color-bg-badge-warning-solid",
+          "css": "color-bg-warning-solid",
           "values": {
             "Light": {
               "alias": "Palette:ext/orange-text"
@@ -1927,9 +1732,9 @@
           }
         },
         {
-          "name": "fg/on-badge-warning-solid",
+          "name": "fg/on-warning-solid",
           "type": "COLOR",
-          "css": "color-fg-on-badge-warning-solid",
+          "css": "color-fg-on-warning-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -2005,9 +1810,9 @@
           }
         },
         {
-          "name": "bg/chip-selected-hover",
+          "name": "bg/brand-weak-hover",
           "type": "COLOR",
-          "css": "color-bg-chip-selected-hover",
+          "css": "color-bg-brand-weak-hover",
           "values": {
             "Light": {
               "alias": "Palette:blue/100"
@@ -2018,9 +1823,9 @@
           }
         },
         {
-          "name": "bg/chip-selected-pressed",
+          "name": "bg/brand-weak-pressed",
           "type": "COLOR",
-          "css": "color-bg-chip-selected-pressed",
+          "css": "color-bg-brand-weak-pressed",
           "values": {
             "Light": {
               "alias": "Palette:blue/200"
@@ -2044,9 +1849,9 @@
           }
         },
         {
-          "name": "fg/link-hover",
+          "name": "fg/brand-hover",
           "type": "COLOR",
-          "css": "color-fg-link-hover",
+          "css": "color-fg-brand-hover",
           "values": {
             "Light": {
               "alias": "Palette:blue/800"
@@ -2057,9 +1862,9 @@
           }
         },
         {
-          "name": "fg/link-pressed",
+          "name": "fg/brand-pressed",
           "type": "COLOR",
-          "css": "color-fg-link-pressed",
+          "css": "color-fg-brand-pressed",
           "values": {
             "Light": {
               "alias": "Palette:blue/900"
@@ -2070,9 +1875,9 @@
           }
         },
         {
-          "name": "bg/skeleton",
+          "name": "skeleton/bg",
           "type": "COLOR",
-          "css": "color-bg-skeleton",
+          "css": "color-skeleton-bg",
           "values": {
             "Light": {
               "alias": "Palette:gray/200"
@@ -2083,41 +1888,15 @@
           }
         },
         {
-          "name": "bg/skeleton-highlight",
+          "name": "skeleton/highlight",
           "type": "COLOR",
-          "css": "color-bg-skeleton-highlight",
+          "css": "color-skeleton-highlight",
           "values": {
             "Light": {
               "alias": "Palette:gray/100"
             },
             "Dark": {
               "alias": "Palette:gray/700"
-            }
-          }
-        },
-        {
-          "name": "bg/help-bubble",
-          "type": "COLOR",
-          "css": "color-bg-help-bubble",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/900"
-            },
-            "Dark": {
-              "alias": "Palette:gray/50"
-            }
-          }
-        },
-        {
-          "name": "fg/on-help-bubble",
-          "type": "COLOR",
-          "css": "color-fg-on-help-bubble",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/0"
-            },
-            "Dark": {
-              "alias": "Palette:gray/950"
             }
           }
         }
@@ -3542,7 +3321,7 @@
               "alias": "Color:fg/neutral"
             },
             "Inverse": {
-              "alias": "Color:fg/action-on-inverse"
+              "alias": "Color:fg/brand-inverse"
             }
           }
         },
@@ -3555,7 +3334,7 @@
               "alias": "Color:fg/neutral"
             },
             "Inverse": {
-              "alias": "Color:fg/neutral-on-inverse"
+              "alias": "Color:fg/on-neutral-solid"
             }
           }
         },
