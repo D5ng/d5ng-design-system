@@ -18,7 +18,7 @@ export type IconButtonProps = Omit<
   /** 버튼 이름이에요. 아이콘 모양이 아니라 하는 일을 써요(예: `창 닫기`). */
   "aria-label": string;
   /**
-   * 강조 정도예요. `critical`은 위험한 동작에만 써요.
+   * 강조 정도예요. `neutral`은 `primary`만큼 강하되 브랜드 색을 빼야 할 때, `critical`은 위험한 동작에만 써요.
    * @default primary
    */
   variant?: styles.IconButtonVariants["variant"];

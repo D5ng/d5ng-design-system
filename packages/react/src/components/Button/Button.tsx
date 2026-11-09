@@ -16,7 +16,7 @@ export type ButtonProps = Omit<
   /** 버튼 문구예요. 버튼 이름으로 읽혀요. */
   children: ReactNode;
   /**
-   * 강조 정도예요. `critical`은 위험한 동작에만 써요.
+   * 강조 정도예요. `neutral`은 `primary`만큼 강하되 브랜드 색을 빼야 할 때, `critical`은 위험한 동작에만 써요.
    * @default primary
    */
   variant?: styles.ButtonVariants["variant"];
@@ -45,7 +45,7 @@ export type ButtonProps = Omit<
 /**
  * 누르면 바로 실행되는 동작이에요. 화면만 옮길 때는 `asChild`로 `<a>`를 감싸요.
  *
- * 한 영역에 `primary`나 `critical`은 하나만 두고, 나머지는 `secondary`·`ghost`로 해요.
+ * 한 영역에 `primary`·`neutral`·`critical` 중 하나만 두고, 나머지는 `secondary`·`ghost`로 해요.
  *
  * Figma의 `state`는 prop 하나가 아니에요. `disabled`·`loading`은 prop으로 넘기고, `hover`·`pressed`·`focusVisible`은 CSS가 맡아요.
  */
