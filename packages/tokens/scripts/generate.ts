@@ -7,7 +7,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import type { Alias, Export, Value, Variable } from "./types";
 
 // Figma의 컬렉션은 모두 담고, 담지 않을 것만 적어요. 새 컬렉션은 저절로 들어와요.
-// Button surface는 모드가 Default·Inverse라 Light·Dark 블록에 넣을 수 없어요. Button을 만들 때 담는 방법을 정해요.
+// Button surface는 모드가 Default·Inverse라 Light·Dark 블록에 넣을 수 없어요. 담는 방법은 #66에서 다뤄요.
 const EXCLUDED_COLLECTIONS = new Set(["Button surface"]);
 // Figma 설명에 레거시로 적혀 있고 현재 Layout 가이드(1040/640)와 값이 달라요.
 const EXCLUDED = new Set(["Spacing:layout/page-max", "Spacing:layout/gutter"]);
