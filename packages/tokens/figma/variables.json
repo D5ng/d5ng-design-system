@@ -1654,19 +1654,6 @@
           }
         },
         {
-          "name": "bg/interaction-on-inverse-pressed",
-          "type": "COLOR",
-          "css": "color-bg-interaction-on-inverse-pressed",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/800"
-            },
-            "Dark": {
-              "alias": "Palette:gray/100"
-            }
-          }
-        },
-        {
           "name": "bg/informative-solid",
           "type": "COLOR",
           "css": "color-bg-informative-solid",
@@ -1675,7 +1662,7 @@
               "alias": "Palette:blue/700"
             },
             "Dark": {
-              "alias": "Palette:blue-dark/300"
+              "alias": "Palette:blue/700"
             }
           }
         },
@@ -1688,7 +1675,7 @@
               "alias": "Palette:gray/0"
             },
             "Dark": {
-              "alias": "Palette:gray/950"
+              "alias": "Palette:gray/0"
             }
           }
         },
@@ -1701,7 +1688,7 @@
               "alias": "Palette:green/900"
             },
             "Dark": {
-              "alias": "Palette:green/300"
+              "alias": "Palette:green/900"
             }
           }
         },
@@ -1714,7 +1701,7 @@
               "alias": "Palette:gray/0"
             },
             "Dark": {
-              "alias": "Palette:gray/950"
+              "alias": "Palette:gray/0"
             }
           }
         },
@@ -1727,7 +1714,7 @@
               "alias": "Palette:ext/orange-text"
             },
             "Dark": {
-              "alias": "Palette:orange/400"
+              "alias": "Palette:ext/orange-text"
             }
           }
         },
@@ -1740,72 +1727,7 @@
               "alias": "Palette:gray/0"
             },
             "Dark": {
-              "alias": "Palette:gray/950"
-            }
-          }
-        },
-        {
-          "name": "bg/badge-critical-solid",
-          "type": "COLOR",
-          "css": "color-bg-badge-critical-solid",
-          "values": {
-            "Light": {
-              "alias": "Palette:red/700"
-            },
-            "Dark": {
-              "alias": "Palette:red/300"
-            }
-          }
-        },
-        {
-          "name": "fg/on-badge-critical-solid",
-          "type": "COLOR",
-          "css": "color-fg-on-badge-critical-solid",
-          "values": {
-            "Light": {
               "alias": "Palette:gray/0"
-            },
-            "Dark": {
-              "alias": "Palette:gray/950"
-            }
-          }
-        },
-        {
-          "name": "bg/notification-count",
-          "type": "COLOR",
-          "css": "color-bg-notification-count",
-          "values": {
-            "Light": {
-              "alias": "Palette:red/700"
-            },
-            "Dark": {
-              "alias": "Palette:red/300"
-            }
-          }
-        },
-        {
-          "name": "fg/on-notification-count",
-          "type": "COLOR",
-          "css": "color-fg-on-notification-count",
-          "values": {
-            "Light": {
-              "alias": "Palette:gray/0"
-            },
-            "Dark": {
-              "alias": "Palette:gray/950"
-            }
-          }
-        },
-        {
-          "name": "bg/notification-dot",
-          "type": "COLOR",
-          "css": "color-bg-notification-dot",
-          "values": {
-            "Light": {
-              "alias": "Palette:red/700"
-            },
-            "Dark": {
-              "alias": "Palette:red/300"
             }
           }
         },
@@ -1832,19 +1754,6 @@
             },
             "Dark": {
               "alias": "Palette:blue/800"
-            }
-          }
-        },
-        {
-          "name": "fg/chip-selected-pressed",
-          "type": "COLOR",
-          "css": "color-fg-chip-selected-pressed",
-          "values": {
-            "Light": {
-              "alias": "Palette:blue/800"
-            },
-            "Dark": {
-              "alias": "Color:fg/brand"
             }
           }
         },
