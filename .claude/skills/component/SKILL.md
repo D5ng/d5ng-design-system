@@ -68,7 +68,9 @@ pnpm build
 ## 7. 문서
 
 - `docs/components/<이름>.md`: 정한 것, 뺀 것, 열린 질문. 정하지 않은 것은 쓰지 않는다
-- Figma(쓰기는 figma-console `figma_execute`): 바꾸기 전에 버전을 저장하고, "Web · 구현됨"으로 바꾸고, 속성 이름을 prop 이름과 맞춘다
+- Figma: 바꾸기 전에 버전을 저장하고, "Web · 구현됨"으로 바꾸고, 속성 이름을 prop 이름과 맞춘다
+  - 쓰기는 로컬이면 figma-console `figma_execute`, 클라우드면 Figma MCP `use_figma`를 쓴다
+  - `use_figma`는 버전을 저장하지 못한다. 바꾸기 전에 사용자에게 Figma에서 버전을 저장해 달라고 한다
 
 ## 8. 올리기
 
