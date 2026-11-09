@@ -36,6 +36,9 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/storybook
+          # squash 머지 감지가 실패해도 develop 빌드가 새 기준이 되게 해요. 변경은 PR에서 이미 봤어요.
+          # https://www.chromatic.com/docs/branching-and-baselines/
+          autoAcceptChanges: develop
       # Chromatic은 링크를 체크 목록에만 붙여서 눈에 잘 안 띄어요.
       # push 이벤트에는 PR 번호가 없어서 브랜치로 열린 PR을 찾고, 없으면 건너뛰어요.
       # 댓글은 하나만 두고 push마다 고쳐 써요(--edit-last).
