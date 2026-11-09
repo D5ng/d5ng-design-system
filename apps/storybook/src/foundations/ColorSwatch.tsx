@@ -5,25 +5,10 @@ import * as styles from "./Colors.css";
 
 type Detail = { mode: string; hex: string; rgba: string };
 
-// getComputedStyle은 "rgb(25, 31, 40)"이나 "rgba(0, 0, 0, 0.08)"을 돌려줘요.
-function readColor(element: Element): Pick<Detail, "hex" | "rgba"> {
-  const computed = getComputedStyle(element).backgroundColor;
-  const [r = 0, g = 0, b = 0, a = 1] = (computed.match(/[\d.]+/g) ?? []).map(
-    Number,
-  );
-  const toHex = (n: number) => Math.round(n).toString(16).padStart(2, "0");
-  const alpha = a < 1 ? toHex(a * 255) : "";
-  return {
-    hex: `#${toHex(r)}${toHex(g)}${toHex(b)}${alpha}`.toUpperCase(),
-    rgba: `${String(r)}, ${String(g)}, ${String(b)}, ${String(Math.round(a * 100) / 100)}`,
-  };
-}
+type ColorSwatchProps = { token: ColorToken };
+type AliasProps = { mode: string; alias: string };
 
-function cssVariableName(value: string) {
-  return value.slice("var(".length, -")".length);
-}
-
-export function ColorSwatch({ token }: { token: ColorToken }) {
+export function ColorSwatch({ token }: ColorSwatchProps) {
   const popoverId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const fillRef = useRef<HTMLSpanElement>(null);
@@ -38,14 +23,14 @@ export function ColorSwatch({ token }: { token: ColorToken }) {
     if (!popover) {
       return undefined;
     }
-    function handleToggle(event: Event) {
+    const handleToggle = (event: Event) => {
       const button = buttonRef.current;
       const fill = fillRef.current;
       if (!(event instanceof ToggleEvent) || event.newState !== "open") {
         setCopied(false);
         return;
       }
-      if (!button || !fill || !popover) {
+      if (!button || !fill) {
         return;
       }
       // 화면 오른쪽 끝을 넘지 않게 왼쪽으로 당겨요.
@@ -61,21 +46,21 @@ export function ColorSwatch({ token }: { token: ColorToken }) {
           document.documentElement.dataset.theme === "dark" ? "Dark" : "Light",
         ...readColor(fill),
       });
-    }
+    };
     popover.addEventListener("toggle", handleToggle);
     return () => {
       popover.removeEventListener("toggle", handleToggle);
     };
   }, []);
 
-  async function copy() {
+  const copy = async () => {
     try {
       await navigator.clipboard.writeText(variableName);
       setCopied(true);
     } catch {
       setCopied(false);
     }
-  }
+  };
 
   return (
     <li className={styles.segment}>
@@ -138,11 +123,29 @@ export function ColorSwatch({ token }: { token: ColorToken }) {
   );
 }
 
-function Alias({ mode, alias }: { mode: string; alias: string }) {
+function Alias({ mode, alias }: AliasProps) {
   return (
     <>
       <dt className={styles.detailTerm}>{mode}</dt>
       <dd className={styles.detailValue}>{alias}</dd>
     </>
   );
+}
+
+// getComputedStyle은 "rgb(25, 31, 40)"이나 "rgba(0, 0, 0, 0.08)"을 돌려줘요.
+function readColor(element: Element): Pick<Detail, "hex" | "rgba"> {
+  const computed = getComputedStyle(element).backgroundColor;
+  const [r = 0, g = 0, b = 0, a = 1] = (computed.match(/[\d.]+/g) ?? []).map(
+    Number,
+  );
+  const toHex = (n: number) => Math.round(n).toString(16).padStart(2, "0");
+  const alpha = a < 1 ? toHex(a * 255) : "";
+  return {
+    hex: `#${toHex(r)}${toHex(g)}${toHex(b)}${alpha}`.toUpperCase(),
+    rgba: `${String(r)}, ${String(g)}, ${String(b)}, ${String(Math.round(a * 100) / 100)}`,
+  };
+}
+
+function cssVariableName(value: string) {
+  return value.slice("var(".length, -")".length);
 }
