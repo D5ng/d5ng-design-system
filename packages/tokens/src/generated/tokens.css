@@ -177,6 +177,10 @@
   --d5ng-easing-linear: cubic-bezier(0, 0, 1, 1);
   --d5ng-press-max-reduction: 0.04;
   --d5ng-duration-shimmer: 1500ms;
+  --d5ng-duration-spring-rapid: 200ms;
+  --d5ng-easing-spring-rapid: linear(0, 0.103, 0.304, 0.508, 0.677, 0.802, 0.887, 0.941, 0.973, 0.991, 0.999, 1.003, 1.004, 1);
+  --d5ng-duration-spring-quick: 350ms;
+  --d5ng-easing-spring-quick: linear(0, 0.083, 0.247, 0.42, 0.572, 0.694, 0.786, 0.854, 0.902, 0.935, 0.957, 0.973, 0.983, 0.989, 0.993, 0.996, 0.997, 0.998, 0.999, 0.999, 1, 1, 1);
   --d5ng-button-min-height-sm: 44px;
   --d5ng-button-min-height-md: 48px;
   --d5ng-button-min-height-lg: 56px;
