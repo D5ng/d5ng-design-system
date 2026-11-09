@@ -27,13 +27,9 @@ export const vars = {
       "neutralSolid": "var(--d5ng-color-bg-neutral-solid)",
       "neutralSolidHover": "var(--d5ng-color-bg-neutral-solid-hover)",
       "neutralSolidPressed": "var(--d5ng-color-bg-neutral-solid-pressed)",
-      "interactionOnInversePressed": "var(--d5ng-color-bg-interaction-on-inverse-pressed)",
       "informativeSolid": "var(--d5ng-color-bg-informative-solid)",
       "positiveSolid": "var(--d5ng-color-bg-positive-solid)",
       "warningSolid": "var(--d5ng-color-bg-warning-solid)",
-      "badgeCriticalSolid": "var(--d5ng-color-bg-badge-critical-solid)",
-      "notificationCount": "var(--d5ng-color-bg-notification-count)",
-      "notificationDot": "var(--d5ng-color-bg-notification-dot)",
       "brandWeakHover": "var(--d5ng-color-bg-brand-weak-hover)",
       "brandWeakPressed": "var(--d5ng-color-bg-brand-weak-pressed)"
     },
@@ -58,9 +54,6 @@ export const vars = {
       "onInformativeSolid": "var(--d5ng-color-fg-on-informative-solid)",
       "onPositiveSolid": "var(--d5ng-color-fg-on-positive-solid)",
       "onWarningSolid": "var(--d5ng-color-fg-on-warning-solid)",
-      "onBadgeCriticalSolid": "var(--d5ng-color-fg-on-badge-critical-solid)",
-      "onNotificationCount": "var(--d5ng-color-fg-on-notification-count)",
-      "chipSelectedPressed": "var(--d5ng-color-fg-chip-selected-pressed)",
       "brandHover": "var(--d5ng-color-fg-brand-hover)",
       "brandPressed": "var(--d5ng-color-fg-brand-pressed)"
     },

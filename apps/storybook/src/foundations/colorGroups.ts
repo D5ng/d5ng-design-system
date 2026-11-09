@@ -221,12 +221,9 @@ const roleSections: SectionSpec[] = [
 
 // 특정 컴포넌트만 쓰는 색이에요. 이름으로 묶고, 어디에도 안 맞으면 "기타"로 보내요.
 const componentGroups: { title: string; match: RegExp }[] = [
-  { title: "Inverse", match: /on-inverse/ },
-  { title: "Badge", match: /badge|notification/ },
   { title: "Switch", match: /^switch\// },
   { title: "Select", match: /^select\// },
   { title: "Dialog", match: /^dialog\// },
-  { title: "Chip", match: /chip/ },
   { title: "Skeleton", match: /^skeleton\// },
 ];
 
