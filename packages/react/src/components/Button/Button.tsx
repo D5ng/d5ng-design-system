@@ -1,3 +1,5 @@
+"use client";
+
 import { clsx } from "clsx";
 import { Slot } from "radix-ui";
 import type { ComponentProps, ReactNode } from "react";

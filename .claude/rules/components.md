@@ -13,6 +13,7 @@ paths:
 - props 타입은 컴포넌트 이름 뒤에 `Props`를 붙여 `ButtonProps`처럼 짓고, 패키지 밖으로도 그 이름 그대로 내보낸다. 파일 안에서만 쓰는 보조 컴포넌트도 `AliasProps`처럼 같은 규칙을 따른다
 - props는 매개변수에서 구조 분해하고, 나머지는 렌더하는 부분 이름으로 받는다: `...buttonProps`, `...triggerProps`, `...contentProps` (lint는 `restProps`, `props`, `rest`를 막는다. 이름이 부분과 맞는지는 리뷰에서 본다)
 - 제어 상태는 `open`, `defaultOpen`, `onOpenChange` 세 이름으로 받고 안에서는 `openProp`이라 부른다. Radix 컴포넌트를 감싸면 셋을 그대로 넘긴다. 상태를 직접 가져야 하면 그때 `_internal/useControllableState`를 만든다
+- 여러 부분으로 된 컴포넌트는 부분마다 이름으로 내보낸다: 루트는 `AlertDialog`, 나머지는 `AlertDialogContent`처럼 루트 이름을 앞에 붙인다. `export * as`나 객체로 묶은 이름공간(`AlertDialog.Content`)은 만들지 않는다. `"use client"` 파일의 이름공간은 서버 컴포넌트에서 `undefined`가 된다
 - 파일 순서: 상수(`NAME`) → 타입 → 컴포넌트 → 보조 함수 → export
 
 ## 렌더링
@@ -22,6 +23,17 @@ paths:
 - asChild는 `const Comp = asChild ? Slot.Root : "button"`으로 렌더한다
 - 쓰는 쪽 핸들러와 합칠 때는 `_internal/composeEventHandlers`의 `composeEventHandlers(onClick, …)`를 쓴다. 쓰는 쪽보다 먼저 막아야 하면 손으로 쓰고 이유를 주석으로 남긴다
 - 클래스는 `clsx(styles.button(…), className)`로 합친다
+
+## 서버 컴포넌트
+
+쓰는 쪽이 Next.js App Router의 서버 컴포넌트에서 바로 import해도 깨지지 않아야 한다. `apps/next`의 `next build`가 검사한다.
+
+- 이럴 때 파일 맨 위(import보다 앞)에 `"use client"`를 붙인다: `useId` 말고 다른 hook(`useState`, `useEffect`, `useContext` 등)을 쓸 때, 이벤트 핸들러 같은 함수를 만들어 요소나 컴포넌트에 넘길 때(`Button`의 `onClickCapture`, `AlertDialogContent`의 `onOpenAutoFocus`), 브라우저 API를 쓸 때
+- 그 밖에는 붙이지 않는다. 붙이면 서버에서 렌더할 수 있는 컴포넌트까지 클라이언트 JS로 나간다
+  - Radix 부품에 값만 넘기는 컴포넌트(`Link`). Radix 부품은 자기 배포물에 이미 `"use client"`가 있다
+  - 함수를 prop으로 받는 컴포넌트(children 함수). 클라이언트가 되면 서버 컴포넌트가 그 함수를 넘기지 못한다
+  - `_internal`의 순수 함수와 `.css.ts`, `index.ts`
+- 새 export는 `apps/next/app/page.tsx`에 렌더한다. 핸들러가 달라지는 prop(`loading`, `asChild`)도 따로 렌더한다
 
 ## 직접 만들기 전에 찾는다
 

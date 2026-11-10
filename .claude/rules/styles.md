@@ -39,7 +39,7 @@ paths:
 
 - `Portal`로 `body`에 붙는 부분은 부모 스타일을 물려받지 못한다. 글꼴, 글자색, `box-sizing`을 그 부분이 직접 정한다
 
-## 아직 정하지 않은 것
+## 겹치는 층
 
-- **z-index**: 토큰이 없다. Dialog를 만들 때 정한다
-- **부분 테마**: 쓰는 쪽이 `data-theme`을 `html`이 아닌 영역에 붙이면, Portal 내용은 그 테마를 받지 못한다. Dialog를 만들 때 정한다
+- **z-index는 쓰지 않는다**: Portal이 `body` 끝에 붙어 DOM 순서로 위에 온다. 중첩되면 나중에 연 것이 위다. 근거는 `docs/components/alert-dialog.md`
+- **부분 테마는 지원하지 않는다**: `data-theme`은 `html`에만 붙인다. 영역에 붙인 테마는 Portal 내용이 받지 못한다

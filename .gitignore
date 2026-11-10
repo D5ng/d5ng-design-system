@@ -1,6 +1,9 @@
 node_modules
 dist
 storybook-static
+# next build·typegen이 만드는 파일이에요
+.next
+next-env.d.ts
 .turbo
 *.tsbuildinfo
 *.tgz

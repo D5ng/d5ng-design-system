@@ -18,7 +18,7 @@
 | Select             | `select`                             | `selection-and-input/select`       |                                                                |
 | Select Box         | `select-box`                         | `selection-and-input/framed-style` | 추정                                                           |
 | Dialog             | `dialog`                             | `presentation/popup`               | 추정                                                           |
-| Alert Dialog       | `alert-dialog`                       | `feedback/alert`                   | 추정                                                           |
+| Alert Dialog       | `alert-dialog`                       | `feedback/alert`                   | 확인함(2026-11-09)                                             |
 | Snackbar           | `snackbar`                           | `feedback/snackbar`                | Montage는 `feedback/toast`도 있음                              |
 | Tabs               | `tabs`                               | `navigations/tab`                  |                                                                |
 | Badge              | `badge`                              | `contents/content-badge`           | 추정                                                           |
