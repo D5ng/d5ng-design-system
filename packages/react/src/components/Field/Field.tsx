@@ -66,6 +66,10 @@ export type FieldProps = Omit<ComponentProps<"div">, "children" | "id"> & {
   children: (control: FieldControlProps) => ReactNode;
 };
 
+type RequirementIndicatorProps = {
+  required: boolean;
+};
+
 /**
  * 입력 하나에 라벨·안내·오류·글자 수를 붙이고, 입력과 접근성 속성으로 이어 줘요.
  *
@@ -99,9 +103,15 @@ export function Field({
   const message = showError ? errorMessage : description;
   const MessageIcon = showError ? CircleAlert : Info;
 
-  // 없는 부분의 id는 빼요. 빈 요소를 가리키면 스크린리더가 아무것도 읽지 않아요.
+  // 그리는 조건과 aria-describedby가 같은 값을 읽어요. 따로 쓰면 없는 id를 가리키거나 설명이 빠져요.
+  const hasMessage = Boolean(message);
+  const hasCount = characterCount !== undefined;
+  // 라벨을 숨겨도 보조 액션이 있으면 header를 남겨요.
+  const hasHeader = !hideLabel || Boolean(headerAction);
+  const hasFooter = hasMessage || hasCount;
+
   const describedBy =
-    [message ? messageId : null, characterCount ? countId : null]
+    [hasMessage ? messageId : null, hasCount ? countId : null]
       .filter(Boolean)
       .join(" ") || undefined;
 
@@ -117,13 +127,7 @@ export function Field({
     <Label.Root htmlFor={id} className={styles.label({ weight: labelWeight })}>
       {label}
       {requirementIndicator ? (
-        required ? (
-          <RequiredMark />
-        ) : (
-          <span className={styles.optional} aria-hidden>
-            선택
-          </span>
-        )
+        <RequirementIndicator required={required} />
       ) : null}
     </Label.Root>
   );
@@ -139,7 +143,7 @@ export function Field({
       {hideLabel ? (
         <VisuallyHidden.Root>{labelElement}</VisuallyHidden.Root>
       ) : null}
-      {!hideLabel || headerAction ? (
+      {hasHeader ? (
         <div className={styles.header}>
           {hideLabel ? null : labelElement}
           {headerAction ? (
@@ -148,9 +152,9 @@ export function Field({
         </div>
       ) : null}
       {children(control)}
-      {message || characterCount ? (
+      {hasFooter ? (
         <div className={styles.footer}>
-          {message ? (
+          {hasMessage ? (
             <div
               id={messageId}
               className={showError ? styles.errorMessage : styles.description}
@@ -161,7 +165,7 @@ export function Field({
               <span>{message}</span>
             </div>
           ) : null}
-          {characterCount ? (
+          {hasCount ? (
             <div id={countId} className={styles.count}>
               <span
                 className={styles.countCurrent}
@@ -178,8 +182,17 @@ export function Field({
   );
 }
 
-// Figma `Required mark`(6×6) 모양 그대로예요. 색은 currentColor로 받아요.
-function RequiredMark() {
+// 둘 다 이름에 섞이지 않게 숨겨요. 필수 여부는 입력의 required가 알려요.
+function RequirementIndicator({ required }: RequirementIndicatorProps) {
+  if (!required) {
+    return (
+      <span className={styles.optional} aria-hidden>
+        선택
+      </span>
+    );
+  }
+
+  // Figma `Required mark`(6×6) 모양 그대로예요. 색은 currentColor로 받아요.
   return (
     <svg
       className={styles.requiredMark}

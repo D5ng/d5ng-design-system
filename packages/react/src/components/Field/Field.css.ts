@@ -12,7 +12,7 @@ export const root = style({
   gap: vars.spacing[8],
 });
 
-// 부품마다 같은 비활성 색 규칙을 붙여요. invalid와 우선순위가 같아서 invalid 규칙보다 뒤에 둬야 disabled가 이겨요.
+// 부품마다 같은 비활성 색 규칙을 붙여요.
 const disabledColor = {
   [`${root}${disabledSelector} &`]: { color: vars.color.fg.disabled },
 };
@@ -134,7 +134,10 @@ export const count = style({
   marginInlineStart: "auto",
   color: vars.color.fg.neutralMuted,
   selectors: {
-    [`${root}${invalidSelector} &`]: { color: vars.color.fg.critical },
+    // disabled면 비활성 색이 이겨요. 규칙 순서에 기대지 않게 invalid 쪽에서 disabled를 빼요.
+    [`${root}${invalidSelector}:not(${disabledSelector}) &`]: {
+      color: vars.color.fg.critical,
+    },
     ...disabledColor,
   },
 });
