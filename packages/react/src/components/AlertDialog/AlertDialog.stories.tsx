@@ -128,6 +128,25 @@ export const LongLabels: Story = {
   ),
 };
 
+/** 취소를 더 눈에 띄지 않게 해야 할 때 Cancel을 `ghost`로 둬요. */
+export const GhostCancel: Story = {
+  render: (args) => (
+    <AlertDialog.Root>
+      <AlertDialog.Trigger asChild>
+        <Button>대화상자 열기</Button>
+      </AlertDialog.Trigger>
+      <AlertDialog.Content>
+        <AlertDialog.Title>작업을 계속할까요?</AlertDialog.Title>
+        <AlertDialog.Description>내용을 확인해 주세요.</AlertDialog.Description>
+        <AlertDialog.Actions>
+          <AlertDialog.Cancel variant="ghost">나중에</AlertDialog.Cancel>
+          <AlertDialog.Action {...args} />
+        </AlertDialog.Actions>
+      </AlertDialog.Content>
+    </AlertDialog.Root>
+  ),
+};
+
 /** 메시지만으로 뜻이 충분하면 제목을 숨겨요. 스크린리더는 숨긴 제목을 이름으로 읽어요. */
 export const HiddenTitle: Story = {
   render: (args) => (
@@ -196,7 +215,14 @@ function AsyncExample() {
       <AlertDialog.Trigger asChild>
         <Button>항목 삭제</Button>
       </AlertDialog.Trigger>
-      <AlertDialog.Content>
+      <AlertDialog.Content
+        onEscapeKeyDown={(event) => {
+          // 요청 중에는 Cancel처럼 Escape로도 닫지 않아요.
+          if (deleting) {
+            event.preventDefault();
+          }
+        }}
+      >
         <AlertDialog.Title>항목을 삭제할까요?</AlertDialog.Title>
         <AlertDialog.Description>
           삭제한 항목은 복구할 수 없어요.
@@ -236,7 +262,7 @@ function AsyncExample() {
   );
 }
 
-/** 요청이 끝날 때까지 열어 두는 방법이에요. `onClick`에서 닫기를 막고 `open`을 직접 제어해요. */
+/** 요청이 끝날 때까지 열어 두는 방법이에요. `onClick`에서 닫기를 막고 `open`을 직접 제어해요. 요청 중에는 Cancel과 Escape를 함께 막아요. */
 export const Async: Story = {
   render: () => <AsyncExample />,
 };

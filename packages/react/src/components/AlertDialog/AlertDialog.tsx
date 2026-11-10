@@ -1,8 +1,8 @@
 import { clsx } from "clsx";
 import { AlertDialog as AlertDialogPrimitive, VisuallyHidden } from "radix-ui";
-import { composeEventHandlers } from "radix-ui/internal";
 import type { ComponentProps } from "react";
 
+import { composeEventHandlers } from "../_internal/composeEventHandlers";
 import { Button, type ButtonProps } from "../Button";
 import * as styles from "./AlertDialog.css";
 
@@ -54,7 +54,9 @@ export type AlertDialogContentProps = ComponentProps<
 /**
  * 배경(scrim)과 표면을 함께 그려요. `body`에 Portal로 붙어요.
  *
- * 열리면 Cancel에, Cancel이 없으면 하나뿐인 Action에 포커스가 가요.
+ * 열리면 Cancel에, Cancel이 없으면 하나뿐인 Action에 포커스가 가요. 닫히면 Trigger로 돌아가요.
+ *
+ * Trigger 없이 열었거나 실행 뒤 연 요소가 사라지면 `onCloseAutoFocus`에서 `event.preventDefault()`를 부르고 다음 위치로 포커스를 옮겨요.
  */
 function AlertDialogContent({
   className,
@@ -85,7 +87,9 @@ function AlertDialogContent({
   return (
     <AlertDialogPrimitive.Portal>
       <AlertDialogPrimitive.Overlay className={styles.overlay} />
+      {/* Radix는 배경을 aria-hidden으로만 가려요. 모달임을 직접 알려요. */}
       <AlertDialogPrimitive.Content
+        aria-modal="true"
         {...contentProps}
         className={clsx(styles.content, className)}
         onOpenAutoFocus={composeEventHandlers(
@@ -184,10 +188,17 @@ function AlertDialogActions({
 
 // ---- Cancel
 
-export type AlertDialogCancelProps = Omit<FixedButtonProps, "loading">;
+export type AlertDialogCancelProps = Omit<FixedButtonProps, "loading"> & {
+  /**
+   * 취소 버튼 색이에요. 취소를 더 눈에 띄지 않게 해야 할 때만 `ghost`를 써요.
+   * @default secondary
+   */
+  variant?: Extract<ButtonProps["variant"], "secondary" | "ghost">;
+};
 
 /** 안전한 취소예요. 누르거나 Escape를 누르면 닫혀요. 처음 포커스가 여기에 가요. */
 function AlertDialogCancel({
+  variant = "secondary",
   className,
   ...cancelProps
 }: AlertDialogCancelProps) {
@@ -195,7 +206,7 @@ function AlertDialogCancel({
     <AlertDialogPrimitive.Cancel asChild>
       <Button
         {...cancelProps}
-        variant="secondary"
+        variant={variant}
         {...fixedButtonProps}
         className={clsx(styles.actionButton, className)}
         data-alert-dialog-cancel=""

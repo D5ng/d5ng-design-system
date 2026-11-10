@@ -57,6 +57,15 @@ describe("AlertDialog", () => {
       .toHaveAccessibleDescription("삭제한 항목은 복구할 수 없어요.");
   });
 
+  it("모달임을 알려요", async () => {
+    await render(<DeleteDialog />);
+    await open();
+
+    await expect
+      .element(page.getByRole("alertdialog"))
+      .toHaveAttribute("aria-modal", "true");
+  });
+
   it("바깥을 눌러도 닫히지 않아요", async () => {
     await render(<DeleteDialog />);
     await open();
@@ -134,6 +143,37 @@ describe("AlertDialog", () => {
 
     await expect
       .element(page.getByRole("button", { name: "항목 삭제" }))
+      .toHaveFocus();
+  });
+
+  it("연 버튼이 없으면 onCloseAutoFocus로 정한 곳에 포커스가 가요", async () => {
+    // 목록 항목을 지운 뒤처럼 Trigger 없이 열었을 때예요.
+    await render(
+      <>
+        <button type="button" id="next">
+          다음 항목
+        </button>
+        <AlertDialog.Root defaultOpen>
+          <AlertDialog.Content
+            onCloseAutoFocus={(event) => {
+              event.preventDefault();
+              document.getElementById("next")?.focus();
+            }}
+          >
+            <AlertDialog.Title>항목을 삭제할까요?</AlertDialog.Title>
+            <AlertDialog.Description>복구할 수 없어요.</AlertDialog.Description>
+            <AlertDialog.Actions>
+              <AlertDialog.Cancel>취소</AlertDialog.Cancel>
+            </AlertDialog.Actions>
+          </AlertDialog.Content>
+        </AlertDialog.Root>
+      </>,
+    );
+
+    await page.getByRole("button", { name: "취소" }).click();
+
+    await expect
+      .element(page.getByRole("button", { name: "다음 항목" }))
       .toHaveFocus();
   });
 
