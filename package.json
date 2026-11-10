@@ -13,7 +13,8 @@
     "lint:fix": "eslint . --cache --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky && pnpm --filter @d5ng/tokens build"
+    "prepare": "husky && pnpm --filter @d5ng/tokens build",
+    "release": "pnpm --filter \"./packages/*\" build && changeset publish"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -23,6 +24,7 @@
     "*.{json,md,yml,yaml,css}": "prettier --write"
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.8.1",
