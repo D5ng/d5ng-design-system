@@ -1,4 +1,17 @@
-import { Button, IconButton, Link } from "@d5ng/react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogActions,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogErrorMessage,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  Button,
+  IconButton,
+  Link,
+} from "@d5ng/react";
 import NextLink from "next/link";
 
 // "use client"가 없는 서버 컴포넌트라서, 서버에서 못 쓰는 export가 있으면 프리렌더 단계에서 next build가 실패해요.
@@ -27,6 +40,22 @@ export default function Page() {
           <NextLink href="/client">클라이언트 페이지</NextLink>
         </Link>
       </p>
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <Button variant="critical">글 삭제</Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogTitle>글을 삭제할까요?</AlertDialogTitle>
+          <AlertDialogDescription>
+            삭제하면 되돌릴 수 없어요.
+          </AlertDialogDescription>
+          <AlertDialogErrorMessage>삭제하지 못했어요.</AlertDialogErrorMessage>
+          <AlertDialogActions>
+            <AlertDialogCancel>취소</AlertDialogCancel>
+            <AlertDialogAction variant="critical">삭제</AlertDialogAction>
+          </AlertDialogActions>
+        </AlertDialogContent>
+      </AlertDialog>
     </main>
   );
 }

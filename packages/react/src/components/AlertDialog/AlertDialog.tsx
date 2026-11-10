@@ -1,3 +1,5 @@
+"use client";
+
 import { clsx } from "clsx";
 import { AlertDialog as AlertDialogPrimitive, VisuallyHidden } from "radix-ui";
 import type { ComponentProps } from "react";
