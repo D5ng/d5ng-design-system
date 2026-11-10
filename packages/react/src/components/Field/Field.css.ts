@@ -130,6 +130,8 @@ export const messageIcon = style({
 export const count = style({
   ...textStyles.bodySmall,
   flexShrink: 0,
+  // 안내 문구가 없어도 오른쪽 끝에 둬요. 문구가 생기고 사라질 때 자리가 옮겨 다니지 않아요.
+  marginInlineStart: "auto",
   color: vars.color.fg.neutralMuted,
   selectors: {
     [`${root}${invalidSelector} &`]: { color: vars.color.fg.critical },
