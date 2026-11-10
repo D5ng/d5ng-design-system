@@ -7,11 +7,21 @@ export type {
   AlertDialogContentProps,
   AlertDialogDescriptionProps,
   AlertDialogErrorMessageProps,
-  AlertDialogRootProps,
+  AlertDialogProps,
   AlertDialogTitleProps,
   AlertDialogTriggerProps,
 } from "./components/AlertDialog";
-export { AlertDialog } from "./components/AlertDialog";
+export {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogActions,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogErrorMessage,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./components/AlertDialog";
 export type { ButtonProps } from "./components/Button";
 export { Button } from "./components/Button";
 export type { IconButtonProps } from "./components/IconButton";

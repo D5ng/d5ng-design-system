@@ -4,7 +4,17 @@ import { page, userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
 
 import { Button } from "../Button";
-import { AlertDialog } from ".";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogActions,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogErrorMessage,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from ".";
 import * as styles from "./AlertDialog.css";
 
 type DeleteDialogProps = {
@@ -16,26 +26,26 @@ type DeleteDialogProps = {
 // 가이드의 기본 예시(삭제 확인)예요. 트리거로 열어야 처음 포커스와 포커스 복귀를 확인할 수 있어요.
 function DeleteDialog({ actions, title, children }: DeleteDialogProps) {
   return (
-    <AlertDialog.Root>
-      <AlertDialog.Trigger asChild>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
         <Button>항목 삭제</Button>
-      </AlertDialog.Trigger>
-      <AlertDialog.Content>
-        {title ?? <AlertDialog.Title>항목을 삭제할까요?</AlertDialog.Title>}
-        <AlertDialog.Description>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        {title ?? <AlertDialogTitle>항목을 삭제할까요?</AlertDialogTitle>}
+        <AlertDialogDescription>
           삭제한 항목은 복구할 수 없어요.
-        </AlertDialog.Description>
+        </AlertDialogDescription>
         {children}
-        <AlertDialog.Actions>
+        <AlertDialogActions>
           {actions ?? (
             <>
-              <AlertDialog.Cancel>취소</AlertDialog.Cancel>
-              <AlertDialog.Action variant="critical">삭제</AlertDialog.Action>
+              <AlertDialogCancel>취소</AlertDialogCancel>
+              <AlertDialogAction variant="critical">삭제</AlertDialogAction>
             </>
           )}
-        </AlertDialog.Actions>
-      </AlertDialog.Content>
-    </AlertDialog.Root>
+        </AlertDialogActions>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
 
@@ -86,8 +96,8 @@ describe("AlertDialog", () => {
       <DeleteDialog
         actions={
           <>
-            <AlertDialog.Cancel>취소</AlertDialog.Cancel>
-            <AlertDialog.Action onClick={onAction}>삭제</AlertDialog.Action>
+            <AlertDialogCancel>취소</AlertDialogCancel>
+            <AlertDialogAction onClick={onAction}>삭제</AlertDialogAction>
           </>
         }
       />,
@@ -111,7 +121,7 @@ describe("AlertDialog", () => {
 
   it("버튼이 하나면 그 버튼에 포커스가 가요", async () => {
     await render(
-      <DeleteDialog actions={<AlertDialog.Action>확인</AlertDialog.Action>} />,
+      <DeleteDialog actions={<AlertDialogAction>확인</AlertDialogAction>} />,
     );
     await open();
 
@@ -153,20 +163,20 @@ describe("AlertDialog", () => {
         <button type="button" id="next">
           다음 항목
         </button>
-        <AlertDialog.Root defaultOpen>
-          <AlertDialog.Content
+        <AlertDialog defaultOpen>
+          <AlertDialogContent
             onCloseAutoFocus={(event) => {
               event.preventDefault();
               document.getElementById("next")?.focus();
             }}
           >
-            <AlertDialog.Title>항목을 삭제할까요?</AlertDialog.Title>
-            <AlertDialog.Description>복구할 수 없어요.</AlertDialog.Description>
-            <AlertDialog.Actions>
-              <AlertDialog.Cancel>취소</AlertDialog.Cancel>
-            </AlertDialog.Actions>
-          </AlertDialog.Content>
-        </AlertDialog.Root>
+            <AlertDialogTitle>항목을 삭제할까요?</AlertDialogTitle>
+            <AlertDialogDescription>복구할 수 없어요.</AlertDialogDescription>
+            <AlertDialogActions>
+              <AlertDialogCancel>취소</AlertDialogCancel>
+            </AlertDialogActions>
+          </AlertDialogContent>
+        </AlertDialog>
       </>,
     );
 
@@ -181,9 +191,7 @@ describe("AlertDialog", () => {
     const onAction = vi.fn();
     await render(
       <DeleteDialog
-        actions={
-          <AlertDialog.Action onClick={onAction}>삭제</AlertDialog.Action>
-        }
+        actions={<AlertDialogAction onClick={onAction}>삭제</AlertDialogAction>}
       />,
     );
     await open();
@@ -199,13 +207,13 @@ describe("AlertDialog", () => {
     await render(
       <DeleteDialog
         actions={
-          <AlertDialog.Action
+          <AlertDialogAction
             onClick={(event) => {
               event.preventDefault();
             }}
           >
             삭제
-          </AlertDialog.Action>
+          </AlertDialogAction>
         }
       />,
     );
@@ -221,9 +229,9 @@ describe("AlertDialog", () => {
     await render(
       <DeleteDialog
         actions={
-          <AlertDialog.Action loading onClick={onAction}>
+          <AlertDialogAction loading onClick={onAction}>
             삭제
-          </AlertDialog.Action>
+          </AlertDialogAction>
         }
       />,
     );
@@ -238,9 +246,9 @@ describe("AlertDialog", () => {
   it("오류 문구를 스크린리더에 알려요", async () => {
     await render(
       <DeleteDialog>
-        <AlertDialog.ErrorMessage>
+        <AlertDialogErrorMessage>
           삭제하지 못했어요. 다시 시도해 주세요.
-        </AlertDialog.ErrorMessage>
+        </AlertDialogErrorMessage>
       </DeleteDialog>,
     );
     await open();
@@ -254,7 +262,7 @@ describe("AlertDialog", () => {
     await render(
       <DeleteDialog
         title={
-          <AlertDialog.Title visuallyHidden>항목 삭제 확인</AlertDialog.Title>
+          <AlertDialogTitle visuallyHidden>항목 삭제 확인</AlertDialogTitle>
         }
       />,
     );
@@ -276,10 +284,10 @@ describe("AlertDialog", () => {
       <DeleteDialog
         actions={
           <>
-            <AlertDialog.Cancel>계속 편집하기</AlertDialog.Cancel>
-            <AlertDialog.Action variant="critical">
+            <AlertDialogCancel>계속 편집하기</AlertDialogCancel>
+            <AlertDialogAction variant="critical">
               저장하지 않고 나가기
-            </AlertDialog.Action>
+            </AlertDialogAction>
           </>
         }
       />,
@@ -290,12 +298,12 @@ describe("AlertDialog", () => {
 
   it("className을 넘겨도 원래 스타일이 남아요", async () => {
     await render(
-      <AlertDialog.Root defaultOpen>
-        <AlertDialog.Content className="custom">
-          <AlertDialog.Title>항목을 삭제할까요?</AlertDialog.Title>
-          <AlertDialog.Description>복구할 수 없어요.</AlertDialog.Description>
-        </AlertDialog.Content>
-      </AlertDialog.Root>,
+      <AlertDialog defaultOpen>
+        <AlertDialogContent className="custom">
+          <AlertDialogTitle>항목을 삭제할까요?</AlertDialogTitle>
+          <AlertDialogDescription>복구할 수 없어요.</AlertDialogDescription>
+        </AlertDialogContent>
+      </AlertDialog>,
     );
 
     const dialog = page.getByRole("alertdialog");
@@ -306,12 +314,12 @@ describe("AlertDialog", () => {
   it("ref를 전달해요", async () => {
     const ref = createRef<HTMLDivElement>();
     await render(
-      <AlertDialog.Root defaultOpen>
-        <AlertDialog.Content ref={ref}>
-          <AlertDialog.Title>항목을 삭제할까요?</AlertDialog.Title>
-          <AlertDialog.Description>복구할 수 없어요.</AlertDialog.Description>
-        </AlertDialog.Content>
-      </AlertDialog.Root>,
+      <AlertDialog defaultOpen>
+        <AlertDialogContent ref={ref}>
+          <AlertDialogTitle>항목을 삭제할까요?</AlertDialogTitle>
+          <AlertDialogDescription>복구할 수 없어요.</AlertDialogDescription>
+        </AlertDialogContent>
+      </AlertDialog>,
     );
 
     await expect.element(page.getByRole("alertdialog")).toBeInTheDocument();

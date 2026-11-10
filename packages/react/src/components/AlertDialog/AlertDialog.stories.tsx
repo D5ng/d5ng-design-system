@@ -2,7 +2,18 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 
 import { Button } from "../Button";
-import { AlertDialog } from ".";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  type AlertDialogActionProps,
+  AlertDialogActions,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogErrorMessage,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from ".";
 
 const variants = ["neutral", "primary", "critical"] as const;
 
@@ -11,7 +22,7 @@ type DemoProps = {
   title: string;
   description: string;
   cancel?: string;
-} & AlertDialog.AlertDialogActionProps;
+} & AlertDialogActionProps;
 
 // 스토리는 모두 트리거로 열어요. 문서 페이지에서 여러 모달이 한꺼번에 열리지 않게 하고, 열린 화면은 play가 보여 줘요.
 function Demo({
@@ -22,32 +33,32 @@ function Demo({
   ...actionProps
 }: DemoProps) {
   return (
-    <AlertDialog.Root>
-      <AlertDialog.Trigger asChild>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
         <Button>{trigger}</Button>
-      </AlertDialog.Trigger>
-      <AlertDialog.Content>
-        <AlertDialog.Title>{title}</AlertDialog.Title>
-        <AlertDialog.Description>{description}</AlertDialog.Description>
-        <AlertDialog.Actions>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle>{title}</AlertDialogTitle>
+        <AlertDialogDescription>{description}</AlertDialogDescription>
+        <AlertDialogActions>
           {cancel === undefined ? null : (
-            <AlertDialog.Cancel>{cancel}</AlertDialog.Cancel>
+            <AlertDialogCancel>{cancel}</AlertDialogCancel>
           )}
-          <AlertDialog.Action {...actionProps} />
-        </AlertDialog.Actions>
-      </AlertDialog.Content>
-    </AlertDialog.Root>
+          <AlertDialogAction {...actionProps} />
+        </AlertDialogActions>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
 
 const meta = {
   title: "Components/AlertDialog",
-  component: AlertDialog.Action,
+  component: AlertDialogAction,
   subcomponents: {
-    "AlertDialog.Content": AlertDialog.Content,
-    "AlertDialog.Title": AlertDialog.Title,
-    "AlertDialog.ErrorMessage": AlertDialog.ErrorMessage,
-    "AlertDialog.Cancel": AlertDialog.Cancel,
+    AlertDialogContent,
+    AlertDialogTitle,
+    AlertDialogErrorMessage,
+    AlertDialogCancel,
   },
   tags: ["autodocs"],
   args: { children: "계속", variant: "neutral" },
@@ -78,7 +89,7 @@ const meta = {
       url: "https://www.figma.com/design/5e7PW74E0sWvXqhHC1fpqz/d5ng?node-id=239-167291",
     },
   },
-} satisfies Meta<typeof AlertDialog.Action>;
+} satisfies Meta<typeof AlertDialogAction>;
 
 export default meta;
 
@@ -131,40 +142,40 @@ export const LongLabels: Story = {
 /** 취소를 더 눈에 띄지 않게 해야 할 때 Cancel을 `ghost`로 둬요. */
 export const GhostCancel: Story = {
   render: (args) => (
-    <AlertDialog.Root>
-      <AlertDialog.Trigger asChild>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
         <Button>대화상자 열기</Button>
-      </AlertDialog.Trigger>
-      <AlertDialog.Content>
-        <AlertDialog.Title>작업을 계속할까요?</AlertDialog.Title>
-        <AlertDialog.Description>내용을 확인해 주세요.</AlertDialog.Description>
-        <AlertDialog.Actions>
-          <AlertDialog.Cancel variant="ghost">나중에</AlertDialog.Cancel>
-          <AlertDialog.Action {...args} />
-        </AlertDialog.Actions>
-      </AlertDialog.Content>
-    </AlertDialog.Root>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle>작업을 계속할까요?</AlertDialogTitle>
+        <AlertDialogDescription>내용을 확인해 주세요.</AlertDialogDescription>
+        <AlertDialogActions>
+          <AlertDialogCancel variant="ghost">나중에</AlertDialogCancel>
+          <AlertDialogAction {...args} />
+        </AlertDialogActions>
+      </AlertDialogContent>
+    </AlertDialog>
   ),
 };
 
 /** 메시지만으로 뜻이 충분하면 제목을 숨겨요. 스크린리더는 숨긴 제목을 이름으로 읽어요. */
 export const HiddenTitle: Story = {
   render: (args) => (
-    <AlertDialog.Root>
-      <AlertDialog.Trigger asChild>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
         <Button>대화상자 열기</Button>
-      </AlertDialog.Trigger>
-      <AlertDialog.Content>
-        <AlertDialog.Title visuallyHidden>작업 계속 확인</AlertDialog.Title>
-        <AlertDialog.Description>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle visuallyHidden>작업 계속 확인</AlertDialogTitle>
+        <AlertDialogDescription>
           작업을 계속하면 지금 화면을 떠나요.
-        </AlertDialog.Description>
-        <AlertDialog.Actions>
-          <AlertDialog.Cancel>취소</AlertDialog.Cancel>
-          <AlertDialog.Action {...args} />
-        </AlertDialog.Actions>
-      </AlertDialog.Content>
-    </AlertDialog.Root>
+        </AlertDialogDescription>
+        <AlertDialogActions>
+          <AlertDialogCancel>취소</AlertDialogCancel>
+          <AlertDialogAction {...args} />
+        </AlertDialogActions>
+      </AlertDialogContent>
+    </AlertDialog>
   ),
 };
 
@@ -172,29 +183,29 @@ export const HiddenTitle: Story = {
 export const WithError: Story = {
   args: { variant: "critical", children: "다시 시도" },
   render: (args) => (
-    <AlertDialog.Root>
-      <AlertDialog.Trigger asChild>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
         <Button>항목 삭제</Button>
-      </AlertDialog.Trigger>
-      <AlertDialog.Content>
-        <AlertDialog.Title>항목을 삭제할까요?</AlertDialog.Title>
-        <AlertDialog.Description>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle>항목을 삭제할까요?</AlertDialogTitle>
+        <AlertDialogDescription>
           삭제한 항목은 복구할 수 없어요.
-        </AlertDialog.Description>
-        <AlertDialog.ErrorMessage>
+        </AlertDialogDescription>
+        <AlertDialogErrorMessage>
           삭제하지 못했어요. 다시 시도해 주세요.
-        </AlertDialog.ErrorMessage>
-        <AlertDialog.Actions>
-          <AlertDialog.Cancel>취소</AlertDialog.Cancel>
-          <AlertDialog.Action
+        </AlertDialogErrorMessage>
+        <AlertDialogActions>
+          <AlertDialogCancel>취소</AlertDialogCancel>
+          <AlertDialogAction
             {...args}
             onClick={(event) => {
               event.preventDefault();
             }}
           />
-        </AlertDialog.Actions>
-      </AlertDialog.Content>
-    </AlertDialog.Root>
+        </AlertDialogActions>
+      </AlertDialogContent>
+    </AlertDialog>
   ),
 };
 
@@ -205,17 +216,17 @@ function AsyncExample() {
   const [error, setError] = useState(false);
 
   return (
-    <AlertDialog.Root
+    <AlertDialog
       open={open}
       onOpenChange={(nextOpen) => {
         setOpen(nextOpen);
         setError(false);
       }}
     >
-      <AlertDialog.Trigger asChild>
+      <AlertDialogTrigger asChild>
         <Button>항목 삭제</Button>
-      </AlertDialog.Trigger>
-      <AlertDialog.Content
+      </AlertDialogTrigger>
+      <AlertDialogContent
         onEscapeKeyDown={(event) => {
           // 요청 중에는 Cancel처럼 Escape로도 닫지 않아요.
           if (deleting) {
@@ -223,18 +234,18 @@ function AsyncExample() {
           }
         }}
       >
-        <AlertDialog.Title>항목을 삭제할까요?</AlertDialog.Title>
-        <AlertDialog.Description>
+        <AlertDialogTitle>항목을 삭제할까요?</AlertDialogTitle>
+        <AlertDialogDescription>
           삭제한 항목은 복구할 수 없어요.
-        </AlertDialog.Description>
+        </AlertDialogDescription>
         {error ? (
-          <AlertDialog.ErrorMessage>
+          <AlertDialogErrorMessage>
             삭제하지 못했어요. 다시 시도해 주세요.
-          </AlertDialog.ErrorMessage>
+          </AlertDialogErrorMessage>
         ) : null}
-        <AlertDialog.Actions>
-          <AlertDialog.Cancel disabled={deleting}>취소</AlertDialog.Cancel>
-          <AlertDialog.Action
+        <AlertDialogActions>
+          <AlertDialogCancel disabled={deleting}>취소</AlertDialogCancel>
+          <AlertDialogAction
             variant="critical"
             loading={deleting}
             onClick={(event) => {
@@ -255,10 +266,10 @@ function AsyncExample() {
             }}
           >
             {error ? "다시 시도" : "삭제"}
-          </AlertDialog.Action>
-        </AlertDialog.Actions>
-      </AlertDialog.Content>
-    </AlertDialog.Root>
+          </AlertDialogAction>
+        </AlertDialogActions>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
 

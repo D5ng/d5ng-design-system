@@ -21,16 +21,14 @@ type FixedButtonProps = Omit<
 
 // ---- Root
 
-export type AlertDialogRootProps = ComponentProps<
-  typeof AlertDialogPrimitive.Root
->;
+export type AlertDialogProps = ComponentProps<typeof AlertDialogPrimitive.Root>;
 
 /**
  * 중요한 확인과 경고를 받는 모달이에요. 바깥을 눌러도 닫히지 않고, 버튼이나 Escape로만 닫혀요.
  *
  * 입력이나 긴 내용은 Dialog, 흐름을 멈출 필요가 없는 결과 안내는 Snackbar로 해요.
  */
-function AlertDialogRoot({ ...rootProps }: AlertDialogRootProps) {
+function AlertDialog({ ...rootProps }: AlertDialogProps) {
   return <AlertDialogPrimitive.Root {...rootProps} />;
 }
 
@@ -249,13 +247,13 @@ function AlertDialogAction({
 }
 
 export {
-  AlertDialogAction as Action,
-  AlertDialogActions as Actions,
-  AlertDialogCancel as Cancel,
-  AlertDialogContent as Content,
-  AlertDialogDescription as Description,
-  AlertDialogErrorMessage as ErrorMessage,
-  AlertDialogRoot as Root,
-  AlertDialogTitle as Title,
-  AlertDialogTrigger as Trigger,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogActions,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogErrorMessage,
+  AlertDialogTitle,
+  AlertDialogTrigger,
 };

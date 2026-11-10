@@ -11,7 +11,7 @@
 
 ## 정한 것
 
-- **Radix처럼 부분으로 나눠요**: `Root`, `Trigger`, `Content`, `Title`, `Description`, `ErrorMessage`, `Actions`, `Cancel`, `Action`. `AlertDialog.Content`처럼 이름공간으로 내보내요
+- **Radix처럼 부분으로 나누고, shadcn처럼 부분마다 이름으로 내보내요**: `AlertDialog`, `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogErrorMessage`, `AlertDialogActions`, `AlertDialogCancel`, `AlertDialogAction`. `AlertDialog.Content` 같은 이름공간 객체는 두지 않아요. import 줄에 쓰는 부분이 다 보이고, 이름 하나로 검색·자동 import가 돼요. 대신 import할 이름이 늘어나요
 - **`Content`가 Backdrop과 Portal을 함께 그려요**: SEED와 같아요. 쓰는 쪽이 Overlay를 빠뜨려 배경 차단이 안 되는 일이 없어요
 - **Tone은 `Action`의 `variant`로 골라요**(`neutral` 기본, `primary`, `critical`): Figma의 Tone은 실행 버튼 색만 바꿔요. SEED·Montage도 대화상자가 아니라 버튼에서 색을 골라요. `Content tone`을 두면 `tone="brand"`와 `variant="primary"`처럼 같은 뜻에 이름이 둘 생기고, 버튼 색을 알려면 Content까지 올라가 읽어야 해요(FF R6)
 - **버튼 크기와 너비는 고정이에요**: Figma 규격("기존 Small Button", 꽉 찬 너비)이라 `size`, `fullWidth`, `asChild`를 받지 않아요
