@@ -24,6 +24,9 @@ export default defineConfig(
   globalIgnores([
     "**/dist",
     "**/storybook-static",
+    // next build·typegen이 만드는 파일이에요.
+    "**/.next",
+    "**/next-env.d.ts",
     // .claude/worktrees에는 Claude Code가 만든 다른 브랜치의 worktree가 있어요.
     ".claude/worktrees",
     // export.figma.js는 Figma Plugin API에서 실행하는 스크립트라 최상위 return을 써요.
