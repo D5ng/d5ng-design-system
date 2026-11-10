@@ -5,4 +5,6 @@ import { globalStyle } from "@vanilla-extract/css";
 globalStyle("body", {
   background: vars.color.bg.layerDefault,
   color: vars.color.fg.neutral,
+  // 글꼴을 물려받는 컴포넌트(Link)가 쓰는 쪽 앱에서처럼 보이게 해요.
+  fontFamily: vars.font.family.base,
 });

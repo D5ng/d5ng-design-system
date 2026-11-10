@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import { Slot } from "radix-ui";
-import { Primitive } from "radix-ui/internal";
 import type { ComponentProps, ReactNode } from "react";
 
 import * as buttonBase from "../_internal/buttonBase.css";
@@ -57,12 +56,12 @@ export function IconButton({
     asChild,
     onClickCapture,
   });
+  const Comp = asChild ? Slot.Root : "button";
 
   return (
-    <Primitive.button
+    <Comp
       {...overridableProps}
       {...buttonProps}
-      asChild={asChild}
       className={clsx(styles.iconButton({ variant, size }), className)}
       {...enforcedProps}
     >
@@ -79,6 +78,6 @@ export function IconButton({
           </>
         )}
       </Slot.Slottable>
-    </Primitive.button>
+    </Comp>
   );
 }

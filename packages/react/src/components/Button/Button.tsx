@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import { Slot } from "radix-ui";
-import { Primitive } from "radix-ui/internal";
 import type { ComponentProps, ReactNode } from "react";
 
 import * as buttonBase from "../_internal/buttonBase.css";
@@ -69,12 +68,12 @@ export function Button({
     asChild,
     onClickCapture,
   });
+  const Comp = asChild ? Slot.Root : "button";
 
   return (
-    <Primitive.button
+    <Comp
       {...overridableProps}
       {...buttonProps}
-      asChild={asChild}
       className={clsx(styles.button({ variant, size, fullWidth }), className)}
       {...enforcedProps}
     >
@@ -98,6 +97,6 @@ export function Button({
           </>
         )}
       </Slot.Slottable>
-    </Primitive.button>
+    </Comp>
   );
 }
