@@ -1,6 +1,6 @@
 # d5ng-design-system
 
-Radix UI 위에 만든 React 디자인 시스템. npm 패키지(`@d5ng/tokens`, `@d5ng/react`)로 배포하고 pnpm workspace로 관리한다. 혼자 운영하는 저장소라 리뷰어는 몇 달 뒤의 나다. 그래서 모든 기록은 "나중에 다시 읽어도 이해되는가"를 기준으로 쓴다.
+Radix UI 위에 만든 React 디자인 시스템. npm 패키지 `@d5ng/react`로 배포하고 pnpm workspace로 관리한다. `@d5ng/tokens`는 react 빌드에 녹아 들어가서 따로 배포하지 않는다(`private`). 혼자 운영하는 저장소라 리뷰어는 몇 달 뒤의 나다. 그래서 모든 기록은 "나중에 다시 읽어도 이해되는가"를 기준으로 쓴다.
 
 ## 일하는 방식
 
