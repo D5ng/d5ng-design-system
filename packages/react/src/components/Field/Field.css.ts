@@ -71,8 +71,9 @@ export const requiredMark = style({
 export const optional = style({
   marginInlineStart: vars.spacing[4],
   fontSize: vars.font.size.t4,
-  // 라벨과 같은 22px 행간이라 첫 줄 높이가 흔들리지 않아요.
+  // 라벨과 같은 22px 행간에 윗변을 맞춰요(Figma). 기준선에 맞추면 글자 크기가 달라 줄이 24px로 커져요.
   lineHeight: vars.font.lineHeight.t5,
+  verticalAlign: "top",
   fontWeight: vars.font.weight.regular,
   color: vars.color.fg.neutralMuted,
   selectors: disabledColor,
