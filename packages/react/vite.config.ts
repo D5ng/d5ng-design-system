@@ -47,9 +47,17 @@ export default defineConfig({
     lib: {
       entry: "src/index.ts",
       formats: ["es"],
-      fileName: "index",
       cssFileName: "styles",
     },
-    rolldownOptions: { external },
+    rolldownOptions: {
+      external,
+      // 소스 파일마다 따로 내보내요. 한 파일로 묶으면 Vite가 "use client"를 경고 없이 지워서
+      // Next.js 서버 컴포넌트에서 Button 같은 클라이언트 컴포넌트가 깨져요.
+      output: {
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        entryFileNames: "[name].js",
+      },
+    },
   },
 });

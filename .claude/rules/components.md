@@ -24,6 +24,14 @@ paths:
 - 쓰는 쪽 핸들러와 합칠 때는 `_internal/composeEventHandlers`의 `composeEventHandlers(onClick, …)`를 쓴다. 쓰는 쪽보다 먼저 막아야 하면 손으로 쓰고 이유를 주석으로 남긴다
 - 클래스는 `clsx(styles.button(…), className)`로 합친다
 
+## 서버 컴포넌트
+
+쓰는 쪽이 Next.js App Router의 서버 컴포넌트에서 바로 import해도 깨지지 않아야 한다. `apps/next`의 `next build`가 검사한다.
+
+- 이럴 때 파일 맨 위(import보다 앞)에 `"use client"`를 붙인다: hook을 쓸 때, 이벤트 핸들러나 render 함수를 만들어 요소·컴포넌트에 넘길 때, 브라우저 API를 쓸 때, 상태 있는 Radix 컴포넌트(Dialog 등)를 감쌀 때
+- `Slot`만 쓰는 컴포넌트(`Link`), `_internal`의 순수 함수와 `.css.ts`, `index.ts`에는 붙이지 않는다. 붙이면 서버에서 렌더할 수 있는 컴포넌트까지 클라이언트 JS로 나간다
+- 새 export는 `apps/next/app/page.tsx`에 렌더한다. 핸들러가 달라지는 prop(`loading`, `asChild`)도 따로 렌더한다
+
 ## 직접 만들기 전에 찾는다
 
 필요한 동작은 이 순서로 찾고, 동작이 맞을 때만 쓴다.
