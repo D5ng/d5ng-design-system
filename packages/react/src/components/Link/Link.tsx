@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import { Slot } from "radix-ui";
-import { Primitive } from "radix-ui/internal";
 import type { ComponentProps, ReactNode } from "react";
 
 import * as styles from "./Link.css";
@@ -30,12 +29,10 @@ export function Link({
   children,
   ...anchorProps
 }: LinkProps) {
+  const Comp = asChild ? Slot.Root : "a";
+
   return (
-    <Primitive.a
-      {...anchorProps}
-      asChild={asChild}
-      className={clsx(styles.link, className)}
-    >
+    <Comp {...anchorProps} className={clsx(styles.link, className)}>
       <Slot.Slottable child={children}>
         {(child) => (
           <>
@@ -48,6 +45,6 @@ export function Link({
           </>
         )}
       </Slot.Slottable>
-    </Primitive.a>
+    </Comp>
   );
 }

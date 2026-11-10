@@ -39,7 +39,7 @@ export default defineConfig({
     // 테스트 파일의 타입 검사는 tsc(tsconfig)가 맡아요.
     dts({
       include: ["src"],
-      exclude: ["src/**/*.test.tsx", "src/**/*.stories.tsx"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.stories.tsx"],
     }),
     cssLayer(),
   ],

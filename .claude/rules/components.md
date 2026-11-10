@@ -12,27 +12,27 @@ paths:
 - 컴포넌트는 `function` 선언으로, 그 안에서 만드는 함수는 `const` 화살표 함수로 쓴다 (lint)
 - props 타입은 컴포넌트 이름 뒤에 `Props`를 붙여 `ButtonProps`처럼 짓고, 패키지 밖으로도 그 이름 그대로 내보낸다. 파일 안에서만 쓰는 보조 컴포넌트도 `AliasProps`처럼 같은 규칙을 따른다
 - props는 매개변수에서 구조 분해하고, 나머지는 렌더하는 부분 이름으로 받는다: `...buttonProps`, `...triggerProps`, `...contentProps` (lint는 `restProps`, `props`, `rest`를 막는다. 이름이 부분과 맞는지는 리뷰에서 본다)
-- 제어 상태는 `open`, `defaultOpen`, `onOpenChange` 세 이름으로 받고 안에서는 `openProp`이라 부른다. 셋은 `useControllableState({ caller: NAME })`로 묶는다
+- 제어 상태는 `open`, `defaultOpen`, `onOpenChange` 세 이름으로 받고 안에서는 `openProp`이라 부른다. Radix 컴포넌트를 감싸면 셋을 그대로 넘긴다. 상태를 직접 가져야 하면 그때 `_internal/useControllableState`를 만든다
 - 파일 순서: 상수(`NAME`) → 타입 → 컴포넌트 → 보조 함수 → export
 
 ## 렌더링
 
 - 속성 순서에 뜻을 담는다: 쓰는 쪽이 바꿔도 되는 기본값(`type`, `aria-*`, `data-*`) → `{...buttonProps}` → 지켜야 할 것(className 합치기, 합친 이벤트 핸들러)
 - 상태는 `data-*`로 드러내고(`data-disabled=""`, `data-state="open"`) 스타일은 그 속성을 본다. 크기나 variant 같은 정적 값만 recipe 클래스로 둔다
-- asChild는 `Primitive.*`로 렌더한다
-- 쓰는 쪽 핸들러와 합칠 때는 `composeEventHandlers(onClick, …)`를 쓴다. 쓰는 쪽보다 먼저 막아야 하면 손으로 쓰고 이유를 주석으로 남긴다
+- asChild는 `const Comp = asChild ? Slot.Root : "button"`으로 렌더한다
+- 쓰는 쪽 핸들러와 합칠 때는 `_internal/composeEventHandlers`의 `composeEventHandlers(onClick, …)`를 쓴다. 쓰는 쪽보다 먼저 막아야 하면 손으로 쓰고 이유를 주석으로 남긴다
 - 클래스는 `clsx(styles.button(…), className)`로 합친다
 
 ## 직접 만들기 전에 찾는다
 
 필요한 동작은 이 순서로 찾고, 동작이 맞을 때만 쓴다.
 
-1. `radix-ui`의 컴포넌트와 유틸(`Slot`, `VisuallyHidden`, `Portal`, `Direction`, `AccessibleIcon`)
-2. `radix-ui/internal`(`useControllableState`, `composeEventHandlers`, `useComposedRefs`, `Primitive`, `Presence`, `FocusScope`, `DismissableLayer`, `RovingFocus`, `Context` 등). Radix Themes도 이 경로를 쓴다
-3. 통합 패키지에 없을 때만 개별 `@radix-ui/*`를 `radix-ui`가 쓰는 버전으로 설치한다(`react-use-previous`, `number`, `react-use-rect`). `@radix-ui/react-*`는 `no-restricted-imports`가 막으니 그 패키지만 예외로 추가한다
-4. React 기본 기능(`useId` 등)
-5. 널리 쓰이는 작은 라이브러리(예: 클래스 합치기는 `clsx`). 손으로 짠 코드가 읽기 불편하면 먼저 라이브러리가 있는지 찾아보고, 크기·관리 상태·다른 디자인 시스템의 사용 여부를 비교해 `dependencies`에 넣는다
-6. 직접 만든다
+1. `radix-ui`의 공개 컴포넌트와 유틸(`Slot`, `VisuallyHidden`, `Portal`, `Direction`, `AccessibleIcon`). 포커스 가두기·바깥 클릭 닫기·닫힘 애니메이션 같은 무거운 동작은 그 동작을 가진 컴포넌트(Dialog, Popover 등)를 감싸서 얻는다
+2. React 기본 기능(`useId` 등)
+3. 널리 쓰이는 작은 라이브러리(예: 클래스 합치기는 `clsx`). 손으로 짠 코드가 읽기 불편하면 먼저 라이브러리가 있는지 찾아보고, 크기·관리 상태·다른 디자인 시스템의 사용 여부를 비교해 `dependencies`에 넣는다
+4. 직접 만든다. Radix 비공개 유틸과 같은 일이면 그 소스를 참고해 `components/_internal`에 같은 이름·계약으로 쓰고 `@see`로 출처를 남긴다
+
+`radix-ui/internal`과 개별 `@radix-ui/*`는 쓰지 않는다(lint). Radix가 README마다 "internal utility, not intended for public usage"라고 밝힌 API라 버전을 올리면 예고 없이 바뀔 수 있다
 
 ## 정책을 둘 곳
 
