@@ -9,6 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Button,
+  Field,
   IconButton,
   Link,
 } from "@d5ng/react";
@@ -56,6 +57,24 @@ export default function Page() {
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialog>
+      <Field
+        label="별명"
+        description="다른 사람에게 보이는 이름이에요."
+        required
+        requirementIndicator
+        characterCount={{ current: 0, max: 20 }}
+      >
+        {(control) => <input {...control} />}
+      </Field>
+      {/* hideLabel은 라벨을 VisuallyHidden으로 한 번 더 감싸서 따로 렌더해요. */}
+      <Field
+        label="검색어"
+        hideLabel
+        invalid
+        errorMessage="검색어를 입력해 주세요."
+      >
+        {(control) => <input type="search" {...control} />}
+      </Field>
     </main>
   );
 }
