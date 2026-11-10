@@ -19,7 +19,7 @@
 - **아이콘은 `prefixIcon`/`suffixIcon` prop**: 이름은 SEED를, 방식은 자식 조합(`<PrefixIcon>`)이 아니라 prop을 골랐어요. 다른 컴포넌트에도 아이콘 자리가 필요해지면 조합 방식을 더해도 깨지지 않아요
 - **`fullWidth`**: Montage와 같아요. Figma의 Hug/Fill은 코드에서 바로 읽히지 않아요
 - **`loading` 중에는 클릭을 막고 포커스는 남겨요**: Montage와 같고 SEED와 달라요. Foundation 규칙(aria-busy, 중복 방지, 포커스 유지)을 따라요. 쓰는 쪽 핸들러보다 먼저 막아야 해서 `composeEventHandlers`를 쓰지 않아요
-- **`asChild`**: SEED와 같아요(Montage는 `as`). `Primitive.button`으로 렌더해요
+- **`asChild`**: SEED와 같아요(Montage는 `as`). 공개 `Slot`으로 렌더해요(`radix-ui/internal`은 쓰지 않아요)
 - **상태는 `data-disabled`, `data-loading`으로 드러내요**: 누를 수 없으면(disabled나 loading) `data-disabled`가 붙고, CSS는 이 속성을 봐요. `asChild`로 `<a>`를 렌더해도 같은 스타일이 적용돼요
 - **눌림 효과는 TDS와 같아요**: 0.96으로 줄고(꽉 찬 너비면 줄지 않음), 누를 때 `spring-rapid`(200ms), 뗄 때 `spring-quick`(350ms) 곡선이에요. 색은 TDS의 dim 막 대신 Figma의 pressed 토큰을 써요
 

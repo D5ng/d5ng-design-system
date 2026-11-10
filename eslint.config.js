@@ -82,9 +82,16 @@ export default defineConfig(
       "no-restricted-imports": [
         "error",
         {
+          paths: [
+            {
+              name: "radix-ui/internal",
+              message:
+                "Radix가 비공개라고 밝힌 API예요. 공개 radix-ui나 components/_internal을 써요.",
+            },
+          ],
           patterns: [
             {
-              group: ["@radix-ui/react-*"],
+              group: ["@radix-ui/*"],
               message: "radix-ui 통합 패키지에서 import해요.",
             },
           ],

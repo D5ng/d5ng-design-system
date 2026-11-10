@@ -19,7 +19,7 @@
 - **새 탭 안내를 자동으로 넣지 않아요**: `target="_blank"`일 때 숨은 문구를 덧붙이면, 넘긴 props에 없는 글자가 생기는 숨은 동작이 돼요(FF P3). 한국어 문구도 패키지에 박혀요. 안내는 쓰는 쪽이 문구나 옆 글자로 붙이고, 컴포넌트 JSDoc에 한 줄로 알려요
 - **밑줄은 모든 상태에서 보여요**: 1px, 오프셋 3px, skip-ink예요. Figma에도 토큰이 없어서 숫자로 써요
 - **포커스 링 두께는 `spacing[2]`를 바로 써요**: Button·TextField는 컴포넌트 토큰(`button-focus-width`, `text-field-focus-width`)을 쓰지만 값이 모두 2px예요. Link용 토큰을 하나 더 만드는 대신, 공통 `focus-width`로 합치는 일을 따로 다뤄요
-- **`asChild`**: 라우터의 링크 컴포넌트에 스타일만 입혀요. `Primitive.a`로 렌더해요
+- **`asChild`**: 라우터의 링크 컴포넌트에 스타일만 입혀요. 공개 `Slot`으로 렌더해요(`radix-ui/internal`은 쓰지 않아요)
 - **아이콘 크기 규칙은 Button과 공유하지 않아요**: `svg`를 자리에 맞추는 규칙만 같고, 표시 방식·크기·간격이 달라요(FF K2)
 
 ## 뺀 것
