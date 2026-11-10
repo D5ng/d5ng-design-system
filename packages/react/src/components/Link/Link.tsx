@@ -17,6 +17,8 @@ export type LinkProps = Omit<ComponentProps<"a">, "children"> & {
 /**
  * 다른 페이지나 문서 안의 위치로 이동하는 문장 속 링크예요. 크기·굵기는 주변 문장을 따라요.
  *
+ * 앱 안 이동은 라우터의 링크를 `asChild`로 감싸요. `href`만 넘기면 페이지를 새로 불러와요.
+ *
  * 따로 떨어진 이동(메뉴, 이전 글·다음 글)은 `Button variant="ghost" asChild`로 만들어요.
  *
  * 새 탭으로 열면(`target="_blank"`) 문구나 옆 글자로 새 탭에서 열린다고 알려요. 아이콘만으로는 알리지 않아요.

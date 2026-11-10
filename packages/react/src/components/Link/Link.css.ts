@@ -12,8 +12,6 @@ export const link = style({
   textDecorationThickness: "1px",
   textUnderlineOffset: "3px",
   textDecorationSkipInk: "auto",
-  borderRadius: vars.radius.sm,
-  cursor: "pointer",
   WebkitTapHighlightColor: "transparent",
 
   selectors: {
@@ -21,6 +19,7 @@ export const link = style({
       // 링크 전용 두께 토큰을 따로 두지 않았어요. Button·TextField와 같은 2px예요.
       outline: `${vars.spacing[2]} solid ${vars.color.stroke.focusRing}`,
       outlineOffset: vars.spacing[2],
+      borderRadius: vars.radius.sm,
     },
     "&:active": {
       color: vars.color.fg.brandPressed,
@@ -44,7 +43,8 @@ export const icon = style({
   // 16px 문장에서 14px(Figma)이에요. em이라 문장 크기를 따라가요.
   width: "0.875em",
   height: "0.875em",
-  marginInlineStart: vars.spacing[4],
+  // 아이콘처럼 문장 크기를 따라가요. 16px 문장에서 4px(Figma spacing/4)예요.
+  marginInlineStart: "0.25em",
   verticalAlign: "middle",
 });
 

@@ -42,7 +42,7 @@ export const SuffixIcon: Story = {
 /** 라우터의 링크 컴포넌트에 스타일만 입힐 때 써요. */
 export const AsChild: Story = {
   render: (args) => (
-    <Link asChild suffixIcon={args.suffixIcon}>
+    <Link {...args} asChild>
       <a href="#list">글 목록</a>
     </Link>
   ),
