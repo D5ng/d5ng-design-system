@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "typecheck": "next typegen && tsc"
+    "build": "next build"
   },
   "dependencies": {
     "@d5ng/react": "workspace:*",
