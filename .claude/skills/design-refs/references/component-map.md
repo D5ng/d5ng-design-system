@@ -9,7 +9,7 @@
 | ------------------ | ------------------------------------ | ---------------------------------- | -------------------------------------------------------------- |
 | Button             | `action-button`                      | `actions/button`                   | 확인함(2026-11-09)                                             |
 | IconButton         | `action-button`(`layout="iconOnly"`) | `actions/icon-button`              | SEED는 Button에 합쳐 둠                                        |
-| Field              | `field`                              | `selection-and-input/form-control` | 추정                                                           |
+| Field              | `field`                              | `selection-and-input/form-control` | 확인함(2026-11-10). SEED React는 `text-field-input` 참고       |
 | TextField          | `text-input`                         | `selection-and-input/text-field`   |                                                                |
 | Textarea           | `text-input`(Textarea)               | `selection-and-input/text-area`    | SEED는 한 문서                                                 |
 | Checkbox           | `checkbox`                           | `selection-and-input/checkbox`     | Montage는 `check-mark`도 있음                                  |
