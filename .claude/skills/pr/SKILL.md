@@ -29,14 +29,23 @@ git log --oneline develop..HEAD
 
 이슈와 PR에 **같은 라벨**을 붙인다.
 
-## 3. 초안을 한 번에 보여주기
+## 3. changeset 정하기
 
-아래를 한 메시지에 모아 보여주고, 사용자가 확인하면 4단계로 간다. 고쳐 달라고 하면 고쳐서 다시 보여준다.
+`packages/*`의 배포물이 바뀌었으면 changeset이 필요하다. 스토리·테스트·문서만 바뀌었으면 넣지 않는다. 브랜치에 `.changeset/*.md`가 이미 있으면 그걸 고친다.
+
+- 등급은 `docs/release.md`의 "변경 종류별 번호" 표로 고른다. **0.x 동안은 `major`를 쓰지 않는다**(1.0.0이 된다). `breaking` 라벨을 붙였으면 0.x에서는 `minor`다
+- 패키지는 tokens만 바꿨어도 `@d5ng/react`다
+- 만들 때는 `pnpm changeset add --patch @d5ng/react -m "<본문>"`처럼 등급과 본문을 넘긴다(`--minor`도 같다). 인자 없이 실행하면 대화형이라 멈춘다
+
+## 4. 초안을 한 번에 보여주기
+
+아래를 한 메시지에 모아 보여주고, 사용자가 확인하면 5단계로 간다. 고쳐 달라고 하면 고쳐서 다시 보여준다.
 
 - **이슈**: 제목, 본문
 - **커밋**: 메시지 (이미 커밋이 있으면 생략)
 - **PR**: 제목, 본문
 - **라벨**
+- **changeset**: 등급, 본문 (필요 없으면 이유 한 줄)
 
 쓸 때 놓치기 쉬운 것:
 
@@ -46,7 +55,7 @@ git log --oneline develop..HEAD
 - PR 본문 마지막 줄은 `Closes #번호`. 이슈를 아직 안 만들었으면 초안에는 `Closes #(이슈 생성 후)`로 둔다
 - 참조자(`Co-Authored-By`, 생성 표기, 세션 링크)는 어디에도 넣지 않는다
 
-## 4. 올리기
+## 5. 올리기
 
 본문은 **항상 파일로 넘긴다.** `--body "..."`로 넘기면 셸이 백틱을 `` \` ``로 바꿔서 코드 블록이 깨진다(#12에서 실제로 깨졌다). 파일은 저장소 밖 임시 폴더에 둔다.
 
@@ -58,7 +67,7 @@ gh issue create --title "<제목>" --body-file "$tmp/issue.md" \
   --assignee @me --label "type: ..." --label "pkg: ..."
 # 출력된 URL에서 이슈 번호를 읽어 pr.md의 Closes 줄을 채운다
 
-git add <파일들>
+git add <파일들>                        # changeset 파일도 함께
 git commit -m "<type(scope): 요약>"     # 훅이 lint·commitlint를 돌린다. --no-verify 금지
 git push -u origin HEAD                 # pre-push 훅이 타입 검사를 돌린다
 
@@ -69,6 +78,6 @@ gh pr create --base develop --title "<제목>" --body-file "$tmp/pr.md" \
 - 훅이 실패하면 우회하지 않고 원인을 고친 뒤 **새 커밋을 만든다**(squash 머지라 커밋이 늘어도 괜찮다)
 - 올린 뒤 `gh issue view <번호>`로 본문의 코드 블록과 섹션이 제대로 보이는지 한 번 본다
 
-## 5. 멈추기
+## 6. 멈추기
 
 PR 링크와 이슈 링크를 알려주고 끝낸다. **머지는 사용자가 직접 한다.**

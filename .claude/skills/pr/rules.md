@@ -43,12 +43,13 @@ chore: 이슈 폼 추가
 - 목록 항목은 `**이름**: 한 줄 설명`으로 쓰고, 설명은 ~요 없이 개조식(~함, ~음, 명사형)으로 끝낸다. 목록 앞 도입 문장은 ~요체 그대로 쓴다
   - 예: `- **CSS는 한 파일**: 조사한 6곳 중 5곳이 한 파일만 import하게 함`
 - 시각적 변화가 있으면 스크린샷, 쓰는 쪽 코드가 깨지면 고치는 방법을 덧붙인다
+- `packages/*`의 배포물이 바뀌면 changeset(`.changeset/*.md`)을 같은 PR에 넣는다. 스토리·테스트·문서만 바뀌면 넣지 않는다. 등급과 본문은 `docs/release.md`를 따른다
 
 ## 라벨
 
-`.github/labels.json`이 기준이다. 라벨마다의 뜻은 그 파일의 `description`에 있다. 바꿀 때는 파일을 고친 뒤 `scripts/sync-labels.sh`를 실행한다(지울 라벨이 있으면 `--prune`).
+`.github/labels.json`이 기준이다. 라벨마다의 뜻은 그 파일의 `description`에 있다. 파일을 고친 PR이 develop에 머지되면 `labels` 워크플로가 `scripts/sync-labels.sh`로 GitHub 라벨을 맞춘다. 지울 라벨이 있으면 `scripts/sync-labels.sh --prune`을 직접 실행한다.
 
 - `type:`은 이슈·PR마다 **하나만** 붙인다
 - `pkg:`는 건드린 패키지마다 붙인다
-- `breaking`: props·토큰의 이름이나 타입이 바뀌거나 사라질 때, 또는 기본 동작이 바뀔 때. 메이저 버전이 올라간다
+- `breaking`: props·토큰의 이름이나 타입이 바뀌거나 사라질 때, 또는 기본 동작이 바뀔 때. 1.0 이후에는 major, 0.x 동안은 minor가 올라간다(`docs/release.md`)
 - `a11y`: 키보드, 스크린리더, 색 대비와 관련된 일

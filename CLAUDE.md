@@ -38,6 +38,7 @@ Conventional Commits 형식에 요약은 한글 짧은 명사형으로 쓴다(`f
 | 코드 주석 규칙         | `.claude/rules/comments.md`              | `.ts`·`.tsx`·`.js` 파일을 열 때                 |
 | Storybook 규칙         | `.claude/rules/storybook.md`             | 스토리, `apps/storybook`, 컴포넌트 파일을 열 때 |
 | 이슈·커밋·PR·라벨 규칙 | `/pr` 스킬(`.claude/skills/pr/rules.md`) | 이슈나 PR을 올릴 때                             |
+| 배포 순서와 버전 규칙  | `docs/release.md`                        | changeset을 쓰거나 배포할 때                    |
 | Figma 토큰 동기화      | `/sync-tokens` 스킬                      | Figma 변수가 바뀌었을 때                        |
 | SEED·Montage 비교      | `/design-refs` 스킬                      | 컴포넌트를 계획하거나 비교할 때                 |
 | FF 항목별 문서         | `docs/ff/`                               | 코드·API를 판단할 때                            |

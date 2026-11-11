@@ -8,7 +8,7 @@
   { "name": "pkg: tokens", "color": "C5DEF5", "description": "@d5ng/tokens" },
   { "name": "pkg: react", "color": "C5DEF5", "description": "@d5ng/react" },
 
-  { "name": "breaking", "color": "B60205", "description": "쓰는 쪽 코드를 고쳐야 함 → 메이저 버전" },
+  { "name": "breaking", "color": "B60205", "description": "쓰는 쪽 코드를 고쳐야 함 → 1.0 이후 major, 0.x 동안 minor" },
   { "name": "a11y", "color": "F143AB", "description": "키보드, 스크린리더, 색 대비 등 접근성" },
 
   { "name": "duplicate", "color": "CFD3D7", "description": "이미 있는 이슈·PR" },
