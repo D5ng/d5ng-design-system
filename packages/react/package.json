@@ -1,6 +1,13 @@
 {
   "name": "@d5ng/react",
   "version": "0.0.0",
+  "description": "Radix UI 위에 만든 d5ng 디자인 시스템의 React 컴포넌트",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D5ng/d5ng-design-system.git",
+    "directory": "packages/react"
+  },
   "type": "module",
   "exports": {
     ".": {
@@ -15,6 +22,9 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "vite build",
     "typecheck": "tsc",
