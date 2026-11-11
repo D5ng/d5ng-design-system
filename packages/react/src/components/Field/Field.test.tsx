@@ -202,14 +202,8 @@ describe("Field", () => {
       </>,
     );
 
-    // *는 글자가 아니라 SVG라서 라벨 안에 있는지만 봐요.
-    const requiredLabel = labelOf("이름");
-    expect(requiredLabel.querySelector("svg")).not.toBeNull();
-    expect(requiredLabel).toHaveTextContent("이름");
-
-    const optionalLabel = labelOf("별명");
-    expect(optionalLabel.querySelector("svg")).toBeNull();
-    expect(optionalLabel).toHaveTextContent("별명선택");
+    expect(labelOf("이름")).toHaveTextContent("이름*");
+    expect(labelOf("별명")).toHaveTextContent("별명선택");
   });
 
   it("필수·선택 표시는 입력의 이름에 섞이지 않아요", async () => {

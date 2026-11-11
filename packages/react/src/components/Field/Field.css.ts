@@ -54,16 +54,9 @@ export const label = recipe({
 
 export type LabelVariants = NonNullable<RecipeVariants<typeof label>>;
 
-// 여러 줄 라벨의 끝에 붙도록 inline으로 둬요(Figma Guidelines).
+// 라벨과 같은 글꼴·크기의 글자라 줄 높이를 바꾸지 않아요. 여러 줄 라벨의 끝에 붙어요(Figma Guidelines).
 export const requiredMark = style({
-  display: "inline-block",
-  // Figma가 표시 크기를 변수로 묶지 않았어요.
-  width: "6px",
-  height: "6px",
   marginInlineStart: vars.spacing[2],
-  // 첫 줄 윗변에서 4px 아래에 둬요(Figma).
-  verticalAlign: "top",
-  marginTop: vars.spacing[4],
   color: vars.color.fg.critical,
   selectors: disabledColor,
 });

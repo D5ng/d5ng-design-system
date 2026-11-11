@@ -66,8 +66,31 @@ export type FieldProps = Omit<ComponentProps<"div">, "children" | "id"> & {
   children: (control: FieldControlProps) => ReactNode;
 };
 
+// footer에 그릴 것이에요. 없으면 null이고, aria-describedby도 같은 값을 읽어요.
+type FooterMessage = { id: string; text: ReactNode; isError: boolean };
+type FooterCount = { id: string; current: number; max: number };
+
+type FieldHeaderProps = {
+  labelElement: ReactNode;
+  hideLabel: boolean;
+  action: ReactNode;
+};
+
+type FieldFooterProps = {
+  message: FooterMessage | null;
+  count: FooterCount | null;
+  showMessageIcon: boolean;
+};
+
 type RequirementIndicatorProps = {
   required: boolean;
+};
+
+type PickMessageParams = {
+  id: string;
+  description: ReactNode;
+  errorMessage: ReactNode;
+  invalid: boolean;
 };
 
 /**
@@ -96,41 +119,25 @@ export function Field({
   const generatedId = useId();
   const id = idProp ?? generatedId;
   // 쓰는 쪽이 준 id와 겹치지 않게 만든 id에서 이어 붙여요.
-  const messageId = `${generatedId}-message`;
-  const countId = `${generatedId}-count`;
-
-  const showError = invalid && Boolean(errorMessage);
-  const message = showError ? errorMessage : description;
-  const MessageIcon = showError ? CircleAlert : Info;
-
-  // 그리는 조건과 aria-describedby가 같은 값을 읽어요. 따로 쓰면 없는 id를 가리키거나 설명이 빠져요.
-  const hasMessage = Boolean(message);
-  const hasCount = characterCount !== undefined;
-  // 라벨을 숨겨도 보조 액션이 있으면 header를 남겨요.
-  const hasHeader = !hideLabel || Boolean(headerAction);
-  const hasFooter = hasMessage || hasCount;
-
-  const describedBy =
-    [hasMessage ? messageId : null, hasCount ? countId : null]
-      .filter(Boolean)
-      .join(" ") || undefined;
+  const message = pickMessage({
+    id: `${generatedId}-message`,
+    description,
+    errorMessage,
+    invalid,
+  });
+  const count = characterCount
+    ? { id: `${generatedId}-count`, ...characterCount }
+    : null;
 
   const control: FieldControlProps = {
     id,
-    "aria-describedby": describedBy,
+    // footer가 그리는 값과 같은 값을 읽어요. 따로 계산하면 없는 id를 가리키거나 설명이 빠져요.
+    "aria-describedby":
+      [message?.id, count?.id].filter(Boolean).join(" ") || undefined,
     "aria-invalid": invalid || undefined,
     required,
     disabled,
   };
-
-  const labelElement = (
-    <Label.Root htmlFor={id} className={styles.label({ weight: labelWeight })}>
-      {label}
-      {requirementIndicator ? (
-        <RequirementIndicator required={required} />
-      ) : null}
-    </Label.Root>
-  );
 
   return (
     <div
@@ -139,68 +146,122 @@ export function Field({
       {...rootProps}
       className={clsx(styles.root, className)}
     >
-      {/* header 밖에 둬요. 숨긴 라벨만 있을 때 빈 header가 간격을 차지하지 않아요. */}
-      {hideLabel ? (
+      <FieldHeader
+        hideLabel={hideLabel}
+        action={headerAction}
+        labelElement={
+          <Label.Root
+            htmlFor={id}
+            className={styles.label({ weight: labelWeight })}
+          >
+            {label}
+            {requirementIndicator ? (
+              <RequirementIndicator required={required} />
+            ) : null}
+          </Label.Root>
+        }
+      />
+      {children(control)}
+      <FieldFooter
+        message={message}
+        count={count}
+        showMessageIcon={showMessageIcon}
+      />
+    </div>
+  );
+}
+
+// ---- FieldHeader
+
+function FieldHeader({ labelElement, hideLabel, action }: FieldHeaderProps) {
+  const actionElement = action ? (
+    <span className={styles.headerAction}>{action}</span>
+  ) : null;
+
+  if (hideLabel) {
+    // 숨긴 라벨은 header 밖에 둬요. 보조 액션이 없을 때 빈 header가 간격을 차지하지 않아요.
+    return (
+      <>
         <VisuallyHidden.Root>{labelElement}</VisuallyHidden.Root>
-      ) : null}
-      {hasHeader ? (
-        <div className={styles.header}>
-          {hideLabel ? null : labelElement}
-          {headerAction ? (
-            <span className={styles.headerAction}>{headerAction}</span>
+        {actionElement ? (
+          <div className={styles.header}>{actionElement}</div>
+        ) : null}
+      </>
+    );
+  }
+
+  return (
+    <div className={styles.header}>
+      {labelElement}
+      {actionElement}
+    </div>
+  );
+}
+
+// ---- FieldFooter
+
+function FieldFooter({ message, count, showMessageIcon }: FieldFooterProps) {
+  if (!message && !count) {
+    return null;
+  }
+
+  const MessageIcon = message?.isError ? CircleAlert : Info;
+
+  return (
+    <div className={styles.footer}>
+      {message ? (
+        <div
+          id={message.id}
+          className={message.isError ? styles.errorMessage : styles.description}
+        >
+          {showMessageIcon ? (
+            <MessageIcon className={styles.messageIcon} aria-hidden />
           ) : null}
+          <span>{message.text}</span>
         </div>
       ) : null}
-      {children(control)}
-      {hasFooter ? (
-        <div className={styles.footer}>
-          {hasMessage ? (
-            <div
-              id={messageId}
-              className={showError ? styles.errorMessage : styles.description}
-            >
-              {showMessageIcon ? (
-                <MessageIcon className={styles.messageIcon} aria-hidden />
-              ) : null}
-              <span>{message}</span>
-            </div>
-          ) : null}
-          {hasCount ? (
-            <div id={countId} className={styles.count}>
-              <span
-                className={styles.countCurrent}
-                data-empty={characterCount.current === 0 ? "" : undefined}
-              >
-                {characterCount.current}
-              </span>
-              /{characterCount.max}
-            </div>
-          ) : null}
+      {count ? (
+        <div id={count.id} className={styles.count}>
+          <span
+            className={styles.countCurrent}
+            data-empty={count.current === 0 ? "" : undefined}
+          >
+            {count.current}
+          </span>
+          /{count.max}
         </div>
       ) : null}
     </div>
   );
 }
 
+// ---- RequirementIndicator
+
 // 둘 다 이름에 섞이지 않게 숨겨요. 필수 여부는 입력의 required가 알려요.
 function RequirementIndicator({ required }: RequirementIndicatorProps) {
-  if (!required) {
-    return (
-      <span className={styles.optional} aria-hidden>
-        선택
-      </span>
-    );
-  }
-
-  // Figma `Required mark`(6×6) 모양 그대로예요. 색은 currentColor로 받아요.
-  return (
-    <svg
-      className={styles.requiredMark}
-      viewBox="0 0 6 6"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M3.75008 1.55859L4.41324 1.09468C4.75249 0.857361 5.21988 0.939865 5.45738 1.27899C5.69505 1.61836 5.61249 2.08615 5.27301 2.32366L4.30769 2.99902L5.27378 3.67612C5.61291 3.91381 5.69523 4.38137 5.45767 4.72059C5.22005 5.0599 4.75236 5.14233 4.41305 4.90471L3.75008 4.44043V5.25C3.75008 5.66421 3.41429 6 3.00008 6C2.58586 6 2.25008 5.66421 2.25008 5.25V4.44043L1.5871 4.90471C1.24779 5.14233 0.780102 5.0599 0.542479 4.72059C0.304917 4.38137 0.387237 3.91381 0.72637 3.67612L1.69246 2.99902L0.72714 2.32366C0.387664 2.08615 0.305104 1.61836 0.542768 1.27899C0.780267 0.939865 1.24766 0.857361 1.58691 1.09468L2.25008 1.55859V0.75C2.25008 0.335786 2.58586 0 3.00008 0C3.41429 0 3.75008 0.335786 3.75008 0.75V1.55859Z" />
-    </svg>
+  return required ? (
+    <span className={styles.requiredMark} aria-hidden>
+      *
+    </span>
+  ) : (
+    <span className={styles.optional} aria-hidden>
+      선택
+    </span>
   );
+}
+
+// 오류는 invalid이고 문구가 있을 때만 안내를 대신해요.
+function pickMessage({
+  id,
+  description,
+  errorMessage,
+  invalid,
+}: PickMessageParams): FooterMessage | null {
+  if (invalid && errorMessage) {
+    return { id, text: errorMessage, isError: true };
+  }
+  if (description) {
+    return { id, text: description, isError: false };
+  }
+  return null;
 }
