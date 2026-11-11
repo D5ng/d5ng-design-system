@@ -44,6 +44,8 @@ paths:
 3. 널리 쓰이는 작은 라이브러리(예: 클래스 합치기는 `clsx`). 손으로 짠 코드가 읽기 불편하면 먼저 라이브러리가 있는지 찾아보고, 크기·관리 상태·다른 디자인 시스템의 사용 여부를 비교해 `dependencies`에 넣는다
 4. 직접 만든다. Radix 비공개 유틸과 같은 일이면 그 소스를 참고해 `components/_internal`에 같은 이름·계약으로 쓰고 `@see`로 출처를 남긴다
 
+아이콘은 `lucide-react`에서 고른다. Figma 벡터를 path로 옮긴 `<svg>`를 컴포넌트에 그리지 않는다. 맞는 아이콘이 없거나 작은 크기에서 선이 흐려지면 키보드 글자(`*`)를 쓰고, Figma도 같은 아이콘이나 글자로 맞춘다
+
 `radix-ui/internal`과 개별 `@radix-ui/*`는 쓰지 않는다(lint). Radix가 README마다 "internal utility, not intended for public usage"라고 밝힌 API라 버전을 올리면 예고 없이 바뀔 수 있다
 
 ## 정책을 둘 곳

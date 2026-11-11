@@ -20,6 +20,7 @@
 - **`id`는 입력의 id예요**: 라벨과 입력을 잇는 값이라 입력으로 가고, root `div`의 `id`는 받지 않아요. 안내·글자 수의 id는 쓰는 쪽 id와 겹치지 않게 `useId`로 만든 값에서 이어 붙여요
 - **필수 표시는 `required`와 boolean `requirementIndicator` 둘로 받아요**: 켜면 `required`일 때 `*`, 아닐 때 `선택`을 붙여요. 표시가 실제 필수 여부와 어긋날 수 없어요(FF C2). SEED의 "필수가 2/3 이상이면 선택만 표시" 규칙 때문에 "필수지만 표시 없음"이 필요해서 prop이 하나로 합쳐지지 않아요
   - `requirementIndicator="required" | "optional"`은 버렸어요. `required`를 끄고 표시를 잊으면 선택 칸에 `*`가 남아요
+  - `*`는 라벨과 같은 글꼴의 키보드 글자예요. 조사한 MUI·Mantine·Ant Design·Montage·SEED가 모두 글자를 써요. lucide `Asterisk`는 선 아이콘이라 6px에서 선이 흐려져요. Figma `Required mark`도 글자로 바꿨어요(2026-11-11)
   - `*`와 `선택`은 둘 다 `aria-hidden`이에요. 필수 여부는 입력의 `required`가 알려요(Figma Accessibility). `선택`을 이름에 넣으면 "이름선택"처럼 붙어 읽혀요
 - **`required`는 입력의 `required` 속성으로 가요**: `aria-required`만 넘기면 Radix Checkbox 같은 컨트롤의 숨은 input에 `required`가 붙지 않아요. 브라우저 기본 검증 말풍선은 `form`의 `noValidate`로 끄는 HTML 기본 동작 그대로예요
 - **`labelWeight`는 `medium`·`semibold`예요**: Figma `Label weight=Bold` variant는 처음부터 `font/weight/semibold`(600)에 묶여 있었어요. 값 이름을 토큰과 같게 해서 `"bold"`가 600을 쓰는 혼동을 없앴어요(FF P1). 700으로 올리면 16px 라벨이 섹션 제목(20px 600)보다 무겁게 보여요. Figma 옵션 이름도 `Semibold`로 바꿨어요
