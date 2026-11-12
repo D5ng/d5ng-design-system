@@ -93,13 +93,17 @@ export type RootVariants = NonNullable<RecipeVariants<typeof root>>;
 
 // ---- 상자
 
-// Radix가 숨은 input을 버튼 뒤에 absolute로 붙여요. 이 칸에 가둬야 input이 상자 위에 겹쳐요.
+// Radix는 숨은 input을 버튼 바로 뒤에 absolute로 두고 translateX(-100%)로 버튼 위에 겹쳐요.
+// 버튼과 input이 한 줄에 나란히 있어야 겹쳐서, 칸은 줄 높이를 없애고 버튼은 inline으로 둬요.
 export const markSlot = style({
   position: "relative",
+  display: "block",
+  lineHeight: 0,
 });
 
 export const control = style({
-  display: "block",
+  display: "inline-flex",
+  verticalAlign: "top",
   boxSizing: "border-box",
   width: markSize,
   height: markSize,

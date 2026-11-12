@@ -108,6 +108,21 @@ describe("Checkbox", () => {
     expect(form.querySelector('input[type="checkbox"]')).toBeRequired();
   });
 
+  it("숨은 input은 상자와 같은 자리에 겹쳐요", async () => {
+    // 브라우저의 required 검증 말풍선이 이 input을 가리켜요.
+    await render(
+      <form>
+        <Checkbox label="약관에 동의해요" required />
+      </form>,
+    );
+    const box = page.getByRole("checkbox").element().getBoundingClientRect();
+    const input = document
+      .querySelector('input[type="checkbox"]')
+      ?.getBoundingClientRect();
+
+    expect(input?.toJSON()).toEqual(box.toJSON());
+  });
+
   it("Field로 감싸면 안내·오류가 체크박스의 설명으로 이어져요", async () => {
     await render(
       <Field
