@@ -30,3 +30,5 @@ export type { IconButtonProps } from "./components/IconButton";
 export { IconButton } from "./components/IconButton";
 export type { LinkProps } from "./components/Link";
 export { Link } from "./components/Link";
+export type { SwitchProps, SwitchRowProps } from "./components/Switch";
+export { Switch, SwitchRow } from "./components/Switch";

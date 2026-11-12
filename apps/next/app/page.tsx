@@ -12,6 +12,8 @@ import {
   Field,
   IconButton,
   Link,
+  Switch,
+  SwitchRow,
 } from "@d5ng/react";
 import NextLink from "next/link";
 
@@ -75,6 +77,15 @@ export default function Page() {
       >
         {(control) => <input type="search" {...control} />}
       </Field>
+      {/* 서버의 form에서도 숨은 input으로 값이 제출돼요. loading은 클릭을 막는 핸들러가 달라져서 따로 렌더해요. */}
+      <form>
+        <Switch label="알림 받기" name="notify" defaultChecked />
+        <Switch label="저장 중" loading />
+        <SwitchRow
+          label="댓글 알림"
+          description="내 글에 새 댓글이 달리면 알려 드려요."
+        />
+      </form>
     </main>
   );
 }
