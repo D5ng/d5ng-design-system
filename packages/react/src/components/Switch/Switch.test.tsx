@@ -161,6 +161,23 @@ describe("Switch", () => {
     await expect.element(control).not.toBeChecked();
   });
 
+  it("숨은 input은 버튼과 같은 자리에 겹쳐요", async () => {
+    // 브라우저가 required 안내 말풍선을 input 자리에 띄워서 스위치를 가리켜야 해요.
+    await render(
+      <form data-testid="form">
+        <Switch label="알림 받기" required />
+      </form>,
+    );
+    const input = getForm().querySelector('input[type="checkbox"]');
+    if (!input) {
+      throw new Error("숨은 input을 찾지 못했어요.");
+    }
+
+    expect(input.getBoundingClientRect().toJSON()).toEqual(
+      page.getByRole("switch").element().getBoundingClientRect().toJSON(),
+    );
+  });
+
   it("Tab으로 오면 포커스 링이 보여요", async () => {
     // 색·두께는 토큰이 정하니 보이는지만 확인해요.
     await render(<Switch label="알림 받기" />);
