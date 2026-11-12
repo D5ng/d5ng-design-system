@@ -186,7 +186,6 @@ export const vars = {
       "lg": "var(--d5ng-button-min-height-lg)",
       "xs": "var(--d5ng-button-min-height-xs)"
     },
-    "focusWidth": "var(--d5ng-button-focus-width)",
     "iconSize": {
       "xs": "var(--d5ng-button-icon-size-xs)",
       "sm": "var(--d5ng-button-icon-size-sm)",
@@ -207,7 +206,6 @@ export const vars = {
       "lg": "var(--d5ng-text-field-min-height-lg)"
     },
     "borderWidth": "var(--d5ng-text-field-border-width)",
-    "focusWidth": "var(--d5ng-text-field-focus-width)",
     "iconSize": {
       "sm": "var(--d5ng-text-field-icon-size-sm)",
       "md": "var(--d5ng-text-field-icon-size-md)",
@@ -259,6 +257,9 @@ export const vars = {
       "lg": "var(--d5ng-select-min-height-lg)"
     },
     "contentMaxHeight": "var(--d5ng-select-content-max-height)"
+  },
+  "focusRing": {
+    "width": "var(--d5ng-focus-ring-width)"
   },
   "menu": {
     "width": {

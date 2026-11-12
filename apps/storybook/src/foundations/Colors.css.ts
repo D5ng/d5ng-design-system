@@ -82,8 +82,8 @@ export const swatchButton = style({
   textAlign: "left",
   cursor: "pointer",
   ":focus-visible": {
-    outline: `2px solid ${vars.color.stroke.focusRing}`,
-    outlineOffset: 2,
+    outline: `${vars.focusRing.width} solid ${vars.color.stroke.focusRing}`,
+    outlineOffset: vars.focusRing.width,
     borderRadius: vars.radius.sm,
   },
 });
@@ -177,8 +177,8 @@ export const copyButton = style({
   cursor: "pointer",
   ":hover": { background: vars.color.bg.neutralWeakHover },
   ":focus-visible": {
-    outline: `2px solid ${vars.color.stroke.focusRing}`,
-    outlineOffset: 2,
+    outline: `${vars.focusRing.width} solid ${vars.color.stroke.focusRing}`,
+    outlineOffset: vars.focusRing.width,
   },
 });
 
