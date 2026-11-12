@@ -2,6 +2,8 @@ import { vars } from "@d5ng/tokens";
 import { createVar, style } from "@vanilla-extract/css";
 import { recipe, type RecipeVariants } from "@vanilla-extract/recipes";
 
+import { focusRing } from "../_internal/focusRing.css";
+
 // 상태 선택자는 한 곳에서만 정해요. Radix가 버튼에 붙이는 속성을 봐요.
 const checkedSelector = '[data-state="checked"]';
 const indeterminateSelector = '[data-state="indeterminate"]';
@@ -104,7 +106,7 @@ export const control = style({
   margin: 0,
   padding: 0,
   border: "none",
-  // 포커스 링이 상자 모서리를 따라 둥글어져요.
+  // 포커스 링이 상자 모서리를 따라 둥글어져요. 띄움 2px을 더해 바깥 모서리가 Figma 링처럼 8px이에요.
   borderRadius: vars.radius.sm,
   background: "none",
   cursor: "inherit",
@@ -115,6 +117,7 @@ export const control = style({
     [fg]: vars.color.fg.placeholder,
   },
   selectors: {
+    "&:focus-visible": focusRing,
     // 비활성은 아래 규칙만 받게 빼요. 규칙 순서에 기대지 않아요.
     [`&:is(${checkedSelector}, ${indeterminateSelector}):not(${disabledSelector})`]:
       {
@@ -213,6 +216,10 @@ export type ControlColorsVariants = NonNullable<
   RecipeVariants<typeof controlColors>
 >;
 
+// 라벨 글자나 여백을 눌러도 상자가 반응하게 줄을 봐요.
+// 마우스로 누르면 줄이, 키보드 Space로 누르면 버튼만 :active가 돼서 둘 다 봐요.
+const rowPressed = `${row}:is(:active, :has(:active))`;
+
 // 눌리면 이것만 줄어요. 포커스 링은 control에 있어서 제자리에 남아요(Motion Foundation).
 export const surface = style({
   display: "flex",
@@ -231,13 +238,12 @@ export const surface = style({
   transitionDuration: vars.duration.springQuick,
   transitionTimingFunction: vars.easing.standard,
 
-  // 라벨 글자나 여백을 눌러도 상자가 반응하게 줄의 상태를 봐요.
   selectors: {
-    [`${row}:active &`]: {
+    [`${rowPressed} &`]: {
       background: bgPressed,
       transitionDuration: vars.duration.springRapid,
     },
-    [`${row}:active ${control}:not(${disabledSelector}) &`]: {
+    [`${rowPressed} ${control}:not(${disabledSelector}) &`]: {
       transform: `scale(calc(1 - ${vars.press.maxReduction}))`,
     },
   },
@@ -245,14 +251,14 @@ export const surface = style({
   "@media": {
     "(hover: hover)": {
       selectors: {
-        [`${row}:hover:not(:active) &`]: {
+        [`${row}:hover:not(:active, :has(:active)) &`]: {
           background: bgHover,
         },
       },
     },
     "(prefers-reduced-motion: reduce)": {
       selectors: {
-        [`${row}:active ${control}:not(${disabledSelector}) &`]: {
+        [`${rowPressed} ${control}:not(${disabledSelector}) &`]: {
           transform: "none",
         },
       },
@@ -264,7 +270,7 @@ export const surface = style({
     "(transition-timing-function: linear(0, 1))": {
       transitionTimingFunction: vars.easing.springQuick,
       selectors: {
-        [`${row}:active &`]: {
+        [`${rowPressed} &`]: {
           transitionTimingFunction: vars.easing.springRapid,
         },
       },
