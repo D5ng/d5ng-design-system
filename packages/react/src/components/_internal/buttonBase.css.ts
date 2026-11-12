@@ -7,6 +7,8 @@ import {
   styleVariants,
 } from "@vanilla-extract/css";
 
+import { focusRing } from "./focusRing.css";
+
 // variant마다 색만 바꾸고 상태 규칙은 root에서 한 번만 써요.
 const bg = createVar();
 const bgHover = createVar();
@@ -63,10 +65,7 @@ export const root = style({
   transitionTimingFunction: vars.easing.standard,
 
   selectors: {
-    "&:focus-visible": {
-      outline: `${vars.button.focusWidth} solid ${vars.color.stroke.focusRing}`,
-      outlineOffset: vars.button.focusWidth,
-    },
+    "&:focus-visible": focusRing,
     [`&:active:not(${disabledSelector})`]: {
       background: bgPressed,
       transitionDuration: vars.duration.springRapid,

@@ -1,6 +1,8 @@
 import { vars } from "@d5ng/tokens";
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import { focusRing } from "../_internal/focusRing.css";
+
 // 문장 안에서 줄바꿈되도록 inline으로 둬요. inline-flex면 긴 링크가 한 덩어리로 넘어가요.
 export const link = style({
   display: "inline",
@@ -16,9 +18,8 @@ export const link = style({
 
   selectors: {
     "&:focus-visible": {
-      // 링크 전용 두께 토큰을 따로 두지 않았어요. Button·TextField와 같은 2px예요.
-      outline: `${vars.spacing[2]} solid ${vars.color.stroke.focusRing}`,
-      outlineOffset: vars.spacing[2],
+      ...focusRing,
+      // 글자에는 모서리가 없어서 링 모서리만 작게 둥글려요.
       borderRadius: vars.radius.sm,
     },
     "&:active": {

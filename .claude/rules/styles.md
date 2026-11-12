@@ -12,6 +12,7 @@ paths:
 - 색, 간격, 크기, 모서리, 그림자, 글자, 모션은 `@d5ng/tokens`의 `vars`로 쓴다. 글자 묶음은 `...textStyles.bodyDefault`처럼 펼친다
 - 토큰이 없는 값만 숫자로 쓰고, 왜 없는지 주석을 단다(`// Figma에도 14에 맞는 spacing 토큰이 없어요.`)
 - 테마(Light·Dark)는 토큰이 `[data-theme]`로 바꾼다. 컴포넌트 CSS에 테마 선택자를 쓰지 않는다
+- 포커스 링은 `_internal/focusRing.css.ts`의 `focusRing`을 자기 포커스 선택자 안에 펼친다(`"&:focus-visible": focusRing`). 두께·색·띄움은 컴포넌트에서 따로 정하지 않고, 필요하면 모서리만 더한다(Link)
 
 ## 무엇을 recipe에, 무엇을 data 속성에
 

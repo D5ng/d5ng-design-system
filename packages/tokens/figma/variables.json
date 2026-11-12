@@ -2637,19 +2637,6 @@
           }
         },
         {
-          "name": "button/focus-width",
-          "type": "FLOAT",
-          "css": "button-focus-width",
-          "scopes": [
-            "STROKE_FLOAT"
-          ],
-          "values": {
-            "Mode 1": {
-              "alias": "Spacing:spacing/2"
-            }
-          }
-        },
-        {
           "name": "text-field/min-height/sm",
           "type": "FLOAT",
           "css": "text-field-min-height-sm",
@@ -2691,19 +2678,6 @@
           ],
           "values": {
             "Mode 1": 1
-          }
-        },
-        {
-          "name": "text-field/focus-width",
-          "type": "FLOAT",
-          "css": "text-field-focus-width",
-          "scopes": [
-            "STROKE_FLOAT"
-          ],
-          "values": {
-            "Mode 1": {
-              "alias": "Spacing:spacing/2"
-            }
           }
         },
         {
@@ -3193,6 +3167,19 @@
           "values": {
             "Mode 1": 18
           }
+        },
+        {
+          "name": "focus-ring/width",
+          "type": "FLOAT",
+          "css": "focus-ring-width",
+          "scopes": [
+            "STROKE_FLOAT"
+          ],
+          "values": {
+            "Mode 1": {
+              "alias": "Spacing:spacing/2"
+            }
+          }
         }
       ]
     },
@@ -3454,26 +3441,6 @@
       }
     },
     {
-      "name": "Caption",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Regular",
-      "fontSize": 13,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 18
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t3",
-        "lineHeight": "Typography:font/line-height/t3",
-        "fontWeight": "Typography:font/weight/regular"
-      }
-    },
-    {
       "name": "Scale/t12/Bold",
       "fontFamily": "Pretendard Variable",
       "fontStyle": "Bold",
@@ -3494,6 +3461,86 @@
       }
     },
     {
+      "name": "Heading/Page",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Bold",
+      "fontSize": 26,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 35
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t10",
+        "lineHeight": "Typography:font/line-height/t10",
+        "fontWeight": "Typography:font/weight/bold"
+      }
+    },
+    {
+      "name": "Heading/Section",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "SemiBold",
+      "fontSize": 20,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 27
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t7",
+        "lineHeight": "Typography:font/line-height/t7",
+        "fontWeight": "Typography:font/weight/semibold"
+      }
+    },
+    {
+      "name": "Heading/Group",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "SemiBold",
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 24
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t6",
+        "lineHeight": "Typography:font/line-height/t6",
+        "fontWeight": "Typography:font/weight/semibold"
+      }
+    },
+    {
+      "name": "Body/Default",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Regular",
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 24
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t5",
+        "lineHeight": "Typography:font/line-height/t6",
+        "fontWeight": "Typography:font/weight/regular"
+      }
+    },
+    {
       "name": "Scale/t5/Medium",
       "fontFamily": "Pretendard Variable",
       "fontStyle": "Medium",
@@ -3510,6 +3557,146 @@
         "fontFamily": "Typography:font/family/base",
         "fontSize": "Typography:font/size/t5",
         "lineHeight": "Typography:font/line-height/t5",
+        "fontWeight": "Typography:font/weight/medium"
+      }
+    },
+    {
+      "name": "Body/Small",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 19
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t4",
+        "lineHeight": "Typography:font/line-height/t4",
+        "fontWeight": "Typography:font/weight/regular"
+      }
+    },
+    {
+      "name": "Caption",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Regular",
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 18
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t3",
+        "lineHeight": "Typography:font/line-height/t3",
+        "fontWeight": "Typography:font/weight/regular"
+      }
+    },
+    {
+      "name": "Code/Block",
+      "fontFamily": "JetBrains Mono",
+      "fontStyle": "Regular",
+      "fontSize": 15,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 24
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/code",
+        "fontSize": "Typography:font/size/code",
+        "lineHeight": "Typography:font/line-height/code",
+        "fontWeight": "Typography:font/weight/regular"
+      }
+    },
+    {
+      "name": "Label/Default",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Medium",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 19
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t4",
+        "lineHeight": "Typography:font/line-height/t4",
+        "fontWeight": "Typography:font/weight/medium"
+      }
+    },
+    {
+      "name": "Scale/t3/Regular",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Regular",
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 18
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t3",
+        "lineHeight": "Typography:font/line-height/t3",
+        "fontWeight": "Typography:font/weight/regular"
+      }
+    },
+    {
+      "name": "Scale/t4/Regular",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 19
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t4",
+        "lineHeight": "Typography:font/line-height/t4",
+        "fontWeight": "Typography:font/weight/regular"
+      }
+    },
+    {
+      "name": "Scale/t4/Medium",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Medium",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 19
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t4",
+        "lineHeight": "Typography:font/line-height/t4",
         "fontWeight": "Typography:font/weight/medium"
       }
     },
@@ -3554,86 +3741,6 @@
       }
     },
     {
-      "name": "Scale/t3/Regular",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Regular",
-      "fontSize": 13,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 18
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t3",
-        "lineHeight": "Typography:font/line-height/t3",
-        "fontWeight": "Typography:font/weight/regular"
-      }
-    },
-    {
-      "name": "Scale/t3/Medium",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Medium",
-      "fontSize": 13,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 18
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t3",
-        "lineHeight": "Typography:font/line-height/t3",
-        "fontWeight": "Typography:font/weight/medium"
-      }
-    },
-    {
-      "name": "Scale/t4/Regular",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Regular",
-      "fontSize": 14,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 19
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t4",
-        "lineHeight": "Typography:font/line-height/t4",
-        "fontWeight": "Typography:font/weight/regular"
-      }
-    },
-    {
-      "name": "Scale/t4/Medium",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Medium",
-      "fontSize": 14,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 19
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t4",
-        "lineHeight": "Typography:font/line-height/t4",
-        "fontWeight": "Typography:font/weight/medium"
-      }
-    },
-    {
       "name": "Scale/t6/Medium",
       "fontFamily": "Pretendard Variable",
       "fontStyle": "Medium",
@@ -3671,24 +3778,6 @@
         "fontSize": "Typography:font/size/t6",
         "lineHeight": "Typography:font/line-height/t6",
         "fontWeight": "Typography:font/weight/semibold"
-      }
-    },
-    {
-      "name": "Scale/t6/Regular",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Regular",
-      "fontSize": 18,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 24
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontSize": "Typography:font/size/t6",
-        "lineHeight": "Typography:font/line-height/t6"
       }
     },
     {
@@ -3792,146 +3881,6 @@
       }
     },
     {
-      "name": "Heading/Page",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Bold",
-      "fontSize": 26,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 35
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t10",
-        "lineHeight": "Typography:font/line-height/t10",
-        "fontWeight": "Typography:font/weight/bold"
-      }
-    },
-    {
-      "name": "Heading/Section",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "SemiBold",
-      "fontSize": 20,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 27
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t7",
-        "lineHeight": "Typography:font/line-height/t7",
-        "fontWeight": "Typography:font/weight/semibold"
-      }
-    },
-    {
-      "name": "Heading/Group",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "SemiBold",
-      "fontSize": 18,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 24
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t6",
-        "lineHeight": "Typography:font/line-height/t6",
-        "fontWeight": "Typography:font/weight/semibold"
-      }
-    },
-    {
-      "name": "Body/Default",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Regular",
-      "fontSize": 16,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 24
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t5",
-        "lineHeight": "Typography:font/line-height/t6",
-        "fontWeight": "Typography:font/weight/regular"
-      }
-    },
-    {
-      "name": "Body/Small",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Regular",
-      "fontSize": 14,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 19
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t4",
-        "lineHeight": "Typography:font/line-height/t4",
-        "fontWeight": "Typography:font/weight/regular"
-      }
-    },
-    {
-      "name": "Code/Block",
-      "fontFamily": "JetBrains Mono",
-      "fontStyle": "Regular",
-      "fontSize": 15,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 24
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/code",
-        "fontSize": "Typography:font/size/code",
-        "lineHeight": "Typography:font/line-height/code",
-        "fontWeight": "Typography:font/weight/regular"
-      }
-    },
-    {
-      "name": "Label/Default",
-      "fontFamily": "Pretendard Variable",
-      "fontStyle": "Medium",
-      "fontSize": 14,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 19
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "bound": {
-        "fontFamily": "Typography:font/family/base",
-        "fontSize": "Typography:font/size/t4",
-        "lineHeight": "Typography:font/line-height/t4",
-        "fontWeight": "Typography:font/weight/medium"
-      }
-    },
-    {
       "name": "Label/SemiBold",
       "fontFamily": "Pretendard Variable",
       "fontStyle": "SemiBold",
@@ -3998,6 +3947,26 @@
       }
     },
     {
+      "name": "Scale/t3/Medium",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Medium",
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 18
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t3",
+        "lineHeight": "Typography:font/line-height/t3",
+        "fontWeight": "Typography:font/weight/medium"
+      }
+    },
+    {
       "name": "Badge/Label/Medium",
       "fontFamily": "Pretendard Variable",
       "fontStyle": "Medium",
@@ -4055,6 +4024,24 @@
         "fontSize": "Typography:font/size/t6",
         "lineHeight": "Typography:font/line-height/t6",
         "fontWeight": "Typography:font/weight/regular"
+      }
+    },
+    {
+      "name": "Scale/t6/Regular",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "Regular",
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 24
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontSize": "Typography:font/size/t6",
+        "lineHeight": "Typography:font/line-height/t6"
       }
     }
   ],
