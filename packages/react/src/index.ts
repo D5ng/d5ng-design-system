@@ -34,3 +34,5 @@ export type { LinkProps } from "./components/Link";
 export { Link } from "./components/Link";
 export type { SwitchProps, SwitchRowProps } from "./components/Switch";
 export { Switch, SwitchRow } from "./components/Switch";
+export type { TextFieldProps } from "./components/TextField";
+export { TextField } from "./components/TextField";

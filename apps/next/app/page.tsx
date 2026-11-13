@@ -15,6 +15,7 @@ import {
   Link,
   Switch,
   SwitchRow,
+  TextField,
 } from "@d5ng/react";
 import NextLink from "next/link";
 
@@ -91,6 +92,15 @@ export default function Page() {
           description="내 글에 새 댓글이 달리면 알려 드려요."
         />
       </form>
+      <TextField label="이름" name="name" />
+      <TextField label="아이디" readOnly defaultValue="d5ng" />
+      {/* 앞뒤 글자는 useId로 만든 id를 입력의 설명에 이어서 따로 렌더해요. */}
+      <TextField
+        label="가격"
+        prefixText="약"
+        suffixText="원"
+        inputMode="numeric"
+      />
       {/* 서버의 form에서도 숨은 input으로 값이 제출돼요. */}
       <form>
         <Checkbox label="알림 받기" name="notify" defaultChecked />
