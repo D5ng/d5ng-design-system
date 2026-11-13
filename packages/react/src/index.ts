@@ -30,3 +30,5 @@ export type { IconButtonProps } from "./components/IconButton";
 export { IconButton } from "./components/IconButton";
 export type { LinkProps } from "./components/Link";
 export { Link } from "./components/Link";
+export type { TextFieldProps } from "./components/TextField";
+export { TextField } from "./components/TextField";
