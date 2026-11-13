@@ -12,6 +12,8 @@ import {
   Field,
   IconButton,
   Link,
+  RadioGroup,
+  RadioGroupItem,
 } from "@d5ng/react";
 import NextLink from "next/link";
 
@@ -79,6 +81,25 @@ export default function Page() {
       <Field label="받는 방법" group>
         {(control) => <div role="radiogroup" {...control} />}
       </Field>
+      <RadioGroup label="받는 방법" defaultValue="email">
+        <RadioGroupItem value="email" label="이메일" />
+        <RadioGroupItem value="sms" label="문자" />
+      </RadioGroup>
+      {/* required·description·disabled 항목은 Field 연결과 숨은 input을 거쳐서 따로 렌더해요. */}
+      <form>
+        <RadioGroup
+          label="배송 방법"
+          name="delivery"
+          required
+          requirementIndicator
+          description="새벽 배송은 서울에서만 돼요."
+          size="large"
+          tone="brand"
+        >
+          <RadioGroupItem value="normal" label="일반 배송" />
+          <RadioGroupItem value="dawn" label="새벽 배송" disabled />
+        </RadioGroup>
+      </form>
     </main>
   );
 }
