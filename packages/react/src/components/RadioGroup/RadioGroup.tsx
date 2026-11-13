@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import { Label, RadioGroup as RadioGroupPrimitive } from "radix-ui";
 import type { ComponentProps, ReactNode } from "react";
 
+import { joinIds } from "../_internal/joinIds";
 import { Field, type FieldProps } from "../Field";
 import * as styles from "./RadioGroup.css";
 
@@ -129,11 +130,10 @@ export function RadioGroup({
           // control이 제목 id로 덮어서 다시 붙여요. 쓰는 쪽이 넘기면 그 요소가 이름을 정해요.
           aria-labelledby={ariaLabelledBy ?? control["aria-labelledby"]}
           // 쓰는 쪽 값으로 덮으면 안내·오류 연결이 말없이 끊겨서 뒤에 더해요.
-          aria-describedby={
-            [control["aria-describedby"], ariaDescribedBy]
-              .filter(Boolean)
-              .join(" ") || undefined
-          }
+          aria-describedby={joinIds(
+            control["aria-describedby"],
+            ariaDescribedBy,
+          )}
           className={styles.group({ size, tone })}
         >
           {children}
