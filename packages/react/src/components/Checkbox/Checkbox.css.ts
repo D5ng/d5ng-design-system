@@ -13,10 +13,7 @@ const disabledSelector = "[data-disabled]";
 const markSize = createVar();
 const labelFontSize = createVar();
 const labelLineHeight = createVar();
-// 아이콘 크기는 size와 variant가 함께 정해요. size가 둘 다 채우고 variant가 하나를 골라요.
-// Figma가 아이콘 크기를 변수로 묶지 않아서 숫자로 써요.
-const squareIconSize = createVar();
-const ghostIconSize = createVar();
+// size와 variant가 함께 정해서 compoundVariants가 채워요.
 const iconSize = createVar();
 
 // 상자가 지금 쓰는 색이에요. 선택·비활성 규칙은 control에서 이 변수만 바꾸고 surface가 읽어요.
@@ -58,6 +55,7 @@ const row = style({
   },
 });
 
+// variant·tone 값도 줄에서 채워요. 상자·아이콘이 물려받아서 보이는 props를 recipe 하나가 받아요.
 export const root = recipe({
   base: row,
 
@@ -68,8 +66,6 @@ export const root = recipe({
           [markSize]: vars.checkbox.markSizeMedium,
           [labelFontSize]: vars.font.size.t4,
           [labelLineHeight]: vars.font.lineHeight.t4,
-          [squareIconSize]: "12px",
-          [ghostIconSize]: "14px",
         },
       },
       large: {
@@ -77,15 +73,91 @@ export const root = recipe({
           [markSize]: vars.checkbox.markSizeLarge,
           [labelFontSize]: vars.font.size.t5,
           [labelLineHeight]: vars.font.lineHeight.t5,
-          [squareIconSize]: "14px",
-          [ghostIconSize]: "18px",
         },
       },
     },
+    variant: {
+      square: {
+        vars: {
+          [border]: vars.color.stroke.neutralStrong,
+          [disabledBg]: vars.color.bg.disabled,
+          [disabledBorder]: vars.color.stroke.neutralWeak,
+          [uncheckedIconDisplay]: "none",
+        },
+      },
+      // 테두리 없이 체크만 보여요. 선택해도 배경은 미선택과 같아요.
+      ghost: {
+        vars: {
+          [border]: "transparent",
+          [disabledBg]: "transparent",
+          [disabledBorder]: "transparent",
+          [uncheckedIconDisplay]: "block",
+          [checkedBg]: "transparent",
+          [checkedBgHover]: vars.color.bg.neutralWeak,
+          [checkedBgPressed]: vars.color.bg.neutralWeakPressed,
+        },
+      },
+    },
+    tone: {
+      neutral: {},
+      brand: {},
+    },
   },
+
+  compoundVariants: [
+    // Figma가 아이콘 크기를 변수로 묶지 않아서 숫자로 써요.
+    {
+      variants: { size: "medium", variant: "square" },
+      style: { vars: { [iconSize]: "12px" } },
+    },
+    {
+      variants: { size: "medium", variant: "ghost" },
+      style: { vars: { [iconSize]: "14px" } },
+    },
+    {
+      variants: { size: "large", variant: "square" },
+      style: { vars: { [iconSize]: "14px" } },
+    },
+    {
+      variants: { size: "large", variant: "ghost" },
+      style: { vars: { [iconSize]: "18px" } },
+    },
+    {
+      variants: { variant: "square", tone: "neutral" },
+      style: {
+        vars: {
+          [checkedBg]: vars.color.bg.neutralSolid,
+          [checkedBgHover]: vars.color.bg.neutralSolidHover,
+          [checkedBgPressed]: vars.color.bg.neutralSolidPressed,
+          [checkedFg]: vars.color.fg.onNeutralSolid,
+        },
+      },
+    },
+    {
+      variants: { variant: "square", tone: "brand" },
+      style: {
+        vars: {
+          [checkedBg]: vars.color.bg.brandSolid,
+          [checkedBgHover]: vars.color.bg.brandSolidHover,
+          [checkedBgPressed]: vars.color.bg.brandSolidPressed,
+          [checkedFg]: vars.color.fg.onBrandSolid,
+        },
+      },
+    },
+    {
+      variants: { variant: "ghost", tone: "neutral" },
+      style: { vars: { [checkedFg]: vars.color.fg.neutral } },
+    },
+    {
+      variants: { variant: "ghost", tone: "brand" },
+      style: { vars: { [checkedFg]: vars.color.fg.brand } },
+    },
+  ],
 
   defaultVariants: {
     size: "medium",
+    variant: "square",
+    tone: "neutral",
   },
 });
 
@@ -145,84 +217,12 @@ export const control = style({
   },
 });
 
-export const controlColors = recipe({
-  variants: {
-    variant: {
-      square: {
-        vars: {
-          [iconSize]: squareIconSize,
-          [border]: vars.color.stroke.neutralStrong,
-          [disabledBg]: vars.color.bg.disabled,
-          [disabledBorder]: vars.color.stroke.neutralWeak,
-          [uncheckedIconDisplay]: "none",
-        },
-      },
-      // 테두리 없이 체크만 보여요. 선택해도 배경은 미선택과 같아요.
-      ghost: {
-        vars: {
-          [iconSize]: ghostIconSize,
-          [border]: "transparent",
-          [disabledBg]: "transparent",
-          [disabledBorder]: "transparent",
-          [uncheckedIconDisplay]: "block",
-          [checkedBg]: "transparent",
-          [checkedBgHover]: vars.color.bg.neutralWeak,
-          [checkedBgPressed]: vars.color.bg.neutralWeakPressed,
-        },
-      },
-    },
-    tone: {
-      neutral: {},
-      brand: {},
-    },
-  },
-
-  compoundVariants: [
-    {
-      variants: { variant: "square", tone: "neutral" },
-      style: {
-        vars: {
-          [checkedBg]: vars.color.bg.neutralSolid,
-          [checkedBgHover]: vars.color.bg.neutralSolidHover,
-          [checkedBgPressed]: vars.color.bg.neutralSolidPressed,
-          [checkedFg]: vars.color.fg.onNeutralSolid,
-        },
-      },
-    },
-    {
-      variants: { variant: "square", tone: "brand" },
-      style: {
-        vars: {
-          [checkedBg]: vars.color.bg.brandSolid,
-          [checkedBgHover]: vars.color.bg.brandSolidHover,
-          [checkedBgPressed]: vars.color.bg.brandSolidPressed,
-          [checkedFg]: vars.color.fg.onBrandSolid,
-        },
-      },
-    },
-    {
-      variants: { variant: "ghost", tone: "neutral" },
-      style: { vars: { [checkedFg]: vars.color.fg.neutral } },
-    },
-    {
-      variants: { variant: "ghost", tone: "brand" },
-      style: { vars: { [checkedFg]: vars.color.fg.brand } },
-    },
-  ],
-
-  defaultVariants: {
-    variant: "square",
-    tone: "neutral",
-  },
-});
-
-export type ControlColorsVariants = NonNullable<
-  RecipeVariants<typeof controlColors>
->;
-
-// 라벨 글자나 여백을 눌러도 상자가 반응하게 줄을 봐요.
 // 마우스로 누르면 줄이, 키보드 Space로 누르면 버튼만 :active가 돼서 둘 다 봐요.
-const rowPressed = `${row}:is(:active, :has(:active))`;
+const pressed = ":is(:active, :has(:active))";
+// 라벨 글자나 여백을 눌러도 상자가 반응하게 줄을 봐요.
+const rowPressed = `${row}${pressed}`;
+// hover 규칙은 @media라 뒤에 나와요. 눌린 동안은 빼야 눌린 색이 보여요.
+const rowHovered = `${row}:hover:not(${pressed})`;
 
 // 눌리면 이것만 줄어요. 포커스 링은 control에 있어서 제자리에 남아요(Motion Foundation).
 export const surface = style({
@@ -232,6 +232,7 @@ export const surface = style({
   boxSizing: "border-box",
   width: "100%",
   height: "100%",
+  // Figma에도 Checkbox 테두리 두께 변수가 없어요.
   // 색이 없는 테두리도 1px을 차지해서 아이콘이 상태마다 같은 자리에 있어요.
   border: `1px solid ${border}`,
   borderRadius: vars.radius.sm,
@@ -255,7 +256,7 @@ export const surface = style({
   "@media": {
     "(hover: hover)": {
       selectors: {
-        [`${row}:hover:not(:active, :has(:active)) &`]: {
+        [`${rowHovered} &`]: {
           background: bgHover,
         },
       },

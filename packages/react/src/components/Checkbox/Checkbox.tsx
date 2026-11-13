@@ -36,12 +36,12 @@ export type CheckboxProps = Omit<
    * 상자 모양이에요. 필수 선택처럼 고를 곳임을 분명히 보여야 하면 `square`, 필수가 아닌 3개 이하의 가벼운 선택이면 `ghost`를 써요.
    * @default square
    */
-  variant?: styles.ControlColorsVariants["variant"];
+  variant?: styles.RootVariants["variant"];
   /**
    * 선택했을 때의 색이에요. 브랜드로 강조할 때만 `brand`를 써요.
    * @default neutral
    */
-  tone?: styles.ControlColorsVariants["tone"];
+  tone?: styles.RootVariants["tone"];
   /**
    * 라벨 굵기예요. 강조가 필요할 때만 `semibold`를 써요.
    * @default regular
@@ -76,17 +76,11 @@ export function Checkbox({
 }: CheckboxProps) {
   return (
     <Label.Root
-      className={clsx(styles.root({ size }), className)}
+      className={clsx(styles.root({ size, variant, tone }), className)}
       style={style}
     >
       <span className={styles.markSlot}>
-        <CheckboxPrimitive.Root
-          {...checkboxProps}
-          className={clsx(
-            styles.control,
-            styles.controlColors({ variant, tone }),
-          )}
-        >
+        <CheckboxPrimitive.Root {...checkboxProps} className={styles.control}>
           <span className={styles.surface}>
             {/* Figma처럼 아이콘 크기와 상관없이 선을 2px로 둬요. */}
             <Check className={styles.checkIcon} nonScalingStroke aria-hidden />
