@@ -44,7 +44,7 @@ export type SwitchProps = Omit<
   /** 켜짐이 바뀌면 불려요. */
   onCheckedChange?: (checked: boolean) => void;
   /**
-   * 누를 수 없어요. 켜짐 상태는 그대로 보여요.
+   * 누를 수 없어요. 켜짐 상태는 그대로 보여요. `loading`과 함께면 포커스를 남기고 `aria-disabled`로 알려요.
    * @default false
    */
   disabled?: boolean;
@@ -65,7 +65,11 @@ export type SwitchRowProps = SwitchProps & {
   description?: ReactNode;
 };
 
-type SwitchMarkProps = Omit<SwitchProps, "label" | "size" | "tone">;
+// className·style은 줄에 붙여요. 여기로 넘기면 버튼에 붙거나 사라져서 타입에서 막아요.
+type SwitchMarkProps = Omit<
+  SwitchProps,
+  "label" | "size" | "tone" | "className" | "style"
+>;
 
 // ---- Switch
 
@@ -118,7 +122,7 @@ export function SwitchRow({
 
   return (
     <Label.Root
-      className={clsx(styles.row({ size, tone }), className)}
+      className={clsx(styles.switchRow({ size, tone }), className)}
       style={style}
     >
       <span className={clsx(styles.text, styles.stack)}>

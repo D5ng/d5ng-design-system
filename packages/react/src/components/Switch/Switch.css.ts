@@ -129,7 +129,7 @@ export const root = recipe({
 });
 
 // SwitchRow는 라벨·설명이 왼쪽에서 너비를 채우고 표시가 오른쪽 끝이에요.
-export const row = recipe({
+export const switchRow = recipe({
   base: [
     rowBase,
     {
