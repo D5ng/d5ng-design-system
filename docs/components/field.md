@@ -13,10 +13,15 @@
 ## 정한 것
 
 - **props를 받는 컴포넌트 하나예요**: shadcn `FieldLabel`·`FieldError`나 Montage `FormControlLabel` 같은 부품 조합은 두지 않아요. Field의 일은 같은 배치와 접근성 연결을 매번 똑같이 하는 거예요. 부품으로 나누면 안내와 오류를 함께 띄우거나 순서를 바꿀 수 있고, 막으려면 부품끼리 서로 알아야 해요(FF P3). 부품이 필요해지면 named export로 더해도 지금 쓰는 쪽은 깨지지 않아요
-- **입력은 children 함수로 받아요**: `children(control)`에 `id`·`aria-describedby`·`aria-invalid`·`required`·`disabled`를 넘겨요. 어느 요소에 무엇이 가는지 호출부에서 보여요(FF R6)
+- **입력은 children 함수로 받아요**: `children(control)`에 `id`·`aria-labelledby`·`aria-describedby`·`aria-invalid`·`required`·`disabled`를 넘겨요. 어느 요소에 무엇이 가는지 호출부에서 보여요(FF R6)
   - Slot으로 자식에 합치면, TextField처럼 진짜 `<input>`이 틀 안에 있을 때 id가 틀에 붙어요. Radix Slot은 자식의 `id`·`aria-describedby`가 우리 값을 말없이 덮어요
   - context로 넘기면 native `<input>`이 읽지 못해서 hook을 하나 더 공개해야 하고, Field 밖에 둔 입력은 조용히 연결이 빠져요
 - **서버 컴포넌트예요(`"use client"` 없음)**: 함수는 서버에서 클라이언트로 넘길 수 없어서, Field가 클라이언트 컴포넌트면 서버 컴포넌트에서 children 함수를 쓸 수 없어요. Field 안의 hook은 `useId`뿐이고, 클라이언트 동작은 이미 `"use client"`인 Radix `Label`·`VisuallyHidden`이 맡아요. 기준은 `.claude/rules/components.md`의 "서버 컴포넌트"를 따라요(#106)
+- **묶음에는 boolean `group`으로 라벨을 이어요**: `<label for>`는 input·button 같은 요소만 가리켜서 `div role="radiogroup"`에는 이름이 붙지 않아요. `group`을 켜면 라벨을 id 붙은 `span`으로 그리고 `aria-labelledby`로 넘겨요. 끄면 지금과 같아서 쓰는 쪽이 깨지지 않아요([Radio 계획](https://claude.ai/artifact/VP8D7Gqe87r4rpGReM677S) D1, 2026-11-12)
+  - 항상 `aria-labelledby`를 더하는 안은 버렸어요. 묶음에서 `<label for>`가 div를 가리키는 HTML 오류가 남아요
+  - `fieldset`·`legend`는 버렸어요. radiogroup 밖에 group이 하나 더 생겨 이름이 두 번 읽혀요
+  - 라벨을 눌러도 포커스가 가지 않아요. 묶음 자체엔 포커스 자리가 없어요
+  - `role="group"`(CheckboxGroup)은 `aria-required`·`aria-invalid`를 지원하지 않아요. 전하는 법은 CheckboxGroup에서 정해요
 - **`id`는 입력의 id예요**: 라벨과 입력을 잇는 값이라 입력으로 가고, root `div`의 `id`는 받지 않아요. 안내·글자 수의 id는 쓰는 쪽 id와 겹치지 않게 `useId`로 만든 값에서 이어 붙여요
 - **필수 표시는 `required`와 boolean `requirementIndicator` 둘로 받아요**: 켜면 `required`일 때 `*`, 아닐 때 `선택`을 붙여요. 표시가 실제 필수 여부와 어긋날 수 없어요(FF C2). SEED의 "필수가 2/3 이상이면 선택만 표시" 규칙 때문에 "필수지만 표시 없음"이 필요해서 prop이 하나로 합쳐지지 않아요
   - `requirementIndicator="required" | "optional"`은 버렸어요. `required`를 끄고 표시를 잊으면 선택 칸에 `*`가 남아요
@@ -40,7 +45,6 @@
 - **`readOnly`, `size`**: Field 모양은 바뀌지 않고 입력이 정해요. TextField에서 다뤄요
 - **옆으로 놓인 라벨, 성공 메시지(Positive)**: Figma에 없어요
 - **오류 자동 알림(`aria-live`)**: 제출 때 첫 오류로 포커스를 옮기는 건 폼의 일이에요. 칸마다 알리면 여러 개가 한꺼번에 읽혀요
-- **그룹 입력(Fieldset, Checkbox·Radio 묶음)**: `<label for>`는 그룹에 이름을 붙이지 못해서 `aria-labelledby`가 따로 필요해요. Figma도 그 컴포넌트를 만든 뒤로 미뤘어요
 - **`선택` 문구 바꾸기**: Figma도 고정 문구예요. 다른 언어가 필요해지면 prop을 더해도 깨지지 않아요
 
 ## 열린 질문
