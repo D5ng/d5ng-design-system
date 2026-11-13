@@ -8,6 +8,20 @@ import { Field, type FieldControlProps } from "./Field";
 // TextField 없이 계약만 보려고 native input을 써요.
 const renderInput = (control: FieldControlProps) => <input {...control} />;
 
+// RadioGroup 없이 group 계약만 보려고 빈 radiogroup을 써요. div엔 required·disabled가 없어서 aria로 바꿔요.
+const renderGroup = ({
+  required,
+  disabled,
+  ...groupProps
+}: FieldControlProps) => (
+  <div
+    role="radiogroup"
+    aria-required={required || undefined}
+    aria-disabled={disabled || undefined}
+    {...groupProps}
+  />
+);
+
 // 라벨 글자에 표시가 섞이면 getByText로 못 찾아서 입력에 이어진 라벨을 따라가요.
 const labelOf = (name: string) => {
   const input = page.getByRole("textbox", { name, exact: true }).element();
@@ -55,6 +69,40 @@ describe("Field", () => {
 
     const input = page.getByRole("textbox", { name: "이메일" });
     await expect.element(input).toHaveAttribute("id", "email");
+  });
+
+  it("group이면 라벨이 control의 aria-labelledby가 되고 label for를 두지 않아요", async () => {
+    await render(
+      <Field label="받는 방법" group>
+        {renderGroup}
+      </Field>,
+    );
+
+    await expect
+      .element(page.getByRole("radiogroup", { name: "받는 방법" }))
+      .toBeInTheDocument();
+    expect(document.querySelector("label")).toBeNull();
+  });
+
+  it("group이면 hideLabel이어도 라벨이 이름이 돼요", async () => {
+    await render(
+      <Field label="받는 방법" group hideLabel>
+        {renderGroup}
+      </Field>,
+    );
+
+    await expect
+      .element(page.getByRole("radiogroup", { name: "받는 방법" }))
+      .toBeInTheDocument();
+  });
+
+  it("group이 아니면 aria-labelledby 없이 label for로 이어요", async () => {
+    await render(<Field label="이름">{renderInput}</Field>);
+
+    await expect
+      .element(page.getByRole("textbox", { name: "이름" }))
+      .not.toHaveAttribute("aria-labelledby");
+    expect(labelOf("이름")).toHaveTextContent("이름");
   });
 
   it("description을 입력의 설명으로 연결해요", async () => {
