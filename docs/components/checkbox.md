@@ -33,7 +33,9 @@
 - **체크와 빼기 아이콘을 둘 다 그리고 CSS가 하나만 보여요**: 버튼의 `data-state`로 골라요. Radix `Checkbox.Indicator`는 미선택이면 그리지 않아서 Ghost의 흐린 체크를 보일 수 없고, `forceMount`를 켜면 결국 CSS로 골라야 해요
 - **숨은 input이 상자 위에 겹치게 상자 칸을 인라인으로 둬요**: Radix는 input을 버튼 바로 뒤에 붙이고 버튼 너비만큼 왼쪽으로 옮겨요. 상자 칸(`markSlot`)을 줄 높이 없는 block으로, 버튼을 inline으로 둬요. flex나 block 버튼이면 input이 상자 왼쪽 아래로 어긋나서 required 안내 말풍선이 엉뚱한 곳을 가리켜요
 - **라벨 첫 줄 가운데를 상자 가운데에 맞춰요**: 라벨에 `padding-top: (상자 − 줄 높이) / 2`를 줘서 Figma의 0.5·1px과 같고, 긴 라벨이 줄바꿈돼도 상자는 첫 줄에 남아요. `textStyles` 묶음은 굵기까지 정해서 `labelWeight`와 겹쳐요. 그래서 글자 토큰과 한글 줄바꿈(`keep-all`)을 직접 붙여요
-- **줄 스타일은 Radio·Switch와 같은 정책이에요**: 최소 높이 44px, 여백 8px, 상자–라벨 간격 8px, 첫 줄 맞춤, 눌림·커서 규칙이 같아요. 두 번째로 머지되는 PR이 `_internal/selectionRow.css.ts`로 옮겨요
+- **줄 스타일은 Radio·Switch와 같은 정책이에요**: 최소 높이 44px, 여백 8px, 상자–라벨 간격 8px, 첫 줄 맞춤, 눌림·커서 규칙이 같아요. 공통 부분(여백·정렬·커서, 눌림·hover·비활성 선택자)은 `_internal/selectionRow.css.ts`에 있어요
+  - 최소 높이는 Figma가 컴포넌트마다 변수를 따로 둬서(셋 다 44px) 각자 자기 토큰을 써요. 공통 파일이 한 컴포넌트 토큰을 쓰면 다른 컴포넌트가 거기에 묶여요
+  - 열 구성(열 너비·간격·`fit-content`)은 SwitchRow처럼 컴포넌트마다 달라서 각자 정해요
 - **그룹 제목·안내·오류는 Field가 맡아요**: CheckboxGroup(다음 PR)은 값 상태 없이 세로로 묶기만 하고, Field `group`(#117)이 이름과 설명을 이어요. SEED는 CheckboxGroup이 Field의 일을 다시 해요. 우리 Figma도 Field + Group 조합이에요
 - **Figma 속성과의 대응**: `Shape`·`Tone`(세트 이름)은 `variant`·`tone`, `Selection`은 `checked`(Unselected `false`, Selected `true`, Indeterminate `"indeterminate"`), `Weight`는 `labelWeight`, `State=Disabled`는 `disabled`예요. `State`의 Hover·Pressed와 `Focus visible`은 브라우저 상태예요(Figma 표시용)
 

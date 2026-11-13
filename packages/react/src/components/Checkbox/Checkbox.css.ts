@@ -3,6 +3,12 @@ import { createVar, style } from "@vanilla-extract/css";
 import { recipe, type RecipeVariants } from "@vanilla-extract/recipes";
 
 import { focusRing } from "../_internal/focusRing.css";
+import {
+  selectionRow,
+  selectionRowDisabled,
+  selectionRowHovered,
+  selectionRowPressed,
+} from "../_internal/selectionRow.css";
 
 // 상태 선택자는 한 곳에서만 정해요. Radix가 버튼에 붙이는 속성을 봐요.
 const checkedSelector = '[data-state="checked"]';
@@ -36,28 +42,18 @@ const uncheckedIconDisplay = createVar();
 
 // ---- 줄
 
-const row = style({
-  display: "grid",
-  gridTemplateColumns: "auto minmax(0, 1fr)",
-  // 한 줄이면 44px 안에서 가운데, 여러 줄이면 위에 붙어요(Figma Content 정렬).
-  alignContent: "center",
-  alignItems: "start",
-  columnGap: vars.spacing[8],
-  boxSizing: "border-box",
-  // 눌리는 곳이 라벨 글자 끝까지예요. 긴 라벨은 부모 너비 안에서 줄바꿈돼요.
-  width: "fit-content",
-  minHeight: vars.checkbox.minTargetHeight,
-  padding: vars.spacing[8],
-  cursor: "pointer",
-  WebkitTapHighlightColor: "transparent",
-  selectors: {
-    [`&:has(${disabledSelector})`]: { cursor: "not-allowed" },
-  },
-});
-
 // variant·tone 값도 줄에서 채워요. 상자·아이콘이 물려받아서 보이는 props를 recipe 하나가 받아요.
 export const root = recipe({
-  base: row,
+  base: [
+    selectionRow,
+    {
+      gridTemplateColumns: "auto minmax(0, 1fr)",
+      columnGap: vars.spacing[8],
+      // 눌리는 곳이 라벨 글자 끝까지예요. 긴 라벨은 부모 너비 안에서 줄바꿈돼요.
+      width: "fit-content",
+      minHeight: vars.checkbox.minTargetHeight,
+    },
+  ],
 
   variants: {
     size: {
@@ -217,13 +213,6 @@ export const control = style({
   },
 });
 
-// 마우스로 누르면 줄이, 키보드 Space로 누르면 버튼만 :active가 돼서 둘 다 봐요.
-const pressed = ":is(:active, :has(:active))";
-// 라벨 글자나 여백을 눌러도 상자가 반응하게 줄을 봐요.
-const rowPressed = `${row}${pressed}`;
-// hover 규칙은 @media라 뒤에 나와요. 눌린 동안은 빼야 눌린 색이 보여요.
-const rowHovered = `${row}:hover:not(${pressed})`;
-
 // 눌리면 이것만 줄어요. 포커스 링은 control에 있어서 제자리에 남아요(Motion Foundation).
 export const surface = style({
   display: "flex",
@@ -244,11 +233,11 @@ export const surface = style({
   transitionTimingFunction: vars.easing.standard,
 
   selectors: {
-    [`${rowPressed} &`]: {
+    [`${selectionRowPressed} &`]: {
       background: bgPressed,
       transitionDuration: vars.duration.springRapid,
     },
-    [`${rowPressed} ${control}:not(${disabledSelector}) &`]: {
+    [`${selectionRowPressed} ${control}:not(${disabledSelector}) &`]: {
       transform: `scale(calc(1 - ${vars.press.maxReduction}))`,
     },
   },
@@ -256,14 +245,14 @@ export const surface = style({
   "@media": {
     "(hover: hover)": {
       selectors: {
-        [`${rowHovered} &`]: {
+        [`${selectionRowHovered} &`]: {
           background: bgHover,
         },
       },
     },
     "(prefers-reduced-motion: reduce)": {
       selectors: {
-        [`${rowPressed} ${control}:not(${disabledSelector}) &`]: {
+        [`${selectionRowPressed} ${control}:not(${disabledSelector}) &`]: {
           transform: "none",
         },
       },
@@ -275,7 +264,7 @@ export const surface = style({
     "(transition-timing-function: linear(0, 1))": {
       transitionTimingFunction: vars.easing.springQuick,
       selectors: {
-        [`${rowPressed} &`]: {
+        [`${selectionRowPressed} &`]: {
           transitionTimingFunction: vars.easing.springRapid,
         },
       },
@@ -325,7 +314,7 @@ export const labelText = recipe({
     overflowWrap: "break-word",
     color: vars.color.fg.neutral,
     selectors: {
-      [`${row}:has(${disabledSelector}) &`]: { color: vars.color.fg.disabled },
+      [`${selectionRowDisabled} &`]: { color: vars.color.fg.disabled },
     },
   },
 
