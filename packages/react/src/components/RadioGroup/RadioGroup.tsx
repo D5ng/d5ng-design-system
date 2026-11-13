@@ -97,6 +97,7 @@ export function RadioGroup({
   id,
   size,
   tone,
+  "aria-labelledby": ariaLabelledBy,
   "aria-describedby": ariaDescribedBy,
   className,
   style,
@@ -125,6 +126,8 @@ export function RadioGroup({
         <RadioGroupPrimitive.Root
           {...radioGroupProps}
           {...control}
+          // control이 제목 id로 덮어서 다시 붙여요. 쓰는 쪽이 넘기면 그 요소가 이름을 정해요.
+          aria-labelledby={ariaLabelledBy ?? control["aria-labelledby"]}
           // 쓰는 쪽 값으로 덮으면 안내·오류 연결이 말없이 끊겨서 뒤에 더해요.
           aria-describedby={
             [control["aria-describedby"], ariaDescribedBy]

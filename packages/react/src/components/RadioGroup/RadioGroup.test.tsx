@@ -43,6 +43,19 @@ describe("RadioGroup", () => {
       .toBeInTheDocument();
   });
 
+  it("aria-labelledby를 넘기면 그 요소가 제목 대신 이름이 돼요", async () => {
+    await render(
+      <>
+        <h2 id="section-title">알림 설정</h2>
+        <Channels hideLabel aria-labelledby="section-title" />
+      </>,
+    );
+
+    await expect
+      .element(page.getByRole("radiogroup", { name: "알림 설정" }))
+      .toBeInTheDocument();
+  });
+
   it("description과 errorMessage를 그룹의 설명으로 연결해요", async () => {
     const { rerender } = await render(
       <Channels
