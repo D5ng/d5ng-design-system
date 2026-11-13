@@ -77,14 +77,7 @@ export default function Page() {
       </Field>
       {/* group은 라벨을 Radix Label 대신 span으로 그려서 따로 렌더해요. */}
       <Field label="받는 방법" group>
-        {({ required, disabled, ...groupProps }) => (
-          <div
-            role="radiogroup"
-            aria-required={required}
-            aria-disabled={disabled}
-            {...groupProps}
-          />
-        )}
+        {(control) => <div role="radiogroup" {...control} />}
       </Field>
     </main>
   );
