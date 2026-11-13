@@ -77,8 +77,8 @@ Button의 `tone` prop을 `variant`로 합쳤어요. `tone="critical"`은 `varian
 
 1. **기능 PR**: changeset을 같은 PR에 넣어요(위 절)
 2. **release 시작**: `git flow release start 0.2.0`으로 develop에서 브랜치를 따요. git flow가 없으면 `git checkout -b release/0.2.0 develop`이에요
-3. **버전 올리기**: `pnpm changeset version`이 번호와 CHANGELOG를 바꾸고 changeset 파일을 지워요. 번호가 예상과 같은지 보고 `chore(react): 0.2.0 배포 준비`로 커밋한 뒤 아래 "배포 전 확인"을 해요
-4. **main 머지**: release에서 main으로 PR을 열고 merge commit으로 머지해요
+3. **버전 올리기**: `pnpm changeset version`이 번호와 CHANGELOG를 바꾸고 changeset 파일을 지워요. 번호가 예상과 같은지 보고 `chore(react): 0.2.0 배포 준비`로 커밋해요
+4. **main 머지**: release에서 main으로 PR을 열어요. CI의 `Pack check`(아래 "배포 전 확인")가 통과하면 merge commit으로 머지해요
 5. **배포(직접)**: main에서 `npm login`한 상태로 `pnpm release`를 실행해요. 패키지만 빌드하고(`apps/*`는 빼요) npm에 올린 뒤 `@d5ng/react@0.2.0` 태그를 만들어요. 그다음 `git push origin --tags`를 해요
 6. **되돌리기**: main에서 develop으로 PR을 열고 merge commit으로 머지해요. develop이 바뀐 번호와 CHANGELOG를 받아요
 
@@ -88,21 +88,13 @@ Claude는 1–4번과 6번의 브랜치·PR을 만들 수 있어요. 머지와 5
 
 ## 배포 전 확인
 
-npm은 한 번 쓴 번호를 지워도 다시 못 쓰고([npm unpublish](https://docs.npmjs.com/cli/commands/npm-unpublish)), 지우는 것도 배포 후 72시간 안에만 돼요([npm 정책](https://docs.npmjs.com/policies/unpublish)). 그래서 3번 뒤에 실제로 올라갈 파일로 Next 예제 앱(`apps/next`)을 빌드해 봐요. 레지스트리에는 아무것도 남지 않아요.
+npm은 한 번 쓴 번호를 지워도 다시 못 쓰고([npm unpublish](https://docs.npmjs.com/cli/commands/npm-unpublish)), 지우는 것도 배포 후 72시간 안에만 돼요([npm 정책](https://docs.npmjs.com/policies/unpublish)). 그래서 올리기 전에 실제로 올라갈 tgz로 Next 예제 앱(`apps/next`)을 빌드해 봐요. 레지스트리에는 아무것도 남지 않아요.
 
 ```bash
-pnpm --filter "./packages/*" build
-tmp=$(mktemp -d)
-pnpm --filter @d5ng/react pack --pack-destination "$tmp"
-cp -r apps/next/app apps/next/package.json "$tmp/"
-cd "$tmp"
-npm pkg set "dependencies.@d5ng/react=file:./d5ng-react-0.2.0.tgz"
-pnpm add -D typescript @types/node
-pnpm build
+scripts/check-pack.sh
 ```
 
-- **workspace 밖에서 빌드해요**: 안에서는 `workspace:*`가 tgz 대신 `packages/react`를 읽어요. tsconfig는 Next가 기본값으로 만들어 줘요
-- **`typescript`와 `@types/node`를 먼저 깔아요**: 없으면 Next가 빌드 도중에 설치하는데, 그 빌드는 `/_global-error` 프리렌더에서 실패했어요(2026-11-11 확인)
+- **CI**: main으로 가는 PR에서 `.github/workflows/pack-check.yml`이 같은 스크립트를 돌려요. Actions 탭에서 직접 실행할 수도 있어요. 단계마다의 이유는 스크립트 주석에 있어요
 - **블로그가 생기면**: 같은 tgz를 블로그에도 설치해서 빌드해 봐요
 - **잘못 올렸을 때**: 지우기보다 `npm deprecate @d5ng/react@0.2.0 "이유"`로 경고를 남기고 고친 patch를 내요
 - **미리 받아 봐야 할 일이 잦아지면**: changesets의 snapshot 배포(`snapshot` 태그)나 pre 모드(`next` 태그)를 써요. 태그가 `latest`가 아니라서 `pnpm add`의 기본값에 잡히지 않아요
