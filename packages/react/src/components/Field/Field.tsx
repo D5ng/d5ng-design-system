@@ -66,7 +66,7 @@ export type FieldProps = Omit<ComponentProps<"div">, "children" | "id"> & {
    * @default false
    */
   group?: boolean;
-  /** 입력의 id예요. 없으면 만들어서 라벨과 이어요. */
+  /** 입력의 id예요. `group`이면 묶음의 id예요. 없으면 만들어요. */
   id?: string;
   /** 입력을 그려요. 받은 `control`을 입력 요소에 펼쳐야 라벨·안내와 이어져요. */
   children: (control: FieldControlProps) => ReactNode;
