@@ -62,6 +62,19 @@ describe("TextField", () => {
       );
   });
 
+  it("aria-labelledby를 넘기면 입력에 그대로 붙여요", async () => {
+    await render(
+      <>
+        <h2 id="billing-title">청구지</h2>
+        <TextField label="우편번호" aria-labelledby="billing-title" />
+      </>,
+    );
+
+    await expect
+      .element(page.getByRole("textbox"))
+      .toHaveAttribute("aria-labelledby", "billing-title");
+  });
+
   it("invalid면 입력에 aria-invalid를 붙여요", async () => {
     await render(<TextField label="이름" invalid />);
 

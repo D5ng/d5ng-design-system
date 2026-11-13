@@ -22,6 +22,7 @@
 - **앞 아이콘은 `prefixIcon`이고 스크린리더가 읽지 않아요**: 이름은 Button과 같아요. 장식이라 `aria-hidden`이고, 이름이 붙은 아이콘을 넣어도 입력의 이름과 설명에 섞이지 않아요. Figma 속성 이름도 `Prefix icon`으로 바꿨어요
 - **앞뒤 글자는 `prefixText`·`suffixText`이고 입력의 설명으로 읽혀요**: 값에 섞이지 않고, "가격, 원"처럼 단위가 빠지지 않아요(Figma "중복 낭독 방지"). React DOM 타입에 `prefix`(RDFa 속성)가 이미 있어서 SEED의 `prefix` 대신 Figma `Prefix text`를 따라요(FF P1)
 - **`aria-describedby`는 덮지 않고 더해요**: 덮으면 안내 연결이 말없이 끊겨요(FF P3). 순서는 앞 글자 → 뒤 글자 → Field 안내 → 쓰는 쪽 값이에요. id 잇기는 Field와 같은 `_internal/joinIds`를 써요
+  - 쓰는 쪽 `aria-labelledby`는 그대로 붙여요. Field는 `group`이 아니면 `aria-labelledby`를 `undefined`로 넘겨서, 펼치는 순서만으로는 말없이 지워져요(#117 뒤, 2026-11-13). 타입에서 빼는 안은 aria-* 가운데 하나만 막는 예외가 생겨서 버렸어요
 - **`readOnly`는 포커스를 받고 링만 그려요**: Tab으로 와서 읽고 복사할 수 있어야 해요(WCAG 2.4.7). 테두리는 그대로 둬서 "포커스는 있지만 편집은 안 됨"을 보여요. 배경은 `bg/neutral-weak`예요. Figma Specification에도 한 줄 더했어요
 - **상태가 겹치면 disabled > invalid > focus > hover > 기본 순서로 이겨요**: 상자는 TextField가 붙인 `data-invalid`·`data-disabled`·`data-readonly`를 보고, 포커스만 `:has(input:focus-visible)`를 봐요. `:has()`는 안쪽 선택자의 우선순위를 가져와서, 규칙 순서 대신 `:not()`으로 겹치지 않게 해요
   - Disabled+Invalid는 Field처럼 비활성이 이겨서 1px이에요. Figma도 2px에서 맞췄어요

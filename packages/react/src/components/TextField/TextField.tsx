@@ -84,6 +84,7 @@ export function TextField({
   prefixText,
   suffixText,
   type = "text",
+  "aria-labelledby": ariaLabelledBy,
   "aria-describedby": ariaDescribedBy,
   ...inputProps
 }: TextFieldProps) {
@@ -145,6 +146,8 @@ export function TextField({
             type={type}
             {...inputProps}
             {...control}
+            // Field는 group이 아니면 aria-labelledby를 undefined로 넘겨서, 쓰는 쪽 값을 그 뒤에 다시 붙여요.
+            aria-labelledby={ariaLabelledBy}
             // 쓰는 쪽 값을 덮으면 안내 연결이 말없이 끊겨서 합쳐요.
             aria-describedby={joinIds(
               prefixTextId,
