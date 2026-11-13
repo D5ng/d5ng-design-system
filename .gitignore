@@ -1,10 +1,19 @@
 node_modules
 dist
 storybook-static
+# next build·typegen이 만드는 파일이에요
+.next
+next-env.d.ts
 .turbo
 *.tsbuildinfo
 *.tgz
 coverage
+# Vitest 브라우저 모드가 실패한 테스트의 스크린샷을 남겨요
+.vitest
 .DS_Store
 .env
 .env.*
+.eslintcache
+
+# Claude Code가 만든 다른 브랜치의 worktree예요. Prettier가 이 파일을 읽어 검사에서 빼요.
+.claude/worktrees/

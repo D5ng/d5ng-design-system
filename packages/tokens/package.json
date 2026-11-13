@@ -1,0 +1,29 @@
+{
+  "name": "@d5ng/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate.ts && pnpm build",
+    "build": "vite build",
+    "typecheck": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "vite": "^8.3.6",
+    "vite-plugin-dts": "^5.1.2"
+  }
+}

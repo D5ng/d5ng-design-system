@@ -1,0 +1,2 @@
+/* 쓰는 쪽이 import하는 styles.css의 시작점이에요. 토큰 값을 맨 앞에 두고, 컴포넌트 CSS는 빌드할 때 그 뒤에 붙어요. */
+@import "@d5ng/tokens/tokens.css";

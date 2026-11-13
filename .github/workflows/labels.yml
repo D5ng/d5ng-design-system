@@ -1,0 +1,23 @@
+name: Labels
+
+# .github/labels.json이 develop에 들어오면 GitHub 라벨을 파일과 맞춰요.
+# Actions 탭에서 직접 실행할 수도 있어요.
+on:
+  push:
+    branches: [develop]
+    paths: [.github/labels.json]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # 파일에 없는 라벨은 지우지 않고 로그에 목록만 남겨요. 지우려면 로컬에서 --prune으로 실행해요.
+      - run: scripts/sync-labels.sh
+        env:
+          GH_TOKEN: ${{ github.token }}

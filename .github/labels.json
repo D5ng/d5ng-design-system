@@ -1,0 +1,16 @@
+[
+  { "name": "type: bug", "color": "D73A4A", "description": "의도대로 동작하지 않거나 디자인(Figma)과 다름" },
+  { "name": "type: feature", "color": "1D76DB", "description": "새 컴포넌트 또는 새 기능" },
+  { "name": "type: enhancement", "color": "A2EEEF", "description": "기존 컴포넌트·토큰 개선" },
+  { "name": "type: docs", "color": "0075CA", "description": "문서, Storybook 설명" },
+  { "name": "type: chore", "color": "EDEDED", "description": "빌드·설정·의존성. 사용하는 쪽에서 보이는 변화 없음" },
+
+  { "name": "pkg: tokens", "color": "C5DEF5", "description": "@d5ng/tokens" },
+  { "name": "pkg: react", "color": "C5DEF5", "description": "@d5ng/react" },
+
+  { "name": "breaking", "color": "B60205", "description": "쓰는 쪽 코드를 고쳐야 함 → 1.0 이후 major, 0.x 동안 minor" },
+  { "name": "a11y", "color": "F143AB", "description": "키보드, 스크린리더, 색 대비 등 접근성" },
+
+  { "name": "duplicate", "color": "CFD3D7", "description": "이미 있는 이슈·PR" },
+  { "name": "wontfix", "color": "FFFFFF", "description": "하지 않기로 함. 이유는 코멘트에" }
+]
