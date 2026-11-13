@@ -9,6 +9,7 @@ import {
   useId,
 } from "react";
 
+import { joinIds } from "../_internal/joinIds";
 import * as styles from "./Switch.css";
 
 // 문서에 보일 props는 여기서 직접 선언해요. Radix와 HTML 속성은 문서 표에 안 잡혀요.
@@ -139,10 +140,7 @@ export function SwitchRow({
       <SwitchMark
         aria-labelledby={labelId}
         {...switchProps}
-        aria-describedby={
-          [descriptionId, describedByProp].filter(Boolean).join(" ") ||
-          undefined
-        }
+        aria-describedby={joinIds(descriptionId, describedByProp)}
       />
     </Label.Root>
   );
