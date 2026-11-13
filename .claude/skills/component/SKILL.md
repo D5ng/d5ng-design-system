@@ -21,11 +21,12 @@ description: Figma에 디자인된 컴포넌트를 `@d5ng/react`에 새로 만�
 ## 1. 읽기
 
 - `docs/components/<이름>.md`가 있으면 먼저 읽는다. 이미 정한 것은 다시 따지지 않는다
-- Figma 컴포넌트 페이지(읽기는 데스크톱 MCP)
+- Figma 컴포넌트 페이지. 읽기는 로컬이면 데스크톱 MCP, 클라우드면 원격 Figma MCP(`get_metadata`, 읽기 전용 `use_figma`)를 쓴다. 페이지가 크면 세트별로 나눠 읽는다
   - 컴포넌트 세트의 속성(variant, boolean, 텍스트)
   - 문서 프레임의 Properties, Guidelines, **Specification**(수치), **Accessibility**(웹 구현 계약)
   - 중첩된 인스턴스가 어떤 컴포넌트·variant를 쓰는지(Archive 컴포넌트를 쓰면 짚는다)
   - "Web · 구현 전/중/구현됨" 표시
+  - Foundation(Motion·Accessibility)의 수치나 토큰을 옮겨 적었으면 Foundation 원문과 실제 변수 값을 같이 본다. 옮겨 적은 값이 틀린 적이 있다(`press/max-reduction`)
 - `packages/tokens`에 필요한 토큰이 있는지, `components/_internal`에 다시 쓸 코드가 있는지
 
 ## 2. 비교
@@ -40,16 +41,18 @@ description: Figma에 디자인된 컴포넌트를 `@d5ng/react`에 새로 만�
 - 테스트 이름 목록. 동작 계약의 정본이 된다
 - 스토리 목록(`Default` + prop마다 하나)
 - Specification 수치 → 토큰 대응표. 토큰이 없는 값은 따로 표시한다
+- `"use client"`를 붙일지와 그 이유, `apps/next`에 렌더할 예시(규칙은 `components.md`의 "서버 컴포넌트")
+- changeset 등급(`docs/release.md`)
 - 정할 것 1~2개, 추천 먼저
 - 다른 PR이 먼저 필요한지(예: Button variant 추가). PR 하나에는 한 가지 일만 담는다
 
 ## 4. 브랜치
 
-`git flow feature start <kebab-case>`. develop·main에 직접 커밋하지 않는다. 다른 PR이 checkout을 쓰고 있으면 사용자에게 알리고 워크트리를 쓴다.
+`git flow feature start <kebab-case>`. git-flow가 없으면(클라우드) `git checkout -b feature/<kebab-case> develop`으로 같은 결과를 낸다. develop·main에 직접 커밋하지 않는다. 다른 PR이 checkout을 쓰고 있으면 사용자에게 알리고 워크트리를 쓴다.
 
 ## 5. 구현
 
-`.css.ts` → 컴포넌트 → 테스트 → 스토리 → `index.ts`와 `src/index.ts` export 순서로 만든다. 파일은 Read로 열고 Edit·Write로 고친다(규칙이 그때 읽힌다).
+`.css.ts` → 컴포넌트 → 테스트 → 스토리 → `index.ts`와 `src/index.ts` export → `apps/next/app/page.tsx` 렌더 순서로 만든다. 파일은 Read로 열고 Edit·Write로 고친다(규칙이 그때 읽힌다).
 
 ## 6. 검증
 
@@ -68,9 +71,9 @@ pnpm build
 ## 7. 문서
 
 - `docs/components/<이름>.md`: 정한 것, 뺀 것, 열린 질문. 정하지 않은 것은 쓰지 않는다
-- Figma: 바꾸기 전에 버전을 저장하고, "Web · 구현됨"으로 바꾸고, 속성 이름을 prop 이름과 맞춘다
+- Figma: 속성 이름을 prop 이름과 맞추고, 표시는 "Web · 구현 중"으로 둔다. "구현됨"은 PR이 develop에 머지된 뒤 바꾼다
+  - 바꾸기 전에 바꿀 노드의 지금 상태를 JSON으로 남긴다(클라우드 프로젝트면 `/mnt/project-files/<작업>/`). Figma 버전 저장은 하지도 사용자에게 부탁하지도 않는다
   - 쓰기는 로컬이면 figma-console `figma_execute`, 클라우드면 Figma MCP `use_figma`를 쓴다
-  - `use_figma`는 버전을 저장하지 못한다. 바꾸기 전에 사용자에게 Figma에서 버전을 저장해 달라고 한다
 
 ## 8. 올리기
 

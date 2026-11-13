@@ -11,6 +11,7 @@ Radix UI 위에 만든 React 디자인 시스템. npm 패키지 `@d5ng/react`로
 
 - `develop`이 기본 브랜치다. `main`은 npm에 배포된 상태와 같다. 둘 다 직접 커밋하지 않는다
 - 작업은 `git flow feature start <이름>`으로 시작하고, **PR로 develop에 머지**한다. `git flow feature finish`는 로컬에서 바로 머지해 버리므로 쓰지 않는다
+- git-flow가 없으면(클라우드) `git checkout -b feature/<이름> develop`으로 같은 결과를 낸다
 - 브랜치 이름은 `feature/<kebab-case>` 하나로 쓴다. 작업 종류는 PR 제목과 라벨이 알려주므로 `fix/`, `chore/` 같은 접두어는 붙이지 않는다
 - 머지 방식
   - feature → develop: **squash**. PR 제목이 곧 커밋 메시지가 된다
