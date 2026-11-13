@@ -77,6 +77,10 @@ export default function Page() {
       >
         {(control) => <input type="search" {...control} />}
       </Field>
+      {/* group은 라벨을 Radix Label 대신 span으로 그려서 따로 렌더해요. */}
+      <Field label="받는 방법" group>
+        {(control) => <div role="radiogroup" {...control} />}
+      </Field>
       {/* 서버의 form에서도 숨은 input으로 값이 제출돼요. loading은 클릭을 막는 핸들러가 달라져서 따로 렌더해요. */}
       <form>
         <Switch label="알림 받기" name="notify" defaultChecked />
