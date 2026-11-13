@@ -3,6 +3,7 @@ import { CircleAlert, Info } from "lucide-react";
 import { Label, VisuallyHidden } from "radix-ui";
 import { type ComponentProps, type ReactNode, useId } from "react";
 
+import { joinIds } from "../_internal/joinIds";
 import * as styles from "./Field.css";
 
 /** `Field`가 `children`에 넘기는 속성이에요. 입력 요소에 그대로 펼쳐요. */
@@ -151,8 +152,7 @@ export function Field({
     id,
     "aria-labelledby": group ? labelId : undefined,
     // footer가 그리는 값과 같은 값을 읽어요. 따로 계산하면 없는 id를 가리키거나 설명이 빠져요.
-    "aria-describedby":
-      [message?.id, count?.id].filter(Boolean).join(" ") || undefined,
+    "aria-describedby": joinIds(message?.id, count?.id),
     "aria-invalid": invalid || undefined,
     required,
     disabled,

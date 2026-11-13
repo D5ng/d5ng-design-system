@@ -9,7 +9,7 @@ import { Field, type FieldControlProps } from "./Field";
 
 type StoryInputProps = ComponentProps<"input">;
 
-// TextField가 나오기 전까지 스토리에서만 쓰는 입력이에요. Figma Text Input 기본 크기를 흉내 내요.
+// TextField는 Field를 안에 품고 있어서 Field 스토리에는 맨 입력을 붙여요. 모양은 Figma Text Input 기본 크기를 흉내 내요.
 function StoryInput({ style, ...inputProps }: StoryInputProps) {
   const { disabled } = inputProps;
   const invalid = inputProps["aria-invalid"] === true;
@@ -21,8 +21,7 @@ function StoryInput({ style, ...inputProps }: StoryInputProps) {
         ...textStyles.bodyDefault,
         boxSizing: "border-box",
         width: "100%",
-        // Text Input medium 높이예요. 입력 전용 토큰은 TextField에서 정해요.
-        minHeight: "48px",
+        minHeight: vars.textField.minHeight.md,
         paddingInline: vars.spacing[16],
         border: `1px solid ${invalid ? vars.color.stroke.critical : vars.color.stroke.neutralWeak}`,
         borderRadius: vars.radius.lg,
