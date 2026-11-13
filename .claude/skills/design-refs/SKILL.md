@@ -16,7 +16,7 @@ description: SEED(당근)와 Montage(원티드) 디자인 시스템에서 컴포
 3. **원본 읽기.** `references/sources.md`의 순서를 따른다. 페이지가 여럿이면 병렬로 받는다.
    - SEED: 디자인 스펙 → React API → 문서에 없는 기본값·동작은 GitHub 소스
    - Montage: design 탭(사용 가이드) → web 탭(props)
-4. **우리 상태 보기.** Figma는 데스크톱 MCP로 열린 파일을 읽고, `packages/tokens`의 토큰과 `packages/react`의 코드, 이미 정한 결정(CLAUDE.md, `docs/components/`)을 본다.
+4. **우리 상태 보기.** Figma는 로컬이면 데스크톱 MCP로 열린 파일을, 클라우드면 원격 Figma MCP(`get_metadata`, 읽기 전용 `use_figma`)로 읽고, `packages/tokens`의 토큰과 `packages/react`의 코드, 이미 정한 결정(CLAUDE.md, `docs/components/`)을 본다.
 5. **비교하고 추천하기.** 아래 "결과 형식"대로 쓴다.
 6. **결론 남기기.** 사용자가 정하면 `docs/components/<컴포넌트>.md`를 만들거나 고친다. 형식은 `docs/components/button.md`를 따른다. 정하지 않은 것은 쓰지 않는다.
 
@@ -24,7 +24,7 @@ description: SEED(당근)와 Montage(원티드) 디자인 시스템에서 컴포
 
 - **추가는 안 깨지고 빼기는 깨진다.** 지금 쓸 화면이 있는 것만 넣고, 나머지는 필요해질 때 추가한다.
 - **비용은 개수보다 조합이다.** variant 하나는 색 매핑 몇 줄이지만 prop 하나는 다른 prop과의 조합을 늘린다. 줄일 때는 prop과 동작부터 본다.
-- **이름은 개발 prop 이름이 기준이다.** Figma 속성도 같은 이름으로 맞춘다. prop은 색이 아니라 중요도로 짓는다(SEED `brandSolid` 대신 `primary`). 색 이름(`brand`, `critical`)은 토큰이 맡는다.
+- **이름은 개발 prop 이름이 기준이다.** Figma 속성도 같은 이름으로 맞춘다. prop은 색이 아니라 중요도로 짓는다(SEED `brandSolid` 대신 `primary`). 색 이름(`brand`, `critical`)은 토큰이 맡는다. 중요도는 같고 강조 색만 고르는 선택 컨트롤(Checkbox·Radio·Switch)은 `tone`(`neutral`·`brand`)으로 짓는다.
 - **두 곳이 갈리면 이유를 본다.** SEED는 당근 앱(모바일 웹뷰, 큰 팀), Montage는 원티드(웹·iOS·Android 공통)를 위한 것이다. 한쪽만 하는 것은 그 이유가 우리에게도 있는지 따진다.
 - **우리 Foundation이 우선이다.** Figma Foundation 페이지의 규칙(WCAG 2.2 AA, 클릭 영역, 로딩·포커스 규칙)과 어긋나면 두 곳을 따르지 않는다.
 - **우리 스택에서 되는지 본다.** React 19, Radix(`asChild`), vanilla-extract recipe, `@d5ng/tokens` CSS 변수.

@@ -9,6 +9,7 @@ import * as styles from "./Field.css";
 /** `Field`가 `children`에 넘기는 속성이에요. 입력 요소에 그대로 펼쳐요. */
 export type FieldControlProps = {
   id: string;
+  "aria-labelledby": string | undefined;
   "aria-describedby": string | undefined;
   "aria-invalid": true | undefined;
   required: boolean;
@@ -61,7 +62,12 @@ export type FieldProps = Omit<ComponentProps<"div">, "children" | "id"> & {
    * @default false
    */
   disabled?: boolean;
-  /** 입력의 id예요. 없으면 만들어서 라벨과 이어요. */
+  /**
+   * 입력 하나 대신 묶음(`role="radiogroup"` 등)에 라벨을 붙여요. 라벨은 `aria-labelledby`로 이어지고, 눌러도 포커스가 가지 않아요.
+   * @default false
+   */
+  group?: boolean;
+  /** 입력의 id예요. `group`이면 묶음의 id예요. 없으면 만들어요. */
   id?: string;
   /** 입력을 그려요. 받은 `control`을 입력 요소에 펼쳐야 라벨·안내와 이어져요. */
   children: (control: FieldControlProps) => ReactNode;
@@ -112,6 +118,7 @@ export function Field({
   characterCount,
   invalid = false,
   disabled = false,
+  group = false,
   id: idProp,
   className,
   children,
@@ -120,6 +127,7 @@ export function Field({
   const generatedId = useId();
   const id = idProp ?? generatedId;
   // 쓰는 쪽이 준 id와 겹치지 않게 만든 id에서 이어 붙여요.
+  const labelId = `${generatedId}-label`;
   const message = pickMessage({
     id: `${generatedId}-message`,
     description,
@@ -130,8 +138,19 @@ export function Field({
     ? { id: `${generatedId}-count`, ...characterCount }
     : null;
 
+  const labelContent = (
+    <>
+      {label}
+      {requirementIndicator ? (
+        <RequirementIndicator required={required} />
+      ) : null}
+    </>
+  );
+  const labelClassName = styles.label({ weight: labelWeight });
+
   const control: FieldControlProps = {
     id,
+    "aria-labelledby": group ? labelId : undefined,
     // footer가 그리는 값과 같은 값을 읽어요. 따로 계산하면 없는 id를 가리키거나 설명이 빠져요.
     "aria-describedby": joinIds(message?.id, count?.id),
     "aria-invalid": invalid || undefined,
@@ -150,15 +169,16 @@ export function Field({
         hideLabel={hideLabel}
         action={headerAction}
         labelElement={
-          <Label.Root
-            htmlFor={id}
-            className={styles.label({ weight: labelWeight })}
-          >
-            {label}
-            {requirementIndicator ? (
-              <RequirementIndicator required={required} />
-            ) : null}
-          </Label.Root>
+          group ? (
+            // <label for>는 input 같은 요소만 가리켜서 묶음엔 이름이 붙지 않아요.
+            <span id={labelId} className={labelClassName}>
+              {labelContent}
+            </span>
+          ) : (
+            <Label.Root htmlFor={id} className={labelClassName}>
+              {labelContent}
+            </Label.Root>
+          )
         }
       />
       {children(control)}

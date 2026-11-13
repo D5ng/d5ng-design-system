@@ -76,6 +76,10 @@ export default function Page() {
       >
         {(control) => <input type="search" {...control} />}
       </Field>
+      {/* group은 라벨을 Radix Label 대신 span으로 그려서 따로 렌더해요. */}
+      <Field label="받는 방법" group>
+        {(control) => <div role="radiogroup" {...control} />}
+      </Field>
       <TextField label="이름" name="name" />
       <TextField label="아이디" readOnly defaultValue="d5ng" />
       {/* 앞뒤 글자는 useId로 만든 id를 입력의 설명에 이어서 따로 렌더해요. */}

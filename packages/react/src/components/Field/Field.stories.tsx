@@ -37,6 +37,45 @@ function StoryInput({ style, ...inputProps }: StoryInputProps) {
 
 const renderInput = (control: FieldControlProps) => <StoryInput {...control} />;
 
+const deliveryOptions = ["문 앞", "경비실", "택배함"];
+
+// RadioGroup이 나오기 전까지 스토리에서만 쓰는 묶음이에요. div엔 required·disabled가 없어서 aria로 바꿔요.
+function StoryRadioGroup({
+  required,
+  disabled,
+  ...groupProps
+}: FieldControlProps) {
+  return (
+    <div
+      role="radiogroup"
+      aria-required={required || undefined}
+      aria-disabled={disabled || undefined}
+      {...groupProps}
+      style={{ display: "flex", flexDirection: "column", gap: vars.spacing[8] }}
+    >
+      {deliveryOptions.map((option) => (
+        <label
+          key={option}
+          style={{
+            ...textStyles.bodyDefault,
+            display: "flex",
+            gap: vars.spacing[8],
+            color: vars.color.fg.neutral,
+          }}
+        >
+          <input
+            type="radio"
+            name={groupProps.id}
+            value={option}
+            disabled={disabled}
+          />
+          {option}
+        </label>
+      ))}
+    </div>
+  );
+}
+
 const meta = {
   title: "Components/Field",
   component: Field,
@@ -88,6 +127,16 @@ export const Description: Story = {
 /** 표의 열 제목처럼 주변이 이름을 보여 줄 때만 숨겨요. 스크린리더는 그대로 읽어요. */
 export const HideLabel: Story = {
   args: { label: "검색어", hideLabel: true },
+};
+
+/** 라디오 묶음처럼 입력 여러 개에 라벨 하나를 붙일 때 켜요. 라벨이 묶음의 이름이 돼요. */
+export const Group: Story = {
+  args: {
+    label: "받는 방법",
+    group: true,
+    description: "택배 기사님께 전해 드려요.",
+    children: (control) => <StoryRadioGroup {...control} />,
+  },
 };
 
 /** 라벨을 더 눈에 띄게 할 때 semibold를 써요. */
