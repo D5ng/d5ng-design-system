@@ -1,6 +1,6 @@
 # 어디서 무엇을 읽나
 
-둘 다 공개 문서라 로그인 없이 `curl`로 받는다. 받은 내용은 임시 폴더(scratchpad)에 두고 저장소에는 넣지 않는다.
+둘 다 공개 문서라 로그인 없이 `curl`로 받는다. 클라우드에서는 프록시가 두 사이트를 막아서(403) web-fetch 에이전트로 읽는다. 받은 내용은 임시 폴더(scratchpad)에 두고 저장소에는 넣지 않는다.
 
 ## SEED (seed-design.io)
 
@@ -27,6 +27,8 @@ gh api repos/daangn/seed-design/contents/<경로> --jq .content | base64 -d
 # 경로를 모르면
 gh api "search/code?q=repo:daangn/seed-design+filename:<파일명>" --jq '.items[].path'
 ```
+
+클라우드에서 GitHub 접근이 이 저장소로 좁혀 있으면 `gh api`가 막힌다. `https://raw.githubusercontent.com/daangn/seed-design/dev/<경로>`를 web-fetch 에이전트로 읽는다.
 
 SEED 공식 Docs MCP(`@seed-design/docs-mcp`)가 연결돼 있으면 위보다 먼저 쓴다. 같은 문서와 Rootage 스펙을 바로 조회할 수 있다.
 

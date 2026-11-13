@@ -5,7 +5,7 @@ paths:
 
 # 스타일 (vanilla-extract)
 
-컴포넌트 스타일은 `<Name>/<Name>.css.ts`에, 두 컴포넌트가 같이 쓰는 것은 `components/_internal/*.css.ts`에 둔다. 공통 스타일도 공통 코드와 같이 두 번째로 쓰일 때 옮긴다.
+컴포넌트 스타일은 `<Name>/<Name>.css.ts`에, 두 컴포넌트가 같이 쓰는 것은 `components/_internal/*.css.ts`에 둔다. 공통 스타일도 공통 코드와 같이 두 번째로 쓰일 때 옮긴다. 먼저 머지된 쪽은 자기 파일에 두고, 두 번째로 머지되는 PR이 옮긴다. 둘을 같이 만들고 있으면 머지 순서로 정해진다.
 
 ## 값은 토큰으로
 
