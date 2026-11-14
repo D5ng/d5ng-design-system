@@ -11,6 +11,8 @@ import {
   Button,
   Checkbox,
   CheckboxGroup,
+  ChipButton,
+  ChipToggle,
   Field,
   IconButton,
   Link,
@@ -170,6 +172,20 @@ export default function Page() {
           <Checkbox name="pastTopics" value="pm" label="기획" defaultChecked />
         </CheckboxGroup>
       </form>
+      <p>
+        <ChipButton variant="solid">인기 검색어</ChipButton>
+        <ChipButton variant="outlineStrong">최근 검색어</ChipButton>
+        <ChipButton>추천 검색어</ChipButton>
+        <ChipButton disabled>지금은 못 눌러요</ChipButton>
+      </p>
+      {/* 선택 상태는 Radix Toggle이 가져서 defaultPressed로 첫 화면을 따로 렌더해요. */}
+      <p>
+        <ChipToggle>무료 배송</ChipToggle>
+        <ChipToggle defaultPressed>오늘 출발</ChipToggle>
+        <ChipToggle variant="solid" defaultPressed disabled>
+          품절 제외
+        </ChipToggle>
+      </p>
     </main>
   );
 }

@@ -23,7 +23,7 @@
 | Tabs               | `tabs`                               | `navigations/tab`                  |                                                                |
 | Badge              | `badge`                              | `contents/content-badge`           | 추정                                                           |
 | Notification Badge | `notification-badge`                 | `feedback/push-badge`              | 추정                                                           |
-| Chip               | `chip`                               | `actions/chip`                     | Montage는 `selection-and-input/filter-button`도 있음           |
+| Chip               | `chip`                               | `actions/chip`                     | 확인함(2026-11-14). SEED 역할별 3부품, Montage filter-button도 |
 | Link               | 없음                                 | 없음                               | 확인함(2026-11-09). Montage `text-button`은 버튼이라 대응 아님 |
 | Image Frame        | `image-frame`                        | `contents/thumbnail`               | 추정                                                           |
 | Content Card       | 없음                                 | `contents/card`                    | 추정                                                           |
