@@ -79,12 +79,34 @@ Button의 `tone` prop을 `variant`로 합쳤어요. `tone="critical"`은 `varian
 2. **release 시작**: `git flow release start 0.2.0`으로 develop에서 브랜치를 따요. git flow가 없으면 `git checkout -b release/0.2.0 develop`이에요
 3. **버전 올리기**: `pnpm changeset version`이 번호와 CHANGELOG를 바꾸고 changeset 파일을 지워요. 번호가 예상과 같은지 보고 `chore(react): 0.2.0 배포 준비`로 커밋해요
 4. **main 머지**: release에서 main으로 PR을 열어요. CI의 `Pack check`(아래 "배포 전 확인")가 통과하면 merge commit으로 머지해요
-5. **배포(직접)**: main에서 `npm login`한 상태로 `pnpm release`를 실행해요. 패키지만 빌드하고(`apps/*`는 빼요) npm에 올린 뒤 `@d5ng/react@0.2.0` 태그를 만들어요. 그다음 `git push origin --tags`를 해요
+5. **배포 승인**: main에 머지되면 `Release` 워크플로(아래 "배포 워크플로")가 새 번호를 npm에 승인 대기로 올리고 `@d5ng/react@0.2.0` 태그를 push해요. npmjs.com의 Staged Packages 탭에서 보안 키로 Approve하면 공개돼요
 6. **되돌리기**: main에서 develop으로 PR을 열고 merge commit으로 머지해요. develop이 바뀐 번호와 CHANGELOG를 받아요
 
 **hotfix**는 main에서 `hotfix/0.2.1`을 따서 고치고 patch changeset을 넣은 뒤 3번부터 같게 해요.
 
-Claude는 1–4번과 6번의 브랜치·PR을 만들 수 있어요. 머지와 5번은 직접 해요.
+Claude는 1–4번과 6번의 브랜치·PR을 만들 수 있어요. 머지와 5번의 Approve는 직접 해요.
+
+## 배포 워크플로
+
+`.github/workflows/release.yml`이 main에 push될 때 돌아요. npm에 아직 없는 번호만 올리고, 없으면 아무것도 하지 않아요. 단계마다의 이유는 워크플로 주석에 있어요.
+
+- **토큰 없음**: npm trusted publishing(OIDC)으로 올려서 저장소에 npm secret이 없어요
+- **승인 대기로만**: 워크플로는 공개까지 못 해요. 공개는 사람이 보안 키로 Approve해야 돼요
+- **main에서만 올려요**: 다른 브랜치에서 Actions 탭의 버튼을 누르면 pack까지만 해 봐요
+- **실패하면**: 실패한 실행에서 Re-run jobs를 눌러요. 버튼(Run workflow)은 기본 브랜치가 develop이라 main을 골라야 해요. 승인 대기까지 올라간 뒤 실패했으면 다시 돌리지 말고 main에서 `pnpm changeset tag`와 `git push origin --tags`만 해요
+- **Reject하면**: 태그도 지워요(`git push --delete origin @d5ng/react@0.2.0`)
+- **Actions를 못 쓸 때**: main에서 `npm login` 뒤 `pnpm release`와 `git push origin --tags`를 해요. 2FA는 브라우저에서 보안 키로 확인하고, 승인 대기로 가면 같은 탭에서 Approve해요
+- **아직 한 번도 안 돌았어요**(2026-11-14): OIDC 교환과 provenance는 다음 릴리스에서 처음 확인해요. 안 되면 바로 위 방법으로 내요
+
+npm 쪽 설정이에요(`@d5ng/react` 패키지 Settings). 워크플로 파일 이름을 바꾸면 여기도 같이 바꿔요.
+
+| 항목               | 값                                                                                                                    |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Trusted publishing | GitHub Actions, `D5ng` / `d5ng-design-system` / `release.yml`, environment 없음, Allowed actions는 켜지 않음(stage만) |
+| Publishing access  | Require two-factor authentication and disallow tokens                                                                 |
+
+- **Trusted publishing은 릴리스 직전에 만들어요**: 새 연결은 2일 안에 첫 배포가 성공해야 하고, 못 하면 만료돼서 지우고 다시 만들어야 해요([npm 문서](https://docs.npmjs.com/trusted-publishers#trusted-publisher-configuration-expiry)). 그래서 release PR을 main에 머지하기 직전에 만들고 그날 Approve까지 해요
+- **만든 연결은 못 고쳐요**: 값이 바뀌면 지우고 새로 만들어요
 
 ## 배포 전 확인
 
@@ -130,6 +152,5 @@ scripts/check-pack.sh
 ## 아직 하지 않은 것
 
 - **changeset 누락 CI 검사**: 자주 빠지면 붙여요
-- **자동 배포**: 흐름이 굳으면 GitHub Actions와 npm trusted publishing을 검토해요
 - **PR 링크가 붙는 CHANGELOG**(`@changesets/changelog-github`): 버전을 올릴 때마다 GitHub 토큰이 필요해서 기본 형식을 써요
 - **`moduleResolution: nodenext`**: d.ts의 상대 import에 확장자가 없어서 TS2834가 나요. `bundler`(Next, Vite 기본값)에서는 괜찮아요
