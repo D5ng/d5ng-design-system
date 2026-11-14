@@ -7,34 +7,16 @@ import {
   useId,
 } from "react";
 
+import type { FieldPassthroughProps } from "../_internal/fieldPassthrough";
 import { joinIds } from "../_internal/joinIds";
-import { Field, type FieldProps } from "../Field";
+import { Field } from "../Field";
 import * as styles from "./TextField.css";
-
-// Field에 그대로 넘기는 props예요. 타입과 JSDoc을 Field에서 가져와요.
-type TextFieldFieldProps = Pick<
-  FieldProps,
-  | "label"
-  | "hideLabel"
-  | "labelWeight"
-  | "required"
-  | "requirementIndicator"
-  | "headerAction"
-  | "description"
-  | "errorMessage"
-  | "showMessageIcon"
-  | "invalid"
-  | "disabled"
-  | "id"
-  | "className"
-  | "style"
->;
 
 export type TextFieldProps = Omit<
   ComponentProps<"input">,
-  keyof TextFieldFieldProps | "children" | "size" | "type" | "readOnly"
+  keyof FieldPassthroughProps | "children" | "size" | "type" | "readOnly"
 > &
-  TextFieldFieldProps & {
+  FieldPassthroughProps & {
     /**
      * 값을 보여 주기만 하고 고칠 수 없어요. 포커스는 받아서 읽고 복사할 수 있어요.
      * @default false
