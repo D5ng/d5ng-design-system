@@ -11,7 +11,7 @@
 | IconButton         | `action-button`(`layout="iconOnly"`) | `actions/icon-button`              | SEED는 Button에 합쳐 둠                                        |
 | Field              | `field`                              | `selection-and-input/form-control` | 확인함(2026-11-10). SEED React는 `text-field-input` 참고       |
 | TextField          | `text-input`                         | `selection-and-input/text-field`   | 확인함(2026-11-11). SEED는 라벨까지 묶고 Montage는 입력만 그림 |
-| Textarea           | `text-input`(Textarea)               | `selection-and-input/text-area`    | SEED는 한 문서. React 문서 slug는 `text-field-textarea`        |
+| Textarea           | `text-input`(Textarea)               | `selection-and-input/text-area`    | 확인함(2026-11-11). SEED React 문서는 `text-field-textarea`    |
 | Checkbox           | `checkbox`                           | `selection-and-input/checkbox`     | Montage는 `check-mark`도 있음                                  |
 | Radio              | `radio`                              | `selection-and-input/radio`        | 확인함(2026-11-11). SEED React는 `radio-group`                 |
 | Switch             | `switch`                             | `selection-and-input/switch`       | 확인함(2026-11-11). SwitchRow는 SEED `list`(ListSwitchItem)    |

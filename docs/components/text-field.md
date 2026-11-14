@@ -28,6 +28,7 @@
   - Disabled+Invalid는 Field처럼 비활성이 이겨서 1px이에요. Figma도 2px에서 맞췄어요
   - ReadOnly+Invalid는 `bg/neutral-weak`에 critical 2px예요
   - `:focus-within`은 쓰지 않아요. 지우기 버튼이 들어오면 버튼에 포커스가 가도 상자 링이 켜져요
+- **상자 스타일은 TextareaField와 같이 써요**: `_internal/inputBox.css.ts`에 있어요. 상태·링 규칙을 바꾸면 두 컴포넌트가 함께 바뀌어요(2026-11-13)
 - **2px 테두리는 1px border에 안쪽 그림자 1px을 더해 그려요**: border를 2px로 바꾸면 글자가 1px 밀려요. 1px을 border로 남겨야 forced-colors에서도 상자가 보여요. Figma에는 2px 변수가 없어서 Specification에 "1px + 1px"을 적었어요
 - **invalid면 포커스 링도 오류 색이에요**: 테두리가 오류 색이라 링이 기본 색으로 남으면 둘이 달라져요. 공통 `focusRing`은 그대로 두고 TextField가 `outlineColor`만 덮어요(2026-11-12). 두께·띄움은 공통 값 그대로예요
 - **가로 여백은 Figma 값에서 테두리 두께를 빼요**: Figma 테두리는 안쪽(INSIDE)이라 여백에 안 잡히지만 CSS border는 잡혀요. 높이는 `min-height`라 세로는 빼지 않아요
@@ -41,7 +42,7 @@
 모두 나중에 더해도 지금 쓰는 쪽이 깨지지 않아요.
 
 - **Underline(`variant`)**: 한 화면에 입력이 하나뿐인 패턴용이에요. 쓸 화면이 생기면 더해요. Underline은 48px 하나라 `size`와 어떻게 함께 둘지, Figma 안의 어긋남(Hover가 Default와 같음, ReadOnly 값 글자 색)도 그때 정해요
-- **지우기 버튼, 글자 수**: 값을 따라가야 해서 다음 PR에서 함께 더해요. Field의 `characterCount`도 그때까지 넘기지 않아요. 지금 열어 두면 쓰는 법이 두 가지가 돼요
+- **지우기 버튼, 글자 수**: 값을 따라가야 해서 다음 PR에서 함께 더해요. Field의 `characterCount`도 그때까지 넘기지 않아요. 지금 열어 두면 쓰는 법이 두 가지가 돼요. 글자 수는 TextareaField가 먼저 정한 `maxCharacterCount`와 `_internal/countGraphemes`를 써요
 - **상자만 공개(`TextInput`)**: Field 없이 쓸 화면이 아직 없어요
 - **`suffixIcon`, 비밀번호 보기 버튼, 성공 상태, 반응형 `size`**: Figma에 없어요
 - **움직임**: Figma에 없어요. SEED는 테두리를 100ms 페이드해요

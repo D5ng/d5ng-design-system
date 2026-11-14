@@ -16,6 +16,7 @@ import {
   RadioGroupItem,
   Switch,
   SwitchRow,
+  TextareaField,
   TextField,
 } from "@d5ng/react";
 import NextLink from "next/link";
@@ -121,6 +122,15 @@ export default function Page() {
         suffixText="원"
         inputMode="numeric"
       />
+      <TextareaField label="소개" name="bio" />
+      {/* maxRows는 인라인 CSS 변수로, 글자 수는 상태로 그려서 따로 렌더해요. */}
+      <TextareaField
+        label="메모"
+        maxRows={8}
+        maxCharacterCount={500}
+        defaultValue="서버에서 그린 첫 화면부터 글자 수가 보여요."
+      />
+      <TextareaField label="답장" heightMode="fixed" rows={6} />
     </main>
   );
 }
