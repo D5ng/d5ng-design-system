@@ -24,6 +24,8 @@ export {
 } from "./components/AlertDialog";
 export type { ButtonProps } from "./components/Button";
 export { Button } from "./components/Button";
+export type { CheckboxProps } from "./components/Checkbox";
+export { Checkbox } from "./components/Checkbox";
 export type { FieldControlProps, FieldProps } from "./components/Field";
 export { Field } from "./components/Field";
 export type { IconButtonProps } from "./components/IconButton";
