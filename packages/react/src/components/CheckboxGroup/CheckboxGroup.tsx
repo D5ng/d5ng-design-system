@@ -6,16 +6,17 @@ import { Field } from "../Field";
 import * as styles from "./CheckboxGroup.css";
 
 // 문서에 보일 props는 여기서 직접 선언해요. HTML 속성은 문서 표에 안 잡혀요.
+// fieldset의 name·form은 항목 값을 제출하지 않아서 받지 않아요. RadioGroup의 name과 헷갈려 값이 말없이 빠져요.
 // required·invalid·disabled는 Field와 뜻이 달라서 JSDoc을 다시 써요.
 export type CheckboxGroupProps = Omit<
   ComponentProps<"fieldset">,
-  keyof FieldPassthroughProps | "children"
+  keyof FieldPassthroughProps | "children" | "name" | "form"
 > &
   Omit<FieldPassthroughProps, "required" | "invalid" | "disabled"> & {
-    /** 묶을 항목이에요. `Checkbox`를 넣어요. 고른 값은 항목마다 `checked`로 가져요. */
+    /** 묶을 항목이에요. `Checkbox`를 넣어요. 고른 값은 항목마다 `checked`로 갖고, form에는 항목의 `name`·`value`로 제출돼요. */
     children: ReactNode;
     /**
-     * 제목에 필수 표시를 붙여요. 항목에는 넘기지 않아요. 스크린리더는 표시를 읽지 않아서 "하나 이상 골라 주세요" 같은 조건은 `description`에 적어요.
+     * 꼭 골라야 하는 그룹이에요. `requirementIndicator`와 함께일 때만 제목에 `*`를 붙이고, 혼자서는 아무것도 바꾸지 않아요. 항목에 `required`를 넘기지 않고 고른 개수도 검사하지 않아요. 스크린리더는 `*`를 읽지 않아서 "하나 이상 골라 주세요" 같은 조건은 `description`에 적어요.
      * @default false
      */
     required?: boolean;
