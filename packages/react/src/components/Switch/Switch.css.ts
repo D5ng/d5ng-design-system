@@ -3,6 +3,12 @@ import { createVar, style } from "@vanilla-extract/css";
 import { recipe, type RecipeVariants } from "@vanilla-extract/recipes";
 
 import { focusRing } from "../_internal/focusRing.css";
+import {
+  selectionRow,
+  selectionRowDisabled,
+  selectionRowHovered,
+  selectionRowPressed,
+} from "../_internal/selectionRow.css";
 
 // 상태 선택자는 한 곳에서만 정해요. 버튼에 Radix가 붙이는 data-state와 Switch가 붙이는 속성을 봐요.
 const checkedSelector = '[data-state="checked"]';
@@ -40,23 +46,17 @@ const textOffset = `max(0px, calc((${trackHeight} - ${labelLineHeight}) / 2))`;
 
 // ---- 줄
 
-const rowBase = style({
-  display: "grid",
-  // 한 줄이면 44px 안에서 가운데, 여러 줄이면 위에 붙어요(Figma Content 정렬).
-  alignContent: "center",
-  alignItems: "start",
-  boxSizing: "border-box",
-  minHeight: vars.switch.minTargetHeight,
-  padding: vars.spacing[8],
-  cursor: "pointer",
-  WebkitTapHighlightColor: "transparent",
-  selectors: {
-    [`&:has(${disabledSelector}):not(:has(${loadingSelector}))`]: {
-      cursor: "not-allowed",
+const rowBase = style([
+  selectionRow,
+  {
+    minHeight: vars.switch.minTargetHeight,
+    selectors: {
+      // selectionRow의 비활성 커서와 우선순위가 같아요.
+      // import한 CSS가 먼저 나와서 disabled와 함께 줘도 이 규칙이 이겨요.
+      [`&:has(${loadingSelector})`]: { cursor: "progress" },
     },
-    [`&:has(${loadingSelector})`]: { cursor: "progress" },
   },
-});
+]);
 
 const sizeVariants = {
   "16": {
@@ -190,10 +190,6 @@ export const control = style({
 
 // 비활성·로딩이면 hover·눌림 반응을 꺼요. 로딩은 모양을 그대로 둬요(Button과 같은 계약).
 const interactive = `${control}:not(${disabledSelector}, ${loadingSelector})`;
-// 라벨 글자나 여백을 눌러도 트랙이 반응하게 줄을 봐요.
-// 마우스로 누르면 줄이, 키보드 Space로 누르면 버튼만 :active가 돼서 둘 다 봐요.
-const rowPressed = `${rowBase}:is(:active, :has(:active))`;
-const rowHovered = `${rowBase}:hover:not(:active, :has(:active))`;
 
 // 눌리면 이것만 줄어요. 포커스 링은 control에 있어서 제자리에 남아요(Motion Foundation).
 export const track = style({
@@ -210,7 +206,7 @@ export const track = style({
   transitionTimingFunction: vars.easing.standard,
 
   selectors: {
-    [`${rowPressed} ${interactive} > &`]: {
+    [`${selectionRowPressed} ${interactive} > &`]: {
       background: bgPressed,
       transform: `scale(calc(1 - ${vars.press.maxReduction}))`,
       transitionDuration: vars.duration.springRapid,
@@ -225,12 +221,14 @@ export const track = style({
   "@media": {
     "(hover: hover)": {
       selectors: {
-        [`${rowHovered} ${interactive} > &`]: { background: bgHover },
+        [`${selectionRowHovered} ${interactive} > &`]: {
+          background: bgHover,
+        },
       },
     },
     "(prefers-reduced-motion: reduce)": {
       selectors: {
-        [`${rowPressed} ${interactive} > &`]: { transform: "none" },
+        [`${selectionRowPressed} ${interactive} > &`]: { transform: "none" },
       },
     },
   },
@@ -240,7 +238,7 @@ export const track = style({
     "(transition-timing-function: linear(0, 1))": {
       transitionTimingFunction: vars.easing.springQuick,
       selectors: {
-        [`${rowPressed} ${interactive} > &`]: {
+        [`${selectionRowPressed} ${interactive} > &`]: {
           transitionTimingFunction: vars.easing.springRapid,
         },
       },
@@ -294,7 +292,7 @@ export const stack = style({
 });
 
 const disabledText = {
-  [`${rowBase}:has(${disabledSelector}) &`]: { color: vars.color.fg.disabled },
+  [`${selectionRowDisabled} &`]: { color: vars.color.fg.disabled },
 };
 
 export const label = style({

@@ -9,6 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Button,
+  Checkbox,
   Field,
   IconButton,
   Link,
@@ -110,6 +111,15 @@ export default function Page() {
         defaultValue="서버에서 그린 첫 화면부터 글자 수가 보여요."
       />
       <TextareaField label="답장" heightMode="fixed" rows={6} />
+      {/* 서버의 form에서도 숨은 input으로 값이 제출돼요. */}
+      <form>
+        <Checkbox label="알림 받기" name="notify" defaultChecked />
+        <Checkbox label="전체 선택" defaultChecked="indeterminate" />
+        <Checkbox label="지금은 바꿀 수 없어요" disabled />
+      </form>
+      <Field label="약관" required errorMessage="약관에 동의해 주세요.">
+        {(control) => <Checkbox {...control} label="이용약관에 동의해요" />}
+      </Field>
     </main>
   );
 }
