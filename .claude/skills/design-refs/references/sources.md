@@ -41,6 +41,7 @@ SEED 공식 Docs MCP(`@seed-design/docs-mcp`)가 연결돼 있으면 위보다 �
   - `design`: 사용 가이드, 위계(Hierarchy), Do/Don't
   - `web`: props 표, 예시 코드
   - `ios`, `android`: 필요할 때만
+- 유틸리티 컴포넌트(Divider 등): `/docs/utilities/<분류>/<slug>`. `/docs/components/`에 없다고 "없음"으로 쓰기 전에 sitemap에서 이름으로 찾는다
 - Foundations: `/docs/foundations/base-material/` 아래 `colors/semantic`, `colors/atomic`, `typography`, `grid`, `elevation/normal`, `elevation/spread`, `icons`
 - 패키지는 `@montage-ui/core`이고 소스는 공개돼 있지 않다. 문서에 없는 동작은 "확인 못 함"으로 둔다.
 
