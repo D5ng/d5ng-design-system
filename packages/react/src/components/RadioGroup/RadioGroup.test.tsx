@@ -216,6 +216,43 @@ describe("RadioGroup", () => {
     }
   });
 
+  it("비활성 fieldset 안에서는 disabled 그룹과 같은 모양이에요", async () => {
+    // Radix가 data-disabled를 붙이지 않아도 브라우저가 막은 버튼은 비활성으로 그려요.
+    await render(
+      <>
+        <fieldset disabled>
+          <Channels defaultValue="email" />
+        </fieldset>
+        <Channels defaultValue="email" disabled />
+        <Channels defaultValue="email" />
+      </>,
+    );
+    // 그룹마다 항목이 셋이라 순서로 골라요.
+    const look = (index: number) => {
+      const radio = page.getByRole("radio").nth(index).element();
+      const surface = radio.firstElementChild;
+      const dot = surface?.firstElementChild;
+      const row = radio.closest("label");
+      const text = row?.lastElementChild;
+      if (!surface || !dot || !row || !text) {
+        throw new Error("마크나 라벨을 찾지 못했어요.");
+      }
+      return {
+        background: getComputedStyle(surface).backgroundColor,
+        border: getComputedStyle(surface).borderTopColor,
+        dot: getComputedStyle(dot).width,
+        dotColor: getComputedStyle(dot).backgroundColor,
+        label: getComputedStyle(text).color,
+        cursor: getComputedStyle(row).cursor,
+      };
+    };
+
+    // 고른 항목과 고르지 않은 항목을 하나씩 봐요.
+    expect(look(0)).toEqual(look(3));
+    expect(look(1)).toEqual(look(4));
+    expect(look(1)).not.toEqual(look(7));
+  });
+
   it("defaultValue로 시작하고 onValueChange로 고른 값을 알려요", async () => {
     const onValueChange = vi.fn();
     await render(

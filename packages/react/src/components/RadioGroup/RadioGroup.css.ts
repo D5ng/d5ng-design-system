@@ -4,6 +4,7 @@ import { recipe, type RecipeVariants } from "@vanilla-extract/recipes";
 
 import { focusRing } from "../_internal/focusRing.css";
 import {
+  selectionControlDisabled,
   selectionRow,
   selectionRowDisabled,
   selectionRowHovered,
@@ -12,7 +13,8 @@ import {
 
 // 상태 선택자는 한 곳에서만 정해요. Radix가 항목 버튼에 붙이는 속성을 봐요.
 const checkedSelector = '[data-state="checked"]';
-const disabledSelector = "[data-disabled]";
+// 줄과 같은 비활성 선택자예요. 비활성 fieldset이 막은 버튼도 잡아요.
+const disabledSelector = selectionControlDisabled;
 
 // size가 그룹에서 채우고 항목의 마크·점·라벨이 물려받아요.
 // context 대신 CSS 변수로 내려서 두 부품 모두 서버 컴포넌트로 남아요.

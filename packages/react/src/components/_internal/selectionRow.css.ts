@@ -1,8 +1,11 @@
 import { vars } from "@d5ng/tokens";
 import { style } from "@vanilla-extract/css";
 
-// 표시(버튼)에 data-disabled가 붙으면 줄도 비활성으로 봐요.
-const disabled = ":has([data-disabled])";
+// 표시(버튼)가 비활성인지 봐요. 세 컴포넌트가 버튼 규칙에도 이 선택자를 써요.
+// Radix는 자기 disabled일 때만 data-disabled를 붙여서, 비활성 fieldset이 막은 버튼은 :disabled로만 보여요.
+export const selectionControlDisabled = ":is([data-disabled], :disabled)";
+// 표시가 비활성이면 줄도 비활성으로 봐요.
+const disabled = `:has(${selectionControlDisabled})`;
 // 마우스로 누르면 줄이, 키보드 Space로 누르면 버튼만 :active가 돼서 둘 다 봐요.
 const pressed = ":is(:active, :has(:active))";
 

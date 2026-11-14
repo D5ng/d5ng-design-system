@@ -10,6 +10,7 @@ import {
   AlertDialogTrigger,
   Button,
   Checkbox,
+  CheckboxGroup,
   Field,
   IconButton,
   Link,
@@ -149,6 +150,26 @@ export default function Page() {
       <Field label="약관" required errorMessage="약관에 동의해 주세요.">
         {(control) => <Checkbox {...control} label="이용약관에 동의해요" />}
       </Field>
+      {/* 고른 항목이 모두 같은 name으로 제출돼요. disabled는 fieldset이 항목을 막아서 따로 렌더해요. */}
+      <form>
+        <CheckboxGroup
+          label="관심 분야"
+          required
+          requirementIndicator
+          description="하나 이상 골라 주세요."
+        >
+          <Checkbox
+            name="topics"
+            value="design"
+            label="디자인"
+            defaultChecked
+          />
+          <Checkbox name="topics" value="dev" label="개발" />
+        </CheckboxGroup>
+        <CheckboxGroup label="지난 관심 분야" disabled>
+          <Checkbox name="pastTopics" value="pm" label="기획" defaultChecked />
+        </CheckboxGroup>
+      </form>
     </main>
   );
 }

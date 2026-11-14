@@ -72,6 +72,39 @@ describe("Switch", () => {
     await expect.element(control).not.toHaveFocus();
   });
 
+  it("비활성 fieldset 안에서는 disabled와 같은 모양이에요", async () => {
+    // Radix가 data-disabled를 붙이지 않아도 브라우저가 막은 버튼은 비활성으로 그려요.
+    await render(
+      <>
+        <fieldset disabled>
+          <Switch label="묶음 안" defaultChecked />
+        </fieldset>
+        <Switch label="비활성" defaultChecked disabled />
+        <Switch label="활성" defaultChecked />
+      </>,
+    );
+    const look = (name: string) => {
+      const control = page.getByRole("switch", { name }).element();
+      const track = control.firstElementChild;
+      const thumb = track?.firstElementChild;
+      const row = control.closest("label");
+      const text = row?.lastElementChild;
+      if (!track || !thumb || !row || !text) {
+        throw new Error("트랙이나 라벨을 찾지 못했어요.");
+      }
+      return {
+        track: getComputedStyle(track).backgroundColor,
+        border: getComputedStyle(track).boxShadow,
+        thumb: getComputedStyle(thumb).backgroundColor,
+        label: getComputedStyle(text).color,
+        cursor: getComputedStyle(row).cursor,
+      };
+    };
+
+    expect(look("묶음 안")).toEqual(look("비활성"));
+    expect(look("묶음 안")).not.toEqual(look("활성"));
+  });
+
   it("loading이면 aria-busy를 알리고 클릭과 키보드를 무시해요", async () => {
     const onCheckedChange = vi.fn();
     await render(
