@@ -28,6 +28,8 @@ export type { CheckboxProps } from "./components/Checkbox";
 export { Checkbox } from "./components/Checkbox";
 export type { CheckboxGroupProps } from "./components/CheckboxGroup";
 export { CheckboxGroup } from "./components/CheckboxGroup";
+export type { DividerProps } from "./components/Divider";
+export { Divider } from "./components/Divider";
 export type { FieldControlProps, FieldProps } from "./components/Field";
 export { Field } from "./components/Field";
 export type { IconButtonProps } from "./components/IconButton";
