@@ -26,7 +26,7 @@
 - **여백은 Figma 16px에서 테두리 두께를 뺀 15px를 사방에 둬요**: Figma 테두리는 안쪽(INSIDE)이에요. TextField는 높이가 `min-height`라 가로만 빼지만, Textarea는 세로 여백이 높이에 들어가요. 8줄이 22 × 8 + 15 × 2 + 테두리 2 = 208px로 Figma 예시와 같아요. 최소 높이 100px은 테두리를 포함한 상자에 둬요
 - **값 글자는 16/22 토큰을 직접 쓰고 어절 단위로 줄을 바꿔요**: `textStyles`에 16/22 묶음이 없어요. 다른 본문 글자처럼 `keep-all`·`break-word`예요
 - **props가 가는 곳과 aria는 TextField와 같아요**: `className`·`style`은 바깥, 나머지와 `ref`는 textarea, `aria-describedby`는 더하고 `aria-labelledby`는 다시 붙여요(`text-field.md`). Field에 넘기는 props 타입은 `_internal/fieldPassthrough`를 같이 써요
-  - 구조 분해와 Field에 넘기는 코드는 컴포넌트마다 둬요. 한 화면에서 읽히는 쪽을 골랐고, 세 번째 사용처가 생기면 다시 봐요(FF 리뷰 2026-11-13)
+  - 구조 분해와 Field에 넘기는 코드는 컴포넌트마다 둬요. 한 화면에서 읽히는 쪽을 골랐고(FF 리뷰 2026-11-13), RadioGroup·CheckboxGroup에서 다시 보고도 그대로 뒀어요([checkbox-group.md](checkbox-group.md))
 
 ## 뺀 것
 

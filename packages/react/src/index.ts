@@ -26,6 +26,8 @@ export type { ButtonProps } from "./components/Button";
 export { Button } from "./components/Button";
 export type { CheckboxProps } from "./components/Checkbox";
 export { Checkbox } from "./components/Checkbox";
+export type { CheckboxGroupProps } from "./components/CheckboxGroup";
+export { CheckboxGroup } from "./components/CheckboxGroup";
 export type { FieldControlProps, FieldProps } from "./components/Field";
 export { Field } from "./components/Field";
 export type { IconButtonProps } from "./components/IconButton";

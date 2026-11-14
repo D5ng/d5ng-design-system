@@ -28,6 +28,7 @@
 - **비활성 테두리는 안쪽 그림자로 그려요**: 테두리로 그리면 thumb 자리가 상태마다 1px 달라져요. Figma가 두께를 변수로 묶지 않아서 1px 숫자예요
 - **숨은 input이 버튼 위에 겹치게 표시 칸을 인라인으로 둬요**: Radix는 input을 버튼 바로 뒤에 붙이고 버튼 너비만큼 왼쪽으로 옮겨요. 표시 칸을 flex나 block 버튼으로 두면 input이 버튼 왼쪽에 놓여 required 안내 말풍선이 엉뚱한 곳을 가리켜요
 - **줄 스타일은 Checkbox와 같은 정책이에요**: 44px 최소 높이, 여백 8px, 첫 줄 맞춤, 눌림·커서 규칙이 같아요. 공통 부분은 `_internal/selectionRow.css.ts`에 있어요. 최소 높이는 Figma 변수가 컴포넌트마다 따로라 `switch.minTargetHeight`로 정하고, loading 커서(`progress`)도 Switch에만 있어요
+  - 비활성은 `data-disabled`와 `:disabled`를 함께 봐서 비활성 fieldset 안에서도 비활성으로 보여요([checkbox-group.md](checkbox-group.md))
 - **Figma `Selection`은 `checked`예요**: Figma 속성 이름은 Checkbox(값 3개)·Radio와 같은 `Selection`으로 두고 여기에 대응만 적어요. `Show description`은 `description`을 넘겼는지, `State`의 Hover·Pressed와 `Focus visible`은 브라우저 상태예요(Figma 표시용)
 
 ## 뺀 것

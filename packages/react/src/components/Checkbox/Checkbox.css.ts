@@ -4,6 +4,7 @@ import { recipe, type RecipeVariants } from "@vanilla-extract/recipes";
 
 import { focusRing } from "../_internal/focusRing.css";
 import {
+  selectionControlDisabled,
   selectionRow,
   selectionRowDisabled,
   selectionRowHovered,
@@ -13,7 +14,8 @@ import {
 // 상태 선택자는 한 곳에서만 정해요. Radix가 버튼에 붙이는 속성을 봐요.
 const checkedSelector = '[data-state="checked"]';
 const indeterminateSelector = '[data-state="indeterminate"]';
-const disabledSelector = "[data-disabled]";
+// 줄과 같은 비활성 선택자예요. CheckboxGroup의 비활성 fieldset이 막은 버튼도 잡아요.
+const disabledSelector = selectionControlDisabled;
 
 // size가 줄에서 채우고 상자·라벨이 읽어요.
 const markSize = createVar();

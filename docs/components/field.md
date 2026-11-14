@@ -21,7 +21,7 @@
   - 항상 `aria-labelledby`를 더하는 안은 버렸어요. 묶음에서 `<label for>`가 div를 가리키는 HTML 오류가 남아요
   - `fieldset`·`legend`는 버렸어요. radiogroup 밖에 group이 하나 더 생겨 이름이 두 번 읽혀요
   - 라벨을 눌러도 포커스가 가지 않아요. 묶음 자체엔 포커스 자리가 없어요
-  - `role="group"`(CheckboxGroup)은 `aria-required`·`aria-invalid`를 지원하지 않아요. 전하는 법은 CheckboxGroup에서 정해요
+  - `role="group"`(CheckboxGroup)은 `aria-required`·`aria-invalid`를 지원하지 않아요. CheckboxGroup은 둘을 붙이지 않고 안내·오류 문구로 알려요([checkbox-group.md](checkbox-group.md))
 - **`id`는 입력의 id예요**: 라벨과 입력을 잇는 값이라 입력으로 가고, root `div`의 `id`는 받지 않아요. 안내·글자 수의 id는 쓰는 쪽 id와 겹치지 않게 `useId`로 만든 값에서 이어 붙여요
 - **필수 표시는 `required`와 boolean `requirementIndicator` 둘로 받아요**: 켜면 `required`일 때 `*`, 아닐 때 `선택`을 붙여요. 표시가 실제 필수 여부와 어긋날 수 없어요(FF C2). SEED의 "필수가 2/3 이상이면 선택만 표시" 규칙 때문에 "필수지만 표시 없음"이 필요해서 prop이 하나로 합쳐지지 않아요
   - `requirementIndicator="required" | "optional"`은 버렸어요. `required`를 끄고 표시를 잊으면 선택 칸에 `*`가 남아요
