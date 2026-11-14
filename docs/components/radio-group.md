@@ -31,8 +31,8 @@
 - **미선택 눌림 배경은 `bg/neutral-weak-pressed`예요**: Figma가 `-hover`였는데 토큰 이름과 상태가 맞게 고쳤어요. Checkbox와 같아요
 - **비활성 선택은 채우지 않고 테두리·점만 `fg/disabled`이고 점이 조금 커요**: Figma 그대로예요(`radio/dot-size-disabled-*`)
 - **항목에는 invalid 모양이 없어요**: Figma Radio에 오류 상태가 없고, 오류는 그룹의 선택 조건이라 Field 문구가 알려요. `invalid`는 그룹에 `aria-invalid`만 붙여요
-- **줄 스타일은 Checkbox·Switch와 같은 정책이에요**: 44px 최소 높이, 여백 8px, 첫 줄 맞춤, 눌림·커서 규칙이 같아요. Switch(#122) 다음으로 머지되는 PR이 `_internal/selectionRow.css.ts`로 옮겨요. Checkbox PR이 먼저 만들 예정이라 그 뒤 Radio가 바꿔 껴요
-- **비활성 상태는 배경 변수 셋(기본·hover·눌림)을 같은 값으로 채워요**: hover·눌림 선택자에서 비활성을 빼면 줄이 줄지만 Checkbox와 방식이 달라져요. 공통 줄 파일로 옮길 때 같이 봐요(FF C2, 2026-11-13 반영 안 함)
+- **줄 스타일은 Checkbox·Switch와 같은 `_internal/selectionRow.css.ts`를 써요**: 여백 8px, 첫 줄 맞춤, 눌림·hover·비활성 선택자가 같아요. 최소 높이(`radio/min-target-height`, 44px)와 열 구성은 Radio가 정해요
+- **비활성 상태는 배경 변수 셋(기본·hover·눌림)을 같은 값으로 채워요**: hover·눌림 선택자에서 비활성을 빼면 줄이 줄지만 Checkbox와 방식이 달라져요(FF C2, 2026-11-13 반영 안 함)
 
 ## 뺀 것
 

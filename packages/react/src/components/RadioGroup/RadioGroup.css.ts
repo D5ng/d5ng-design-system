@@ -3,6 +3,12 @@ import { createVar, style } from "@vanilla-extract/css";
 import { recipe, type RecipeVariants } from "@vanilla-extract/recipes";
 
 import { focusRing } from "../_internal/focusRing.css";
+import {
+  selectionRow,
+  selectionRowDisabled,
+  selectionRowHovered,
+  selectionRowPressed,
+} from "../_internal/selectionRow.css";
 
 // 상태 선택자는 한 곳에서만 정해요. Radix가 항목 버튼에 붙이는 속성을 봐요.
 const checkedSelector = '[data-state="checked"]';
@@ -89,24 +95,16 @@ export type GroupVariants = NonNullable<RecipeVariants<typeof group>>;
 
 // ---- RadioGroupItem
 
-export const item = style({
-  display: "grid",
-  gridTemplateColumns: "auto minmax(0, 1fr)",
-  // 한 줄이면 44px 안에서 가운데, 여러 줄이면 위에 붙어요(Figma Content 정렬).
-  alignContent: "center",
-  alignItems: "start",
-  columnGap: vars.spacing[8],
-  boxSizing: "border-box",
-  // 눌리는 곳이 라벨 글자 끝까지예요. 긴 라벨은 부모 너비 안에서 줄바꿈돼요.
-  width: "fit-content",
-  minHeight: vars.radio.minTargetHeight,
-  padding: vars.spacing[8],
-  cursor: "pointer",
-  WebkitTapHighlightColor: "transparent",
-  selectors: {
-    [`&:has(${disabledSelector})`]: { cursor: "not-allowed" },
+export const item = style([
+  selectionRow,
+  {
+    gridTemplateColumns: "auto minmax(0, 1fr)",
+    columnGap: vars.spacing[8],
+    // 눌리는 곳이 라벨 글자 끝까지예요. 긴 라벨은 부모 너비 안에서 줄바꿈돼요.
+    width: "fit-content",
+    minHeight: vars.radio.minTargetHeight,
   },
-});
+]);
 
 // Radix는 숨은 input을 버튼 바로 뒤에 absolute로 두고 translateX(-100%)로 버튼 위에 겹쳐요.
 // 버튼과 input이 한 줄에 나란히 있어야 겹쳐서, 칸은 줄 높이를 없애고 버튼은 inline으로 둬요.
@@ -169,13 +167,6 @@ export const control = style({
   },
 });
 
-// 마우스로 누르면 행이, 키보드 Space로 누르면 버튼만 :active가 돼서 둘 다 봐요.
-const pressed = ":is(:active, :has(:active))";
-// 라벨 글자나 여백을 눌러도 마크가 반응하게 행을 봐요.
-const itemPressed = `${item}${pressed}`;
-// hover 규칙은 @media라 뒤에 나와요. 눌린 동안은 빼야 눌린 색이 보여요.
-const itemHovered = `${item}:hover:not(${pressed})`;
-
 // 눌리면 이것만 줄어요. 포커스 링은 control에 있어서 제자리에 남아요(Motion Foundation).
 export const surface = style({
   display: "flex",
@@ -195,11 +186,11 @@ export const surface = style({
   transitionTimingFunction: vars.easing.standard,
 
   selectors: {
-    [`${itemPressed} &`]: {
+    [`${selectionRowPressed} &`]: {
       background: bgPressed,
       transitionDuration: vars.duration.springRapid,
     },
-    [`${itemPressed} ${control}:not(${disabledSelector}) &`]: {
+    [`${selectionRowPressed} ${control}:not(${disabledSelector}) &`]: {
       transform: `scale(calc(1 - ${vars.press.maxReduction}))`,
     },
   },
@@ -207,14 +198,14 @@ export const surface = style({
   "@media": {
     "(hover: hover)": {
       selectors: {
-        [`${itemHovered} &`]: {
+        [`${selectionRowHovered} &`]: {
           background: bgHover,
         },
       },
     },
     "(prefers-reduced-motion: reduce)": {
       selectors: {
-        [`${itemPressed} ${control}:not(${disabledSelector}) &`]: {
+        [`${selectionRowPressed} ${control}:not(${disabledSelector}) &`]: {
           transform: "none",
         },
       },
@@ -226,7 +217,7 @@ export const surface = style({
     "(transition-timing-function: linear(0, 1))": {
       transitionTimingFunction: vars.easing.springQuick,
       selectors: {
-        [`${itemPressed} &`]: {
+        [`${selectionRowPressed} &`]: {
           transitionTimingFunction: vars.easing.springRapid,
         },
       },
@@ -265,7 +256,7 @@ export const labelText = recipe({
     color: vars.color.fg.neutral,
     selectors: {
       // 항목 disabled든 그룹 disabled든 Radix가 버튼에 data-disabled를 붙여요.
-      [`${item}:has(${disabledSelector}) &`]: { color: vars.color.fg.disabled },
+      [`${selectionRowDisabled} &`]: { color: vars.color.fg.disabled },
     },
   },
 
