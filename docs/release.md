@@ -100,10 +100,13 @@ Claude는 1–4번과 6번의 브랜치·PR을 만들 수 있어요. 머지와 5
 
 npm 쪽 설정이에요(`@d5ng/react` 패키지 Settings). 워크플로 파일 이름을 바꾸면 여기도 같이 바꿔요.
 
-| 항목               | 값                                                                                       |
-| ------------------ | ---------------------------------------------------------------------------------------- |
-| Trusted publishing | GitHub Actions, `D5ng` / `d5ng-design-system` / `release.yml`, environment 없음, stage만 |
-| Publishing access  | Require two-factor authentication and disallow tokens                                    |
+| 항목               | 값                                                                                                                    |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Trusted publishing | GitHub Actions, `D5ng` / `d5ng-design-system` / `release.yml`, environment 없음, Allowed actions는 켜지 않음(stage만) |
+| Publishing access  | Require two-factor authentication and disallow tokens                                                                 |
+
+- **Trusted publishing은 릴리스 직전에 만들어요**: 새 연결은 2일 안에 첫 배포가 성공해야 하고, 못 하면 만료돼서 지우고 다시 만들어야 해요([npm 문서](https://docs.npmjs.com/trusted-publishers#trusted-publisher-configuration-expiry)). 그래서 release PR을 main에 머지하기 직전에 만들고 그날 Approve까지 해요
+- **만든 연결은 못 고쳐요**: 값이 바뀌면 지우고 새로 만들어요
 
 ## 배포 전 확인
 
