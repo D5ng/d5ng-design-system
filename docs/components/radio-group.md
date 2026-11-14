@@ -14,7 +14,7 @@
 
 - **그룹 `RadioGroup`과 항목 `RadioGroupItem` 두 부품이에요**: 이름은 SEED·shadcn과 같고 components.md 이름 규칙(루트 이름을 앞에)을 따라요. 단독 Radio는 만들지 않아요. 라디오 하나는 고른 뒤 풀 수 없어서 Checkbox나 Switch가 맞아요
 - **RadioGroup이 Field를 품어요**: 제목이 그룹의 이름(`aria-labelledby`)이 되고, 안내·오류가 그룹의 설명이 돼요. Field `group`(#117)을 켜서 이어요. Figma Radio Group Field와 1:1이고, 쓰는 쪽이 `group`을 빠뜨려 이름이 조용히 빠지는 일이 없어요. TextField와 같은 방식이에요(`text-field.md`)
-  - Field props는 `Pick<FieldProps, …>`로 받아요. `characterCount`는 뺐어요
+  - Field props 타입은 TextField·TextareaField와 같은 `_internal/fieldPassthrough`를 써요. `characterCount`는 없어요. 구조 분해와 Field에 넘기는 코드는 컴포넌트마다 둬요(`textarea-field.md`). 세 번째 사용처로 다시 봤지만 한 화면에서 읽히는 쪽을 유지했고, CheckboxGroup 때 다시 봐요
   - `className`·`style`은 바깥 Field에, 나머지 props와 `ref`는 `role="radiogroup"` 요소에 가요
 - **쓰는 쪽 `aria-labelledby`가 있으면 그 값이 이름을 정해요**: 없으면 제목 id예요. Field control이 제목 id로 덮어서 말없이 사라지던 것을 막았어요(FF P3, 2026-11-13). TextField도 쓰는 쪽 값을 우선해요
 - **`aria-describedby`는 덮지 않고 Field 안내 뒤에 더해요**: 덮으면 안내 연결이 말없이 끊겨요. `_internal/joinIds`를 써요
