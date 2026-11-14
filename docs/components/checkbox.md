@@ -34,9 +34,10 @@
 - **숨은 input이 상자 위에 겹치게 상자 칸을 인라인으로 둬요**: Radix는 input을 버튼 바로 뒤에 붙이고 버튼 너비만큼 왼쪽으로 옮겨요. 상자 칸(`markSlot`)을 줄 높이 없는 block으로, 버튼을 inline으로 둬요. flex나 block 버튼이면 input이 상자 왼쪽 아래로 어긋나서 required 안내 말풍선이 엉뚱한 곳을 가리켜요
 - **라벨 첫 줄 가운데를 상자 가운데에 맞춰요**: 라벨에 `padding-top: (상자 − 줄 높이) / 2`를 줘서 Figma의 0.5·1px과 같고, 긴 라벨이 줄바꿈돼도 상자는 첫 줄에 남아요. `textStyles` 묶음은 굵기까지 정해서 `labelWeight`와 겹쳐요. 그래서 글자 토큰과 한글 줄바꿈(`keep-all`)을 직접 붙여요
 - **줄 스타일은 Radio·Switch와 같은 정책이에요**: 최소 높이 44px, 여백 8px, 상자–라벨 간격 8px, 첫 줄 맞춤, 눌림·커서 규칙이 같아요. 공통 부분(여백·정렬·커서, 눌림·hover·비활성 선택자)은 `_internal/selectionRow.css.ts`에 있어요
+  - 비활성은 `data-disabled`와 `:disabled`를 함께 봐요. 비활성 fieldset이 막은 버튼에는 Radix가 `data-disabled`를 붙이지 않아요([checkbox-group.md](checkbox-group.md))
   - 최소 높이는 Figma가 컴포넌트마다 변수를 따로 둬서(셋 다 44px) 각자 자기 토큰을 써요. 공통 파일이 한 컴포넌트 토큰을 쓰면 다른 컴포넌트가 거기에 묶여요
   - 열 구성(열 너비·간격·`fit-content`)은 SwitchRow처럼 컴포넌트마다 달라서 각자 정해요
-- **그룹 제목·안내·오류는 Field가 맡아요**: CheckboxGroup(다음 PR)은 값 상태 없이 세로로 묶기만 하고, Field `group`(#117)이 이름과 설명을 이어요. SEED는 CheckboxGroup이 Field의 일을 다시 해요. 우리 Figma도 Field + Group 조합이에요
+- **그룹 제목·안내·오류는 Field가 맡아요**: CheckboxGroup은 값 상태 없이 세로로 묶고, 품은 Field(`group`, #117)가 이름과 설명을 이어요([checkbox-group.md](checkbox-group.md)). SEED는 CheckboxGroup이 Field의 일을 다시 해요. 우리 Figma도 Field + Group 조합이에요
 - **Figma 속성과의 대응**: `Shape`·`Tone`(세트 이름)은 `variant`·`tone`, `Selection`은 `checked`(Unselected `false`, Selected `true`, Indeterminate `"indeterminate"`), `Weight`는 `labelWeight`, `State=Disabled`는 `disabled`예요. `State`의 Hover·Pressed와 `Focus visible`은 브라우저 상태예요(Figma 표시용)
 
 ## 뺀 것
@@ -50,4 +51,3 @@
 ## 열린 질문
 
 - **눌림 모션 공통화**: 눌림 transition, `linear()` `@supports`, 축소, 움직임 줄이기 묶음이 Button(`_internal/buttonBase.css.ts`)·Switch와 같아요. 같은 Motion Foundation 정책이라 함께 바뀌니 `_internal`로 옮겨야 해요(FF K2). Button까지 고쳐야 해서 Checkbox PR에는 넣지 않았고, Switch가 머지된 뒤 세 곳을 한 PR로 옮겨요
-- **그룹 `disabled`를 항목에 전하는 방법**(CheckboxGroup): context면 Checkbox가 `"use client"`가 돼요. `<fieldset disabled>`면 브라우저가 버튼을 막지만 `data-disabled`가 없어서 스타일이 `:disabled`도 봐야 해요
