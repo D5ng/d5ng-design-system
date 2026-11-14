@@ -2,32 +2,16 @@ import { clsx } from "clsx";
 import { Label, RadioGroup as RadioGroupPrimitive } from "radix-ui";
 import type { ComponentProps, ReactNode } from "react";
 
+import type { FieldPassthroughProps } from "../_internal/fieldPassthrough";
 import { joinIds } from "../_internal/joinIds";
-import { Field, type FieldProps } from "../Field";
+import { Field } from "../Field";
 import * as styles from "./RadioGroup.css";
-
-// 제목·안내·오류는 Field에서 받아 그대로 넘겨요. 타입과 JSDoc이 Field 한 곳에서 와요.
-type RadioGroupFieldProps = Pick<
-  FieldProps,
-  | "label"
-  | "hideLabel"
-  | "labelWeight"
-  | "requirementIndicator"
-  | "headerAction"
-  | "description"
-  | "errorMessage"
-  | "showMessageIcon"
-  | "invalid"
-  | "required"
-  | "disabled"
-  | "id"
->;
 
 // 문서에 보일 props는 여기서 직접 선언해요. Radix와 HTML 속성은 문서 표에 안 잡혀요.
 // orientation·loop·dir은 받지 않아요. Figma가 세로 배치만 그렸고, 없으면 네 방향키가 모두 동작해요.
 export type RadioGroupProps = Omit<
   ComponentProps<typeof RadioGroupPrimitive.Root>,
-  | keyof RadioGroupFieldProps
+  | keyof FieldPassthroughProps
   | "asChild"
   | "children"
   | "orientation"
@@ -37,7 +21,7 @@ export type RadioGroupProps = Omit<
   | "defaultValue"
   | "onValueChange"
 > &
-  RadioGroupFieldProps & {
+  FieldPassthroughProps & {
     /** 고를 항목이에요. `RadioGroupItem`을 넣어요. */
     children: ReactNode;
     /** 고른 항목의 `value`예요. 아무것도 고르지 않은 상태를 제어하려면 `null`을 넘겨요. */
