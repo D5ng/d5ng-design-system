@@ -1,0 +1,29 @@
+name: Pack check
+
+# main으로 가는 PR(release·hotfix)에서 npm에 올라갈 tgz로 Next 예제 앱을 빌드해 봐요.
+# npm 번호는 되돌릴 수 없어서 머지 전에 막아요. Actions 탭에서 직접 실행할 수도 있어요.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # pnpm 버전은 package.json의 packageManager를 읽어요.
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: scripts/check-pack.sh
