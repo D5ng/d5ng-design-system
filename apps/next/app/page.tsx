@@ -8,6 +8,7 @@ import {
   AlertDialogErrorMessage,
   AlertDialogTitle,
   AlertDialogTrigger,
+  Badge,
   Button,
   Checkbox,
   CheckboxGroup,
@@ -170,6 +171,19 @@ export default function Page() {
           <Checkbox name="pastTopics" value="pm" label="기획" defaultChecked />
         </CheckboxGroup>
       </form>
+      <Badge>대기 중</Badge>
+      {/* prefixIcon은 서버 컴포넌트가 만든 요소를 그대로 넘겨요. */}
+      <Badge
+        variant="solid"
+        tone="positive"
+        prefixIcon={
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        }
+      >
+        완료
+      </Badge>
     </main>
   );
 }
