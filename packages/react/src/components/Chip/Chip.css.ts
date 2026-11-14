@@ -6,6 +6,7 @@ import { focusRing } from "../_internal/focusRing.css";
 
 // 상태 선택자는 한 곳에서만 정해요. ChipButton과 Radix Toggle이 버튼에 붙이는 속성을 봐요.
 const disabledSelector = "[data-disabled]";
+// ChipToggle의 pressed prop은 여기서 선택(selected)이에요. 이 파일의 pressed는 누르는 중(:active)이에요.
 const selectedSelector = '[data-state="on"]';
 
 // Figma에도 Chip 테두리 두께 변수가 없어요.
