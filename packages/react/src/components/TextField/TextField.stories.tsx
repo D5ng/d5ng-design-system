@@ -89,9 +89,34 @@ export const SuffixText: Story = {
   },
 };
 
+/** 검색어처럼 한 번에 비우고 다시 적는 일이 잦을 때 써요. 값이 있을 때만 보여요. */
+export const ShowClearButton: Story = {
+  args: {
+    label: "검색어",
+    placeholder: "컴포넌트 이름",
+    type: "search",
+    defaultValue: "TextField",
+    prefixIcon: <Search />,
+    showClearButton: true,
+  },
+  // 크기마다 버튼 자리가 달라서 세 크기를 같이 봐요. 앞뒤 아이콘의 안쪽 여백이 같아야 해요.
+  render: (args) => (
+    <div style={stackStyle}>
+      {sizes.map((size) => (
+        <TextField key={size} {...args} size={size} />
+      ))}
+    </div>
+  ),
+};
+
 /** 무엇을 어떻게 적을지 미리 알려 줄 때 써요. 나머지 Field props는 Field 스토리에 있어요. */
 export const Description: Story = {
   args: { description: "가족관계증명서에 적힌 이름으로 써 주세요." },
+};
+
+/** 길이 제한이 있을 때 써요. 넘어도 막지 않으니 넘었을 때 `invalid`는 쓰는 쪽이 정해요. */
+export const MaxCharacterCount: Story = {
+  args: { label: "별명", defaultValue: "길동", maxCharacterCount: 10 },
 };
 
 /** 값이 올바르지 않을 때예요. 오류 문구가 안내 자리를 대신해요. */

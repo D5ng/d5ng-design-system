@@ -1,15 +1,11 @@
 "use client";
 
-import {
-  type ChangeEvent,
-  type ComponentProps,
-  type CSSProperties,
-  useState,
-} from "react";
+import type { ComponentProps, CSSProperties } from "react";
 
 import { countGraphemes } from "../_internal/countGraphemes";
 import type { FieldPassthroughProps } from "../_internal/fieldPassthrough";
 import { joinIds } from "../_internal/joinIds";
+import { useInputValue } from "../_internal/useInputValue";
 import { Field } from "../Field";
 import * as styles from "./TextareaField.css";
 
@@ -65,22 +61,16 @@ export function TextareaField({
   "aria-describedby": ariaDescribedBy,
   ...textareaProps
 }: TextareaFieldProps) {
-  // value가 없으면 textarea가 값을 가져서, 글자 수를 세려고 입력마다 따라 적어요.
-  const [typedValue, setTypedValue] = useState(defaultValue);
+  const { currentValue, handleChange } = useInputValue({
+    value,
+    defaultValue,
+    onChange,
+  });
 
   const characterCount =
     maxCharacterCount === undefined
       ? undefined
-      : {
-          current: countGraphemes(String(value ?? typedValue ?? "")),
-          max: maxCharacterCount,
-        };
-
-  // composeEventHandlers를 쓰면 쓰는 쪽이 preventDefault()할 때 건너뛰는데, 입력은 그래도 바뀌어서 글자 수가 어긋나요.
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setTypedValue(event.currentTarget.value);
-    onChange?.(event);
-  };
+      : { current: countGraphemes(currentValue), max: maxCharacterCount };
 
   // CSSProperties 타입에 CSS 변수 키가 없어서 단언해요.
   const maxRowsStyle =

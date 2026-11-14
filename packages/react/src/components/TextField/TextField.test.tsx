@@ -1,4 +1,4 @@
-import { createRef } from "react";
+import { type ChangeEvent, createRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { page, userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
@@ -235,5 +235,175 @@ describe("TextField", () => {
     const boxStyle = getComputedStyle(box);
     expect(boxStyle.outlineStyle).not.toBe("none");
     expect(boxStyle.outlineColor).toBe(boxStyle.borderTopColor);
+  });
+
+  it("showClearButton이면 값이 있을 때만 지우기 버튼이 보여요", async () => {
+    await render(<TextField label="검색어" showClearButton />);
+    const clearButton = page.getByRole("button", { name: "입력 내용 지우기" });
+    await expect.element(clearButton).not.toBeInTheDocument();
+
+    await userEvent.type(page.getByRole("textbox"), "사과");
+
+    await expect.element(clearButton).toBeInTheDocument();
+  });
+
+  it("disabled·readOnly면 지우기 버튼이 없어요", async () => {
+    await render(
+      <>
+        <TextField
+          label="이름"
+          showClearButton
+          disabled
+          defaultValue="홍길동"
+        />
+        <TextField label="별명" showClearButton readOnly defaultValue="길동" />
+      </>,
+    );
+
+    await expect.element(page.getByRole("button")).not.toBeInTheDocument();
+  });
+
+  it('지우기 버튼은 Tab으로 닿고 "입력 내용 지우기"로 읽혀요', async () => {
+    await render(
+      <TextField label="검색어" showClearButton defaultValue="사과" />,
+    );
+
+    await userEvent.tab();
+    await userEvent.tab();
+
+    await expect
+      .element(page.getByRole("button", { name: "입력 내용 지우기" }))
+      .toHaveFocus();
+  });
+
+  it("지우기 버튼을 누르면 값을 비우고 onChange를 불러요", async () => {
+    const onChange = vi.fn(
+      (event: ChangeEvent<HTMLInputElement>) => event.target.value,
+    );
+    await render(
+      <TextField
+        label="검색어"
+        showClearButton
+        defaultValue="사과"
+        onChange={onChange}
+      />,
+    );
+
+    await page.getByRole("button", { name: "입력 내용 지우기" }).click();
+
+    await expect.element(page.getByRole("textbox")).toHaveValue("");
+    expect(onChange).toHaveBeenCalledOnce();
+    expect(onChange).toHaveLastReturnedWith("");
+    await expect.element(page.getByRole("button")).not.toBeInTheDocument();
+  });
+
+  it("value를 넘겨도 지우기를 onChange로 알려요", async () => {
+    // 값은 쓰는 쪽이 가져서, onChange에서 비우지 않으면 그대로 남아요.
+    const onChange = vi.fn(
+      (event: ChangeEvent<HTMLInputElement>) => event.target.value,
+    );
+    await render(
+      <TextField
+        label="검색어"
+        showClearButton
+        value="사과"
+        onChange={onChange}
+      />,
+    );
+
+    await page.getByRole("button", { name: "입력 내용 지우기" }).click();
+
+    expect(onChange).toHaveLastReturnedWith("");
+    await expect.element(page.getByRole("textbox")).toHaveValue("사과");
+  });
+
+  it("마우스로 지워도 입력이 포커스를 잃지 않아요", async () => {
+    // 잠깐이라도 blur되면 onBlur 검증이 빈 값으로 한 번 돌아요.
+    const onBlur = vi.fn();
+    await render(
+      <TextField
+        label="검색어"
+        showClearButton
+        defaultValue="사과"
+        onBlur={onBlur}
+      />,
+    );
+    const input = page.getByRole("textbox");
+    await input.click();
+
+    await page.getByRole("button", { name: "입력 내용 지우기" }).click();
+
+    await expect.element(input).toHaveValue("");
+    await expect.element(input).toHaveFocus();
+    expect(onBlur).not.toHaveBeenCalled();
+  });
+
+  it("키보드로 지우면 포커스가 입력으로 돌아가요", async () => {
+    await render(
+      <TextField label="검색어" showClearButton defaultValue="사과" />,
+    );
+
+    await userEvent.tab();
+    await userEvent.tab();
+    await userEvent.keyboard("{Enter}");
+
+    const input = page.getByRole("textbox");
+    await expect.element(input).toHaveValue("");
+    await expect.element(input).toHaveFocus();
+  });
+
+  it("지우기 버튼에 포커스가 가면 링은 상자가 아니라 버튼에 그려요", async () => {
+    await render(
+      <TextField label="검색어" showClearButton defaultValue="사과" />,
+    );
+    const box = boxOf(page.getByRole("textbox").element());
+
+    await userEvent.tab();
+    await userEvent.tab();
+
+    const clearButton = page
+      .getByRole("button", { name: "입력 내용 지우기" })
+      .element();
+    expect(getComputedStyle(box).outlineStyle).toBe("none");
+    expect(getComputedStyle(clearButton).outlineStyle).not.toBe("none");
+  });
+
+  it("small에서 지우기 버튼이 있어도 상자 높이가 그대로예요", async () => {
+    // 버튼 누르는 자리(44px)가 small 상자 안쪽보다 커서 그냥 두면 상자가 늘어나요.
+    await render(
+      <TextField
+        label="검색어"
+        size="small"
+        showClearButton
+        defaultValue="사과"
+      />,
+    );
+
+    const box = boxOf(page.getByRole("textbox").element());
+    expect(box.getBoundingClientRect().height).toBe(
+      Number.parseFloat(getComputedStyle(box).minHeight),
+    );
+  });
+
+  it("maxCharacterCount면 글자 수를 보여 주고 이모지를 한 글자로 세요", async () => {
+    await render(
+      <TextField label="별명" maxCharacterCount={10} defaultValue="👍🏻길동" />,
+    );
+    const input = page.getByRole("textbox");
+    await expect.element(input).toHaveAccessibleDescription("3/10");
+
+    await userEvent.type(input, "이");
+
+    await expect.element(input).toHaveAccessibleDescription("4/10");
+  });
+
+  it("글자 수를 넘어도 입력을 막지 않아요", async () => {
+    await render(<TextField label="별명" maxCharacterCount={2} />);
+    const input = page.getByRole("textbox");
+
+    await userEvent.type(input, "홍길동");
+
+    await expect.element(input).toHaveValue("홍길동");
+    await expect.element(input).toHaveAccessibleDescription("3/2");
   });
 });

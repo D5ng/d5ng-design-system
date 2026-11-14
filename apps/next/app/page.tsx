@@ -123,6 +123,14 @@ export default function Page() {
         suffixText="원"
         inputMode="numeric"
       />
+      {/* 지우기 버튼은 값이 있을 때만 그려서, 서버에서 받은 defaultValue로 첫 화면에 보여요. */}
+      <TextField
+        label="검색어"
+        type="search"
+        showClearButton
+        defaultValue="TextField"
+      />
+      <TextField label="별명" maxCharacterCount={10} defaultValue="길동" />
       <TextareaField label="소개" name="bio" />
       {/* maxRows는 인라인 CSS 변수로, 글자 수는 상태로 그려서 따로 렌더해요. */}
       <TextareaField
