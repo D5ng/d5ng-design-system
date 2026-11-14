@@ -233,6 +233,13 @@
   --d5ng-button-icon-size-lg: 24px;
   --d5ng-button-loading-size-lg: 18px;
   --d5ng-focus-ring-width: var(--d5ng-spacing-2);
+  --d5ng-chip-min-height-sm: 32px;
+  --d5ng-chip-min-height-md: 36px;
+  --d5ng-chip-min-height-lg: 40px;
+  --d5ng-chip-min-target-height: 44px;
+  --d5ng-chip-icon-size-sm: 16px;
+  --d5ng-chip-icon-size-md: 16px;
+  --d5ng-chip-icon-size-lg: 20px;
   --d5ng-menu-width-sm: 200px;
   --d5ng-menu-width-md: 240px;
   --d5ng-menu-item-min-height-sm: 44px;
