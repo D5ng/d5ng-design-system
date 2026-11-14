@@ -83,6 +83,13 @@ export type {
 export { RadioGroup, RadioGroupItem } from "./components/RadioGroup";
 export type { SwitchProps, SwitchRowProps } from "./components/Switch";
 export { Switch, SwitchRow } from "./components/Switch";
+export type {
+  TabsContentProps,
+  TabsListProps,
+  TabsProps,
+  TabsTriggerProps,
+} from "./components/Tabs";
+export { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/Tabs";
 export type { TextareaFieldProps } from "./components/TextareaField";
 export { TextareaField } from "./components/TextareaField";
 export type { TextFieldProps } from "./components/TextField";

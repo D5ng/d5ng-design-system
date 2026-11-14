@@ -36,6 +36,10 @@ import {
   RadioGroupItem,
   Switch,
   SwitchRow,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
   TextareaField,
   TextField,
 } from "@d5ng/react";
@@ -272,6 +276,29 @@ export default function Page() {
       <DismissibleCallout tone="positive" title="완료">
         새 편집기는 자동으로 저장돼요.
       </DismissibleCallout>
+      {/* TabsList만 클라이언트 컴포넌트예요. 하이드레이션 전에는 선택한 탭이 CSS로 밑줄을 그려요. */}
+      <Tabs defaultValue="overview">
+        <TabsList aria-label="주문 정보">
+          <TabsTrigger value="overview">개요</TabsTrigger>
+          <TabsTrigger value="delivery">배송</TabsTrigger>
+          <TabsTrigger value="refund" disabled>
+            환불
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview">주문 개요예요.</TabsContent>
+        <TabsContent value="delivery">배송 정보예요.</TabsContent>
+        <TabsContent value="refund">환불 정보예요.</TabsContent>
+      </Tabs>
+      {/* hug는 처음 그릴 때 고른 탭까지 스크롤하고, manual은 Radix 키보드 처리가 달라져서 따로 렌더해요. */}
+      <Tabs defaultValue="settings" activationMode="manual">
+        <h2 id="account-tabs">계정</h2>
+        <TabsList aria-labelledby="account-tabs" size="small" layout="hug">
+          <TabsTrigger value="profile">프로필</TabsTrigger>
+          <TabsTrigger value="settings">설정</TabsTrigger>
+        </TabsList>
+        <TabsContent value="profile">프로필이에요.</TabsContent>
+        <TabsContent value="settings">설정이에요.</TabsContent>
+      </Tabs>
     </main>
   );
 }
