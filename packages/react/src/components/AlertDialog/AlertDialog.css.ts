@@ -2,45 +2,23 @@
 import "../Button/Button.css";
 
 import { textStyles, vars } from "@d5ng/tokens";
-import { keyframes, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-// Radix가 붙이는 열림 상태예요. Presence가 닫힐 때 animationend를 기다렸다가 DOM에서 빼요.
-const openSelector = '&[data-state="open"]';
-const closedSelector = '&[data-state="closed"]';
+import {
+  fadeSelectors,
+  portalRoot,
+  viewportMargin,
+} from "../_internal/modal.css";
 
-const fadeIn = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } });
-const fadeOut = keyframes({ from: { opacity: 1 }, to: { opacity: 0 } });
-
-// Figma와 같이 열 때 250ms, 닫을 때 150ms 페이드예요. 위치가 움직이지 않아서 움직임 줄이기에서도 그대로 둬요.
-const fadeSelectors = {
-  [openSelector]: {
-    animation: `${fadeIn} ${vars.duration.slow} ${vars.easing.enter}`,
-  },
-  [closedSelector]: {
-    animation: `${fadeOut} ${vars.duration.normal} ${vars.easing.exit}`,
-  },
-};
-
-// 화면 가장자리에서 띄우는 최소 여백이에요.
-const viewportMargin = vars.spacing[24];
+export { overlay } from "../_internal/modal.css";
 
 // Figma Specification의 간격이에요. 메시지 안(제목–설명–오류), 메시지와 버튼 사이, 버튼 사이예요.
 const messageGap = vars.spacing[8];
 const messageToActions = vars.spacing[16];
 const actionsGap = vars.spacing[8];
 
-export const overlay = style({
-  position: "fixed",
-  inset: 0,
-  background: vars.color.bg.scrim,
-  selectors: fadeSelectors,
-});
-
 export const content = style({
-  // Portal로 body에 붙어서 부모 스타일을 물려받지 못해요. 글꼴·글자색·box-sizing을 직접 정해요.
-  boxSizing: "border-box",
-  fontFamily: vars.font.family.base,
-  color: vars.color.fg.neutral,
+  ...portalRoot,
 
   position: "fixed",
   inset: 0,
