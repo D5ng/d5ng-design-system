@@ -3,6 +3,7 @@ import { createVar, style } from "@vanilla-extract/css";
 import { recipe, type RecipeVariants } from "@vanilla-extract/recipes";
 
 import { focusRing } from "../_internal/focusRing.css";
+import { radioInputControl, radioInputSlot } from "../_internal/radioInput.css";
 import {
   selectionControlDisabled,
   selectionRow,
@@ -108,66 +109,63 @@ export const item = style([
   },
 ]);
 
-// Radix는 숨은 input을 버튼 바로 뒤에 absolute로 두고 translateX(-100%)로 버튼 위에 겹쳐요.
-// 버튼과 input이 한 줄에 나란히 있어야 겹쳐서, 칸은 줄 높이를 없애고 버튼은 inline으로 둬요.
-export const markSlot = style({
-  position: "relative",
-  display: "block",
-  lineHeight: 0,
-});
+// 숨은 input을 마크 위에 겹치는 칸이에요. 이유는 radioInput.css.ts에 있어요.
+export const markSlot = radioInputSlot;
 
 // 바탕 색은 버튼 자신의 data-state·data-disabled만 봐요. 행의 hover·눌림은 아래 surface가 따로 봐요.
-export const control = style({
-  display: "inline-flex",
-  verticalAlign: "top",
-  boxSizing: "border-box",
-  width: markSize,
-  height: markSize,
-  margin: 0,
-  padding: 0,
-  border: "none",
-  // 포커스 링이 마크를 따라 원으로 그려져요.
-  borderRadius: vars.radius.full,
-  background: "none",
-  cursor: "inherit",
-  vars: {
-    [bg]: "transparent",
-    [bgHover]: vars.color.bg.neutralWeak,
-    [bgPressed]: vars.color.bg.neutralWeakPressed,
-    [border]: vars.color.stroke.neutralStrong,
+export const control = style([
+  radioInputControl,
+  {
+    display: "inline-flex",
+    boxSizing: "border-box",
+    width: markSize,
+    height: markSize,
+    margin: 0,
+    padding: 0,
+    border: "none",
+    // 포커스 링이 마크를 따라 원으로 그려져요.
+    borderRadius: vars.radius.full,
+    background: "none",
+    cursor: "inherit",
+    vars: {
+      [bg]: "transparent",
+      [bgHover]: vars.color.bg.neutralWeak,
+      [bgPressed]: vars.color.bg.neutralWeakPressed,
+      [border]: vars.color.stroke.neutralStrong,
+    },
+    selectors: {
+      "&:focus-visible": focusRing,
+      // 세 규칙이 서로 겹치지 않게 나눠요. 규칙 순서에 기대지 않아요.
+      [`&${checkedSelector}:not(${disabledSelector})`]: {
+        vars: {
+          [bg]: checkedBg,
+          [bgHover]: checkedBgHover,
+          [bgPressed]: checkedBgPressed,
+          [border]: "transparent",
+          [fg]: checkedFg,
+        },
+      },
+      [`&:not(${checkedSelector})${disabledSelector}`]: {
+        vars: {
+          [bg]: vars.color.bg.disabled,
+          [bgHover]: vars.color.bg.disabled,
+          [bgPressed]: vars.color.bg.disabled,
+          [border]: vars.color.stroke.neutralWeak,
+        },
+      },
+      // Figma는 비활성 선택을 채우지 않고 테두리와 점만 흐리게 그려요.
+      [`&${checkedSelector}${disabledSelector}`]: {
+        vars: {
+          [bg]: "transparent",
+          [bgHover]: "transparent",
+          [bgPressed]: "transparent",
+          [border]: vars.color.fg.disabled,
+          [fg]: vars.color.fg.disabled,
+        },
+      },
+    },
   },
-  selectors: {
-    "&:focus-visible": focusRing,
-    // 세 규칙이 서로 겹치지 않게 나눠요. 규칙 순서에 기대지 않아요.
-    [`&${checkedSelector}:not(${disabledSelector})`]: {
-      vars: {
-        [bg]: checkedBg,
-        [bgHover]: checkedBgHover,
-        [bgPressed]: checkedBgPressed,
-        [border]: "transparent",
-        [fg]: checkedFg,
-      },
-    },
-    [`&:not(${checkedSelector})${disabledSelector}`]: {
-      vars: {
-        [bg]: vars.color.bg.disabled,
-        [bgHover]: vars.color.bg.disabled,
-        [bgPressed]: vars.color.bg.disabled,
-        [border]: vars.color.stroke.neutralWeak,
-      },
-    },
-    // Figma는 비활성 선택을 채우지 않고 테두리와 점만 흐리게 그려요.
-    [`&${checkedSelector}${disabledSelector}`]: {
-      vars: {
-        [bg]: "transparent",
-        [bgHover]: "transparent",
-        [bgPressed]: "transparent",
-        [border]: vars.color.fg.disabled,
-        [fg]: vars.color.fg.disabled,
-      },
-    },
-  },
-});
+]);
 
 // 눌리면 이것만 줄어요. 포커스 링은 control에 있어서 제자리에 남아요(Motion Foundation).
 export const surface = style({

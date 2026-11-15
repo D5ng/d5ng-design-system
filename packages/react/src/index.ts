@@ -40,8 +40,20 @@ export type { CheckboxProps } from "./components/Checkbox";
 export { Checkbox } from "./components/Checkbox";
 export type { CheckboxGroupProps } from "./components/CheckboxGroup";
 export { CheckboxGroup } from "./components/CheckboxGroup";
-export type { ChipButtonProps, ChipToggleProps } from "./components/Chip";
-export { ChipButton, ChipToggle } from "./components/Chip";
+export type {
+  ChipButtonProps,
+  ChipRadioGroupItemProps,
+  ChipRadioGroupProps,
+  ChipToggleGroupProps,
+  ChipToggleProps,
+} from "./components/Chip";
+export {
+  ChipButton,
+  ChipRadioGroup,
+  ChipRadioGroupItem,
+  ChipToggle,
+  ChipToggleGroup,
+} from "./components/Chip";
 export type {
   DialogBodyProps,
   DialogCancelProps,
