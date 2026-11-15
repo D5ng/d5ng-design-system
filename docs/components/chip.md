@@ -4,9 +4,10 @@
 
 - **동작 계약**: `packages/react/src/components/Chip/Chip.test.tsx`의 테스트 이름이 정본이에요
 - **사용 가이드**: Figma `Chip` 페이지
-- **비교한 자료**(2026-11-14)
+- **비교한 자료**(2026-11-14, 선택 표시는 2026-11-15에 다시 봤어요)
   - SEED: https://seed-design.io/llms/components/chip.txt, https://seed-design.io/llms/react/components/chip.txt, https://raw.githubusercontent.com/daangn/seed-design/dev/packages/react/src/components/Chip/Chip.tsx, https://raw.githubusercontent.com/daangn/seed-design/dev/packages/rootage/components/chip.yaml
   - Montage: https://montage.wanted.co.kr/docs/components/actions/chip/web, https://montage.wanted.co.kr/docs/components/selection-and-input/filter-button/web, 각각 `/design`
+  - WCAG 2.2: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html
   - Radix: `@radix-ui/react-toggle` 1.2.1, `@radix-ui/react-radio-group` 1.5.1, `@radix-ui/react-toggle-group` 1.2.1 빌드 파일(`radix-ui` 1.8.1)
 
 ## 정한 것
@@ -19,19 +20,22 @@
 - **눌림은 Button 규칙이에요**: 겉면만 `scale(1 − press.maxReduction)`(0.96)으로 줄고, 누를 때 spring-rapid, 뗄 때 spring-quick이에요. 움직임 줄이기에서는 축소를 끄고 색만 바꿔요. Figma Prototype의 100ms는 Button을 정하기 전 문구라 Figma를 고쳤어요
 - **모든 variant에 1px 테두리를 둬요**: `solid`는 투명 테두리예요. 크기가 variant마다 같고, forced-colors에서 테두리가 보여서 칩 모양이 남아요. Figma 테두리는 안쪽(INSIDE)이라 여백에서 1px을 빼요
 - **선택 2px 테두리는 1px border에 안쪽 그림자 1px을 더해 그려요**: border를 2px로 바꾸면 선택할 때 너비가 1px씩 늘어 옆 칩이 밀려요. TextField 강조 테두리와 같은 방식이에요. Figma에 Chip 테두리 두께 변수가 없어서 1px 숫자예요
-- **체크 자리는 선택 전에도 남겨요**: `ChipToggle`은 체크를 `visibility`로만 숨겨서 눌러도 너비가 그대로예요. 선택을 색만으로 구분하지 않으려고 Figma가 체크를 둬요. forced-colors에서는 그림자가 사라져서 체크가 선택을 알려요. `ChipButton`은 선택이 없어서 체크 자리도 없어요
+- **선택은 체크 없이 모양으로 보여요**: `solid`·`outlineStrong`은 배경이 반전되고, `outlineWeak`는 옅은 배경에 2px 테두리가 생겨요. 체크를 두면 너비를 지키려고 선택 전에도 빈자리를 남겨야 해서, 고르지 않은 칩은 글자가 한쪽으로 20px 쏠려 보였어요. SEED도 체크 없이 반전해요
+  - 반전은 미선택 배경과 명도 대비가 13:1을 넘어서 색만으로 구분하는 게 아니에요. WCAG Understanding 1.4.1은 명도 대비 3:1 이상을 추가 구분으로 봐요. 선택 상태를 직접 말하지는 않아서 이건 우리 해석이에요
+  - 고대비 모드(forced-colors)는 배경과 그림자를 지워서 선택이 사라져요. 선택만 `Highlight`·`HighlightText`로 직접 그리고, 선택+비활성은 `GrayText` 2px 테두리예요
 - **긴 글자는 칩 안에서 줄바꿈돼요**: 버튼은 `flex-shrink: 0`, `max-width: 100%`예요. 가로 스크롤 줄에서는 줄지 않고, 좁은 부모에서는 줄바꿈돼요(`keep-all`). Button은 nowrap이지만 Figma 긴 라벨 예시가 줄바꿈이라 달라요
 - **prop 이름**
   - `variant`는 `solid`·`outlineStrong`·`outlineWeak`, 기본 `outlineWeak`예요. 이름은 SEED·Figma 세트와 같고 기본은 Figma를 따라요(SEED 기본은 `solid`)
   - `size`는 `small`·`medium`·`large`, 기본 `medium`이에요. 겉면만 바뀌고 누르는 영역은 그대로예요. large만 글자가 16/22예요(`textStyles.labelDefault`가 14/19뿐이라 글자 토큰을 직접 써요)
   - `prefixIcon`은 Button과 같은 이름이고 스크린리더가 읽지 않아요
   - `ChipToggle`의 선택은 Radix 이름 그대로 `pressed`·`defaultPressed`·`onPressedChange`예요. 스타일 파일의 pressed는 누르는 중(`:active`)이라 파일 위에 주석으로 구분해요
-- **색은 Figma 그대로예요**: 미선택 hover·눌림은 variant와 상관없이 `bg/neutral-weak-hover`·`-pressed`예요. 선택하면 `solid`는 `bg/brand-solid`, outline은 `bg/brand-weak` + `stroke/brand-solid`예요. 비활성은 `bg/disabled`·`fg/disabled`이고 선택 표시(체크·2px)는 남아요
+- **선택 색은 무채색이에요**: `solid`·`outlineStrong`은 `bg/neutral-solid` + `fg/on-neutral-solid`, `outlineWeak`는 `bg/neutral-weak` + 2px `stroke/neutral-contrast`예요. 칩은 한 화면에 여러 개가 함께 켜져서, 브랜드 색이면 화면의 주 버튼보다 눈에 띄어요. 우리 Checkbox·RadioGroup 기본(`neutral`)과도 같아요. 브랜드 색 선택이 필요한 화면이 생기면 Checkbox처럼 `tone`을 더해요. 더하는 건 깨지지 않아요
+  - 미선택 hover·눌림은 variant와 상관없이 `bg/neutral-weak-hover`·`-pressed`예요
+  - 비활성은 `bg/disabled`·`fg/disabled`이고, outline 테두리는 Checkbox 비활성 테두리와 같은 `stroke/neutral-weak`예요. 비활성 배경은 variant마다 같아서 선택은 2px `fg/disabled` 테두리로만 남아요. `solid`도 이때는 테두리를 그려요
 - **크기는 chip 변수예요**: Figma Component 컬렉션에 `chip/min-height/{sm,md,lg}`, `chip/min-target-height`, `chip/icon-size/{sm,md,lg}`를 더하고 72개 변형에 묶었어요
 - **Figma 속성과의 대응**
   - 세트(`Chip/Solid`·`Chip/OutlineStrong`·`Chip/OutlineWeak`)는 `variant`, `size`는 `size`, `prefixIcon`은 `prefixIcon`, `Label`은 `children`이에요
   - `Selected`는 `ChipToggle`의 `pressed`예요. `ChipButton`에는 없어요
-  - `Show indicator`는 prop이 아니라 부품 고르기예요. 켜짐은 `ChipToggle`(PR 2부터 `ChipRadioGroupItem`도), 꺼짐은 `ChipButton`이에요
   - `State=Disabled`는 `disabled`예요. `State`의 Hover·Pressed와 `Focus visible`은 브라우저 상태예요(Figma 표시용)
 
 ## 뺀 것
@@ -44,7 +48,6 @@
 
 ## 열린 질문
 
-- **outline 비활성 테두리 색**: Figma가 글자 토큰 `fg/disabled`를 써요. Checkbox 비활성 테두리는 `stroke/neutral-weak`예요. 지금은 Figma를 따르고, 바꾸면 색이 달라져서 눈으로 보고 정해요
 - **눌림 모션 공통화**: 눌림 transition, `linear()` `@supports`, 축소, 움직임 줄이기 묶음을 Button·Switch·Checkbox·Radio에 이어 Chip도 복사해 써요. 공통화 PR 목록에 Chip을 더해요
 - **그룹 간격(PR 2)**: Figma 그룹 예시는 제목과 칩 사이가 12px이고 Field는 8px이에요. 그룹이 Field를 품으면 Figma 예시를 Field로 바꿀지 PR 2에서 정해요
 - **링크로 고르는 칩**: 블로그 태그 필터가 URL 검색 파라미터로 상태를 가지면 `<a>` 칩이 더 맞을 수 있어요. 블로그에서 칩을 어디에 쓸지 정해지면 다시 봐요

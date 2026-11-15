@@ -42,7 +42,7 @@ const rowStyle = {
 /** 가장 흔한 쓰임이에요. 누를 때마다 선택과 해제가 바뀌어요. */
 export const Default: Story = {};
 
-/** 선택하면 끝에 체크가 보여요. 너비는 그대로예요. */
+/** 선택 상태예요. 체크 없이 모양만 바뀌고 너비는 그대로예요. */
 export const Pressed: Story = {
   render: (args) => (
     <div style={rowStyle}>
@@ -52,7 +52,7 @@ export const Pressed: Story = {
   ),
 };
 
-/** 선택하면 solid는 배경이 채워지고, outline은 테두리가 굵어져요. */
+/** 선택하면 solid·outlineStrong은 배경이 반전되고, outlineWeak는 테두리가 굵어져요. */
 export const Variant: Story = {
   render: (args) => (
     <div style={{ display: "grid", gap: 8 }}>
@@ -83,7 +83,7 @@ export const PrefixIcon: Story = {
   args: { prefixIcon: <Truck />, defaultPressed: true },
 };
 
-/** 지금은 바꿀 수 없어요. 선택 상태는 그대로 보여요. */
+/** 지금은 바꿀 수 없어요. 선택 상태는 2px 테두리로 남아요. */
 export const Disabled: Story = {
   args: { disabled: true },
   render: (args) => (
