@@ -17,11 +17,11 @@
 | Switch             | `switch`                             | `selection-and-input/switch`       | 확인함(2026-11-11). SwitchRow는 SEED `list`(ListSwitchItem)    |
 | Select             | `select`                             | `selection-and-input/select`       |                                                                |
 | Select Box         | `select-box`                         | `selection-and-input/framed-style` | 추정                                                           |
-| Dialog             | `dialog`                             | `presentation/popup`               | 추정                                                           |
+| Dialog             | `dialog`                             | `presentation/popup`               | 확인함(2026-11-14). SEED는 닫기 버튼·Bottom Sheet 전환 있음    |
 | Alert Dialog       | `alert-dialog`                       | `feedback/alert`                   | 확인함(2026-11-09)                                             |
 | Snackbar           | `snackbar`                           | `feedback/snackbar`                | Montage는 `feedback/toast`도 있음                              |
 | Tabs               | `tabs`                               | `navigations/tab`                  |                                                                |
-| Badge              | `badge`                              | `contents/content-badge`           | 추정                                                           |
+| Badge              | `badge`                              | `contents/content-badge`           | 확인함(2026-11-14). Montage는 색을 토큰으로 직접 고름          |
 | Notification Badge | `notification-badge`                 | `feedback/push-badge`              | 추정                                                           |
 | Chip               | `chip`                               | `actions/chip`                     | 확인함(2026-11-14). SEED 역할별 3부품, Montage filter-button도 |
 | Link               | 없음                                 | 없음                               | 확인함(2026-11-09). Montage `text-button`은 버튼이라 대응 아님 |

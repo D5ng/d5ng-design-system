@@ -19,7 +19,7 @@
 - **SwitchRow의 이름은 라벨만이에요**: 감싼 `<label>`의 글자가 이름이 되면 설명까지 붙어 읽혀서 `aria-labelledby`로 라벨만 잇고 설명은 `aria-describedby`로 이어요. 쓰는 쪽 `aria-describedby`는 설명 뒤에 합쳐요. 저장 상태 문구를 행 밖에 두고 이어도 설명이 빠지지 않아요
 - **`loading`은 Button과 같은 계약이에요**: 쓰는 쪽 핸들러보다 먼저 클릭을 막고, 포커스는 남기고, `aria-busy`·`aria-disabled`로 알려요. Button과 달리 모양은 그대로이고 hover·눌림 반응만 꺼요. Figma의 저장 중 상태가 "새 값을 보이고 반복 입력만 잠금"이에요. 핸들러를 만들어 넘겨서 `"use client"`가 붙어요
   - `disabled`와 함께면 loading처럼 포커스를 남기고 모양은 disabled를 따라요. Radix는 자기 `disabled`일 때만 `data-disabled`를 붙여서 직접 붙여요
-- **색 축은 `tone: "neutral" | "brand"`, 기본 `neutral`이에요**: SEED·Figma, Checkbox·Radio와 같아요. 중요도가 아니라 강조 색만 고르는 축이라 `/design-refs` 이름 규칙에 예외로 적었어요
+- **색 축은 `tone: "neutral" | "brand"`, 기본 `neutral`이에요**: SEED·Figma, Checkbox·Radio와 같아요. 중요도가 아니라 강조 색만 고르는 축이라 `/design-refs` 이름 규칙의 `tone`이에요
 - **size는 `"16" | "24" | "32"`, 기본 `"24"`예요**: SEED도 small·medium을 버리고 숫자로 옮겼어요. Figma 값과 글자까지 같아요. 기본은 SEED(32) 대신 Figma(24)를 따라요
 - **눌림은 Button 규칙이에요**: 트랙만 `scale(1 − press.maxReduction)`(0.96)으로 줄고, 누를 때 spring-rapid, 뗄 때 spring-quick이에요. 포커스 링은 버튼에 있어서 제자리에 남아요(Motion Foundation). Figma Specification의 2%와 Pressed 그림(98%)은 변수 값(0.04)과 달라서 Figma를 고쳤어요
 - **hover·눌림은 줄 전체를 봐요**: 라벨 글자를 눌러도 트랙이 반응해요. 마우스로 누르면 줄이, 키보드 Space로 누르면 버튼만 `:active`가 돼서 둘 다 봐요
