@@ -29,7 +29,7 @@
 | Content Card       | 없음                                 | `contents/card`                    | 추정                                                           |
 | Article Body       | React `article`                      | 없음                               | SEED는 React 문서에만 있음                                     |
 | Divider            | `divider`                            | `web-utility-components/divider`   | 확인함(2026-11-14). Montage는 `/docs/utilities/` 아래          |
-| Callout            | `callout`                            | `feedback/section-message`         | 추정                                                           |
+| Callout            | `callout`                            | `feedback/section-message`         | 확인함(2026-11-14). SEED는 세 컴포넌트, Montage는 하나         |
 | Skeleton           | `skeleton`                           | `loading/skeleton`                 |                                                                |
 | Result Section     | `result-section`                     | `feedback/fallback-view`           | 추정                                                           |
 | Search Bar         | `search-bar`                         | `selection-and-input/search-field` |                                                                |

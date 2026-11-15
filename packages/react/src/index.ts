@@ -26,6 +26,16 @@ export type { BadgeProps } from "./components/Badge";
 export { Badge } from "./components/Badge";
 export type { ButtonProps } from "./components/Button";
 export { Button } from "./components/Button";
+export type {
+  ActionableCalloutProps,
+  CalloutProps,
+  DismissibleCalloutProps,
+} from "./components/Callout";
+export {
+  ActionableCallout,
+  Callout,
+  DismissibleCallout,
+} from "./components/Callout";
 export type { CheckboxProps } from "./components/Checkbox";
 export { Checkbox } from "./components/Checkbox";
 export type { CheckboxGroupProps } from "./components/CheckboxGroup";
