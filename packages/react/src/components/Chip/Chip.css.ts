@@ -26,7 +26,6 @@ const bg = createVar();
 const bgHover = createVar();
 const bgPressed = createVar();
 const fg = createVar();
-const fgPressed = createVar();
 const border = createVar();
 // 선택 테두리의 두 번째 1px이에요. 안쪽 그림자로 그려요.
 const emphasis = createVar();
@@ -36,7 +35,6 @@ const selectedBg = createVar();
 const selectedBgHover = createVar();
 const selectedBgPressed = createVar();
 const selectedFg = createVar();
-const selectedFgPressed = createVar();
 const selectedBorder = createVar();
 const disabledBorder = createVar();
 
@@ -66,7 +64,6 @@ const rootBase = style({
     [bgHover]: vars.color.bg.neutralWeakHover,
     [bgPressed]: vars.color.bg.neutralWeakPressed,
     [fg]: vars.color.fg.neutral,
-    [fgPressed]: vars.color.fg.neutral,
     [emphasis]: "transparent",
   },
 
@@ -79,7 +76,6 @@ const rootBase = style({
         [bgHover]: selectedBgHover,
         [bgPressed]: selectedBgPressed,
         [fg]: selectedFg,
-        [fgPressed]: selectedFgPressed,
         [border]: selectedBorder,
         [emphasis]: selectedBorder,
       },
@@ -92,9 +88,12 @@ const rootBase = style({
         [border]: disabledBorder,
       },
     },
-    // 비활성이어도 선택 테두리 두께는 그대로 보여요.
+    // 비활성 배경은 variant마다 같아서 선택은 2px 테두리로만 남아요. solid도 이때는 테두리를 그려요.
     [`&${disabledSelector}${selectedSelector}`]: {
-      vars: { [emphasis]: disabledBorder },
+      vars: {
+        [border]: vars.color.fg.disabled,
+        [emphasis]: vars.color.fg.disabled,
+      },
     },
   },
 });
@@ -102,18 +101,34 @@ const rootBase = style({
 const pressed = `${rootBase}:active:not(${disabledSelector})`;
 const hovered = `${rootBase}:hover:not(:active, ${disabledSelector})`;
 
-// 두 outline은 미선택 테두리 색만 달라요.
-const outlineColors = (unselectedBorder: string) => ({
+// 선택은 Checkbox·RadioGroup 기본(neutral)처럼 무채색이에요. 칩은 여러 개가 함께 켜져서 브랜드 색을 쓰지 않아요.
+// solid·outlineStrong은 배경이 반전돼요. 미선택 배경과 명도 대비가 13:1을 넘어서 색만으로 구분하는 게 아니에요.
+const invertedSelection = {
+  [selectedBg]: vars.color.bg.neutralSolid,
+  [selectedBgHover]: vars.color.bg.neutralSolidHover,
+  [selectedBgPressed]: vars.color.bg.neutralSolidPressed,
+  [selectedFg]: vars.color.fg.onNeutralSolid,
+};
+
+// outlineWeak는 선택해도 배경이 옅어서 2px 테두리가 선택을 알려요.
+const weakSelection = {
+  [selectedBg]: vars.color.bg.neutralWeak,
+  [selectedBgHover]: vars.color.bg.neutralWeakHover,
+  [selectedBgPressed]: vars.color.bg.neutralWeakPressed,
+  [selectedFg]: vars.color.fg.neutral,
+};
+
+// 두 outline은 미선택 테두리 색과 선택 배경만 달라요.
+const outlineColors = (
+  unselectedBorder: string,
+  selection: Record<string, string>,
+) => ({
   vars: {
     [bg]: vars.color.bg.layerDefault,
     [border]: unselectedBorder,
-    [selectedBg]: vars.color.bg.brandWeak,
-    [selectedBgHover]: vars.color.bg.brandWeakHover,
-    [selectedBgPressed]: vars.color.bg.brandWeakPressed,
-    [selectedFg]: vars.color.fg.brand,
-    [selectedFgPressed]: vars.color.fg.brandPressed,
-    [selectedBorder]: vars.color.stroke.brandSolid,
-    [disabledBorder]: vars.color.fg.disabled,
+    ...selection,
+    [selectedBorder]: vars.color.stroke.neutralContrast,
+    [disabledBorder]: vars.color.stroke.neutralWeak,
   },
 });
 
@@ -127,17 +142,16 @@ export const root = recipe({
         vars: {
           [bg]: vars.color.bg.neutralWeak,
           [border]: "transparent",
-          [selectedBg]: vars.color.bg.brandSolid,
-          [selectedBgHover]: vars.color.bg.brandSolidHover,
-          [selectedBgPressed]: vars.color.bg.brandSolidPressed,
-          [selectedFg]: vars.color.fg.onBrandSolid,
-          [selectedFgPressed]: vars.color.fg.onBrandSolid,
+          ...invertedSelection,
           [selectedBorder]: "transparent",
           [disabledBorder]: "transparent",
         },
       },
-      outlineStrong: outlineColors(vars.color.stroke.neutralStrong),
-      outlineWeak: outlineColors(vars.color.stroke.neutralMuted),
+      outlineStrong: outlineColors(
+        vars.color.stroke.neutralStrong,
+        invertedSelection,
+      ),
+      outlineWeak: outlineColors(vars.color.stroke.neutralMuted, weakSelection),
     },
     // textStyles.labelDefault는 14/19뿐이라 large(16/22)를 담지 못해서 글자 토큰을 size마다 채워요.
     size: {
@@ -212,7 +226,6 @@ export const surface = style({
   selectors: {
     [`${pressed} &`]: {
       background: bgPressed,
-      color: fgPressed,
       transform: `scale(calc(1 - ${vars.press.maxReduction}))`,
       transitionDuration: vars.duration.springRapid,
     },
@@ -227,6 +240,24 @@ export const surface = style({
     "(prefers-reduced-motion: reduce)": {
       selectors: {
         [`${pressed} &`]: { transform: "none" },
+      },
+    },
+    // 고대비 모드는 배경과 그림자를 지워서 선택이 사라져요. 선택만 시스템 강조 색으로 직접 그려요.
+    "(forced-colors: active)": {
+      selectors: {
+        [`${rootBase}${selectedSelector} &`]: {
+          forcedColorAdjust: "none",
+          background: "Highlight",
+          color: "HighlightText",
+          borderColor: "Highlight",
+          boxShadow: "none",
+        },
+        [`${rootBase}${selectedSelector}${disabledSelector} &`]: {
+          background: "Canvas",
+          color: "GrayText",
+          borderColor: "GrayText",
+          boxShadow: `inset 0 0 0 ${borderWidth} GrayText`,
+        },
       },
     },
   },
@@ -253,17 +284,6 @@ export const icon = style({
 
 // 아이콘 라이브러리마다 기본 크기가 달라서 자리에 맞춰 늘이거나 줄여요.
 globalStyle(`${icon} > svg`, { width: "100%", height: "100%" });
-
-// 선택 전에도 자리는 남겨서 눌러도 너비가 그대로예요(Figma Selection indicator slot).
-export const indicator = style([
-  icon,
-  {
-    visibility: "hidden",
-    selectors: {
-      [`${rootBase}${selectedSelector} &`]: { visibility: "visible" },
-    },
-  },
-]);
 
 export const label = style({
   minWidth: 0,

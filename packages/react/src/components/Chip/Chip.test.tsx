@@ -1,12 +1,21 @@
 import { createRef, useState } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { page, userEvent } from "vitest/browser";
+import { cdp, page, userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
 
 import { ChipButton, ChipToggle } from "./Chip";
 
 // 이름이 붙은 아이콘을 넣어도 칩 이름은 글자만 남아야 해요.
 const namedIcon = <svg role="img" aria-label="별" />;
+
+// 선택 색과 테두리는 버튼 안의 겉면이 그려요.
+const surfaceStyle = (chip: Element) => {
+  const surface = chip.firstElementChild;
+  if (!surface) {
+    throw new Error("겉면을 찾지 못했어요.");
+  }
+  return getComputedStyle(surface);
+};
 
 describe("ChipButton", () => {
   it("글자를 이름으로 읽어요", async () => {
@@ -147,7 +156,7 @@ describe("ChipToggle", () => {
   });
 
   it("선택 전후 너비가 같아요", async () => {
-    // 체크 자리를 늘 남기고 2px 테두리는 그림자로 더해서 옆 칩이 밀리지 않아요.
+    // 2px 테두리는 그림자로 더해서 옆 칩이 밀리지 않아요.
     await render(
       <ChipToggle variant="outlineStrong" prefixIcon={namedIcon}>
         무료 배송
@@ -162,7 +171,7 @@ describe("ChipToggle", () => {
     expect(toggle.element().getBoundingClientRect().width).toBe(before);
   });
 
-  it("체크와 앞 아이콘은 스크린리더가 읽지 않아요", async () => {
+  it("앞 아이콘은 선택해도 스크린리더가 읽지 않아요", async () => {
     await render(
       <ChipToggle defaultPressed prefixIcon={namedIcon}>
         무료 배송
@@ -177,25 +186,53 @@ describe("ChipToggle", () => {
   });
 
   it("disabled면 바뀌지 않고 선택 표시는 남아요", async () => {
+    // 비활성 배경은 선택과 상관없이 같아서 solid도 2px 테두리로 선택을 남겨요.
     await render(
-      <ChipToggle defaultPressed disabled>
-        무료 배송
-      </ChipToggle>,
+      <>
+        <ChipToggle variant="solid" defaultPressed disabled>
+          무료 배송
+        </ChipToggle>
+        <ChipToggle variant="solid" disabled>
+          오늘 출발
+        </ChipToggle>
+      </>,
     );
-    const toggle = page.getByRole("button");
+    const selected = page.getByRole("button", { name: "무료 배송" });
+    const unselected = page.getByRole("button", { name: "오늘 출발" });
 
-    await toggle.click({ force: true });
-    await expect.element(toggle).toHaveAttribute("aria-pressed", "true");
-
-    // 체크 자리는 선택 전에도 있어서 보이는지는 계산된 스타일로 봐요.
-    const checkSlot = toggle.element().querySelector("svg")?.parentElement;
-    if (!checkSlot) {
-      throw new Error("체크를 찾지 못했어요.");
-    }
-    expect(getComputedStyle(checkSlot).visibility).toBe("visible");
+    await selected.click({ force: true });
+    await expect.element(selected).toHaveAttribute("aria-pressed", "true");
+    expect(surfaceStyle(selected.element()).boxShadow).not.toBe(
+      surfaceStyle(unselected.element()).boxShadow,
+    );
 
     await userEvent.tab();
-    await expect.element(toggle).not.toHaveFocus();
+    await expect.element(selected).not.toHaveFocus();
+  });
+
+  it("고대비 모드에서도 선택이 보여요", async () => {
+    // 고대비 모드는 배경과 그림자를 지워서 따로 그린 시스템 색이 남는지 봐요.
+    await cdp().send("Emulation.setEmulatedMedia", {
+      features: [{ name: "forced-colors", value: "active" }],
+    });
+    try {
+      await render(
+        <>
+          <ChipToggle defaultPressed>무료 배송</ChipToggle>
+          <ChipToggle>오늘 출발</ChipToggle>
+        </>,
+      );
+      const selected = page.getByRole("button", { name: "무료 배송" });
+      const unselected = page.getByRole("button", { name: "오늘 출발" });
+      await expect.element(selected).toHaveAttribute("aria-pressed", "true");
+
+      expect(matchMedia("(forced-colors: active)").matches).toBe(true);
+      expect(surfaceStyle(selected.element()).backgroundColor).not.toBe(
+        surfaceStyle(unselected.element()).backgroundColor,
+      );
+    } finally {
+      await cdp().send("Emulation.setEmulatedMedia", { features: [] });
+    }
   });
 
   it("className을 넘겨도 원래 스타일이 남고 ref를 전달해요", async () => {

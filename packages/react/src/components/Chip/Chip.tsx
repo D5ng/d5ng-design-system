@@ -1,5 +1,4 @@
 import { clsx } from "clsx";
-import { Check } from "lucide-react";
 import { Toggle } from "radix-ui";
 import type { ComponentProps, ReactNode } from "react";
 
@@ -10,7 +9,7 @@ type ChipAppearanceProps = {
   /** 칩 글자예요. 칩 이름으로 읽혀요. 길면 칩 안에서 줄바꿈돼요. */
   children: ReactNode;
   /**
-   * 모양이에요. 선택하면 `solid`는 배경이 채워지고, outline 두 가지는 테두리가 굵어져요. 미선택 테두리는 `outlineStrong`이 더 진해요.
+   * 모양이에요. 선택하면 `solid`·`outlineStrong`은 배경이 반전되고, `outlineWeak`는 테두리가 굵어져요. 미선택 테두리는 `outlineStrong`이 더 진해요.
    * @default outlineWeak
    */
   variant?: styles.RootVariants["variant"];
@@ -61,10 +60,7 @@ export type ChipToggleProps = Omit<
     disabled?: boolean;
   };
 
-type ChipSurfaceProps = Pick<ChipAppearanceProps, "children" | "prefixIcon"> & {
-  // Figma의 Show indicator예요. 선택이 있는 부품만 켜요.
-  showIndicator: boolean;
-};
+type ChipSurfaceProps = Pick<ChipAppearanceProps, "children" | "prefixIcon">;
 
 // ---- ChipButton
 
@@ -92,9 +88,7 @@ export function ChipButton({
       className={clsx(styles.root({ variant, size }), className)}
       disabled={disabled}
     >
-      <ChipSurface prefixIcon={prefixIcon} showIndicator={false}>
-        {children}
-      </ChipSurface>
+      <ChipSurface prefixIcon={prefixIcon}>{children}</ChipSurface>
     </button>
   );
 }
@@ -104,9 +98,9 @@ export function ChipButton({
 /**
  * 누를 때마다 선택과 해제가 바뀌는 칩이에요. 필터처럼 항목마다 따로 켜고 끌 때 써요.
  *
- * 선택하면 끝에 체크가 보여요. 체크 자리는 늘 남아서 눌러도 너비가 그대로예요.
+ * 선택하면 배경이 반전되거나 테두리가 굵어지고, 너비는 그대로예요. 체크는 없어요.
  *
- * Figma의 `Selected`는 `pressed`예요. `Show indicator`는 이 부품에서 늘 켜져 있어요.
+ * Figma의 `Selected`는 `pressed`예요.
  */
 export function ChipToggle({
   variant,
@@ -121,20 +115,14 @@ export function ChipToggle({
       {...toggleProps}
       className={clsx(styles.root({ variant, size }), className)}
     >
-      <ChipSurface prefixIcon={prefixIcon} showIndicator>
-        {children}
-      </ChipSurface>
+      <ChipSurface prefixIcon={prefixIcon}>{children}</ChipSurface>
     </Toggle.Root>
   );
 }
 
 // ---- ChipSurface
 
-function ChipSurface({
-  prefixIcon,
-  showIndicator,
-  children,
-}: ChipSurfaceProps) {
+function ChipSurface({ prefixIcon, children }: ChipSurfaceProps) {
   return (
     <span className={styles.surface}>
       {prefixIcon ? (
@@ -143,11 +131,6 @@ function ChipSurface({
         </span>
       ) : null}
       <span className={styles.label}>{children}</span>
-      {showIndicator ? (
-        <span className={styles.indicator} aria-hidden>
-          <Check />
-        </span>
-      ) : null}
     </span>
   );
 }
