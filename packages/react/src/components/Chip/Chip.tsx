@@ -12,12 +12,12 @@ type ChipAppearanceProps = {
    * 모양이에요. 선택하면 `solid`·`outlineStrong`은 배경이 반전되고, `outlineWeak`는 테두리가 굵어져요. 미선택 테두리는 `outlineStrong`이 더 진해요.
    * @default outlineWeak
    */
-  variant?: styles.RootVariants["variant"];
+  variant?: styles.ShapeVariants["variant"];
   /**
    * 겉면 높이와 글자 크기예요. 누르는 영역은 크기와 상관없이 44×44px 이상이에요.
    * @default medium
    */
-  size?: styles.RootVariants["size"];
+  size?: styles.ShapeVariants["size"];
   /** 글자 앞에 두는 아이콘이에요. 스크린리더는 읽지 않아요. */
   prefixIcon?: ReactNode;
 };
@@ -85,7 +85,11 @@ export function ChipButton({
       // 스타일은 Radix Toggle과 같은 속성을 봐요.
       data-disabled={disabled ? "" : undefined}
       {...buttonProps}
-      className={clsx(styles.root({ variant, size }), className)}
+      className={clsx(
+        styles.button,
+        styles.shape({ variant, size }),
+        className,
+      )}
       disabled={disabled}
     >
       <ChipSurface prefixIcon={prefixIcon}>{children}</ChipSurface>
@@ -113,7 +117,11 @@ export function ChipToggle({
   return (
     <Toggle.Root
       {...toggleProps}
-      className={clsx(styles.root({ variant, size }), className)}
+      className={clsx(
+        styles.button,
+        styles.shape({ variant, size }),
+        className,
+      )}
     >
       <ChipSurface prefixIcon={prefixIcon}>{children}</ChipSurface>
     </Toggle.Root>
@@ -122,7 +130,8 @@ export function ChipToggle({
 
 // ---- ChipSurface
 
-function ChipSurface({ prefixIcon, children }: ChipSurfaceProps) {
+// ChipRadioGroupItem도 같은 겉면을 그려서 파일 밖에 내보내요. 패키지 export에는 넣지 않아요.
+export function ChipSurface({ prefixIcon, children }: ChipSurfaceProps) {
   return (
     <span className={styles.surface}>
       {prefixIcon ? (

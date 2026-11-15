@@ -15,7 +15,10 @@ import {
   Checkbox,
   CheckboxGroup,
   ChipButton,
+  ChipRadioGroup,
+  ChipRadioGroupItem,
   ChipToggle,
+  ChipToggleGroup,
   Dialog,
   DialogBody,
   DialogCancel,
@@ -248,6 +251,22 @@ export default function Page() {
           품절 제외
         </ChipToggle>
       </p>
+      {/* variant·size는 그룹이 CSS 변수로 내려서 두 부품 모두 서버에서 렌더해요. */}
+      <ChipRadioGroup label="상태" variant="solid" defaultValue="all">
+        <ChipRadioGroupItem value="all">전체</ChipRadioGroupItem>
+        <ChipRadioGroupItem value="open">진행 중</ChipRadioGroupItem>
+        <ChipRadioGroupItem value="done" disabled>
+          완료
+        </ChipRadioGroupItem>
+      </ChipRadioGroup>
+      {/* disabled는 fieldset이 칩을 막아서 따로 렌더해요. */}
+      <ChipToggleGroup label="배송">
+        <ChipToggle defaultPressed>무료 배송</ChipToggle>
+        <ChipToggle>오늘 출발</ChipToggle>
+      </ChipToggleGroup>
+      <ChipToggleGroup label="지난 필터" disabled>
+        <ChipToggle defaultPressed>품절 제외</ChipToggle>
+      </ChipToggleGroup>
       <Badge>대기 중</Badge>
       {/* prefixIcon은 서버 컴포넌트가 만든 요소를 그대로 넘겨요. */}
       <Badge

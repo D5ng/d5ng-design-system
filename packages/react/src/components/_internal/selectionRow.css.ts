@@ -1,7 +1,7 @@
 import { vars } from "@d5ng/tokens";
 import { style } from "@vanilla-extract/css";
 
-// 표시(버튼)가 비활성인지 봐요. 세 컴포넌트가 버튼 규칙에도 이 선택자를 써요.
+// 표시(버튼)가 비활성인지 봐요. 세 컴포넌트와 줄이 없는 Chip도 버튼 규칙에 이 선택자를 써요.
 // Radix는 자기 disabled일 때만 data-disabled를 붙여서, 비활성 fieldset이 막은 버튼은 :disabled로만 보여요.
 export const selectionControlDisabled = ":is([data-disabled], :disabled)";
 // 표시가 비활성이면 줄도 비활성으로 봐요.

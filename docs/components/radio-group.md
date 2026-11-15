@@ -33,6 +33,7 @@
 - **항목에는 invalid 모양이 없어요**: Figma Radio에 오류 상태가 없고, 오류는 그룹의 선택 조건이라 Field 문구가 알려요. `invalid`는 그룹에 `aria-invalid`만 붙여요
 - **줄 스타일은 Checkbox·Switch와 같은 `_internal/selectionRow.css.ts`를 써요**: 여백 8px, 첫 줄 맞춤, 눌림·hover·비활성 선택자가 같아요. 최소 높이(`radio/min-target-height`, 44px)와 열 구성은 Radio가 정해요
   - 비활성은 `data-disabled`와 `:disabled`를 함께 봐서 비활성 fieldset 안에서도 비활성으로 보여요([checkbox-group.md](checkbox-group.md))
+- **숨은 input을 마크 위에 겹치는 칸은 `_internal/radioInput.css.ts`예요**: ChipRadioGroup도 같은 Radix 동작을 피해서 함께 써요([chip.md](chip.md))
 - **비활성 상태는 배경 변수 셋(기본·hover·눌림)을 같은 값으로 채워요**: hover·눌림 선택자에서 비활성을 빼면 줄이 줄지만 Checkbox와 방식이 달라져요(FF C2, 2026-11-13 반영 안 함)
 
 ## 뺀 것
