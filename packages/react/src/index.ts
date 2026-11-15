@@ -68,6 +68,8 @@ export {
   DialogTitle,
   DialogTrigger,
 } from "./components/Dialog";
+export type { DividerProps } from "./components/Divider";
+export { Divider } from "./components/Divider";
 export type { FieldControlProps, FieldProps } from "./components/Field";
 export { Field } from "./components/Field";
 export type { IconButtonProps } from "./components/IconButton";
