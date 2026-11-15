@@ -1,4 +1,5 @@
 import {
+  ActionableCallout,
   AlertDialog,
   AlertDialogAction,
   AlertDialogActions,
@@ -10,6 +11,7 @@ import {
   AlertDialogTrigger,
   Badge,
   Button,
+  Callout,
   Checkbox,
   CheckboxGroup,
   ChipButton,
@@ -25,6 +27,7 @@ import {
   DialogSubmit,
   DialogTitle,
   DialogTrigger,
+  DismissibleCallout,
   Field,
   IconButton,
   Link,
@@ -247,6 +250,21 @@ export default function Page() {
       >
         완료
       </Badge>
+      <Callout tone="informative" title="안내">
+        변경한 설정은 다음 접속부터 적용돼요.{" "}
+        <Link href="https://github.com/D5ng/d5ng-design-system">
+          설정 가이드 보기
+        </Link>
+      </Callout>
+      {/* asChild는 Slot으로 자식에 그려서 따로 렌더해요. */}
+      <ActionableCallout title="안내">알림 설정을 켜 주세요.</ActionableCallout>
+      <ActionableCallout asChild tone="warning" title="주의">
+        <NextLink href="/client">저장하지 않은 글이 있어요.</NextLink>
+      </ActionableCallout>
+      {/* 닫기 상태를 안에서 가져서 클라이언트 컴포넌트예요. 서버에서는 열린 채로 그려요. */}
+      <DismissibleCallout tone="positive" title="완료">
+        새 편집기는 자동으로 저장돼요.
+      </DismissibleCallout>
     </main>
   );
 }
