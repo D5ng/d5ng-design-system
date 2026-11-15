@@ -16,7 +16,7 @@
 - **`value`나 `defaultValue` 중 하나는 꼭 받아요(타입)**: Radix는 둘 다 없으면 빈 값으로 시작해서 아무 탭도 고르지 않고 패널도 비어요. Figma는 "한 번에 하나 선택"이에요
 - **`TabsList`는 `aria-label`이나 `aria-labelledby` 중 하나를 꼭 받아요(타입)**: Figma Accessibility가 목록 이름을 계약으로 적었고 Radix는 붙여 주지 않아요. IconButton의 `aria-label` 필수와 같은 방식이에요
 - **`size`·`layout`은 `TabsList`에 있어요**: 모양만 바꾸는 값이라 그리는 부품에 두고, Root는 선택 상태만 가져요(Montage와 같음). 탭에는 CSS 변수로 내려서 context 없이 `TabsTrigger`가 서버 컴포넌트로 남아요(RadioGroup과 같은 방식)
-  - `size`는 `small`·`medium`, 기본 `medium`이에요. Figma·SEED 기본은 Small이지만 우리 컴포넌트는 모두 `medium`이 기본이고, Medium 44px가 Foundation 조작 영역과 맞아요
+  - `size`는 `small`·`medium`, 기본 `medium`이에요. Figma·SEED 기본은 Small이었지만 우리 컴포넌트는 모두 `medium`이 기본이고, Medium 44px가 Foundation 조작 영역과 맞아요. Figma 세트의 기본 variant도 medium으로 옮겼어요
   - `layout`은 `fill`·`hug`, 기본 `fill`이에요. 이름은 Figma 문서 제목을 따랐어요(SEED `triggerLayout`, Montage `resize`)
 - **선택선은 탭 사이를 미끄러져요(D1)**: Figma가 `duration/normal`과 시연 프레임으로 정했어요. Radix에 선택선이 없어서 `TabsList`가 선택한 탭의 위치·너비를 재요. 모션 줄이기에서는 바로 옮겨요
   - `"use client"`는 `TabsList.tsx`에만 있어요. Radix 선택 상태를 따로 갖지 않으려고 탭의 `data-state`를 MutationObserver로 보고, 탭 너비 변화는 ResizeObserver로 봐요
@@ -36,6 +36,11 @@
 - **선택한 탭이 비활성이면 선택선도 `fg/disabled`예요**: Figma Selected=True·Disabled 그대로예요. 선택한 탭을 막으려면 먼저 다른 탭으로 선택을 옮겨야 해서 `disabled` JSDoc에 적었어요
 - **구분선은 목록의 안쪽 그림자(`inset 0 -1px`)예요**: Figma Base divider가 탭보다 아래 층이라 hover 배경이 덮어요. 스크롤해도 보이는 폭 전체에 남아요
 - **최소 높이(40·44px)와 선택선(2px)·구분선(1px) 두께는 숫자예요**: Figma에도 변수가 없어요
+- **Figma 속성과의 대응**
+  - 세트의 Fill·Hug(`TabItem/Line/*`·`Tabs/Line/*`)는 `TabsList`의 `layout`, `size`는 `size`, `Label`은 `TabsTrigger`의 `children`이에요
+  - `Selected`는 `Tabs`의 `value`(또는 `defaultValue`)가 고른 탭이고, `Count`는 `TabsTrigger` 개수예요
+  - `State=Disabled`는 `TabsTrigger`의 `disabled`예요. `State`의 Hover·Pressed와 `Focus visible`은 브라우저 상태예요(Figma 표시용)
+  - `Notification`은 아직 코드에 없어요(아래 "뺀 것")
 
 ## 뺀 것
 
