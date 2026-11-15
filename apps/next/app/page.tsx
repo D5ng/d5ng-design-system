@@ -12,6 +12,17 @@ import {
   Button,
   Checkbox,
   CheckboxGroup,
+  Dialog,
+  DialogBody,
+  DialogCancel,
+  DialogCloseButton,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogSubmit,
+  DialogTitle,
+  DialogTrigger,
   Field,
   IconButton,
   Link,
@@ -66,6 +77,42 @@ export default function Page() {
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialog>
+      {/* 서버에서는 함수를 못 넘겨서 onInteractOutside 없이 써요. 입력 Dialog는 쓰는 쪽 클라이언트 컴포넌트에서 막아요. */}
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="secondary">이름 바꾸기</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>이름 바꾸기</DialogTitle>
+            <DialogDescription>바꾼 이름은 바로 보여요.</DialogDescription>
+          </DialogHeader>
+          <DialogBody>
+            <form id="rename">
+              <TextField label="프로젝트 이름" name="projectName" />
+            </form>
+          </DialogBody>
+          <DialogFooter>
+            <DialogCancel>취소</DialogCancel>
+            <DialogSubmit form="rename" loading>
+              저장
+            </DialogSubmit>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      {/* 닫기 버튼과 large는 Footer 있는 Dialog와 다른 부품·클래스라 따로 렌더해요. */}
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="secondary">요금 안내</Button>
+        </DialogTrigger>
+        <DialogContent size="large">
+          <DialogHeader>
+            <DialogTitle>요금 안내</DialogTitle>
+            <DialogCloseButton />
+          </DialogHeader>
+          <DialogBody>기본 요금은 월 9,900원이에요.</DialogBody>
+        </DialogContent>
+      </Dialog>
       <Field
         label="별명"
         description="다른 사람에게 보이는 이름이에요."
