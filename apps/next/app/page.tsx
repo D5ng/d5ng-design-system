@@ -12,6 +12,8 @@ import {
   Button,
   Checkbox,
   CheckboxGroup,
+  ChipButton,
+  ChipToggle,
   Dialog,
   DialogBody,
   DialogCancel,
@@ -225,6 +227,20 @@ export default function Page() {
         <Divider orientation="vertical" tone="muted" decorative />
         <span>2026년 11월 14일</span>
       </div>
+      <p>
+        <ChipButton variant="solid">인기 검색어</ChipButton>
+        <ChipButton variant="outlineStrong">최근 검색어</ChipButton>
+        <ChipButton>추천 검색어</ChipButton>
+        <ChipButton disabled>지금은 못 눌러요</ChipButton>
+      </p>
+      {/* 선택 상태는 Radix Toggle이 가져서 defaultPressed로 첫 화면을 따로 렌더해요. */}
+      <p>
+        <ChipToggle>무료 배송</ChipToggle>
+        <ChipToggle defaultPressed>오늘 출발</ChipToggle>
+        <ChipToggle variant="solid" defaultPressed disabled>
+          품절 제외
+        </ChipToggle>
+      </p>
       <Badge>대기 중</Badge>
       {/* prefixIcon은 서버 컴포넌트가 만든 요소를 그대로 넘겨요. */}
       <Badge
