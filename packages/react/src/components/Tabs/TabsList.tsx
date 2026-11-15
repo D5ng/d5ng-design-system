@@ -13,6 +13,7 @@ import {
 import * as styles from "./Tabs.css";
 
 // Radix 선택 상태를 따로 갖지 않으려고 탭 버튼의 속성을 읽어요.
+// Tabs.css.ts의 activeTabSelector와 같은 범위(목록 안 어디든)예요. 한쪽을 바꾸면 같이 바꿔요.
 const ACTIVE_TAB_SELECTOR = '[role="tab"][data-state="active"]';
 const TAB_SELECTOR = '[role="tab"]';
 
@@ -66,7 +67,8 @@ export function TabsList({
   ...listProps
 }: TabsListProps) {
   const indicatorRef = useRef<HTMLSpanElement>(null);
-  const indicatorRect = useActiveTab(indicatorRef);
+  const indicatorRect = useIndicatorRect(indicatorRef);
+  useScrollToActiveTab(indicatorRef);
 
   return (
     <TabsPrimitive.List
@@ -93,9 +95,11 @@ export function TabsList({
   );
 }
 
-// 선택한 탭의 위치·너비를 재고, 선택이 바뀌면 그 탭이 보이게 목록만 가로로 스크롤해요.
-// 쓰는 쪽 ref와 합치지 않으려고 선택선의 부모로 목록을 찾아요.
-function useActiveTab(indicatorRef: RefObject<HTMLSpanElement | null>) {
+// 두 hook은 쓰는 쪽 ref와 합치지 않으려고 선택선의 부모로 목록을 찾아요.
+// 선택선은 크기가 바뀔 때마다, 스크롤은 선택이 바뀔 때만 움직여서 따로 지켜봐요.
+
+// 선택한 탭의 위치·너비를 재요.
+function useIndicatorRect(indicatorRef: RefObject<HTMLSpanElement | null>) {
   const [rect, setRect] = useState<IndicatorRect | null>(null);
 
   // 그리기 전에 재서 처음 선택선이 엉뚱한 자리에서 날아오지 않아요.
@@ -105,39 +109,16 @@ function useActiveTab(indicatorRef: RefObject<HTMLSpanElement | null>) {
       return;
     }
 
-    // 목록 안 좌표예요. 스크롤해도 바뀌지 않아서 선택선 위치와 스크롤 목표에 같이 써요.
-    const boxOf = (tab: HTMLElement) => {
-      const listBox = list.getBoundingClientRect();
-      const tabBox = tab.getBoundingClientRect();
-      return {
-        left: tabBox.left - listBox.left - list.clientLeft + list.scrollLeft,
-        width: tabBox.width,
-      };
-    };
-
     const measure = () => {
       const tab = list.querySelector<HTMLElement>(ACTIVE_TAB_SELECTOR);
       if (!tab) {
         setRect(null);
-        return null;
+        return;
       }
-      const { left, width } = boxOf(tab);
+      const { left, width } = tabBoxInList(list, tab);
       setRect((prev) =>
         prev?.left === left && prev.width === width ? prev : { left, width },
       );
-      return tab;
-    };
-
-    // scrollIntoView는 페이지까지 움직여서 목록의 scrollLeft만 바꿔요.
-    const scrollToTab = (tab: HTMLElement, behavior?: ScrollBehavior) => {
-      const { left, width } = boxOf(tab);
-      const viewStart = list.scrollLeft;
-      const viewEnd = viewStart + list.clientWidth;
-      if (left < viewStart) {
-        list.scrollTo({ left, behavior });
-      } else if (left + width > viewEnd) {
-        list.scrollTo({ left: left + width - list.clientWidth, behavior });
-      }
     };
 
     // 라벨이 바뀌거나 글꼴이 늦게 들어와 탭 너비가 바뀌어도 선택선이 따라가요.
@@ -152,25 +133,15 @@ function useActiveTab(indicatorRef: RefObject<HTMLSpanElement | null>) {
       }
     };
 
-    let activeTab = measure();
-    // 처음에는 바로 옮겨요. 화면을 열자마자 목록이 움직이면 어지러워요.
-    if (activeTab) {
-      scrollToTab(activeTab, "instant");
-    }
-    observeTabs();
-
     const mutationObserver = new MutationObserver((records) => {
       if (records.some((record) => record.type === "childList")) {
         observeTabs();
       }
-      const tab = measure();
-      // 선택이 바뀔 때만 옮겨요. 크기만 바뀔 때 옮기면 사용자가 넘겨 둔 스크롤을 되돌려요.
-      // 움직임은 목록 CSS의 scroll-behavior가 정해서 모션 줄이기에서는 바로 옮겨요.
-      if (tab && tab !== activeTab) {
-        scrollToTab(tab);
-      }
-      activeTab = tab;
+      measure();
     });
+
+    measure();
+    observeTabs();
     mutationObserver.observe(list, {
       subtree: true,
       childList: true,
@@ -184,4 +155,61 @@ function useActiveTab(indicatorRef: RefObject<HTMLSpanElement | null>) {
   }, [indicatorRef]);
 
   return rect;
+}
+
+// 선택이 바뀌면 그 탭이 보이게 목록만 가로로 스크롤해요.
+// scrollIntoView는 페이지까지 움직여서 목록의 scrollLeft만 바꿔요.
+function useScrollToActiveTab(indicatorRef: RefObject<HTMLSpanElement | null>) {
+  useLayoutEffect(() => {
+    const list = indicatorRef.current?.parentElement;
+    if (!list) {
+      return;
+    }
+
+    const scrollToTab = (tab: HTMLElement, behavior?: ScrollBehavior) => {
+      const { left, width } = tabBoxInList(list, tab);
+      const viewStart = list.scrollLeft;
+      const viewEnd = viewStart + list.clientWidth;
+      if (left < viewStart) {
+        list.scrollTo({ left, behavior });
+      } else if (left + width > viewEnd) {
+        list.scrollTo({ left: left + width - list.clientWidth, behavior });
+      }
+    };
+
+    let activeTab = list.querySelector<HTMLElement>(ACTIVE_TAB_SELECTOR);
+    // 처음에는 바로 옮겨요. 화면을 열자마자 목록이 움직이면 어지러워요.
+    if (activeTab) {
+      scrollToTab(activeTab, "instant");
+    }
+
+    const mutationObserver = new MutationObserver(() => {
+      const tab = list.querySelector<HTMLElement>(ACTIVE_TAB_SELECTOR);
+      // 크기만 바뀔 때 옮기면 사용자가 넘겨 둔 스크롤을 되돌려서 선택이 바뀔 때만 옮겨요.
+      // 움직임은 목록 CSS의 scroll-behavior가 정해서 모션 줄이기에서는 바로 옮겨요.
+      if (tab && tab !== activeTab) {
+        scrollToTab(tab);
+      }
+      activeTab = tab;
+    });
+    mutationObserver.observe(list, {
+      subtree: true,
+      childList: true,
+      attributeFilter: ["data-state"],
+    });
+
+    return () => {
+      mutationObserver.disconnect();
+    };
+  }, [indicatorRef]);
+}
+
+// 목록 안 좌표예요. 스크롤해도 바뀌지 않아서 선택선 위치와 스크롤 목표에 같이 써요.
+function tabBoxInList(list: HTMLElement, tab: HTMLElement) {
+  const listBox = list.getBoundingClientRect();
+  const tabBox = tab.getBoundingClientRect();
+  return {
+    left: tabBox.left - listBox.left - list.clientLeft + list.scrollLeft,
+    width: tabBox.width,
+  };
 }

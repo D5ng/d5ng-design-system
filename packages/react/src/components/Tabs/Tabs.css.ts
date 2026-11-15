@@ -6,6 +6,9 @@ import { focusRing, focusRingInset } from "../_internal/focusRing.css";
 
 // 상태 선택자는 한 곳에서만 정해요. Radix가 탭 버튼에 붙이는 속성을 봐요.
 const activeSelector = '[data-state="active"]';
+// 목록에서 선택한 탭을 찾아요. 탭을 감싸도 찾게 자손으로 봐요.
+// TabsList.tsx의 ACTIVE_TAB_SELECTOR와 같은 범위예요. 한쪽을 바꾸면 같이 바꿔요.
+const activeTabSelector = `[role="tab"]${activeSelector}`;
 // Radix는 자기 disabled일 때만 data-disabled를 붙여서, 비활성 fieldset이 막은 버튼은 :disabled로 봐요.
 const disabledSelector = ":is([data-disabled], :disabled)";
 
@@ -45,7 +48,7 @@ export const list = recipe({
     },
     selectors: {
       // Figma는 선택한 탭이 비활성이면 선택선도 흐리게 그려요.
-      [`&:has(> ${activeSelector}${disabledSelector})`]: {
+      [`&:has(${activeTabSelector}${disabledSelector})`]: {
         vars: { [indicatorColor]: vars.color.fg.disabled },
       },
     },

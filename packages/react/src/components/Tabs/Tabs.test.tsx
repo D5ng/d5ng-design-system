@@ -337,6 +337,26 @@ describe("Tabs", () => {
     );
   });
 
+  it("선택한 탭이 비활성이면 선택선도 비활성 색이에요(탭을 감싸도 같아요)", async () => {
+    await render(
+      <Tabs defaultValue="delivery">
+        <TabsList aria-label="주문 정보">
+          <TabsTrigger value="overview">개요</TabsTrigger>
+          <span>
+            <TabsTrigger value="delivery" disabled>
+              배송
+            </TabsTrigger>
+          </span>
+        </TabsList>
+      </Tabs>,
+    );
+    const delivery = page.getByRole("tab", { name: "배송" }).element();
+
+    expect(getComputedStyle(getIndicator()).backgroundColor).toBe(
+      getComputedStyle(delivery).color,
+    );
+  });
+
   it("라벨이 바뀌어 탭 너비가 달라지면 선택선도 따라가요", async () => {
     const { rerender } = await render(<LabelTabs label="배송" />);
     const indicator = getIndicator();
