@@ -24,13 +24,13 @@ function OrderTabs(tabsProps: TabsProps) {
 }
 
 const MENU = [
-  "전체",
-  "주문 내역",
-  "배송 조회",
-  "교환 신청",
-  "반품 신청",
-  "환불 내역",
-  "1:1 문의",
+  { value: "all", label: "전체" },
+  { value: "orders", label: "주문 내역" },
+  { value: "tracking", label: "배송 조회" },
+  { value: "exchange", label: "교환 신청" },
+  { value: "return", label: "반품 신청" },
+  { value: "refund", label: "환불 내역" },
+  { value: "inquiry", label: "1:1 문의" },
 ];
 
 // 좁은 폭에 hug 탭 일곱 개라 목록이 가로로 넘쳐요.
@@ -39,8 +39,8 @@ function MenuTabs(tabsProps: TabsProps) {
     <div style={{ width: 240 }}>
       <Tabs {...tabsProps}>
         <TabsList aria-label="주문 메뉴" layout="hug">
-          {MENU.map((label) => (
-            <TabsTrigger key={label} value={label}>
+          {MENU.map(({ value, label }) => (
+            <TabsTrigger key={value} value={value}>
               {label}
             </TabsTrigger>
           ))}
@@ -297,7 +297,7 @@ describe("Tabs", () => {
     await render(
       <>
         <div style={{ height: 3000 }} />
-        <MenuTabs defaultValue="1:1 문의" />
+        <MenuTabs defaultValue="inquiry" />
       </>,
     );
     const list = getList();
@@ -311,11 +311,11 @@ describe("Tabs", () => {
   });
 
   it("바깥에서 value를 바꿔도 스크롤이 선택한 탭을 따라가요", async () => {
-    const { rerender } = await render(<MenuTabs value="1:1 문의" />);
+    const { rerender } = await render(<MenuTabs value="inquiry" />);
     const list = getList();
     expect(list.scrollLeft).toBeGreaterThan(0);
 
-    await rerender(<MenuTabs value="전체" />);
+    await rerender(<MenuTabs value="all" />);
 
     await expect.poll(() => list.scrollLeft).toBe(0);
   });

@@ -21,13 +21,13 @@ const order = [
 ];
 
 const menu = [
-  "전체",
-  "주문 내역",
-  "배송 조회",
-  "교환 신청",
-  "반품 신청",
-  "환불 내역",
-  "1:1 문의",
+  { value: "all", label: "전체" },
+  { value: "orders", label: "주문 내역" },
+  { value: "tracking", label: "배송 조회" },
+  { value: "exchange", label: "교환 신청" },
+  { value: "return", label: "반품 신청" },
+  { value: "refund", label: "환불 내역" },
+  { value: "inquiry", label: "1:1 문의" },
 ];
 
 type OrderPartsProps = Pick<TabsListProps, "size" | "layout"> & {
@@ -121,14 +121,19 @@ export const Layout: Story = {
         <OrderParts layout="fill" />
       </Tabs>
       <div style={{ maxWidth: 320 }}>
-        <Tabs defaultValue="1:1 문의">
+        <Tabs defaultValue="inquiry">
           <TabsList aria-label="주문 메뉴" layout="hug">
-            {menu.map((label) => (
-              <TabsTrigger key={label} value={label}>
+            {menu.map(({ value, label }) => (
+              <TabsTrigger key={value} value={value}>
                 {label}
               </TabsTrigger>
             ))}
           </TabsList>
+          {menu.map(({ value, label }) => (
+            <TabsContent key={value} value={value} style={{ paddingTop: 16 }}>
+              {label} 화면이에요.
+            </TabsContent>
+          ))}
         </Tabs>
       </div>
     </div>

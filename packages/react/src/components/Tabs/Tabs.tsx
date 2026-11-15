@@ -45,7 +45,7 @@ export type TabsTriggerProps = Omit<
   ComponentProps<typeof TabsPrimitive.Trigger>,
   "asChild" | "value" | "disabled"
 > & {
-  /** 이 탭의 값이에요. 같은 `value`의 `TabsContent`를 보여 줘요. */
+  /** 이 탭의 값이에요. 같은 `value`의 `TabsContent`를 보여 줘요. 탭과 패널의 `id`에 들어가서 공백 없이 써요(예: `delivery`). */
   value: string;
   /**
    * 이 탭을 고를 수 없게 해요. 방향키 이동에서도 빠져요. 선택된 탭을 막으려면 먼저 다른 탭으로 선택을 옮겨요.
