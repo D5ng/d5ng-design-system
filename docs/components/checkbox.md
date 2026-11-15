@@ -21,7 +21,7 @@
 - **일부 선택은 `checked="indeterminate"`예요**: SEED·Montage는 boolean `indeterminate`를 따로 둬요. 값 하나로 받으면 선택과 일부 선택이 둘 다 켜진 조합이 생기지 않고, Radix가 이미 이 모양이라 짤 코드가 없어요. 일부 선택에서 누르면 `true`가 돼요
 - **prop 이름은 `size`·`variant`·`tone`·`labelWeight`예요**
   - `variant`는 `square`·`ghost`예요. Figma는 `Shape`지만 ghost는 모양이 아니라 강조 정도라 SEED·Button처럼 `variant`예요
-  - `tone`은 `neutral`·`brand`, 기본 `neutral`이에요. 중요도가 아니라 강조 색만 고르는 축이라 `/design-refs` 이름 규칙의 예외예요(Switch·Radio와 같아요)
+  - `tone`은 `neutral`·`brand`, 기본 `neutral`이에요. 중요도가 아니라 강조 색만 고르는 축이라 `/design-refs` 이름 규칙의 `tone`이에요(Switch·Radio와 같아요)
   - `labelWeight`는 `regular`·`semibold`예요. Figma `Weight=Bold`가 600(`font/weight/semibold`)에 묶여 있어서 Field처럼 토큰 이름을 써요. Figma 옵션도 `Semibold`로 바꿔요
   - `size`는 `medium`·`large`, 기본 `medium`이에요. 라벨과 상자가 함께 커져요
 - **눌림은 Button 규칙이에요**: `scale(1 − press.maxReduction)`(0.96)으로 줄고, 누를 때 `spring-rapid`(200ms), 뗄 때 `spring-quick`(350ms)이에요. 움직임 줄이기에서는 축소를 끄고 색만 바꿔요. Figma Spec의 2%·100/150ms는 Button을 정하기 전 Motion Foundation의 검토용 값이라 Figma를 고쳐요. 20px 상자에서 0.8px 차이예요

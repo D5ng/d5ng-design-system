@@ -22,12 +22,40 @@ export {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./components/AlertDialog";
+export type { BadgeProps } from "./components/Badge";
+export { Badge } from "./components/Badge";
 export type { ButtonProps } from "./components/Button";
 export { Button } from "./components/Button";
 export type { CheckboxProps } from "./components/Checkbox";
 export { Checkbox } from "./components/Checkbox";
 export type { CheckboxGroupProps } from "./components/CheckboxGroup";
 export { CheckboxGroup } from "./components/CheckboxGroup";
+export type {
+  DialogBodyProps,
+  DialogCancelProps,
+  DialogCloseButtonProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogProps,
+  DialogSubmitProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "./components/Dialog";
+export {
+  Dialog,
+  DialogBody,
+  DialogCancel,
+  DialogCloseButton,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogSubmit,
+  DialogTitle,
+  DialogTrigger,
+} from "./components/Dialog";
 export type { DividerProps } from "./components/Divider";
 export { Divider } from "./components/Divider";
 export type { FieldControlProps, FieldProps } from "./components/Field";
