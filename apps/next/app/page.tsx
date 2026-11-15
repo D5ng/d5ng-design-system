@@ -25,6 +25,7 @@ import {
   DialogSubmit,
   DialogTitle,
   DialogTrigger,
+  Divider,
   Field,
   IconButton,
   Link,
@@ -220,6 +221,12 @@ export default function Page() {
           <Checkbox name="pastTopics" value="pm" label="기획" defaultChecked />
         </CheckboxGroup>
       </form>
+      <Divider />
+      <div style={{ display: "flex", gap: 8 }}>
+        <span>d5ng</span>
+        <Divider orientation="vertical" tone="muted" decorative />
+        <span>2026년 11월 14일</span>
+      </div>
       <p>
         <ChipButton variant="solid">인기 검색어</ChipButton>
         <ChipButton variant="outlineStrong">최근 검색어</ChipButton>
