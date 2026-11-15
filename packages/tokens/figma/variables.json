@@ -3180,6 +3180,83 @@
               "alias": "Spacing:spacing/2"
             }
           }
+        },
+        {
+          "name": "chip/min-height/sm",
+          "type": "FLOAT",
+          "css": "chip-min-height-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 32
+          }
+        },
+        {
+          "name": "chip/min-height/md",
+          "type": "FLOAT",
+          "css": "chip-min-height-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 36
+          }
+        },
+        {
+          "name": "chip/min-height/lg",
+          "type": "FLOAT",
+          "css": "chip-min-height-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 40
+          }
+        },
+        {
+          "name": "chip/min-target-height",
+          "type": "FLOAT",
+          "css": "chip-min-target-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 44
+          }
+        },
+        {
+          "name": "chip/icon-size/sm",
+          "type": "FLOAT",
+          "css": "chip-icon-size-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 16
+          }
+        },
+        {
+          "name": "chip/icon-size/md",
+          "type": "FLOAT",
+          "css": "chip-icon-size-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 16
+          }
+        },
+        {
+          "name": "chip/icon-size/lg",
+          "type": "FLOAT",
+          "css": "chip-icon-size-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 20
+          }
         }
       ]
     },
@@ -4042,6 +4119,26 @@
       "bound": {
         "fontSize": "Typography:font/size/t6",
         "lineHeight": "Typography:font/line-height/t6"
+      }
+    },
+    {
+      "name": "Scale/t4/SemiBold",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "SemiBold",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 19
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t4",
+        "lineHeight": "Typography:font/line-height/t4",
+        "fontWeight": "Typography:font/weight/semibold"
       }
     }
   ],
