@@ -21,7 +21,7 @@
 | Alert Dialog       | `alert-dialog`                       | `feedback/alert`                   | 확인함(2026-11-09)                                             |
 | Snackbar           | `snackbar`                           | `feedback/snackbar`                | Montage는 `feedback/toast`도 있음                              |
 | Tabs               | `tabs`                               | `navigations/tab`                  |                                                                |
-| Badge              | `badge`                              | `contents/content-badge`           | 추정                                                           |
+| Badge              | `badge`                              | `contents/content-badge`           | 확인함(2026-11-14). Montage는 색을 토큰으로 직접 고름          |
 | Notification Badge | `notification-badge`                 | `feedback/push-badge`              | 추정                                                           |
 | Chip               | `chip`                               | `actions/chip`                     | Montage는 `selection-and-input/filter-button`도 있음           |
 | Link               | 없음                                 | 없음                               | 확인함(2026-11-09). Montage `text-button`은 버튼이라 대응 아님 |
