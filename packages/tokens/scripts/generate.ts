@@ -1,5 +1,5 @@
 // figma/variables.json으로 src/generated/의 CSS·TS 파일을 만들어요.
-// 이름은 Figma 코드 이름(code syntax)에 접두사만 붙여 쓰고, 이 스크립트는 값과 단위만 붙여요.
+// 이름은 Figma 코드 이름(code syntax)을 그대로 쓰고, 이 스크립트는 값과 단위만 붙여요.
 // 모르는 값이 나오면 추측하지 않고 실패해요. Figma가 바뀌면 여기서 먼저 알 수 있어요.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -36,7 +36,12 @@ const THEME_SELECTOR: Record<string, string> = {
   Light: ':root,\n[data-theme="light"]',
   Dark: '[data-theme="dark"]',
 };
-// 쓰는 쪽 CSS 변수(예: Tailwind의 --radius-md)와 겹치지 않게 모든 이름 앞에 붙여요.
+// 스크롤바, 폼 기본 모양, 자동 완성 배경 같은 브라우저 기본 UI도 테마를 따르게 해요.
+const COLOR_SCHEME: Record<string, string> = {
+  Light: "light",
+  Dark: "dark",
+};
+// 쓰는 쪽 CSS 변수(예: Tailwind의 --radius-md)와 겹치지 않게 모든 이름이 이것으로 시작해요.
 const PREFIX = "d5ng-";
 const ROOT_FONT_SIZE = 16;
 // 숫자의 단위는 Figma에서 그 변수를 쓸 수 있게 한 곳(scope)으로 정해요.
@@ -86,7 +91,11 @@ for (const collection of data.collections) {
 const cssName = (key: string): string => {
   const variable =
     included.get(key) ?? fail(`담지 않은 변수를 가리켜요: ${key}`);
-  return PREFIX + (variable.css ?? fail(`코드 이름이 없어요: ${key}`));
+  const css = variable.css ?? fail(`코드 이름이 없어요: ${key}`);
+  // 접두사는 Figma 코드 이름에 넣어 Dev Mode가 실제 CSS 이름을 보여 주게 해요. 여기서 붙이지 않아요.
+  return css.startsWith(PREFIX)
+    ? css
+    : fail(`코드 이름이 ${PREFIX}로 시작하지 않아요: ${key} (${css})`);
 };
 
 const unitOf = (key: string, variable: Variable): string => {
@@ -193,7 +202,10 @@ blocks.push(`/* ${HEADER} */`);
 blocks.push(`:root {\n${rootLines.join("\n")}\n}`);
 for (const [mode, lines] of Object.entries(themeLines)) {
   const selector = THEME_SELECTOR[mode] ?? fail(`모르는 모드예요: ${mode}`);
-  blocks.push(`${selector} {\n${lines.join("\n")}\n}`);
+  const scheme = COLOR_SCHEME[mode] ?? fail(`모르는 모드예요: ${mode}`);
+  blocks.push(
+    `${selector} {\n  color-scheme: ${scheme};\n${lines.join("\n")}\n}`,
+  );
 }
 
 // ---- vars.ts
