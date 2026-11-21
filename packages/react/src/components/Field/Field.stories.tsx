@@ -9,7 +9,7 @@ import { Field, type FieldControlProps } from "./Field";
 
 type StoryInputProps = ComponentProps<"input">;
 
-// TextField가 나오기 전까지 스토리에서만 쓰는 입력이에요. Figma Text Input 기본 크기를 흉내 내요.
+// TextField는 Field를 안에 품고 있어서 Field 스토리에는 맨 입력을 붙여요. 모양은 Figma Text Input 기본 크기를 흉내 내요.
 function StoryInput({ style, ...inputProps }: StoryInputProps) {
   const { disabled } = inputProps;
   const invalid = inputProps["aria-invalid"] === true;
@@ -21,8 +21,7 @@ function StoryInput({ style, ...inputProps }: StoryInputProps) {
         ...textStyles.bodyDefault,
         boxSizing: "border-box",
         width: "100%",
-        // Text Input medium 높이예요. 입력 전용 토큰은 TextField에서 정해요.
-        minHeight: "48px",
+        minHeight: vars.textField.minHeight.md,
         paddingInline: vars.spacing[16],
         border: `1px solid ${invalid ? vars.color.stroke.critical : vars.color.stroke.neutralWeak}`,
         borderRadius: vars.radius.lg,
@@ -37,6 +36,45 @@ function StoryInput({ style, ...inputProps }: StoryInputProps) {
 }
 
 const renderInput = (control: FieldControlProps) => <StoryInput {...control} />;
+
+const deliveryOptions = ["문 앞", "경비실", "택배함"];
+
+// RadioGroup이 나오기 전까지 스토리에서만 쓰는 묶음이에요. div엔 required·disabled가 없어서 aria로 바꿔요.
+function StoryRadioGroup({
+  required,
+  disabled,
+  ...groupProps
+}: FieldControlProps) {
+  return (
+    <div
+      role="radiogroup"
+      aria-required={required || undefined}
+      aria-disabled={disabled || undefined}
+      {...groupProps}
+      style={{ display: "flex", flexDirection: "column", gap: vars.spacing[8] }}
+    >
+      {deliveryOptions.map((option) => (
+        <label
+          key={option}
+          style={{
+            ...textStyles.bodyDefault,
+            display: "flex",
+            gap: vars.spacing[8],
+            color: vars.color.fg.neutral,
+          }}
+        >
+          <input
+            type="radio"
+            name={groupProps.id}
+            value={option}
+            disabled={disabled}
+          />
+          {option}
+        </label>
+      ))}
+    </div>
+  );
+}
 
 const meta = {
   title: "Components/Field",
@@ -89,6 +127,16 @@ export const Description: Story = {
 /** 표의 열 제목처럼 주변이 이름을 보여 줄 때만 숨겨요. 스크린리더는 그대로 읽어요. */
 export const HideLabel: Story = {
   args: { label: "검색어", hideLabel: true },
+};
+
+/** 라디오 묶음처럼 입력 여러 개에 라벨 하나를 붙일 때 켜요. 라벨이 묶음의 이름이 돼요. */
+export const Group: Story = {
+  args: {
+    label: "받는 방법",
+    group: true,
+    description: "택배 기사님께 전해 드려요.",
+    children: (control) => <StoryRadioGroup {...control} />,
+  },
 };
 
 /** 라벨을 더 눈에 띄게 할 때 semibold를 써요. */

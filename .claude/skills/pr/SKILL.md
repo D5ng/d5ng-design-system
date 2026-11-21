@@ -7,6 +7,8 @@ description: 작업이 끝난 브랜치의 변경을 이슈, 커밋, PR로 한 �
 
 규칙은 같은 폴더의 `rules.md`(글쓰기, 커밋과 PR 제목, 이슈와 PR의 역할, 이슈, PR, 라벨)가 기준이다. **시작할 때 먼저 읽는다.** 이 파일은 그 규칙을 어떤 순서로 적용하는지만 다룬다. 규칙이 바뀌면 `rules.md`를 고친다.
 
+`gh`를 못 쓰면(클라우드) GitHub MCP로 같은 일을 한다. `gh issue list`는 `list_issues`, `gh issue create`는 `issue_write`, `gh pr create`는 `create_pull_request`, `gh issue view`는 `issue_read`다. 본문은 문자열로 넘겨서 셸이 백틱을 바꾸지 않는다.
+
 ## 1. 상태 확인
 
 ```bash
@@ -15,7 +17,7 @@ git status --short
 git log --oneline develop..HEAD
 ```
 
-- **develop이나 main에 있으면** 커밋하지 않고 `git flow feature start <kebab-case>`로 브랜치를 먼저 딴다. 변경은 그대로 따라온다
+- **develop이나 main에 있으면** 커밋하지 않고 `git flow feature start <kebab-case>`(git-flow가 없으면 `git checkout -b feature/<kebab-case>`)로 브랜치를 먼저 딴다. 변경은 그대로 따라온다
 - **연결된 이슈가 이미 있는지** 본다. 사용자가 번호를 말했거나 `gh issue list --assignee @me --state open`에 같은 일이 있으면 새로 만들지 않고 그 번호를 쓴다
 - 변경이 두 가지 일로 나뉘면 멈추고 사용자에게 알린다. PR 하나에는 한 가지 일만 담는다
 

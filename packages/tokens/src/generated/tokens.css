@@ -233,6 +233,13 @@
   --d5ng-button-icon-size-lg: 24px;
   --d5ng-button-loading-size-lg: 18px;
   --d5ng-focus-ring-width: var(--d5ng-spacing-2);
+  --d5ng-chip-min-height-sm: 32px;
+  --d5ng-chip-min-height-md: 36px;
+  --d5ng-chip-min-height-lg: 40px;
+  --d5ng-chip-min-target-height: 44px;
+  --d5ng-chip-icon-size-sm: 16px;
+  --d5ng-chip-icon-size-md: 16px;
+  --d5ng-chip-icon-size-lg: 20px;
   --d5ng-menu-width-sm: 200px;
   --d5ng-menu-width-md: 240px;
   --d5ng-menu-item-min-height-sm: 44px;
@@ -244,6 +251,7 @@
 
 :root,
 [data-theme="light"] {
+  color-scheme: light;
   --d5ng-color-bg-layer-default: var(--d5ng-color-palette-gray-0);
   --d5ng-color-bg-layer-basement: var(--d5ng-color-palette-gray-100);
   --d5ng-color-bg-neutral-weak: var(--d5ng-color-palette-gray-100);
@@ -320,6 +328,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   --d5ng-color-bg-layer-default: var(--d5ng-color-palette-gray-950);
   --d5ng-color-bg-layer-basement: var(--d5ng-color-palette-gray-950);
   --d5ng-color-bg-neutral-weak: var(--d5ng-color-palette-gray-850);
@@ -327,7 +336,7 @@
   --d5ng-color-bg-highlight: var(--d5ng-color-palette-ext-yellow-dark-bg);
   --d5ng-color-fg-neutral: var(--d5ng-color-palette-gray-100);
   --d5ng-color-fg-neutral-muted: var(--d5ng-color-palette-gray-400);
-  --d5ng-color-fg-neutral-subtle: var(--d5ng-color-palette-gray-400);
+  --d5ng-color-fg-neutral-subtle: var(--d5ng-color-palette-gray-500);
   --d5ng-color-fg-code: var(--d5ng-color-palette-gray-200);
   --d5ng-color-fg-brand: var(--d5ng-color-palette-blue-dark-300);
   --d5ng-color-stroke-neutral-muted: var(--d5ng-color-palette-gray-800);
@@ -344,7 +353,7 @@
   --d5ng-color-bg-layer-floating: var(--d5ng-color-palette-gray-900);
   --d5ng-color-bg-disabled: var(--d5ng-color-palette-gray-850);
   --d5ng-color-fg-disabled: var(--d5ng-color-palette-gray-600);
-  --d5ng-color-fg-placeholder: var(--d5ng-color-palette-gray-400);
+  --d5ng-color-fg-placeholder: var(--d5ng-color-palette-gray-500);
   --d5ng-color-stroke-neutral-subtle: var(--d5ng-color-palette-gray-850);
   --d5ng-color-stroke-brand-solid: var(--d5ng-color-palette-blue-dark-300);
   --d5ng-color-stroke-focus-ring: var(--d5ng-color-palette-blue-dark-300);

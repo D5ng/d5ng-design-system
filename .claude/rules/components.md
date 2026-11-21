@@ -12,7 +12,7 @@ paths:
 - 컴포넌트는 `function` 선언으로, 그 안에서 만드는 함수는 `const` 화살표 함수로 쓴다 (lint)
 - props 타입은 컴포넌트 이름 뒤에 `Props`를 붙여 `ButtonProps`처럼 짓고, 패키지 밖으로도 그 이름 그대로 내보낸다. 파일 안에서만 쓰는 보조 컴포넌트도 `AliasProps`처럼 같은 규칙을 따른다
 - props는 매개변수에서 구조 분해하고, 나머지는 렌더하는 부분 이름으로 받는다: `...buttonProps`, `...triggerProps`, `...contentProps` (lint는 `restProps`, `props`, `rest`를 막는다. 이름이 부분과 맞는지는 리뷰에서 본다)
-- 제어 상태는 `open`, `defaultOpen`, `onOpenChange` 세 이름으로 받고 안에서는 `openProp`이라 부른다. Radix 컴포넌트를 감싸면 셋을 그대로 넘긴다. 상태를 직접 가져야 하면 그때 `_internal/useControllableState`를 만든다
+- 제어 상태는 감싸는 Radix 컴포넌트의 이름을 그대로 쓴다: `open`·`checked`·`value`와 각각의 `default*`·`on*Change`(`open`, `defaultOpen`, `onOpenChange`). 안에서는 `openProp`처럼 `<이름>Prop`이라 부른다. Radix 컴포넌트를 감싸면 셋을 그대로 넘긴다. 상태를 직접 가져야 하면 그때 `_internal/useControllableState`를 만든다
 - 여러 부분으로 된 컴포넌트는 부분마다 이름으로 내보낸다: 루트는 `AlertDialog`, 나머지는 `AlertDialogContent`처럼 루트 이름을 앞에 붙인다. `export * as`나 객체로 묶은 이름공간(`AlertDialog.Content`)은 만들지 않는다. `"use client"` 파일의 이름공간은 서버 컴포넌트에서 `undefined`가 된다
 - 파일 순서: 상수(`NAME`) → 타입 → 컴포넌트 → 보조 함수 → export
 
@@ -57,4 +57,4 @@ paths:
 | 동작 계약          | loading이면 클릭을 막고 포커스는 남김 | 테스트 이름                  | prop JSDoc 한 줄                                      |
 | 결정과 이유        | variant를 4개로 줄인 이유, 뺀 prop    | `docs/components/<이름>.md`  |                                                       |
 | 사용 가이드        | 언제 쓰나, Do/Don't                   | Figma                        | 코드에서 고르는 걸 바꾸는 규칙만 컴포넌트 JSDoc 한 줄 |
-| 여러 컴포넌트 공통 | disabled·loading을 aria로 바꾸는 규칙 | Figma Foundation과 공통 코드 | 공통 코드는 두 번째로 쓰일 때 만든다                  |
+| 여러 컴포넌트 공통 | disabled·loading을 aria로 바꾸는 규칙 | Figma Foundation과 공통 코드 | 공통 코드는 두 번째로 머지되는 PR이 만든다            |

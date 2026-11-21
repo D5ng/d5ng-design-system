@@ -3,8 +3,25 @@ name: Chromatic
 # Chromatic은 pull_request로 돌리면 기준 스냅샷을 잃거나 엉뚱한 기준과 비교할 수 있다고 해서 push로 돌려요.
 # develop 빌드가 있어야 squash 머지 뒤에도 PR에서 승인한 스냅샷이 새 기준이 돼요.
 # https://www.chromatic.com/docs/github-actions/
+#
+# Free 요금제는 월 5,000 스냅샷이라 화면에 닿는 변경에서만 돌려요(스토리 × Light·Dark로 셈해요).
 on:
   push:
+    # 브랜치를 적으면 태그 push에서는 돌지 않아요.
+    # main은 release 브랜치에서 이미 찍은 것과 같고, hotfix는 git 기록에서 develop 빌드를 기준으로 찾아요.
+    branches: ["**", "!main"]
+    # 경로는 저장소 루트 기준이에요. 뒤의 !가 앞의 목록에서 빼요.
+    paths:
+      - "packages/react/**"
+      - "packages/tokens/**"
+      - "apps/storybook/**"
+      - "pnpm-lock.yaml"
+      # storybook tsconfig가 상속해서 Vite가 jsx 설정을 여기서 읽어요.
+      - "tsconfig.base.json"
+      - ".github/workflows/chromatic.yml"
+      - "!**/*.md"
+      - "!**/*.test.ts"
+      - "!**/*.test.tsx"
 
 # develop 빌드는 기준이 되니 취소하지 않아요.
 concurrency:
@@ -39,6 +56,13 @@ jobs:
           # squash 머지 감지가 실패해도 develop 빌드가 새 기준이 되게 해요. 변경은 PR에서 이미 봤어요.
           # https://www.chromatic.com/docs/branching-and-baselines/
           autoAcceptChanges: develop
+          # TurboSnap: 바뀐 파일에 닿는 스토리만 찍고 나머지는 기준을 복사해요(0.2개로 셈해요).
+          # Storybook 설정이나 preview.ts가 가져오는 파일이 바뀌면 전부 다시 찍어요.
+          # https://www.chromatic.com/docs/turbosnap/
+          onlyChanged: true
+          # 스토리는 git에 없는 tokens의 dist를 읽어서, 토큰 소스가 바뀌어도 닿는 스토리를 못 찾아요.
+          # 그래서 토큰 소스가 바뀌면 전부 다시 찍게 해요. workingDir이 아니라 저장소 루트 기준이에요.
+          externals: packages/tokens/src/**
       # Chromatic은 링크를 체크 목록에만 붙여서 눈에 잘 안 띄어요.
       # push 이벤트에는 PR 번호가 없어서 브랜치로 열린 PR을 찾고, 없으면 건너뛰어요.
       # 댓글은 하나만 두고 push마다 고쳐 써요(--edit-last).

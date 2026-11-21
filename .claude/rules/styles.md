@@ -5,7 +5,7 @@ paths:
 
 # 스타일 (vanilla-extract)
 
-컴포넌트 스타일은 `<Name>/<Name>.css.ts`에, 두 컴포넌트가 같이 쓰는 것은 `components/_internal/*.css.ts`에 둔다. 공통 스타일도 공통 코드와 같이 두 번째로 쓰일 때 옮긴다.
+컴포넌트 스타일은 `<Name>/<Name>.css.ts`에, 두 컴포넌트가 같이 쓰는 것은 `components/_internal/*.css.ts`에 둔다. 공통 스타일도 공통 코드와 같이 두 번째로 쓰일 때 옮긴다. 먼저 머지된 쪽은 자기 파일에 두고, 두 번째로 머지되는 PR이 옮긴다. 둘을 같이 만들고 있으면 머지 순서로 정해진다.
 
 ## 값은 토큰으로
 
@@ -13,6 +13,7 @@ paths:
 - 토큰이 없는 값만 숫자로 쓰고, 왜 없는지 주석을 단다(`// Figma에도 14에 맞는 spacing 토큰이 없어요.`)
 - 테마(Light·Dark)는 토큰이 `[data-theme]`로 바꾼다. 컴포넌트 CSS에 테마 선택자를 쓰지 않는다
 - 포커스 링은 `_internal/focusRing.css.ts`의 `focusRing`을 자기 포커스 선택자 안에 펼친다(`"&:focus-visible": focusRing`). 두께·색·띄움은 컴포넌트에서 따로 정하지 않고, 필요하면 모서리만 더한다(Link)
+  - 스크롤 상자 안이거나 옆 요소와 붙어 있어 바깥 링이 잘리거나 겹치면 같은 파일의 `focusRingInset`(안쪽 링)을 쓴다(Tabs)
 
 ## 무엇을 recipe에, 무엇을 data 속성에
 

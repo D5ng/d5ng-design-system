@@ -27,6 +27,8 @@
 - **제목을 숨길 땐 `Title visuallyHidden`**: Figma `Show title`을 끄더라도 웹은 이름이 있어야 해요. 요소를 남기고 눈에만 숨겨요
 - **모션은 페이드만이에요**: 열기 `duration.slow`(250ms), 닫기 `duration.normal`(150ms). 위치가 움직이지 않아 움직임 줄이기에서도 그대로 둬요. 닫힐 때는 Presence가 기다리도록 keyframes를 써요
 - **z-index는 쓰지 않아요**: Portal이 `body` 끝에 붙어 DOM 순서로 위에 와요. 중첩되면 나중에 연 것이 위예요
+- **배경과 페이드는 Dialog와 같이 써요**: Figma에서 둘이 같은 Dialog Backdrop을 써서 `_internal/modal.css.ts`로 옮겼어요. 버튼 규격은 옮기지 않았어요([dialog.md](dialog.md))
+- **Dialog 위에 열어도 돼요**: Figma "변경사항 보호" 흐름이에요. 위에 오고 Escape도 이것부터 닫아요. 닫은 뒤 포커스는 Trigger가 없어서 쓰는 쪽이 `onCloseAutoFocus`에서 정해요(Dialog 테스트, `UnsavedChanges` 스토리)
 
 ## 뺀 것
 
@@ -34,11 +36,9 @@
 - **`layout` prop**: 위 "가로·세로 배치" 참고
 - **`closeOnInteractOutside`**(SEED), **`disableOutsideClickClose`**(Montage): Figma가 바깥 클릭 닫기를 막아요
 - **`layerIndex`**(SEED): z-index를 쓰지 않아요
-- **본문 슬롯**: Figma가 폼·이미지 같은 임의 내용을 막아요. 그런 내용은 Dialog를 써요
+- **본문 슬롯**: Figma가 폼·이미지 같은 임의 내용을 막아요. 그런 내용은 [Dialog](dialog.md)를 써요
 - **부분 테마**: `data-theme`은 `html`에만 붙여요. 영역에 붙인 테마는 Portal 내용이 받지 못해요
 
 ## 열린 질문
 
 - **한 줄보다 긴 라벨**: 세로 배치에서도 Button이 `nowrap`이라 232px를 넘는 라벨은 넘쳐요. CSS만으로 가로·세로 판단과 줄바꿈을 같이 하기 어려워요
-- **Backdrop을 Dialog와 나누기**: Figma는 Dialog Backdrop을 다시 써요. Dialog를 만들 때 `_internal`로 옮겨요
-- **편집 Dialog 위 중첩**: Figma "변경사항 보호" 흐름은 Dialog가 생기면 스토리와 테스트로 확인해요

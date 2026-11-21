@@ -1,0 +1,61 @@
+name: Release
+
+# main에 push되면(release·hotfix 머지) npm에 아직 없는 번호를 승인 대기로 올리고 태그를 만들어요.
+# 공개는 사람이 npmjs.com에서 Approve해요. 순서와 npm 쪽 설정은 docs/release.md에 있어요.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# 두 번 겹치면 같은 번호를 두 번 올리려 해요. 도중에 끊으면 태그만 빠질 수 있어서 취소하지 않아요.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  # 태그를 push해요.
+  contents: write
+  # npm trusted publishing(OIDC)이라 npm 토큰을 secret으로 두지 않아요.
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # pnpm 버전은 package.json의 packageManager를 읽어요.
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          # 러너에 깔린 24가 오래되면 npm stage(11.15부터)가 없어서 최신 24를 받아요.
+          check-latest: true
+          registry-url: https://registry.npmjs.org
+          # 배포물을 만드는 작업이라 다른 실행이 채운 캐시를 읽지 않아요. ci.yml의 cache: pnpm도 빼요.
+          package-manager-cache: false
+      - run: pnpm install --frozen-lockfile
+      - id: plan
+        run: |
+          pnpm changeset publish-plan -o plan.json
+          count=$(jq '[.plan[][] | select(.kind == "publish")] | length' plan.json)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+      # npm pack은 workspace:*를 그대로 남겨서 changeset pack으로 plan의 패키지만 묶어요.
+      - if: steps.plan.outputs.count != '0'
+        run: |
+          pnpm --filter "./packages/*" build
+          pnpm changeset pack --from-publish-plan plan.json --out-dir out
+      # npm 배포는 main에서만 해요. release 브랜치에서 버튼을 누르면 위 pack까지만 해 봐요.
+      # changesets publish에는 stage가 없어서 npm CLI로 올려요. dist-tag는 plan의 값을 따라요.
+      - if: steps.plan.outputs.count != '0' && github.ref == 'refs/heads/main'
+        run: |
+          jq -r '.plan[][] | select(.kind == "publish") | "\(.tarball.path) \(.tag)"' out/publish-plan.json |
+            while read -r path tag; do
+              npm stage publish "out/$path" --tag "$tag" --provenance
+            done
+      # 승인 대기 때 태그를 만들어요. Reject하면 태그도 지워요(docs/release.md).
+      - if: steps.plan.outputs.count != '0' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          pnpm changeset tag
+          git push origin --tags

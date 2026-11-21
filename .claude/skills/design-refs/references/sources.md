@@ -1,6 +1,6 @@
 # 어디서 무엇을 읽나
 
-둘 다 공개 문서라 로그인 없이 `curl`로 받는다. 받은 내용은 임시 폴더(scratchpad)에 두고 저장소에는 넣지 않는다.
+둘 다 공개 문서라 로그인 없이 `curl`로 받는다. 클라우드에서는 프록시가 두 사이트를 막아서(403) web-fetch 에이전트로 읽는다. 받은 내용은 임시 폴더(scratchpad)에 두고 저장소에는 넣지 않는다.
 
 ## SEED (seed-design.io)
 
@@ -28,6 +28,8 @@ gh api repos/daangn/seed-design/contents/<경로> --jq .content | base64 -d
 gh api "search/code?q=repo:daangn/seed-design+filename:<파일명>" --jq '.items[].path'
 ```
 
+클라우드에서 GitHub 접근이 이 저장소로 좁혀 있으면 `gh api`가 막힌다. `https://raw.githubusercontent.com/daangn/seed-design/dev/<경로>`를 web-fetch 에이전트로 읽는다.
+
 SEED 공식 Docs MCP(`@seed-design/docs-mcp`)가 연결돼 있으면 위보다 먼저 쓴다. 같은 문서와 Rootage 스펙을 바로 조회할 수 있다.
 
 ## Montage (montage.wanted.co.kr)
@@ -39,6 +41,7 @@ SEED 공식 Docs MCP(`@seed-design/docs-mcp`)가 연결돼 있으면 위보다 �
   - `design`: 사용 가이드, 위계(Hierarchy), Do/Don't
   - `web`: props 표, 예시 코드
   - `ios`, `android`: 필요할 때만
+- 유틸리티 컴포넌트(Divider 등): `/docs/utilities/<분류>/<slug>`. `/docs/components/`에 없다고 "없음"으로 쓰기 전에 sitemap에서 이름으로 찾는다
 - Foundations: `/docs/foundations/base-material/` 아래 `colors/semantic`, `colors/atomic`, `typography`, `grid`, `elevation/normal`, `elevation/spread`, `icons`
 - 패키지는 `@montage-ui/core`이고 소스는 공개돼 있지 않다. 문서에 없는 동작은 "확인 못 함"으로 둔다.
 

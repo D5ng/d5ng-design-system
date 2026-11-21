@@ -9,7 +9,7 @@
         {
           "name": "gray/0",
           "type": "COLOR",
-          "css": "color-palette-gray-0",
+          "css": "d5ng-color-palette-gray-0",
           "values": {
             "Value": "#ffffff"
           }
@@ -17,7 +17,7 @@
         {
           "name": "gray/50",
           "type": "COLOR",
-          "css": "color-palette-gray-50",
+          "css": "d5ng-color-palette-gray-50",
           "values": {
             "Value": "#f9fafb"
           }
@@ -25,7 +25,7 @@
         {
           "name": "gray/100",
           "type": "COLOR",
-          "css": "color-palette-gray-100",
+          "css": "d5ng-color-palette-gray-100",
           "values": {
             "Value": "#f2f4f6"
           }
@@ -33,7 +33,7 @@
         {
           "name": "gray/200",
           "type": "COLOR",
-          "css": "color-palette-gray-200",
+          "css": "d5ng-color-palette-gray-200",
           "values": {
             "Value": "#e5e8eb"
           }
@@ -41,7 +41,7 @@
         {
           "name": "gray/300",
           "type": "COLOR",
-          "css": "color-palette-gray-300",
+          "css": "d5ng-color-palette-gray-300",
           "values": {
             "Value": "#d1d6db"
           }
@@ -49,7 +49,7 @@
         {
           "name": "gray/400",
           "type": "COLOR",
-          "css": "color-palette-gray-400",
+          "css": "d5ng-color-palette-gray-400",
           "values": {
             "Value": "#b0b8c1"
           }
@@ -57,7 +57,7 @@
         {
           "name": "gray/500",
           "type": "COLOR",
-          "css": "color-palette-gray-500",
+          "css": "d5ng-color-palette-gray-500",
           "values": {
             "Value": "#8b95a1"
           }
@@ -65,7 +65,7 @@
         {
           "name": "gray/600",
           "type": "COLOR",
-          "css": "color-palette-gray-600",
+          "css": "d5ng-color-palette-gray-600",
           "values": {
             "Value": "#6b7684"
           }
@@ -73,7 +73,7 @@
         {
           "name": "gray/700",
           "type": "COLOR",
-          "css": "color-palette-gray-700",
+          "css": "d5ng-color-palette-gray-700",
           "values": {
             "Value": "#4e5968"
           }
@@ -81,7 +81,7 @@
         {
           "name": "gray/800",
           "type": "COLOR",
-          "css": "color-palette-gray-800",
+          "css": "d5ng-color-palette-gray-800",
           "values": {
             "Value": "#333d4b"
           }
@@ -89,7 +89,7 @@
         {
           "name": "gray/850",
           "type": "COLOR",
-          "css": "color-palette-gray-850",
+          "css": "d5ng-color-palette-gray-850",
           "values": {
             "Value": "#252d39"
           }
@@ -97,7 +97,7 @@
         {
           "name": "gray/900",
           "type": "COLOR",
-          "css": "color-palette-gray-900",
+          "css": "d5ng-color-palette-gray-900",
           "values": {
             "Value": "#191f28"
           }
@@ -105,7 +105,7 @@
         {
           "name": "gray/950",
           "type": "COLOR",
-          "css": "color-palette-gray-950",
+          "css": "d5ng-color-palette-gray-950",
           "values": {
             "Value": "#0f141b"
           }
@@ -113,7 +113,7 @@
         {
           "name": "blue/50",
           "type": "COLOR",
-          "css": "color-palette-blue-50",
+          "css": "d5ng-color-palette-blue-50",
           "values": {
             "Value": "#f2f7ff"
           }
@@ -121,7 +121,7 @@
         {
           "name": "blue/100",
           "type": "COLOR",
-          "css": "color-palette-blue-100",
+          "css": "d5ng-color-palette-blue-100",
           "values": {
             "Value": "#dfecff"
           }
@@ -129,7 +129,7 @@
         {
           "name": "blue/300",
           "type": "COLOR",
-          "css": "color-palette-blue-300",
+          "css": "d5ng-color-palette-blue-300",
           "values": {
             "Value": "#89bafd"
           }
@@ -137,7 +137,7 @@
         {
           "name": "blue/400",
           "type": "COLOR",
-          "css": "color-palette-blue-400",
+          "css": "d5ng-color-palette-blue-400",
           "values": {
             "Value": "#5298f9"
           }
@@ -145,7 +145,7 @@
         {
           "name": "blue/500",
           "type": "COLOR",
-          "css": "color-palette-blue-500",
+          "css": "d5ng-color-palette-blue-500",
           "values": {
             "Value": "#1974e3"
           }
@@ -153,7 +153,7 @@
         {
           "name": "blue/600",
           "type": "COLOR",
-          "css": "color-palette-blue-600",
+          "css": "d5ng-color-palette-blue-600",
           "values": {
             "Value": "#126bd6"
           }
@@ -161,7 +161,7 @@
         {
           "name": "blue/700",
           "type": "COLOR",
-          "css": "color-palette-blue-700",
+          "css": "d5ng-color-palette-blue-700",
           "values": {
             "Value": "#0d61c6"
           }
@@ -169,7 +169,7 @@
         {
           "name": "blue/900",
           "type": "COLOR",
-          "css": "color-palette-blue-900",
+          "css": "d5ng-color-palette-blue-900",
           "values": {
             "Value": "#052754"
           }
@@ -177,7 +177,7 @@
         {
           "name": "green/100",
           "type": "COLOR",
-          "css": "color-palette-green-100",
+          "css": "d5ng-color-palette-green-100",
           "values": {
             "Value": "#aeefd5"
           }
@@ -185,7 +185,7 @@
         {
           "name": "green/300",
           "type": "COLOR",
-          "css": "color-palette-green-300",
+          "css": "d5ng-color-palette-green-300",
           "values": {
             "Value": "#3fd599"
           }
@@ -193,7 +193,7 @@
         {
           "name": "green/600",
           "type": "COLOR",
-          "css": "color-palette-green-600",
+          "css": "d5ng-color-palette-green-600",
           "values": {
             "Value": "#02a262"
           }
@@ -201,7 +201,7 @@
         {
           "name": "green/900",
           "type": "COLOR",
-          "css": "color-palette-green-900",
+          "css": "d5ng-color-palette-green-900",
           "values": {
             "Value": "#027648"
           }
@@ -209,7 +209,7 @@
         {
           "name": "red/100",
           "type": "COLOR",
-          "css": "color-palette-red-100",
+          "css": "d5ng-color-palette-red-100",
           "values": {
             "Value": "#ffd4d6"
           }
@@ -217,7 +217,7 @@
         {
           "name": "red/300",
           "type": "COLOR",
-          "css": "color-palette-red-300",
+          "css": "d5ng-color-palette-red-300",
           "values": {
             "Value": "#fb8890"
           }
@@ -225,7 +225,7 @@
         {
           "name": "red/600",
           "type": "COLOR",
-          "css": "color-palette-red-600",
+          "css": "d5ng-color-palette-red-600",
           "values": {
             "Value": "#e42939"
           }
@@ -233,7 +233,7 @@
         {
           "name": "red/900",
           "type": "COLOR",
-          "css": "color-palette-red-900",
+          "css": "d5ng-color-palette-red-900",
           "values": {
             "Value": "#a51926"
           }
@@ -241,7 +241,7 @@
         {
           "name": "yellow/200",
           "type": "COLOR",
-          "css": "color-palette-yellow-200",
+          "css": "d5ng-color-palette-yellow-200",
           "values": {
             "Value": "#ffe69b"
           }
@@ -249,7 +249,7 @@
         {
           "name": "yellow/800",
           "type": "COLOR",
-          "css": "color-palette-yellow-800",
+          "css": "d5ng-color-palette-yellow-800",
           "values": {
             "Value": "#ee8f11"
           }
@@ -257,7 +257,7 @@
         {
           "name": "blue/200",
           "type": "COLOR",
-          "css": "color-palette-blue-200",
+          "css": "d5ng-color-palette-blue-200",
           "values": {
             "Value": "#b4d3ff"
           }
@@ -265,7 +265,7 @@
         {
           "name": "blue/800",
           "type": "COLOR",
-          "css": "color-palette-blue-800",
+          "css": "d5ng-color-palette-blue-800",
           "values": {
             "Value": "#084288"
           }
@@ -273,7 +273,7 @@
         {
           "name": "red/50",
           "type": "COLOR",
-          "css": "color-palette-red-50",
+          "css": "d5ng-color-palette-red-50",
           "values": {
             "Value": "#ffeeee"
           }
@@ -281,7 +281,7 @@
         {
           "name": "red/200",
           "type": "COLOR",
-          "css": "color-palette-red-200",
+          "css": "d5ng-color-palette-red-200",
           "values": {
             "Value": "#feafb4"
           }
@@ -289,7 +289,7 @@
         {
           "name": "red/400",
           "type": "COLOR",
-          "css": "color-palette-red-400",
+          "css": "d5ng-color-palette-red-400",
           "values": {
             "Value": "#f66570"
           }
@@ -297,7 +297,7 @@
         {
           "name": "red/500",
           "type": "COLOR",
-          "css": "color-palette-red-500",
+          "css": "d5ng-color-palette-red-500",
           "values": {
             "Value": "#f04452"
           }
@@ -305,7 +305,7 @@
         {
           "name": "red/700",
           "type": "COLOR",
-          "css": "color-palette-red-700",
+          "css": "d5ng-color-palette-red-700",
           "values": {
             "Value": "#d22030"
           }
@@ -313,7 +313,7 @@
         {
           "name": "red/800",
           "type": "COLOR",
-          "css": "color-palette-red-800",
+          "css": "d5ng-color-palette-red-800",
           "values": {
             "Value": "#bc1b2a"
           }
@@ -321,7 +321,7 @@
         {
           "name": "orange/50",
           "type": "COLOR",
-          "css": "color-palette-orange-50",
+          "css": "d5ng-color-palette-orange-50",
           "values": {
             "Value": "#fff3e0"
           }
@@ -329,7 +329,7 @@
         {
           "name": "orange/100",
           "type": "COLOR",
-          "css": "color-palette-orange-100",
+          "css": "d5ng-color-palette-orange-100",
           "values": {
             "Value": "#ffe0b0"
           }
@@ -337,7 +337,7 @@
         {
           "name": "orange/200",
           "type": "COLOR",
-          "css": "color-palette-orange-200",
+          "css": "d5ng-color-palette-orange-200",
           "values": {
             "Value": "#ffcd80"
           }
@@ -345,7 +345,7 @@
         {
           "name": "orange/300",
           "type": "COLOR",
-          "css": "color-palette-orange-300",
+          "css": "d5ng-color-palette-orange-300",
           "values": {
             "Value": "#ffbd51"
           }
@@ -353,7 +353,7 @@
         {
           "name": "orange/400",
           "type": "COLOR",
-          "css": "color-palette-orange-400",
+          "css": "d5ng-color-palette-orange-400",
           "values": {
             "Value": "#ffa927"
           }
@@ -361,7 +361,7 @@
         {
           "name": "orange/500",
           "type": "COLOR",
-          "css": "color-palette-orange-500",
+          "css": "d5ng-color-palette-orange-500",
           "values": {
             "Value": "#fe9800"
           }
@@ -369,7 +369,7 @@
         {
           "name": "orange/600",
           "type": "COLOR",
-          "css": "color-palette-orange-600",
+          "css": "d5ng-color-palette-orange-600",
           "values": {
             "Value": "#fb8800"
           }
@@ -377,7 +377,7 @@
         {
           "name": "orange/700",
           "type": "COLOR",
-          "css": "color-palette-orange-700",
+          "css": "d5ng-color-palette-orange-700",
           "values": {
             "Value": "#f57800"
           }
@@ -385,7 +385,7 @@
         {
           "name": "orange/800",
           "type": "COLOR",
-          "css": "color-palette-orange-800",
+          "css": "d5ng-color-palette-orange-800",
           "values": {
             "Value": "#ed6700"
           }
@@ -393,7 +393,7 @@
         {
           "name": "orange/900",
           "type": "COLOR",
-          "css": "color-palette-orange-900",
+          "css": "d5ng-color-palette-orange-900",
           "values": {
             "Value": "#e45600"
           }
@@ -401,7 +401,7 @@
         {
           "name": "yellow/50",
           "type": "COLOR",
-          "css": "color-palette-yellow-50",
+          "css": "d5ng-color-palette-yellow-50",
           "values": {
             "Value": "#fff9e7"
           }
@@ -409,7 +409,7 @@
         {
           "name": "yellow/100",
           "type": "COLOR",
-          "css": "color-palette-yellow-100",
+          "css": "d5ng-color-palette-yellow-100",
           "values": {
             "Value": "#ffefbf"
           }
@@ -417,7 +417,7 @@
         {
           "name": "yellow/300",
           "type": "COLOR",
-          "css": "color-palette-yellow-300",
+          "css": "d5ng-color-palette-yellow-300",
           "values": {
             "Value": "#ffdd78"
           }
@@ -425,7 +425,7 @@
         {
           "name": "yellow/400",
           "type": "COLOR",
-          "css": "color-palette-yellow-400",
+          "css": "d5ng-color-palette-yellow-400",
           "values": {
             "Value": "#ffd158"
           }
@@ -433,7 +433,7 @@
         {
           "name": "yellow/500",
           "type": "COLOR",
-          "css": "color-palette-yellow-500",
+          "css": "d5ng-color-palette-yellow-500",
           "values": {
             "Value": "#ffc342"
           }
@@ -441,7 +441,7 @@
         {
           "name": "yellow/600",
           "type": "COLOR",
-          "css": "color-palette-yellow-600",
+          "css": "d5ng-color-palette-yellow-600",
           "values": {
             "Value": "#ffb331"
           }
@@ -449,7 +449,7 @@
         {
           "name": "yellow/700",
           "type": "COLOR",
-          "css": "color-palette-yellow-700",
+          "css": "d5ng-color-palette-yellow-700",
           "values": {
             "Value": "#faa131"
           }
@@ -457,7 +457,7 @@
         {
           "name": "yellow/900",
           "type": "COLOR",
-          "css": "color-palette-yellow-900",
+          "css": "d5ng-color-palette-yellow-900",
           "values": {
             "Value": "#dd7d02"
           }
@@ -465,7 +465,7 @@
         {
           "name": "green/50",
           "type": "COLOR",
-          "css": "color-palette-green-50",
+          "css": "d5ng-color-palette-green-50",
           "values": {
             "Value": "#f0faf6"
           }
@@ -473,7 +473,7 @@
         {
           "name": "green/200",
           "type": "COLOR",
-          "css": "color-palette-green-200",
+          "css": "d5ng-color-palette-green-200",
           "values": {
             "Value": "#76e4b8"
           }
@@ -481,7 +481,7 @@
         {
           "name": "green/400",
           "type": "COLOR",
-          "css": "color-palette-green-400",
+          "css": "d5ng-color-palette-green-400",
           "values": {
             "Value": "#15c47e"
           }
@@ -489,7 +489,7 @@
         {
           "name": "green/500",
           "type": "COLOR",
-          "css": "color-palette-green-500",
+          "css": "d5ng-color-palette-green-500",
           "values": {
             "Value": "#03b26c"
           }
@@ -497,7 +497,7 @@
         {
           "name": "green/700",
           "type": "COLOR",
-          "css": "color-palette-green-700",
+          "css": "d5ng-color-palette-green-700",
           "values": {
             "Value": "#029359"
           }
@@ -505,7 +505,7 @@
         {
           "name": "green/800",
           "type": "COLOR",
-          "css": "color-palette-green-800",
+          "css": "d5ng-color-palette-green-800",
           "values": {
             "Value": "#028450"
           }
@@ -513,7 +513,7 @@
         {
           "name": "teal/50",
           "type": "COLOR",
-          "css": "color-palette-teal-50",
+          "css": "d5ng-color-palette-teal-50",
           "values": {
             "Value": "#edf8f8"
           }
@@ -521,7 +521,7 @@
         {
           "name": "teal/100",
           "type": "COLOR",
-          "css": "color-palette-teal-100",
+          "css": "d5ng-color-palette-teal-100",
           "values": {
             "Value": "#bce9e9"
           }
@@ -529,7 +529,7 @@
         {
           "name": "teal/200",
           "type": "COLOR",
-          "css": "color-palette-teal-200",
+          "css": "d5ng-color-palette-teal-200",
           "values": {
             "Value": "#89d8d8"
           }
@@ -537,7 +537,7 @@
         {
           "name": "teal/300",
           "type": "COLOR",
-          "css": "color-palette-teal-300",
+          "css": "d5ng-color-palette-teal-300",
           "values": {
             "Value": "#58c7c7"
           }
@@ -545,7 +545,7 @@
         {
           "name": "teal/400",
           "type": "COLOR",
-          "css": "color-palette-teal-400",
+          "css": "d5ng-color-palette-teal-400",
           "values": {
             "Value": "#30b6b6"
           }
@@ -553,7 +553,7 @@
         {
           "name": "teal/500",
           "type": "COLOR",
-          "css": "color-palette-teal-500",
+          "css": "d5ng-color-palette-teal-500",
           "values": {
             "Value": "#18a5a5"
           }
@@ -561,7 +561,7 @@
         {
           "name": "teal/600",
           "type": "COLOR",
-          "css": "color-palette-teal-600",
+          "css": "d5ng-color-palette-teal-600",
           "values": {
             "Value": "#109595"
           }
@@ -569,7 +569,7 @@
         {
           "name": "teal/700",
           "type": "COLOR",
-          "css": "color-palette-teal-700",
+          "css": "d5ng-color-palette-teal-700",
           "values": {
             "Value": "#0c8585"
           }
@@ -577,7 +577,7 @@
         {
           "name": "teal/800",
           "type": "COLOR",
-          "css": "color-palette-teal-800",
+          "css": "d5ng-color-palette-teal-800",
           "values": {
             "Value": "#097575"
           }
@@ -585,7 +585,7 @@
         {
           "name": "teal/900",
           "type": "COLOR",
-          "css": "color-palette-teal-900",
+          "css": "d5ng-color-palette-teal-900",
           "values": {
             "Value": "#076565"
           }
@@ -593,7 +593,7 @@
         {
           "name": "purple/50",
           "type": "COLOR",
-          "css": "color-palette-purple-50",
+          "css": "d5ng-color-palette-purple-50",
           "values": {
             "Value": "#f9f0fc"
           }
@@ -601,7 +601,7 @@
         {
           "name": "purple/100",
           "type": "COLOR",
-          "css": "color-palette-purple-100",
+          "css": "d5ng-color-palette-purple-100",
           "values": {
             "Value": "#edccf8"
           }
@@ -609,7 +609,7 @@
         {
           "name": "purple/200",
           "type": "COLOR",
-          "css": "color-palette-purple-200",
+          "css": "d5ng-color-palette-purple-200",
           "values": {
             "Value": "#da9bef"
           }
@@ -617,7 +617,7 @@
         {
           "name": "purple/300",
           "type": "COLOR",
-          "css": "color-palette-purple-300",
+          "css": "d5ng-color-palette-purple-300",
           "values": {
             "Value": "#c770e4"
           }
@@ -625,7 +625,7 @@
         {
           "name": "purple/400",
           "type": "COLOR",
-          "css": "color-palette-purple-400",
+          "css": "d5ng-color-palette-purple-400",
           "values": {
             "Value": "#b44bd7"
           }
@@ -633,7 +633,7 @@
         {
           "name": "purple/500",
           "type": "COLOR",
-          "css": "color-palette-purple-500",
+          "css": "d5ng-color-palette-purple-500",
           "values": {
             "Value": "#a234c7"
           }
@@ -641,7 +641,7 @@
         {
           "name": "purple/600",
           "type": "COLOR",
-          "css": "color-palette-purple-600",
+          "css": "d5ng-color-palette-purple-600",
           "values": {
             "Value": "#9128b4"
           }
@@ -649,7 +649,7 @@
         {
           "name": "purple/700",
           "type": "COLOR",
-          "css": "color-palette-purple-700",
+          "css": "d5ng-color-palette-purple-700",
           "values": {
             "Value": "#8222a2"
           }
@@ -657,7 +657,7 @@
         {
           "name": "purple/800",
           "type": "COLOR",
-          "css": "color-palette-purple-800",
+          "css": "d5ng-color-palette-purple-800",
           "values": {
             "Value": "#73228e"
           }
@@ -665,7 +665,7 @@
         {
           "name": "purple/900",
           "type": "COLOR",
-          "css": "color-palette-purple-900",
+          "css": "d5ng-color-palette-purple-900",
           "values": {
             "Value": "#65237b"
           }
@@ -673,7 +673,7 @@
         {
           "name": "ext/orange-text",
           "type": "COLOR",
-          "css": "color-palette-ext-orange-text",
+          "css": "d5ng-color-palette-ext-orange-text",
           "values": {
             "Value": "#a84300"
           }
@@ -681,7 +681,7 @@
         {
           "name": "ext/blue-dark-bg",
           "type": "COLOR",
-          "css": "color-palette-ext-blue-dark-bg",
+          "css": "d5ng-color-palette-ext-blue-dark-bg",
           "values": {
             "Value": {
               "alias": "Palette:blue-dark/900"
@@ -691,7 +691,7 @@
         {
           "name": "ext/red-dark-bg",
           "type": "COLOR",
-          "css": "color-palette-ext-red-dark-bg",
+          "css": "d5ng-color-palette-ext-red-dark-bg",
           "values": {
             "Value": "#3d1519"
           }
@@ -699,7 +699,7 @@
         {
           "name": "ext/orange-dark-bg",
           "type": "COLOR",
-          "css": "color-palette-ext-orange-dark-bg",
+          "css": "d5ng-color-palette-ext-orange-dark-bg",
           "values": {
             "Value": "#3d2306"
           }
@@ -707,7 +707,7 @@
         {
           "name": "ext/yellow-dark-bg",
           "type": "COLOR",
-          "css": "color-palette-ext-yellow-dark-bg",
+          "css": "d5ng-color-palette-ext-yellow-dark-bg",
           "values": {
             "Value": "#3a2e07"
           }
@@ -715,7 +715,7 @@
         {
           "name": "ext/green-dark-bg",
           "type": "COLOR",
-          "css": "color-palette-ext-green-dark-bg",
+          "css": "d5ng-color-palette-ext-green-dark-bg",
           "values": {
             "Value": "#0d3324"
           }
@@ -723,7 +723,7 @@
         {
           "name": "black/alpha-8",
           "type": "COLOR",
-          "css": "color-palette-black-alpha-8",
+          "css": "d5ng-color-palette-black-alpha-8",
           "values": {
             "Value": "#00000014"
           }
@@ -731,7 +731,7 @@
         {
           "name": "black/alpha-12",
           "type": "COLOR",
-          "css": "color-palette-black-alpha-12",
+          "css": "d5ng-color-palette-black-alpha-12",
           "values": {
             "Value": "#0000001f"
           }
@@ -739,7 +739,7 @@
         {
           "name": "black/alpha-16",
           "type": "COLOR",
-          "css": "color-palette-black-alpha-16",
+          "css": "d5ng-color-palette-black-alpha-16",
           "values": {
             "Value": "#00000029"
           }
@@ -747,7 +747,7 @@
         {
           "name": "black/alpha-24",
           "type": "COLOR",
-          "css": "color-palette-black-alpha-24",
+          "css": "d5ng-color-palette-black-alpha-24",
           "values": {
             "Value": "#0000003d"
           }
@@ -755,7 +755,7 @@
         {
           "name": "black/alpha-32",
           "type": "COLOR",
-          "css": "color-palette-black-alpha-32",
+          "css": "d5ng-color-palette-black-alpha-32",
           "values": {
             "Value": "#00000052"
           }
@@ -763,7 +763,7 @@
         {
           "name": "black/alpha-40",
           "type": "COLOR",
-          "css": "color-palette-black-alpha-40",
+          "css": "d5ng-color-palette-black-alpha-40",
           "values": {
             "Value": "#00000066"
           }
@@ -771,7 +771,7 @@
         {
           "name": "black/alpha-60",
           "type": "COLOR",
-          "css": "color-palette-black-alpha-60",
+          "css": "d5ng-color-palette-black-alpha-60",
           "values": {
             "Value": "#00000099"
           }
@@ -779,7 +779,7 @@
         {
           "name": "ext/blue-action-a11y",
           "type": "COLOR",
-          "css": "color-palette-ext-blue-action-a11y",
+          "css": "d5ng-color-palette-ext-blue-action-a11y",
           "values": {
             "Value": {
               "alias": "Palette:blue/500"
@@ -789,7 +789,7 @@
         {
           "name": "ext/neutral-readable",
           "type": "COLOR",
-          "css": "color-palette-ext-neutral-readable",
+          "css": "d5ng-color-palette-ext-neutral-readable",
           "values": {
             "Value": "#64707d"
           }
@@ -797,7 +797,7 @@
         {
           "name": "blue-dark/50",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-50",
+          "css": "d5ng-color-palette-blue-dark-50",
           "values": {
             "Value": "#f2f7ff"
           }
@@ -805,7 +805,7 @@
         {
           "name": "blue-dark/100",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-100",
+          "css": "d5ng-color-palette-blue-dark-100",
           "values": {
             "Value": "#dfedff"
           }
@@ -813,7 +813,7 @@
         {
           "name": "blue-dark/200",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-200",
+          "css": "d5ng-color-palette-blue-dark-200",
           "values": {
             "Value": "#b3d4ff"
           }
@@ -821,7 +821,7 @@
         {
           "name": "blue-dark/300",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-300",
+          "css": "d5ng-color-palette-blue-dark-300",
           "values": {
             "Value": "#88bafd"
           }
@@ -829,7 +829,7 @@
         {
           "name": "blue-dark/400",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-400",
+          "css": "d5ng-color-palette-blue-dark-400",
           "values": {
             "Value": "#4f99f9"
           }
@@ -837,7 +837,7 @@
         {
           "name": "blue-dark/500",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-500",
+          "css": "d5ng-color-palette-blue-dark-500",
           "values": {
             "Value": "#2074d8"
           }
@@ -845,7 +845,7 @@
         {
           "name": "blue-dark/600",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-600",
+          "css": "d5ng-color-palette-blue-dark-600",
           "values": {
             "Value": "#196cce"
           }
@@ -853,7 +853,7 @@
         {
           "name": "blue-dark/700",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-700",
+          "css": "d5ng-color-palette-blue-dark-700",
           "values": {
             "Value": "#1465c2"
           }
@@ -861,7 +861,7 @@
         {
           "name": "blue-dark/800",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-800",
+          "css": "d5ng-color-palette-blue-dark-800",
           "values": {
             "Value": "#034388"
           }
@@ -869,7 +869,7 @@
         {
           "name": "blue-dark/900",
           "type": "COLOR",
-          "css": "color-palette-blue-dark-900",
+          "css": "d5ng-color-palette-blue-dark-900",
           "values": {
             "Value": "#10294a"
           }
@@ -877,7 +877,7 @@
         {
           "name": "palette/dialog-fog-clear-light",
           "type": "COLOR",
-          "css": "color-palette-dialog-fog-clear-light",
+          "css": "d5ng-color-palette-dialog-fog-clear-light",
           "values": {
             "Value": "#ffffff00"
           }
@@ -885,7 +885,7 @@
         {
           "name": "palette/dialog-fog-clear-dark",
           "type": "COLOR",
-          "css": "color-palette-dialog-fog-clear-dark",
+          "css": "d5ng-color-palette-dialog-fog-clear-dark",
           "values": {
             "Value": "#191f2800"
           }
@@ -902,7 +902,7 @@
         {
           "name": "bg/layer-default",
           "type": "COLOR",
-          "css": "color-bg-layer-default",
+          "css": "d5ng-color-bg-layer-default",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -915,7 +915,7 @@
         {
           "name": "bg/layer-basement",
           "type": "COLOR",
-          "css": "color-bg-layer-basement",
+          "css": "d5ng-color-bg-layer-basement",
           "values": {
             "Light": {
               "alias": "Palette:gray/100"
@@ -928,7 +928,7 @@
         {
           "name": "bg/neutral-weak",
           "type": "COLOR",
-          "css": "color-bg-neutral-weak",
+          "css": "d5ng-color-bg-neutral-weak",
           "values": {
             "Light": {
               "alias": "Palette:gray/100"
@@ -941,7 +941,7 @@
         {
           "name": "bg/code",
           "type": "COLOR",
-          "css": "color-bg-code",
+          "css": "d5ng-color-bg-code",
           "values": {
             "Light": {
               "alias": "Palette:gray/100"
@@ -954,7 +954,7 @@
         {
           "name": "bg/highlight",
           "type": "COLOR",
-          "css": "color-bg-highlight",
+          "css": "d5ng-color-bg-highlight",
           "values": {
             "Light": {
               "alias": "Palette:yellow/200"
@@ -967,7 +967,7 @@
         {
           "name": "fg/neutral",
           "type": "COLOR",
-          "css": "color-fg-neutral",
+          "css": "d5ng-color-fg-neutral",
           "values": {
             "Light": {
               "alias": "Palette:gray/900"
@@ -980,7 +980,7 @@
         {
           "name": "fg/neutral-muted",
           "type": "COLOR",
-          "css": "color-fg-neutral-muted",
+          "css": "d5ng-color-fg-neutral-muted",
           "values": {
             "Light": {
               "alias": "Palette:gray/700"
@@ -993,20 +993,20 @@
         {
           "name": "fg/neutral-subtle",
           "type": "COLOR",
-          "css": "color-fg-neutral-subtle",
+          "css": "d5ng-color-fg-neutral-subtle",
           "values": {
             "Light": {
               "alias": "Palette:ext/neutral-readable"
             },
             "Dark": {
-              "alias": "Palette:gray/400"
+              "alias": "Palette:gray/500"
             }
           }
         },
         {
           "name": "fg/code",
           "type": "COLOR",
-          "css": "color-fg-code",
+          "css": "d5ng-color-fg-code",
           "values": {
             "Light": {
               "alias": "Palette:gray/800"
@@ -1019,7 +1019,7 @@
         {
           "name": "fg/brand",
           "type": "COLOR",
-          "css": "color-fg-brand",
+          "css": "d5ng-color-fg-brand",
           "values": {
             "Light": {
               "alias": "Palette:blue/700"
@@ -1032,7 +1032,7 @@
         {
           "name": "stroke/neutral-muted",
           "type": "COLOR",
-          "css": "color-stroke-neutral-muted",
+          "css": "d5ng-color-stroke-neutral-muted",
           "values": {
             "Light": {
               "alias": "Palette:gray/200"
@@ -1045,7 +1045,7 @@
         {
           "name": "stroke/neutral-weak",
           "type": "COLOR",
-          "css": "color-stroke-neutral-weak",
+          "css": "d5ng-color-stroke-neutral-weak",
           "values": {
             "Light": {
               "alias": "Palette:gray/300"
@@ -1058,7 +1058,7 @@
         {
           "name": "bg/brand-weak",
           "type": "COLOR",
-          "css": "color-bg-brand-weak",
+          "css": "d5ng-color-bg-brand-weak",
           "values": {
             "Light": {
               "alias": "Palette:blue/50"
@@ -1071,7 +1071,7 @@
         {
           "name": "bg/informative-weak",
           "type": "COLOR",
-          "css": "color-bg-informative-weak",
+          "css": "d5ng-color-bg-informative-weak",
           "values": {
             "Light": {
               "alias": "Palette:blue/50"
@@ -1084,7 +1084,7 @@
         {
           "name": "fg/informative",
           "type": "COLOR",
-          "css": "color-fg-informative",
+          "css": "d5ng-color-fg-informative",
           "values": {
             "Light": {
               "alias": "Palette:blue/700"
@@ -1097,7 +1097,7 @@
         {
           "name": "bg/positive-weak",
           "type": "COLOR",
-          "css": "color-bg-positive-weak",
+          "css": "d5ng-color-bg-positive-weak",
           "values": {
             "Light": {
               "alias": "Palette:green/50"
@@ -1110,7 +1110,7 @@
         {
           "name": "fg/positive",
           "type": "COLOR",
-          "css": "color-fg-positive",
+          "css": "d5ng-color-fg-positive",
           "values": {
             "Light": {
               "alias": "Palette:green/900"
@@ -1123,7 +1123,7 @@
         {
           "name": "bg/warning-weak",
           "type": "COLOR",
-          "css": "color-bg-warning-weak",
+          "css": "d5ng-color-bg-warning-weak",
           "values": {
             "Light": {
               "alias": "Palette:orange/50"
@@ -1136,7 +1136,7 @@
         {
           "name": "fg/warning",
           "type": "COLOR",
-          "css": "color-fg-warning",
+          "css": "d5ng-color-fg-warning",
           "values": {
             "Light": {
               "alias": "Palette:ext/orange-text"
@@ -1149,7 +1149,7 @@
         {
           "name": "bg/critical-weak",
           "type": "COLOR",
-          "css": "color-bg-critical-weak",
+          "css": "d5ng-color-bg-critical-weak",
           "values": {
             "Light": {
               "alias": "Palette:red/50"
@@ -1162,7 +1162,7 @@
         {
           "name": "fg/critical",
           "type": "COLOR",
-          "css": "color-fg-critical",
+          "css": "d5ng-color-fg-critical",
           "values": {
             "Light": {
               "alias": "Palette:red/700"
@@ -1175,7 +1175,7 @@
         {
           "name": "bg/layer-floating",
           "type": "COLOR",
-          "css": "color-bg-layer-floating",
+          "css": "d5ng-color-bg-layer-floating",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1188,7 +1188,7 @@
         {
           "name": "bg/disabled",
           "type": "COLOR",
-          "css": "color-bg-disabled",
+          "css": "d5ng-color-bg-disabled",
           "values": {
             "Light": {
               "alias": "Palette:gray/100"
@@ -1201,7 +1201,7 @@
         {
           "name": "fg/disabled",
           "type": "COLOR",
-          "css": "color-fg-disabled",
+          "css": "d5ng-color-fg-disabled",
           "values": {
             "Light": {
               "alias": "Palette:gray/400"
@@ -1214,20 +1214,20 @@
         {
           "name": "fg/placeholder",
           "type": "COLOR",
-          "css": "color-fg-placeholder",
+          "css": "d5ng-color-fg-placeholder",
           "values": {
             "Light": {
               "alias": "Palette:ext/neutral-readable"
             },
             "Dark": {
-              "alias": "Palette:gray/400"
+              "alias": "Palette:gray/500"
             }
           }
         },
         {
           "name": "stroke/neutral-subtle",
           "type": "COLOR",
-          "css": "color-stroke-neutral-subtle",
+          "css": "d5ng-color-stroke-neutral-subtle",
           "values": {
             "Light": {
               "alias": "Palette:gray/100"
@@ -1240,7 +1240,7 @@
         {
           "name": "stroke/brand-solid",
           "type": "COLOR",
-          "css": "color-stroke-brand-solid",
+          "css": "d5ng-color-stroke-brand-solid",
           "values": {
             "Light": {
               "alias": "Palette:blue/500"
@@ -1253,7 +1253,7 @@
         {
           "name": "stroke/focus-ring",
           "type": "COLOR",
-          "css": "color-stroke-focus-ring",
+          "css": "d5ng-color-stroke-focus-ring",
           "values": {
             "Light": {
               "alias": "Palette:blue/500"
@@ -1266,7 +1266,7 @@
         {
           "name": "bg/neutral-weak-hover",
           "type": "COLOR",
-          "css": "color-bg-neutral-weak-hover",
+          "css": "d5ng-color-bg-neutral-weak-hover",
           "values": {
             "Light": {
               "alias": "Palette:gray/200"
@@ -1279,7 +1279,7 @@
         {
           "name": "bg/neutral-weak-pressed",
           "type": "COLOR",
-          "css": "color-bg-neutral-weak-pressed",
+          "css": "d5ng-color-bg-neutral-weak-pressed",
           "values": {
             "Light": {
               "alias": "Palette:gray/300"
@@ -1292,7 +1292,7 @@
         {
           "name": "stroke/neutral-strong",
           "type": "COLOR",
-          "css": "color-stroke-neutral-strong",
+          "css": "d5ng-color-stroke-neutral-strong",
           "values": {
             "Light": {
               "alias": "Palette:gray/600"
@@ -1305,7 +1305,7 @@
         {
           "name": "stroke/critical",
           "type": "COLOR",
-          "css": "color-stroke-critical",
+          "css": "d5ng-color-stroke-critical",
           "values": {
             "Light": {
               "alias": "Color:fg/critical"
@@ -1318,7 +1318,7 @@
         {
           "name": "effect/shadow-sm",
           "type": "COLOR",
-          "css": "color-effect-shadow-sm",
+          "css": "d5ng-color-effect-shadow-sm",
           "values": {
             "Light": {
               "alias": "Palette:black/alpha-8"
@@ -1331,7 +1331,7 @@
         {
           "name": "effect/shadow-md",
           "type": "COLOR",
-          "css": "color-effect-shadow-md",
+          "css": "d5ng-color-effect-shadow-md",
           "values": {
             "Light": {
               "alias": "Palette:black/alpha-12"
@@ -1344,7 +1344,7 @@
         {
           "name": "effect/shadow-lg",
           "type": "COLOR",
-          "css": "color-effect-shadow-lg",
+          "css": "d5ng-color-effect-shadow-lg",
           "values": {
             "Light": {
               "alias": "Palette:black/alpha-16"
@@ -1357,7 +1357,7 @@
         {
           "name": "bg/scrim",
           "type": "COLOR",
-          "css": "color-bg-scrim",
+          "css": "d5ng-color-bg-scrim",
           "values": {
             "Light": {
               "alias": "Palette:black/alpha-40"
@@ -1370,7 +1370,7 @@
         {
           "name": "bg/brand-solid",
           "type": "COLOR",
-          "css": "color-bg-brand-solid",
+          "css": "d5ng-color-bg-brand-solid",
           "values": {
             "Light": {
               "alias": "Palette:blue/500"
@@ -1383,7 +1383,7 @@
         {
           "name": "bg/brand-solid-hover",
           "type": "COLOR",
-          "css": "color-bg-brand-solid-hover",
+          "css": "d5ng-color-bg-brand-solid-hover",
           "values": {
             "Light": {
               "alias": "Palette:blue/600"
@@ -1396,7 +1396,7 @@
         {
           "name": "bg/brand-solid-pressed",
           "type": "COLOR",
-          "css": "color-bg-brand-solid-pressed",
+          "css": "d5ng-color-bg-brand-solid-pressed",
           "values": {
             "Light": {
               "alias": "Palette:blue/700"
@@ -1409,7 +1409,7 @@
         {
           "name": "bg/critical-solid",
           "type": "COLOR",
-          "css": "color-bg-critical-solid",
+          "css": "d5ng-color-bg-critical-solid",
           "values": {
             "Light": {
               "alias": "Palette:red/700"
@@ -1422,7 +1422,7 @@
         {
           "name": "bg/critical-solid-hover",
           "type": "COLOR",
-          "css": "color-bg-critical-solid-hover",
+          "css": "d5ng-color-bg-critical-solid-hover",
           "values": {
             "Light": {
               "alias": "Palette:red/800"
@@ -1435,7 +1435,7 @@
         {
           "name": "bg/critical-solid-pressed",
           "type": "COLOR",
-          "css": "color-bg-critical-solid-pressed",
+          "css": "d5ng-color-bg-critical-solid-pressed",
           "values": {
             "Light": {
               "alias": "Palette:red/900"
@@ -1448,7 +1448,7 @@
         {
           "name": "fg/on-critical-solid",
           "type": "COLOR",
-          "css": "color-fg-on-critical-solid",
+          "css": "d5ng-color-fg-on-critical-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1461,7 +1461,7 @@
         {
           "name": "fg/on-brand-solid",
           "type": "COLOR",
-          "css": "color-fg-on-brand-solid",
+          "css": "d5ng-color-fg-on-brand-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1474,7 +1474,7 @@
         {
           "name": "bg/neutral-solid",
           "type": "COLOR",
-          "css": "color-bg-neutral-solid",
+          "css": "d5ng-color-bg-neutral-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/900"
@@ -1487,7 +1487,7 @@
         {
           "name": "bg/neutral-solid-hover",
           "type": "COLOR",
-          "css": "color-bg-neutral-solid-hover",
+          "css": "d5ng-color-bg-neutral-solid-hover",
           "values": {
             "Light": {
               "alias": "Palette:gray/800"
@@ -1500,7 +1500,7 @@
         {
           "name": "bg/neutral-solid-pressed",
           "type": "COLOR",
-          "css": "color-bg-neutral-solid-pressed",
+          "css": "d5ng-color-bg-neutral-solid-pressed",
           "values": {
             "Light": {
               "alias": "Palette:gray/700"
@@ -1513,7 +1513,7 @@
         {
           "name": "fg/on-neutral-solid",
           "type": "COLOR",
-          "css": "color-fg-on-neutral-solid",
+          "css": "d5ng-color-fg-on-neutral-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1526,7 +1526,7 @@
         {
           "name": "switch/track-off",
           "type": "COLOR",
-          "css": "color-switch-track-off",
+          "css": "d5ng-color-switch-track-off",
           "values": {
             "Light": {
               "alias": "Palette:gray/600"
@@ -1539,7 +1539,7 @@
         {
           "name": "switch/track-off-hover",
           "type": "COLOR",
-          "css": "color-switch-track-off-hover",
+          "css": "d5ng-color-switch-track-off-hover",
           "values": {
             "Light": {
               "alias": "Palette:gray/700"
@@ -1552,7 +1552,7 @@
         {
           "name": "switch/track-off-pressed",
           "type": "COLOR",
-          "css": "color-switch-track-off-pressed",
+          "css": "d5ng-color-switch-track-off-pressed",
           "values": {
             "Light": {
               "alias": "Palette:gray/800"
@@ -1565,7 +1565,7 @@
         {
           "name": "select/bg-pressed",
           "type": "COLOR",
-          "css": "color-select-bg-pressed",
+          "css": "d5ng-color-select-bg-pressed",
           "values": {
             "Light": {
               "alias": "Palette:gray/300"
@@ -1578,7 +1578,7 @@
         {
           "name": "stroke/neutral-contrast",
           "type": "COLOR",
-          "css": "color-stroke-neutral-contrast",
+          "css": "d5ng-color-stroke-neutral-contrast",
           "values": {
             "Light": {
               "alias": "Palette:gray/900"
@@ -1591,7 +1591,7 @@
         {
           "name": "dialog/fog-clear",
           "type": "COLOR",
-          "css": "color-dialog-fog-clear",
+          "css": "d5ng-color-dialog-fog-clear",
           "values": {
             "Light": {
               "alias": "Palette:palette/dialog-fog-clear-light"
@@ -1604,7 +1604,7 @@
         {
           "name": "fg/positive-inverse",
           "type": "COLOR",
-          "css": "color-fg-positive-inverse",
+          "css": "d5ng-color-fg-positive-inverse",
           "values": {
             "Light": {
               "alias": "Palette:green/300"
@@ -1617,7 +1617,7 @@
         {
           "name": "fg/critical-inverse",
           "type": "COLOR",
-          "css": "color-fg-critical-inverse",
+          "css": "d5ng-color-fg-critical-inverse",
           "values": {
             "Light": {
               "alias": "Palette:red/300"
@@ -1630,7 +1630,7 @@
         {
           "name": "fg/brand-inverse",
           "type": "COLOR",
-          "css": "color-fg-brand-inverse",
+          "css": "d5ng-color-fg-brand-inverse",
           "values": {
             "Light": {
               "alias": "Palette:blue-dark/300"
@@ -1643,7 +1643,7 @@
         {
           "name": "stroke/focus-ring-inverse",
           "type": "COLOR",
-          "css": "color-stroke-focus-ring-inverse",
+          "css": "d5ng-color-stroke-focus-ring-inverse",
           "values": {
             "Light": {
               "alias": "Palette:blue-dark/300"
@@ -1656,7 +1656,7 @@
         {
           "name": "bg/informative-solid",
           "type": "COLOR",
-          "css": "color-bg-informative-solid",
+          "css": "d5ng-color-bg-informative-solid",
           "values": {
             "Light": {
               "alias": "Palette:blue/700"
@@ -1669,7 +1669,7 @@
         {
           "name": "fg/on-informative-solid",
           "type": "COLOR",
-          "css": "color-fg-on-informative-solid",
+          "css": "d5ng-color-fg-on-informative-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1682,7 +1682,7 @@
         {
           "name": "bg/positive-solid",
           "type": "COLOR",
-          "css": "color-bg-positive-solid",
+          "css": "d5ng-color-bg-positive-solid",
           "values": {
             "Light": {
               "alias": "Palette:green/900"
@@ -1695,7 +1695,7 @@
         {
           "name": "fg/on-positive-solid",
           "type": "COLOR",
-          "css": "color-fg-on-positive-solid",
+          "css": "d5ng-color-fg-on-positive-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1708,7 +1708,7 @@
         {
           "name": "bg/warning-solid",
           "type": "COLOR",
-          "css": "color-bg-warning-solid",
+          "css": "d5ng-color-bg-warning-solid",
           "values": {
             "Light": {
               "alias": "Palette:ext/orange-text"
@@ -1721,7 +1721,7 @@
         {
           "name": "fg/on-warning-solid",
           "type": "COLOR",
-          "css": "color-fg-on-warning-solid",
+          "css": "d5ng-color-fg-on-warning-solid",
           "values": {
             "Light": {
               "alias": "Palette:gray/0"
@@ -1734,7 +1734,7 @@
         {
           "name": "bg/brand-weak-hover",
           "type": "COLOR",
-          "css": "color-bg-brand-weak-hover",
+          "css": "d5ng-color-bg-brand-weak-hover",
           "values": {
             "Light": {
               "alias": "Palette:blue/100"
@@ -1747,7 +1747,7 @@
         {
           "name": "bg/brand-weak-pressed",
           "type": "COLOR",
-          "css": "color-bg-brand-weak-pressed",
+          "css": "d5ng-color-bg-brand-weak-pressed",
           "values": {
             "Light": {
               "alias": "Palette:blue/200"
@@ -1760,7 +1760,7 @@
         {
           "name": "fg/brand-hover",
           "type": "COLOR",
-          "css": "color-fg-brand-hover",
+          "css": "d5ng-color-fg-brand-hover",
           "values": {
             "Light": {
               "alias": "Palette:blue/800"
@@ -1773,7 +1773,7 @@
         {
           "name": "fg/brand-pressed",
           "type": "COLOR",
-          "css": "color-fg-brand-pressed",
+          "css": "d5ng-color-fg-brand-pressed",
           "values": {
             "Light": {
               "alias": "Palette:blue/900"
@@ -1786,7 +1786,7 @@
         {
           "name": "skeleton/bg",
           "type": "COLOR",
-          "css": "color-skeleton-bg",
+          "css": "d5ng-color-skeleton-bg",
           "values": {
             "Light": {
               "alias": "Palette:gray/200"
@@ -1799,7 +1799,7 @@
         {
           "name": "skeleton/highlight",
           "type": "COLOR",
-          "css": "color-skeleton-highlight",
+          "css": "d5ng-color-skeleton-highlight",
           "values": {
             "Light": {
               "alias": "Palette:gray/100"
@@ -1820,7 +1820,7 @@
         {
           "name": "spacing/0",
           "type": "FLOAT",
-          "css": "spacing-0",
+          "css": "d5ng-spacing-0",
           "scopes": [
             "GAP"
           ],
@@ -1831,7 +1831,7 @@
         {
           "name": "spacing/2",
           "type": "FLOAT",
-          "css": "spacing-2",
+          "css": "d5ng-spacing-2",
           "scopes": [
             "GAP"
           ],
@@ -1842,7 +1842,7 @@
         {
           "name": "spacing/4",
           "type": "FLOAT",
-          "css": "spacing-4",
+          "css": "d5ng-spacing-4",
           "scopes": [
             "GAP"
           ],
@@ -1853,7 +1853,7 @@
         {
           "name": "spacing/8",
           "type": "FLOAT",
-          "css": "spacing-8",
+          "css": "d5ng-spacing-8",
           "scopes": [
             "GAP"
           ],
@@ -1864,7 +1864,7 @@
         {
           "name": "spacing/12",
           "type": "FLOAT",
-          "css": "spacing-12",
+          "css": "d5ng-spacing-12",
           "scopes": [
             "GAP"
           ],
@@ -1875,7 +1875,7 @@
         {
           "name": "spacing/16",
           "type": "FLOAT",
-          "css": "spacing-16",
+          "css": "d5ng-spacing-16",
           "scopes": [
             "GAP"
           ],
@@ -1886,7 +1886,7 @@
         {
           "name": "spacing/20",
           "type": "FLOAT",
-          "css": "spacing-20",
+          "css": "d5ng-spacing-20",
           "scopes": [
             "GAP"
           ],
@@ -1897,7 +1897,7 @@
         {
           "name": "spacing/24",
           "type": "FLOAT",
-          "css": "spacing-24",
+          "css": "d5ng-spacing-24",
           "scopes": [
             "GAP"
           ],
@@ -1908,7 +1908,7 @@
         {
           "name": "spacing/32",
           "type": "FLOAT",
-          "css": "spacing-32",
+          "css": "d5ng-spacing-32",
           "scopes": [
             "GAP"
           ],
@@ -1919,7 +1919,7 @@
         {
           "name": "spacing/40",
           "type": "FLOAT",
-          "css": "spacing-40",
+          "css": "d5ng-spacing-40",
           "scopes": [
             "GAP"
           ],
@@ -1930,7 +1930,7 @@
         {
           "name": "spacing/48",
           "type": "FLOAT",
-          "css": "spacing-48",
+          "css": "d5ng-spacing-48",
           "scopes": [
             "GAP"
           ],
@@ -1941,7 +1941,7 @@
         {
           "name": "spacing/64",
           "type": "FLOAT",
-          "css": "spacing-64",
+          "css": "d5ng-spacing-64",
           "scopes": [
             "GAP"
           ],
@@ -1952,7 +1952,7 @@
         {
           "name": "spacing/80",
           "type": "FLOAT",
-          "css": "spacing-80",
+          "css": "d5ng-spacing-80",
           "scopes": [
             "GAP"
           ],
@@ -1963,7 +1963,7 @@
         {
           "name": "layout/page-max",
           "type": "FLOAT",
-          "css": "layout-page-max",
+          "css": "d5ng-layout-page-max",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -1974,7 +1974,7 @@
         {
           "name": "layout/gutter",
           "type": "FLOAT",
-          "css": "layout-gutter",
+          "css": "d5ng-layout-gutter",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -1985,7 +1985,7 @@
         {
           "name": "spacing/6",
           "type": "FLOAT",
-          "css": "spacing-6",
+          "css": "d5ng-spacing-6",
           "scopes": [
             "GAP"
           ],
@@ -1996,7 +1996,7 @@
         {
           "name": "spacing/10",
           "type": "FLOAT",
-          "css": "spacing-10",
+          "css": "d5ng-spacing-10",
           "scopes": [
             "GAP"
           ],
@@ -2015,7 +2015,7 @@
         {
           "name": "radius/none",
           "type": "FLOAT",
-          "css": "radius-none",
+          "css": "d5ng-radius-none",
           "scopes": [
             "CORNER_RADIUS"
           ],
@@ -2026,7 +2026,7 @@
         {
           "name": "radius/sm",
           "type": "FLOAT",
-          "css": "radius-sm",
+          "css": "d5ng-radius-sm",
           "scopes": [
             "CORNER_RADIUS"
           ],
@@ -2037,7 +2037,7 @@
         {
           "name": "radius/md",
           "type": "FLOAT",
-          "css": "radius-md",
+          "css": "d5ng-radius-md",
           "scopes": [
             "CORNER_RADIUS"
           ],
@@ -2048,7 +2048,7 @@
         {
           "name": "radius/lg",
           "type": "FLOAT",
-          "css": "radius-lg",
+          "css": "d5ng-radius-lg",
           "scopes": [
             "CORNER_RADIUS"
           ],
@@ -2059,7 +2059,7 @@
         {
           "name": "radius/full",
           "type": "FLOAT",
-          "css": "radius-full",
+          "css": "d5ng-radius-full",
           "scopes": [
             "CORNER_RADIUS"
           ],
@@ -2070,7 +2070,7 @@
         {
           "name": "radius/xl",
           "type": "FLOAT",
-          "css": "radius-xl",
+          "css": "d5ng-radius-xl",
           "scopes": [
             "CORNER_RADIUS"
           ],
@@ -2089,7 +2089,7 @@
         {
           "name": "font/family/base",
           "type": "STRING",
-          "css": "font-family-base",
+          "css": "d5ng-font-family-base",
           "values": {
             "Value": "Pretendard Variable"
           }
@@ -2097,7 +2097,7 @@
         {
           "name": "font/family/code",
           "type": "STRING",
-          "css": "font-family-code",
+          "css": "d5ng-font-family-code",
           "values": {
             "Value": "JetBrains Mono"
           }
@@ -2105,7 +2105,7 @@
         {
           "name": "font/size/t13",
           "type": "FLOAT",
-          "css": "font-size-t13",
+          "css": "d5ng-font-size-t13",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2116,7 +2116,7 @@
         {
           "name": "font/line-height/t13",
           "type": "FLOAT",
-          "css": "font-line-height-t13",
+          "css": "d5ng-font-line-height-t13",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2127,7 +2127,7 @@
         {
           "name": "font/size/t12",
           "type": "FLOAT",
-          "css": "font-size-t12",
+          "css": "d5ng-font-size-t12",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2138,7 +2138,7 @@
         {
           "name": "font/line-height/t12",
           "type": "FLOAT",
-          "css": "font-line-height-t12",
+          "css": "d5ng-font-line-height-t12",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2149,7 +2149,7 @@
         {
           "name": "font/size/t10",
           "type": "FLOAT",
-          "css": "font-size-t10",
+          "css": "d5ng-font-size-t10",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2160,7 +2160,7 @@
         {
           "name": "font/line-height/t10",
           "type": "FLOAT",
-          "css": "font-line-height-t10",
+          "css": "d5ng-font-line-height-t10",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2171,7 +2171,7 @@
         {
           "name": "font/size/t7",
           "type": "FLOAT",
-          "css": "font-size-t7",
+          "css": "d5ng-font-size-t7",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2182,7 +2182,7 @@
         {
           "name": "font/line-height/t7",
           "type": "FLOAT",
-          "css": "font-line-height-t7",
+          "css": "d5ng-font-line-height-t7",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2193,7 +2193,7 @@
         {
           "name": "font/size/t6",
           "type": "FLOAT",
-          "css": "font-size-t6",
+          "css": "d5ng-font-size-t6",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2204,7 +2204,7 @@
         {
           "name": "font/line-height/t6",
           "type": "FLOAT",
-          "css": "font-line-height-t6",
+          "css": "d5ng-font-line-height-t6",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2215,7 +2215,7 @@
         {
           "name": "font/size/t5",
           "type": "FLOAT",
-          "css": "font-size-t5",
+          "css": "d5ng-font-size-t5",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2226,7 +2226,7 @@
         {
           "name": "font/line-height/t5",
           "type": "FLOAT",
-          "css": "font-line-height-t5",
+          "css": "d5ng-font-line-height-t5",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2237,7 +2237,7 @@
         {
           "name": "font/size/t4",
           "type": "FLOAT",
-          "css": "font-size-t4",
+          "css": "d5ng-font-size-t4",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2248,7 +2248,7 @@
         {
           "name": "font/line-height/t4",
           "type": "FLOAT",
-          "css": "font-line-height-t4",
+          "css": "d5ng-font-line-height-t4",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2259,7 +2259,7 @@
         {
           "name": "font/size/t3",
           "type": "FLOAT",
-          "css": "font-size-t3",
+          "css": "d5ng-font-size-t3",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2270,7 +2270,7 @@
         {
           "name": "font/line-height/t3",
           "type": "FLOAT",
-          "css": "font-line-height-t3",
+          "css": "d5ng-font-line-height-t3",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2281,7 +2281,7 @@
         {
           "name": "font/size/code",
           "type": "FLOAT",
-          "css": "font-size-code",
+          "css": "d5ng-font-size-code",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2292,7 +2292,7 @@
         {
           "name": "font/line-height/code",
           "type": "FLOAT",
-          "css": "font-line-height-code",
+          "css": "d5ng-font-line-height-code",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2303,7 +2303,7 @@
         {
           "name": "font/size/t1",
           "type": "FLOAT",
-          "css": "font-size-t1",
+          "css": "d5ng-font-size-t1",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2314,7 +2314,7 @@
         {
           "name": "font/line-height/t1",
           "type": "FLOAT",
-          "css": "font-line-height-t1",
+          "css": "d5ng-font-line-height-t1",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2325,7 +2325,7 @@
         {
           "name": "font/size/t2",
           "type": "FLOAT",
-          "css": "font-size-t2",
+          "css": "d5ng-font-size-t2",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2336,7 +2336,7 @@
         {
           "name": "font/line-height/t2",
           "type": "FLOAT",
-          "css": "font-line-height-t2",
+          "css": "d5ng-font-line-height-t2",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2347,7 +2347,7 @@
         {
           "name": "font/size/t8",
           "type": "FLOAT",
-          "css": "font-size-t8",
+          "css": "d5ng-font-size-t8",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2358,7 +2358,7 @@
         {
           "name": "font/line-height/t8",
           "type": "FLOAT",
-          "css": "font-line-height-t8",
+          "css": "d5ng-font-line-height-t8",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2369,7 +2369,7 @@
         {
           "name": "font/size/t9",
           "type": "FLOAT",
-          "css": "font-size-t9",
+          "css": "d5ng-font-size-t9",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2380,7 +2380,7 @@
         {
           "name": "font/line-height/t9",
           "type": "FLOAT",
-          "css": "font-line-height-t9",
+          "css": "d5ng-font-line-height-t9",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2391,7 +2391,7 @@
         {
           "name": "font/size/t11",
           "type": "FLOAT",
-          "css": "font-size-t11",
+          "css": "d5ng-font-size-t11",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2402,7 +2402,7 @@
         {
           "name": "font/line-height/t11",
           "type": "FLOAT",
-          "css": "font-line-height-t11",
+          "css": "d5ng-font-line-height-t11",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2413,7 +2413,7 @@
         {
           "name": "font/size/t14",
           "type": "FLOAT",
-          "css": "font-size-t14",
+          "css": "d5ng-font-size-t14",
           "scopes": [
             "FONT_SIZE"
           ],
@@ -2424,7 +2424,7 @@
         {
           "name": "font/line-height/t14",
           "type": "FLOAT",
-          "css": "font-line-height-t14",
+          "css": "d5ng-font-line-height-t14",
           "scopes": [
             "LINE_HEIGHT"
           ],
@@ -2435,7 +2435,7 @@
         {
           "name": "font/weight/regular",
           "type": "FLOAT",
-          "css": "font-weight-regular",
+          "css": "d5ng-font-weight-regular",
           "scopes": [
             "FONT_WEIGHT"
           ],
@@ -2446,7 +2446,7 @@
         {
           "name": "font/weight/medium",
           "type": "FLOAT",
-          "css": "font-weight-medium",
+          "css": "d5ng-font-weight-medium",
           "scopes": [
             "FONT_WEIGHT"
           ],
@@ -2457,7 +2457,7 @@
         {
           "name": "font/weight/bold",
           "type": "FLOAT",
-          "css": "font-weight-bold",
+          "css": "d5ng-font-weight-bold",
           "scopes": [
             "FONT_WEIGHT"
           ],
@@ -2468,7 +2468,7 @@
         {
           "name": "font/weight/semibold",
           "type": "FLOAT",
-          "css": "font-weight-semibold",
+          "css": "d5ng-font-weight-semibold",
           "scopes": [
             "FONT_WEIGHT"
           ],
@@ -2487,7 +2487,7 @@
         {
           "name": "duration/fast",
           "type": "FLOAT",
-          "css": "duration-fast",
+          "css": "d5ng-duration-fast",
           "scopes": [],
           "values": {
             "Value": 100
@@ -2496,7 +2496,7 @@
         {
           "name": "duration/normal",
           "type": "FLOAT",
-          "css": "duration-normal",
+          "css": "d5ng-duration-normal",
           "scopes": [],
           "values": {
             "Value": 150
@@ -2505,7 +2505,7 @@
         {
           "name": "duration/slow",
           "type": "FLOAT",
-          "css": "duration-slow",
+          "css": "d5ng-duration-slow",
           "scopes": [],
           "values": {
             "Value": 250
@@ -2514,7 +2514,7 @@
         {
           "name": "easing/standard",
           "type": "STRING",
-          "css": "easing-standard",
+          "css": "d5ng-easing-standard",
           "values": {
             "Value": "cubic-bezier(0.2, 0, 0, 1)"
           }
@@ -2522,7 +2522,7 @@
         {
           "name": "easing/enter",
           "type": "STRING",
-          "css": "easing-enter",
+          "css": "d5ng-easing-enter",
           "values": {
             "Value": "cubic-bezier(0, 0, 0.2, 1)"
           }
@@ -2530,7 +2530,7 @@
         {
           "name": "easing/exit",
           "type": "STRING",
-          "css": "easing-exit",
+          "css": "d5ng-easing-exit",
           "values": {
             "Value": "cubic-bezier(0.4, 0, 1, 1)"
           }
@@ -2538,7 +2538,7 @@
         {
           "name": "easing/linear",
           "type": "STRING",
-          "css": "easing-linear",
+          "css": "d5ng-easing-linear",
           "values": {
             "Value": "cubic-bezier(0, 0, 1, 1)"
           }
@@ -2546,7 +2546,7 @@
         {
           "name": "press/max-reduction",
           "type": "FLOAT",
-          "css": "press-max-reduction",
+          "css": "d5ng-press-max-reduction",
           "scopes": [],
           "values": {
             "Value": 0.04
@@ -2555,7 +2555,7 @@
         {
           "name": "duration/shimmer",
           "type": "FLOAT",
-          "css": "duration-shimmer",
+          "css": "d5ng-duration-shimmer",
           "scopes": [],
           "values": {
             "Value": 1500
@@ -2564,7 +2564,7 @@
         {
           "name": "duration/spring-rapid",
           "type": "FLOAT",
-          "css": "duration-spring-rapid",
+          "css": "d5ng-duration-spring-rapid",
           "scopes": [],
           "values": {
             "Value": 200
@@ -2573,7 +2573,7 @@
         {
           "name": "easing/spring-rapid",
           "type": "STRING",
-          "css": "easing-spring-rapid",
+          "css": "d5ng-easing-spring-rapid",
           "values": {
             "Value": "linear(0, 0.103, 0.304, 0.508, 0.677, 0.802, 0.887, 0.941, 0.973, 0.991, 0.999, 1.003, 1.004, 1)"
           }
@@ -2581,7 +2581,7 @@
         {
           "name": "duration/spring-quick",
           "type": "FLOAT",
-          "css": "duration-spring-quick",
+          "css": "d5ng-duration-spring-quick",
           "scopes": [],
           "values": {
             "Value": 350
@@ -2590,7 +2590,7 @@
         {
           "name": "easing/spring-quick",
           "type": "STRING",
-          "css": "easing-spring-quick",
+          "css": "d5ng-easing-spring-quick",
           "values": {
             "Value": "linear(0, 0.083, 0.247, 0.42, 0.572, 0.694, 0.786, 0.854, 0.902, 0.935, 0.957, 0.973, 0.983, 0.989, 0.993, 0.996, 0.997, 0.998, 0.999, 0.999, 1, 1, 1)"
           }
@@ -2606,7 +2606,7 @@
         {
           "name": "button/min-height/sm",
           "type": "FLOAT",
-          "css": "button-min-height-sm",
+          "css": "d5ng-button-min-height-sm",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2617,7 +2617,7 @@
         {
           "name": "button/min-height/md",
           "type": "FLOAT",
-          "css": "button-min-height-md",
+          "css": "d5ng-button-min-height-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2628,7 +2628,7 @@
         {
           "name": "button/min-height/lg",
           "type": "FLOAT",
-          "css": "button-min-height-lg",
+          "css": "d5ng-button-min-height-lg",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2639,7 +2639,7 @@
         {
           "name": "text-field/min-height/sm",
           "type": "FLOAT",
-          "css": "text-field-min-height-sm",
+          "css": "d5ng-text-field-min-height-sm",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2650,7 +2650,7 @@
         {
           "name": "text-field/min-height/md",
           "type": "FLOAT",
-          "css": "text-field-min-height-md",
+          "css": "d5ng-text-field-min-height-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2661,7 +2661,7 @@
         {
           "name": "text-field/min-height/lg",
           "type": "FLOAT",
-          "css": "text-field-min-height-lg",
+          "css": "d5ng-text-field-min-height-lg",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2672,7 +2672,7 @@
         {
           "name": "text-field/border-width",
           "type": "FLOAT",
-          "css": "text-field-border-width",
+          "css": "d5ng-text-field-border-width",
           "scopes": [
             "STROKE_FLOAT"
           ],
@@ -2683,7 +2683,7 @@
         {
           "name": "button/min-height/xs",
           "type": "FLOAT",
-          "css": "button-min-height-xs",
+          "css": "d5ng-button-min-height-xs",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2694,7 +2694,7 @@
         {
           "name": "text-field/icon-size/sm",
           "type": "FLOAT",
-          "css": "text-field-icon-size-sm",
+          "css": "d5ng-text-field-icon-size-sm",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2705,7 +2705,7 @@
         {
           "name": "text-field/icon-size/md",
           "type": "FLOAT",
-          "css": "text-field-icon-size-md",
+          "css": "d5ng-text-field-icon-size-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2716,7 +2716,7 @@
         {
           "name": "text-field/icon-size/lg",
           "type": "FLOAT",
-          "css": "text-field-icon-size-lg",
+          "css": "d5ng-text-field-icon-size-lg",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2727,7 +2727,7 @@
         {
           "name": "text-field/clear-slot-width/sm",
           "type": "FLOAT",
-          "css": "text-field-clear-slot-width-sm",
+          "css": "d5ng-text-field-clear-slot-width-sm",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2738,7 +2738,7 @@
         {
           "name": "text-field/clear-slot-width/md",
           "type": "FLOAT",
-          "css": "text-field-clear-slot-width-md",
+          "css": "d5ng-text-field-clear-slot-width-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2749,7 +2749,7 @@
         {
           "name": "text-field/clear-slot-width/lg",
           "type": "FLOAT",
-          "css": "text-field-clear-slot-width-lg",
+          "css": "d5ng-text-field-clear-slot-width-lg",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2760,7 +2760,7 @@
         {
           "name": "textarea/min-height",
           "type": "FLOAT",
-          "css": "textarea-min-height",
+          "css": "d5ng-textarea-min-height",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2771,7 +2771,7 @@
         {
           "name": "textarea/content-min-height",
           "type": "FLOAT",
-          "css": "textarea-content-min-height",
+          "css": "d5ng-textarea-content-min-height",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2782,7 +2782,7 @@
         {
           "name": "checkbox/mark-size-medium",
           "type": "FLOAT",
-          "css": "checkbox-mark-size-medium",
+          "css": "d5ng-checkbox-mark-size-medium",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2793,7 +2793,7 @@
         {
           "name": "checkbox/mark-size-large",
           "type": "FLOAT",
-          "css": "checkbox-mark-size-large",
+          "css": "d5ng-checkbox-mark-size-large",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2804,7 +2804,7 @@
         {
           "name": "checkbox/min-target-height",
           "type": "FLOAT",
-          "css": "checkbox-min-target-height",
+          "css": "d5ng-checkbox-min-target-height",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2815,7 +2815,7 @@
         {
           "name": "radio/mark-size-medium",
           "type": "FLOAT",
-          "css": "radio-mark-size-medium",
+          "css": "d5ng-radio-mark-size-medium",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2826,7 +2826,7 @@
         {
           "name": "radio/mark-size-large",
           "type": "FLOAT",
-          "css": "radio-mark-size-large",
+          "css": "d5ng-radio-mark-size-large",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2837,7 +2837,7 @@
         {
           "name": "radio/dot-size-medium",
           "type": "FLOAT",
-          "css": "radio-dot-size-medium",
+          "css": "d5ng-radio-dot-size-medium",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2848,7 +2848,7 @@
         {
           "name": "radio/dot-size-large",
           "type": "FLOAT",
-          "css": "radio-dot-size-large",
+          "css": "d5ng-radio-dot-size-large",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2859,7 +2859,7 @@
         {
           "name": "radio/dot-size-disabled-medium",
           "type": "FLOAT",
-          "css": "radio-dot-size-disabled-medium",
+          "css": "d5ng-radio-dot-size-disabled-medium",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2870,7 +2870,7 @@
         {
           "name": "radio/dot-size-disabled-large",
           "type": "FLOAT",
-          "css": "radio-dot-size-disabled-large",
+          "css": "d5ng-radio-dot-size-disabled-large",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2881,7 +2881,7 @@
         {
           "name": "radio/min-target-height",
           "type": "FLOAT",
-          "css": "radio-min-target-height",
+          "css": "d5ng-radio-min-target-height",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2892,7 +2892,7 @@
         {
           "name": "switch/width-16",
           "type": "FLOAT",
-          "css": "switch-width-16",
+          "css": "d5ng-switch-width-16",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2903,7 +2903,7 @@
         {
           "name": "switch/height-16",
           "type": "FLOAT",
-          "css": "switch-height-16",
+          "css": "d5ng-switch-height-16",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2914,7 +2914,7 @@
         {
           "name": "switch/thumb-on-16",
           "type": "FLOAT",
-          "css": "switch-thumb-on-16",
+          "css": "d5ng-switch-thumb-on-16",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2925,7 +2925,7 @@
         {
           "name": "switch/thumb-off-16",
           "type": "FLOAT",
-          "css": "switch-thumb-off-16",
+          "css": "d5ng-switch-thumb-off-16",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2936,7 +2936,7 @@
         {
           "name": "switch/width-24",
           "type": "FLOAT",
-          "css": "switch-width-24",
+          "css": "d5ng-switch-width-24",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2947,7 +2947,7 @@
         {
           "name": "switch/height-24",
           "type": "FLOAT",
-          "css": "switch-height-24",
+          "css": "d5ng-switch-height-24",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2958,7 +2958,7 @@
         {
           "name": "switch/thumb-on-24",
           "type": "FLOAT",
-          "css": "switch-thumb-on-24",
+          "css": "d5ng-switch-thumb-on-24",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2969,7 +2969,7 @@
         {
           "name": "switch/thumb-off-24",
           "type": "FLOAT",
-          "css": "switch-thumb-off-24",
+          "css": "d5ng-switch-thumb-off-24",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2980,7 +2980,7 @@
         {
           "name": "switch/width-32",
           "type": "FLOAT",
-          "css": "switch-width-32",
+          "css": "d5ng-switch-width-32",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -2991,7 +2991,7 @@
         {
           "name": "switch/height-32",
           "type": "FLOAT",
-          "css": "switch-height-32",
+          "css": "d5ng-switch-height-32",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3002,7 +3002,7 @@
         {
           "name": "switch/thumb-on-32",
           "type": "FLOAT",
-          "css": "switch-thumb-on-32",
+          "css": "d5ng-switch-thumb-on-32",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3013,7 +3013,7 @@
         {
           "name": "switch/thumb-off-32",
           "type": "FLOAT",
-          "css": "switch-thumb-off-32",
+          "css": "d5ng-switch-thumb-off-32",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3024,7 +3024,7 @@
         {
           "name": "switch/inset-32",
           "type": "FLOAT",
-          "css": "switch-inset-32",
+          "css": "d5ng-switch-inset-32",
           "scopes": [
             "GAP"
           ],
@@ -3035,7 +3035,7 @@
         {
           "name": "switch/min-target-height",
           "type": "FLOAT",
-          "css": "switch-min-target-height",
+          "css": "d5ng-switch-min-target-height",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3046,7 +3046,7 @@
         {
           "name": "select/min-height/md",
           "type": "FLOAT",
-          "css": "select-min-height-md",
+          "css": "d5ng-select-min-height-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3059,7 +3059,7 @@
         {
           "name": "select/min-height/lg",
           "type": "FLOAT",
-          "css": "select-min-height-lg",
+          "css": "d5ng-select-min-height-lg",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3072,7 +3072,7 @@
         {
           "name": "select/content-max-height",
           "type": "FLOAT",
-          "css": "select-content-max-height",
+          "css": "d5ng-select-content-max-height",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3083,7 +3083,7 @@
         {
           "name": "button/icon-size/xs",
           "type": "FLOAT",
-          "css": "button-icon-size-xs",
+          "css": "d5ng-button-icon-size-xs",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3094,7 +3094,7 @@
         {
           "name": "button/loading-size/xs",
           "type": "FLOAT",
-          "css": "button-loading-size-xs",
+          "css": "d5ng-button-loading-size-xs",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3105,7 +3105,7 @@
         {
           "name": "button/icon-size/sm",
           "type": "FLOAT",
-          "css": "button-icon-size-sm",
+          "css": "d5ng-button-icon-size-sm",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3116,7 +3116,7 @@
         {
           "name": "button/loading-size/sm",
           "type": "FLOAT",
-          "css": "button-loading-size-sm",
+          "css": "d5ng-button-loading-size-sm",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3127,7 +3127,7 @@
         {
           "name": "button/icon-size/md",
           "type": "FLOAT",
-          "css": "button-icon-size-md",
+          "css": "d5ng-button-icon-size-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3138,7 +3138,7 @@
         {
           "name": "button/loading-size/md",
           "type": "FLOAT",
-          "css": "button-loading-size-md",
+          "css": "d5ng-button-loading-size-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3149,7 +3149,7 @@
         {
           "name": "button/icon-size/lg",
           "type": "FLOAT",
-          "css": "button-icon-size-lg",
+          "css": "d5ng-button-icon-size-lg",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3160,7 +3160,7 @@
         {
           "name": "button/loading-size/lg",
           "type": "FLOAT",
-          "css": "button-loading-size-lg",
+          "css": "d5ng-button-loading-size-lg",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3171,7 +3171,7 @@
         {
           "name": "focus-ring/width",
           "type": "FLOAT",
-          "css": "focus-ring-width",
+          "css": "d5ng-focus-ring-width",
           "scopes": [
             "STROKE_FLOAT"
           ],
@@ -3179,6 +3179,83 @@
             "Mode 1": {
               "alias": "Spacing:spacing/2"
             }
+          }
+        },
+        {
+          "name": "chip/min-height/sm",
+          "type": "FLOAT",
+          "css": "d5ng-chip-min-height-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 32
+          }
+        },
+        {
+          "name": "chip/min-height/md",
+          "type": "FLOAT",
+          "css": "d5ng-chip-min-height-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 36
+          }
+        },
+        {
+          "name": "chip/min-height/lg",
+          "type": "FLOAT",
+          "css": "d5ng-chip-min-height-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 40
+          }
+        },
+        {
+          "name": "chip/min-target-height",
+          "type": "FLOAT",
+          "css": "d5ng-chip-min-target-height",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 44
+          }
+        },
+        {
+          "name": "chip/icon-size/sm",
+          "type": "FLOAT",
+          "css": "d5ng-chip-icon-size-sm",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 16
+          }
+        },
+        {
+          "name": "chip/icon-size/md",
+          "type": "FLOAT",
+          "css": "d5ng-chip-icon-size-md",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 16
+          }
+        },
+        {
+          "name": "chip/icon-size/lg",
+          "type": "FLOAT",
+          "css": "d5ng-chip-icon-size-lg",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "values": {
+            "Mode 1": 20
           }
         }
       ]
@@ -3193,7 +3270,7 @@
         {
           "name": "button/surface-default",
           "type": "BOOLEAN",
-          "css": "button-surface-default",
+          "css": "d5ng-button-surface-default",
           "values": {
             "Default": true,
             "Inverse": false
@@ -3202,7 +3279,7 @@
         {
           "name": "button/surface-inverse",
           "type": "BOOLEAN",
-          "css": "button-surface-inverse",
+          "css": "d5ng-button-surface-inverse",
           "values": {
             "Default": false,
             "Inverse": true
@@ -3211,7 +3288,7 @@
         {
           "name": "button/ghost-fg",
           "type": "COLOR",
-          "css": "button-ghost-fg",
+          "css": "d5ng-button-ghost-fg",
           "values": {
             "Default": {
               "alias": "Color:fg/neutral"
@@ -3224,7 +3301,7 @@
         {
           "name": "button/ghost-icon-fg",
           "type": "COLOR",
-          "css": "button-ghost-icon-fg",
+          "css": "d5ng-button-ghost-icon-fg",
           "values": {
             "Default": {
               "alias": "Color:fg/neutral"
@@ -3237,7 +3314,7 @@
         {
           "name": "button/ghost-disabled-fg",
           "type": "COLOR",
-          "css": "button-ghost-disabled-fg",
+          "css": "d5ng-button-ghost-disabled-fg",
           "values": {
             "Default": {
               "alias": "Color:fg/disabled"
@@ -3250,7 +3327,7 @@
         {
           "name": "button/ghost-weight",
           "type": "FLOAT",
-          "css": "button-ghost-weight",
+          "css": "d5ng-button-ghost-weight",
           "scopes": [
             "FONT_WEIGHT"
           ],
@@ -3266,7 +3343,7 @@
         {
           "name": "button/ghost-padding-x/small",
           "type": "FLOAT",
-          "css": "button-ghost-padding-x-small",
+          "css": "d5ng-button-ghost-padding-x-small",
           "scopes": [
             "GAP"
           ],
@@ -3278,7 +3355,7 @@
         {
           "name": "button/ghost-padding-x/medium",
           "type": "FLOAT",
-          "css": "button-ghost-padding-x-medium",
+          "css": "d5ng-button-ghost-padding-x-medium",
           "scopes": [
             "GAP"
           ],
@@ -3290,7 +3367,7 @@
         {
           "name": "button/ghost-padding-x/large",
           "type": "FLOAT",
-          "css": "button-ghost-padding-x-large",
+          "css": "d5ng-button-ghost-padding-x-large",
           "scopes": [
             "GAP"
           ],
@@ -3302,7 +3379,7 @@
         {
           "name": "button/ghost-padding-x/xsmall",
           "type": "FLOAT",
-          "css": "button-ghost-padding-x-xsmall",
+          "css": "d5ng-button-ghost-padding-x-xsmall",
           "scopes": [
             "GAP"
           ],
@@ -3314,7 +3391,7 @@
         {
           "name": "button/ghost-pressed-opacity",
           "type": "FLOAT",
-          "css": "button-ghost-pressed-opacity",
+          "css": "d5ng-button-ghost-pressed-opacity",
           "scopes": [
             "OPACITY"
           ],
@@ -3334,7 +3411,7 @@
         {
           "name": "menu/width/sm",
           "type": "FLOAT",
-          "css": "menu-width-sm",
+          "css": "d5ng-menu-width-sm",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3345,7 +3422,7 @@
         {
           "name": "menu/width/md",
           "type": "FLOAT",
-          "css": "menu-width-md",
+          "css": "d5ng-menu-width-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3356,7 +3433,7 @@
         {
           "name": "menu/item-min-height/sm",
           "type": "FLOAT",
-          "css": "menu-item-min-height-sm",
+          "css": "d5ng-menu-item-min-height-sm",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3367,7 +3444,7 @@
         {
           "name": "menu/item-min-height/md",
           "type": "FLOAT",
-          "css": "menu-item-min-height-md",
+          "css": "d5ng-menu-item-min-height-md",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3378,7 +3455,7 @@
         {
           "name": "menu/max-height",
           "type": "FLOAT",
-          "css": "menu-max-height",
+          "css": "d5ng-menu-max-height",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3397,7 +3474,7 @@
         {
           "name": "help-bubble/max-width",
           "type": "FLOAT",
-          "css": "help-bubble-max-width",
+          "css": "d5ng-help-bubble-max-width",
           "scopes": [
             "WIDTH_HEIGHT"
           ],
@@ -3408,7 +3485,7 @@
         {
           "name": "help-bubble/arrow-inset",
           "type": "FLOAT",
-          "css": "help-bubble-arrow-inset",
+          "css": "d5ng-help-bubble-arrow-inset",
           "scopes": [
             "GAP"
           ],
@@ -4042,6 +4119,26 @@
       "bound": {
         "fontSize": "Typography:font/size/t6",
         "lineHeight": "Typography:font/line-height/t6"
+      }
+    },
+    {
+      "name": "Scale/t4/SemiBold",
+      "fontFamily": "Pretendard Variable",
+      "fontStyle": "SemiBold",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 19
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "bound": {
+        "fontFamily": "Typography:font/family/base",
+        "fontSize": "Typography:font/size/t4",
+        "lineHeight": "Typography:font/line-height/t4",
+        "fontWeight": "Typography:font/weight/semibold"
       }
     }
   ],

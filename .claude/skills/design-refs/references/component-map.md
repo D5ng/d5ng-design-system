@@ -10,26 +10,26 @@
 | Button             | `action-button`                      | `actions/button`                   | 확인함(2026-11-09)                                             |
 | IconButton         | `action-button`(`layout="iconOnly"`) | `actions/icon-button`              | SEED는 Button에 합쳐 둠                                        |
 | Field              | `field`                              | `selection-and-input/form-control` | 확인함(2026-11-10). SEED React는 `text-field-input` 참고       |
-| TextField          | `text-input`                         | `selection-and-input/text-field`   |                                                                |
-| Textarea           | `text-input`(Textarea)               | `selection-and-input/text-area`    | SEED는 한 문서                                                 |
+| TextField          | `text-input`                         | `selection-and-input/text-field`   | 확인함(2026-11-11). SEED는 라벨까지 묶고 Montage는 입력만 그림 |
+| Textarea           | `text-input`(Textarea)               | `selection-and-input/text-area`    | 확인함(2026-11-11). SEED React 문서는 `text-field-textarea`    |
 | Checkbox           | `checkbox`                           | `selection-and-input/checkbox`     | Montage는 `check-mark`도 있음                                  |
-| Radio              | `radio`                              | `selection-and-input/radio`        |                                                                |
-| Switch             | `switch`                             | `selection-and-input/switch`       |                                                                |
+| Radio              | `radio`                              | `selection-and-input/radio`        | 확인함(2026-11-11). SEED React는 `radio-group`                 |
+| Switch             | `switch`                             | `selection-and-input/switch`       | 확인함(2026-11-11). SwitchRow는 SEED `list`(ListSwitchItem)    |
 | Select             | `select`                             | `selection-and-input/select`       |                                                                |
 | Select Box         | `select-box`                         | `selection-and-input/framed-style` | 추정                                                           |
-| Dialog             | `dialog`                             | `presentation/popup`               | 추정                                                           |
+| Dialog             | `dialog`                             | `presentation/popup`               | 확인함(2026-11-14). SEED는 닫기 버튼·Bottom Sheet 전환 있음    |
 | Alert Dialog       | `alert-dialog`                       | `feedback/alert`                   | 확인함(2026-11-09)                                             |
 | Snackbar           | `snackbar`                           | `feedback/snackbar`                | Montage는 `feedback/toast`도 있음                              |
-| Tabs               | `tabs`                               | `navigations/tab`                  |                                                                |
-| Badge              | `badge`                              | `contents/content-badge`           | 추정                                                           |
+| Tabs               | `tabs`                               | `navigations/tab`                  | 확인함(2026-11-14)                                             |
+| Badge              | `badge`                              | `contents/content-badge`           | 확인함(2026-11-14). Montage는 색을 토큰으로 직접 고름          |
 | Notification Badge | `notification-badge`                 | `feedback/push-badge`              | 추정                                                           |
-| Chip               | `chip`                               | `actions/chip`                     | Montage는 `selection-and-input/filter-button`도 있음           |
+| Chip               | `chip`                               | `actions/chip`                     | 확인함(2026-11-14). SEED 역할별 3부품, Montage filter-button도 |
 | Link               | 없음                                 | 없음                               | 확인함(2026-11-09). Montage `text-button`은 버튼이라 대응 아님 |
 | Image Frame        | `image-frame`                        | `contents/thumbnail`               | 추정                                                           |
 | Content Card       | 없음                                 | `contents/card`                    | 추정                                                           |
 | Article Body       | React `article`                      | 없음                               | SEED는 React 문서에만 있음                                     |
-| Divider            | `divider`                            | 없음                               |                                                                |
-| Callout            | `callout`                            | `feedback/section-message`         | 추정                                                           |
+| Divider            | `divider`                            | `web-utility-components/divider`   | 확인함(2026-11-14). Montage는 `/docs/utilities/` 아래          |
+| Callout            | `callout`                            | `feedback/section-message`         | 확인함(2026-11-14). SEED는 세 컴포넌트, Montage는 하나         |
 | Skeleton           | `skeleton`                           | `loading/skeleton`                 |                                                                |
 | Result Section     | `result-section`                     | `feedback/fallback-view`           | 추정                                                           |
 | Search Bar         | `search-bar`                         | `selection-and-input/search-field` |                                                                |

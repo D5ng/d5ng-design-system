@@ -261,6 +261,19 @@ export const vars = {
   "focusRing": {
     "width": "var(--d5ng-focus-ring-width)"
   },
+  "chip": {
+    "minHeight": {
+      "sm": "var(--d5ng-chip-min-height-sm)",
+      "md": "var(--d5ng-chip-min-height-md)",
+      "lg": "var(--d5ng-chip-min-height-lg)"
+    },
+    "minTargetHeight": "var(--d5ng-chip-min-target-height)",
+    "iconSize": {
+      "sm": "var(--d5ng-chip-icon-size-sm)",
+      "md": "var(--d5ng-chip-icon-size-md)",
+      "lg": "var(--d5ng-chip-icon-size-lg)"
+    }
+  },
   "menu": {
     "width": {
       "sm": "var(--d5ng-menu-width-sm)",
